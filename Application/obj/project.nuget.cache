@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "AEGs+dha6kj0H+s7JwFWlxkfzeS/ksaE36/f3pwm6uUdA9Rwl1oRKZbCkxNV1EoCyJJdDJ2XQwyN83YpMeBn5g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Application\\Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\NESA\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\NESA\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

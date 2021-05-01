@@ -1,0 +1,126 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "DatabaseLogic": "1.0.0",
+          "Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Application.dll": {}
+        }
+      },
+      "DatabaseLogic/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DatabaseLogic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DatabaseLogic.dll": {}
+        }
+      },
+      "Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Application/1.0.0": {
+      "type": "project",
+      "path": "../Application/Application.csproj",
+      "msbuildProject": "../Application/Application.csproj"
+    },
+    "DatabaseLogic/1.0.0": {
+      "type": "project",
+      "path": "../DatabaseLogic/DatabaseLogic.csproj",
+      "msbuildProject": "../DatabaseLogic/DatabaseLogic.csproj"
+    },
+    "Domain/1.0.0": {
+      "type": "project",
+      "path": "../Domain/Domain.csproj",
+      "msbuildProject": "../Domain/Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "Application >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\NESA\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\API\\API.csproj",
+      "projectName": "API",
+      "projectPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\NESA\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\API\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\NESA\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Application\\Application.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
