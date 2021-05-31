@@ -14,5 +14,6 @@ namespace DatabaseLogic
         public DbSet<MbikeqyresiTemave> MbikeqyresitTemave { get; set; }
         public DbSet<Specializimi> Specializimet { get; set; }
         public DbSet<Edukimi> Edukimet { get; set; }
+        public DbSet<Profili> Profilet { get; set; }
     }
 }

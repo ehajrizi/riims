@@ -12,6 +12,7 @@ namespace Application.Core
             CreateMap<MbikeqyresiTemave, MbikeqyresiTemave>();
             CreateMap<Specializimi, Specializimi>();
             CreateMap<Edukimi, Edukimi>();
+            CreateMap<Profili, Profili>();
         }
     }
 }
