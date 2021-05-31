@@ -25,7 +25,7 @@ namespace Application.Eksperiencat
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
                 var eksperienca = await _context.Eksperiencat.FindAsync(request.Id); 
-                _context.Remove(eksperienca);//e hek prej memories
+                _context.Remove(eksperienca);
 
                 await _context.SaveChangesAsync();
 

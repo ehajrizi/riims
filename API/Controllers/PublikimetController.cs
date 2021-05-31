@@ -1,13 +1,9 @@
+using Application.Publikimet;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
-using Application.Publikimet;
 using Domain;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using DatabaseLogic;
 
 namespace API.Controllers
 {
