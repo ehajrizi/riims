@@ -9,7 +9,7 @@ namespace DatabaseLogic
         {
         }
 
-        //public DbSet<Publikimi> Publikimet { get; set; }
+        public DbSet<Publikimi> Publikimet { get; set; }
         public DbSet<Eksperienca> Eksperiencat { get; set; }
     }
 }

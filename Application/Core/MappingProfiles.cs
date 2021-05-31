@@ -8,6 +8,7 @@ namespace Application.Core
         public MappingProfiles()
         {
             CreateMap<Eksperienca, Eksperienca>();
+            CreateMap<Publikimi, Publikimi>();
         }
     }
 }

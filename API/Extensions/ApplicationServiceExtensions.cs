@@ -1,4 +1,4 @@
-//using Application.Publikimet; //na duhet masnej edhe ky import
+using Application.Publikimet; //na duhet masnej edhe ky import
 using Application.Eksperiencat;
 using Application.Core;//na duhen masnej secila per vete se activity ka pas anej te ky import 
 using MediatR;//same si ma nalt
@@ -31,6 +31,7 @@ namespace API.Extensions
             });
             //list osht te Application.Activities na e kqyrum qka kem aty me bo
             services.AddMediatR(typeof(Application.Eksperiencat.List.Handler).Assembly);
+            services.AddMediatR(typeof(Application.Publikimet.List.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
             return services;
