@@ -29,6 +29,7 @@ namespace API
                 // await Seed.SeedData(context);
                 await SeedPublikimet.SeedData(context);
                 await SeedDataEksperiencat.SeedDataEks(context);
+                await SeedMbikeqyresiTemave.SeedData(context);
             }
             catch(Exception ex)
             {

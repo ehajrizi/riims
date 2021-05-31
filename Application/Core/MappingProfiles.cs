@@ -9,6 +9,7 @@ namespace Application.Core
         {
             CreateMap<Eksperienca, Eksperienca>();
             CreateMap<Publikimi, Publikimi>();
+            CreateMap<MbikeqyresiTemave, MbikeqyresiTemave>();
         }
     }
 }

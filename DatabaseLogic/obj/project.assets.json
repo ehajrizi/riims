@@ -953,23 +953,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\NESA\\.nuget\\packages\\": {},
+    "C:\\Users\\HP\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
       "projectName": "DatabaseLogic",
-      "projectPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
-      "packagesPath": "C:\\Users\\NESA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\obj\\",
+      "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\DatabaseLogic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\NESA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -984,8 +984,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj"
+            "C:\\Users\\HP\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Domain\\Domain.csproj"
             }
           }
         }
@@ -1020,7 +1020,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
