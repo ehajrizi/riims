@@ -11,6 +11,7 @@ namespace Application.Core
             CreateMap<Publikimi, Publikimi>();
             CreateMap<MbikeqyresiTemave, MbikeqyresiTemave>();
             CreateMap<Specializimi, Specializimi>();
+            CreateMap<Edukimi, Edukimi>();
         }
     }
 }

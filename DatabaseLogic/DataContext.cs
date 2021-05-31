@@ -13,5 +13,6 @@ namespace DatabaseLogic
         public DbSet<Eksperienca> Eksperiencat { get; set; }
         public DbSet<MbikeqyresiTemave> MbikeqyresitTemave { get; set; }
         public DbSet<Specializimi> Specializimet { get; set; }
+        public DbSet<Edukimi> Edukimet { get; set; }
     }
 }
