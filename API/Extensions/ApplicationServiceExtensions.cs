@@ -1,6 +1,7 @@
 using Application.Publikimet; //na duhet masnej edhe ky import
 using Application.Eksperiencat;
 using Application.MbikeqyresitTemave;
+using Application.Specializimet;
 using Application.Core;//na duhen masnej secila per vete se activity ka pas anej te ky import 
 using MediatR;//same si ma nalt
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +36,7 @@ namespace API.Extensions
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.AddMediatR(typeof(Application.Publikimet.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.MbikeqyresitTemave.List.Handler).Assembly);
+            services.AddMediatR(typeof(Application.Specializimet.List.Handler).Assembly);
 
             return services;
         }
