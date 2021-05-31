@@ -1,7 +1,7 @@
-using Application.Publikimet;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Application.Publikimet;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,12 +9,6 @@ namespace API.Controllers
 {
     public class PublikimetController : BaseApiController
     {
-        private readonly IMediator _mediator;
-        public PublikimetController(IMediator mediator)
-        {
-            _mediator = mediator;
-
-        }
 
         [HttpGet]
         public async Task<ActionResult<List<Publikimi>>> GetPublikimet()

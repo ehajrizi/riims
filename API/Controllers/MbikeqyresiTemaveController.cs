@@ -1,7 +1,7 @@
-using Application.MbikeqyresitTemave;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Application.MbikeqyresitTemave;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,12 +9,6 @@ namespace API.Controllers
 {
     public class MbikeqyresiTemaveController : BaseApiController
     {
-        private readonly IMediator _mediator;
-        public MbikeqyresiTemaveController(IMediator mediator)
-        {
-            _mediator = mediator;
-
-        }
 
         [HttpGet]
         public async Task<ActionResult<List<MbikeqyresiTemave>>> GetMbikeqyresitTemave()

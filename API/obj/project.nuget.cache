@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QJ+VOe/7CDDmBPI5hngzKYQ6s5OnJ5+lzyTQxaPkSsoG+R4tUZa8oXJiJqLklkG60VKHNPmNtL3FsebfT1QcaQ==",
+  "dgSpecHash": "n/JbY4t+YJod6cYGZpe1FC9ij1pxCiTS16DVok8tFzSp+fKwDF5bOmVr/UdYJqPj9BBcXOgreKhf8ENNd/GSnQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
