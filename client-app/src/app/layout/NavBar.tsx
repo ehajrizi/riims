@@ -3,8 +3,9 @@ import { Button, Container, Menu } from 'semantic-ui-react';
 
 interface Props{
     openForm: () =>void;
+    openFormEdukimi: () =>void;
 }
-export default function NavBar({openForm} : Props){
+export default function NavBar({openForm, openFormEdukimi} : Props){
     return (
         <Menu inverted fixed='top'>
             <Container>
@@ -20,7 +21,7 @@ export default function NavBar({openForm} : Props){
                     <Button onClick={openForm} primary content='Eksperiencat'/>
                 </Menu.Item>
                 <Menu.Item>
-                    <Button onClick={openForm} primary content='Edukimi'/>
+                    <Button onClick={openFormEdukimi} primary content='Edukimi'/>
                 </Menu.Item>
                 <Menu.Item>
                     <Button onClick={openForm} primary content='Specializimet'/>
