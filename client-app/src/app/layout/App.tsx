@@ -11,6 +11,8 @@ import EdukimiDashboard from '../../features/edukimet/dashboard/EdukimiDashboard
 import SpecializimiDashboard from '../../features/specializimet/dashboard/SpecializimiDashboard';
 import PublikimetDashboard from '../../features/publikimet/dashboard/PublikimetDashboard';
 import { Publikimi } from '../models/publikimi';
+import ProfiliDashboard from '../../features/profili/dashboard/ProfiliDashboard';
+import { Profili } from '../models/profili';
 
 
 function App() {
@@ -30,6 +32,10 @@ function App() {
   const [publikimet, setPublikimet] = useState<Publikimi[]>([]);
   const [selectedPublikimi, setSelectedPublikimi] = useState<Publikimi | undefined>(undefined);
   const [editModePublikimi, setEditModePublikimi] = useState(false);
+
+  const [profilet,setProfilet]= useState<Profili[]>([]);
+  const [selectedProfili, setSelectedProfili] = useState<Profili | undefined>(undefined);
+  const [editModeProfili,setEditModeProfili]= useState(false);
 
   useEffect(() =>{
     axios.get<Eksperienca[]>('http://localhost:5000/api/eksperiencat').then(response => {
@@ -168,7 +174,54 @@ function App() {
     setPublikimet([...publikimet.filter(x => x.id !== id)])
   }
 
+  /** Metodat per Profilin */
+  useEffect(() => {
+    axios.get<Profili[]>('http://localhost:5000/api/activities').then(response=>{
+
+       setProfilet(response.data);
+    } )
+  }, []) //this will ensure that this only runs one time
+
+function handleSelectedProfili(id:string) {
+  setSelectedProfili(profilet.find(x=> x.id === id));
+
+
+}
+
+function handleCancelSelectedProfili(){
+  setSelectedProfili(undefined);
+
+
+}
+
+function handleFormOpenProfili(id?:string){
+  id ? handleSelectedProfili(id) :handleCancelSelectedProfili();
+  setEditModeProfili(true);
+
+}
+function handleFormCloseProfili(){
+  setEditModeProfili(false);
+
+}
+
+function handleCreateOrEditProfili(profili: Profili) {
+
+  profili.id ?setProfilet([...profilet.filter(x=> x.id !== Profili.id),profili])
+  : setProfilet([...profilet,{...profili,id:uuid()}]);
+  setEditModeProfili(false);
+  setSelectedProfili(profili);
+
+}
+function handleDeleteProfili(id:string) {
+  setProfilet([...profilet.filter(x=> x.id !== id )])
+
+}
+
+
+
+
   /** Metodat per Publikimet */
+  
 
   return (
     <>
@@ -230,6 +283,27 @@ function App() {
           createOrEditPublikimi = {handleCreateOrEditPublikimi}
           deletePublikimi = {handleDeletePublikimi}
         />
+      </Container>
+
+      {/* Profili Container */}
+
+
+      <Container style={{marginTop: '7em'}}>
+     
+        <ProfiliDashboard 
+         profilet={profilet}
+         selectedProfili={selectedProfili}
+         selectProfili={handleSelectedProfili}
+         cancelSelectedProfili={handleCancelSelectedProfili}
+         editModeProfili={editModeProfili}
+         openFormProfili={handleFormOpenProfili}
+         closeFormProfili={handleFormCloseProfili}
+         createOrEditProfili={handleCreateOrEditProfili}
+         deleteProfili={handleDeleteProfili}
+
+         />
+
+
       </Container>
     </>
   );
