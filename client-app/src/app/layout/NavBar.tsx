@@ -2,14 +2,14 @@ import React from 'react';
 import { Button, Container, Menu } from 'semantic-ui-react';
 
 interface Props{
-    openForm: () =>void;
+    openFormEksperienca: () =>void;
     openFormEdukimi: () =>void;
     openFormSpecializimi: () =>void;
     openFormPublikimi: () => void;
     openFormProfili: () => void;
     openFormMbikeqyresiTemave: () => void;
 }
-export default function NavBar({openForm, openFormEdukimi, openFormSpecializimi, openFormPublikimi, openFormProfili, openFormMbikeqyresiTemave} : Props){
+export default function NavBar({openFormEksperienca, openFormEdukimi, openFormSpecializimi, openFormPublikimi, openFormProfili, openFormMbikeqyresiTemave} : Props){
     return (
         <Menu inverted fixed='top'>
             <Container>
@@ -22,7 +22,7 @@ export default function NavBar({openForm, openFormEdukimi, openFormSpecializimi,
                     <Button onClick={openFormProfili} primary content='Profili'/>
                 </Menu.Item>
                 <Menu.Item>
-                    <Button onClick={openForm} primary content='Eksperiencat'/>
+                    <Button onClick={openFormEksperienca} primary content='Eksperiencat'/>
                 </Menu.Item>
                 <Menu.Item>
                     <Button onClick={openFormEdukimi} primary content='Edukimi'/>

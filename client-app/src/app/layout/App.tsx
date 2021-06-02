@@ -253,7 +253,7 @@ function handleDeleteMbikeqyresiTemave(id:string){
   
   return (
     <>
-      <NavBar openForm={handleFormOpenEksperienca} openFormEdukimi={handleFormOpenEdukimi} openFormSpecializimi={handleFormOpenSpecializimi} openFormPublikimi={handleFormOpenPublikimi} openFormProfili={handleFormOpenProfili} openFormMbikeqyresiTemave={handleFormOpenMbikeqyresiTemave}/>
+      <NavBar openFormEksperienca={handleFormOpenEksperienca} openFormEdukimi={handleFormOpenEdukimi} openFormSpecializimi={handleFormOpenSpecializimi} openFormPublikimi={handleFormOpenPublikimi} openFormProfili={handleFormOpenProfili} openFormMbikeqyresiTemave={handleFormOpenMbikeqyresiTemave}/>
       <Container style={{marginTop:'7em'}}>
         <EksperiencaDashboard 
           eksperiencat={eksperiencat}
