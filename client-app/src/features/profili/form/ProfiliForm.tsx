@@ -13,16 +13,16 @@ export default function ProfiliForm({profili:selectedProfili, closeFormProfili, 
     const initialState= selectedProfili ??{
 
         id: '',
-        TitulliShkencor: '',
-        Emri:'',
-        EmriIMesem: '',
-        Mbiemri: '',
-        DataELindjes: '',
-        VendiILindjes: '',
-        ShtetiILindjes: '',
-        NrTelefonit: '',
-        Gjinia: '',
-        FotoUrl: ''
+        titulliShkencor: '',
+        emri:'',
+        emriIMesem: '',
+        mbiemri: '',
+        dataELindjes: '',
+        vendiILindjes: '',
+        shtetiILindjes: '',
+        nrTelefonit: '',
+        gjinia: '',
+        fotoUrl: ''
 
     }
     const [profili,setProfili] = useState(initialState);
@@ -41,15 +41,15 @@ export default function ProfiliForm({profili:selectedProfili, closeFormProfili, 
 
         <Segment clearing>
             <Form onSubmit={handleSubmit} autoComplete='off'> 
-                <Form.Input placeholder = 'Titulli Shkencor'value={profili.TitulliShkencor} name='TitulliShkencor' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Emri'value={profili.Emri} name='Emri' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Emri I Mesem'value={profili.EmriIMesem} name='EmriIMesem' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Mbiemri'value={profili.Mbiemri} name='Mbiemri' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Data E Lindjes'value={profili.DataELindjes} name='DataELindjes' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Vendi I Lindjes'value={profili.VendiILindjes} name='VendiILindjes' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Shteti I Lindjes'value={profili.ShtetiILindjes} name='ShtetiILindjes' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Nr. i Telefonit'value={profili.NrTelefonit} name='NrTelefonit' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Gjinia'value={profili.Gjinia} name='Gjinia' onChange={handleInputChange}/>
+                <Form.Input placeholder = 'Titulli Shkencor'value={profili.titulliShkencor} name='titulliShkencor' onChange={handleInputChange}/>
+                <Form.Input placeholder = 'Emri'value={profili.emri} name='emri' onChange={handleInputChange}/>
+                <Form.Input placeholder = 'Emri I Mesem'value={profili.emriIMesem} name='emriIMesem' onChange={handleInputChange}/>
+                <Form.Input placeholder = 'Mbiemri'value={profili.mbiemri} name='mbiemri' onChange={handleInputChange}/>
+                <Form.Input placeholder = 'Data E Lindjes'value={profili.dataELindjes} name='dataELindjes' onChange={handleInputChange}/>
+                <Form.Input placeholder = 'Vendi I Lindjes'value={profili.vendiILindjes} name='vendiILindjes' onChange={handleInputChange}/>
+                <Form.Input placeholder = 'Shteti I Lindjes'value={profili.shtetiILindjes} name='shtetiILindjes' onChange={handleInputChange}/>
+                <Form.Input placeholder = 'Nr. i Telefonit'value={profili.nrTelefonit} name='nrTelefonit' onChange={handleInputChange}/>
+                <Form.Input placeholder = 'Gjinia'value={profili.gjinia} name='gjinia' onChange={handleInputChange}/>
 
                 <Button floated='right' positive type ='submit' content='Submit'/>
                 <Button onClick={closeFormProfili} floated='right'  type ='button' content='Cancel'/>

@@ -6,8 +6,10 @@ interface Props{
     openFormEdukimi: () =>void;
     openFormSpecializimi: () =>void;
     openFormPublikimi: () => void;
+    openFormProfili: () => void;
+    openFormMbikeqyresiTemave: () => void;
 }
-export default function NavBar({openForm, openFormEdukimi, openFormSpecializimi, openFormPublikimi} : Props){
+export default function NavBar({openForm, openFormEdukimi, openFormSpecializimi, openFormPublikimi, openFormProfili, openFormMbikeqyresiTemave} : Props){
     return (
         <Menu inverted fixed='top'>
             <Container>
@@ -17,7 +19,7 @@ export default function NavBar({openForm, openFormEdukimi, openFormSpecializimi,
                 </Menu.Item>
                 {/* <Menu.Item name='Eksperiencat'/> */}
                 <Menu.Item>
-                    <Button onClick={openForm} primary content='Profili'/>
+                    <Button onClick={openFormProfili} primary content='Profili'/>
                 </Menu.Item>
                 <Menu.Item>
                     <Button onClick={openForm} primary content='Eksperiencat'/>
@@ -29,7 +31,7 @@ export default function NavBar({openForm, openFormEdukimi, openFormSpecializimi,
                     <Button onClick={openFormSpecializimi} primary content='Specializimet'/>
                 </Menu.Item>
                 <Menu.Item>
-                    <Button onClick={openForm} primary content='Temat e mbikeqyrura'/>
+                    <Button onClick={openFormMbikeqyresiTemave} primary content='Temat e mbikeqyrura'/>
                 </Menu.Item>
                 <Menu.Item>
                     <Button onClick={openFormPublikimi} primary content='Publikimet'/>

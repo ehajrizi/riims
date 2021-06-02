@@ -13,6 +13,8 @@ import PublikimetDashboard from '../../features/publikimet/dashboard/PublikimetD
 import { Publikimi } from '../models/publikimi';
 import ProfiliDashboard from '../../features/profili/dashboard/ProfiliDashboard';
 import { Profili } from '../models/profili';
+import MbikeqyresiTemaveDashboard from '../../features/mbikeqyresittemave/dashboard/MbikeqyresiTemaveDashboard';
+import { MbikeqyresiTemave } from '../models/mbikeqyresitemave';
 
 
 function App() {
@@ -37,6 +39,11 @@ function App() {
   const [selectedProfili, setSelectedProfili] = useState<Profili | undefined>(undefined);
   const [editModeProfili,setEditModeProfili]= useState(false);
 
+  const [mbikeqyresittemave, setMbikeqyresiTemave] = useState<MbikeqyresiTemave[]>([]);
+  const [selectedMbikeqyresiTemave, setSelectedMbikeqyresiTemave] = useState<MbikeqyresiTemave | undefined>(undefined);
+  const [editModeMbikeqyresiTemave, setEditModeMbikeqyresiTemave] = useState(false);
+
+
   useEffect(() =>{
     axios.get<Eksperienca[]>('http://localhost:5000/api/eksperiencat').then(response => {
       setEksperiencat(response.data);
@@ -50,6 +57,14 @@ function App() {
     axios.get<Publikimi[]>('http://localhost:5000/api/publikimet').then(response => {
       setPublikimet(response.data);
     })
+    axios.get<Profili[]>('http://localhost:5000/api/profili').then(response=>{
+
+       setProfilet(response.data);
+    } )
+    axios.get<MbikeqyresiTemave[]>('http://localhost:5000/api/mbikeqyresitemave').then(response=>{
+
+       setMbikeqyresiTemave(response.data);
+    } )
 
   }, [])
 
@@ -175,57 +190,72 @@ function App() {
   }
 
   /** Metodat per Profilin */
-  useEffect(() => {
-    axios.get<Profili[]>('http://localhost:5000/api/activities').then(response=>{
-
-       setProfilet(response.data);
-    } )
-  }, []) //this will ensure that this only runs one time
 
 function handleSelectedProfili(id:string) {
   setSelectedProfili(profilet.find(x=> x.id === id));
-
-
 }
 
 function handleCancelSelectedProfili(){
   setSelectedProfili(undefined);
-
-
 }
 
 function handleFormOpenProfili(id?:string){
   id ? handleSelectedProfili(id) :handleCancelSelectedProfili();
   setEditModeProfili(true);
-
 }
 function handleFormCloseProfili(){
   setEditModeProfili(false);
-
 }
 
 function handleCreateOrEditProfili(profili: Profili) {
 
-  profili.id ?setProfilet([...profilet.filter(x=> x.id !== Profili.id),profili])
+  profili.id ?setProfilet([...profilet.filter(x=> x.id !== profili.id),profili])
   : setProfilet([...profilet,{...profili,id:uuid()}]);
   setEditModeProfili(false);
   setSelectedProfili(profili);
-
 }
 function handleDeleteProfili(id:string) {
   setProfilet([...profilet.filter(x=> x.id !== id )])
-
 }
 
 
+/**Metoda per mbikeqyresit e temave */
+
+function handleSelectMbikeqyresiTemave(id:string){
+  setSelectedMbikeqyresiTemave(mbikeqyresittemave.find(x => x.id ===id));
+}
+
+function handleCancelSelectMbikeqyresiTemave(){
+  setSelectedMbikeqyresiTemave(undefined);
+}
+
+function handleFormOpenMbikeqyresiTemave(id?:string){
+  id ? handleSelectMbikeqyresiTemave(id) : handleCancelSelectMbikeqyresiTemave();
+  setEditModeMbikeqyresiTemave(true);
+}
+
+function handleFormCloseMbikeqyresiTemave(){
+  setEditModeMbikeqyresiTemave(false);
+} 
+
+function handleCreateOrEditMbikeqyresiTemave(mbikeqyresitemave: MbikeqyresiTemave){
+  mbikeqyresitemave.id
+    ? setMbikeqyresiTemave([...mbikeqyresittemave.filter(x=>x.id !==mbikeqyresitemave.id),mbikeqyresitemave])
+    : setMbikeqyresiTemave([...mbikeqyresittemave, {...mbikeqyresitemave, id:uuid()}]);
+  setEditModeMbikeqyresiTemave(false);
+  setSelectedMbikeqyresiTemave(mbikeqyresitemave);
+}
+
+function handleDeleteMbikeqyresiTemave(id:string){
+  setMbikeqyresiTemave([...mbikeqyresittemave.filter(x=> x.id !==id)])
+}
 
 
   /** Metodat per Publikimet */
   
-
   return (
     <>
-      <NavBar openForm={handleFormOpen} openFormEdukimi={handleFormOpenEdukimi} openFormSpecializimi={handleFormOpenSpecializimi} openFormPublikimi={handleFormOpenPublikimi}/>
+      <NavBar openForm={handleFormOpen} openFormEdukimi={handleFormOpenEdukimi} openFormSpecializimi={handleFormOpenSpecializimi} openFormPublikimi={handleFormOpenPublikimi} openFormProfili={handleFormOpenProfili} openFormMbikeqyresiTemave={handleFormOpenMbikeqyresiTemave}/>
       <Container style={{marginTop:'7em'}}>
         <EksperiencaDashboard 
           eksperiencat={eksperiencat}
@@ -286,10 +316,7 @@ function handleDeleteProfili(id:string) {
       </Container>
 
       {/* Profili Container */}
-
-
       <Container style={{marginTop: '7em'}}>
-     
         <ProfiliDashboard 
          profilet={profilet}
          selectedProfili={selectedProfili}
@@ -300,13 +327,27 @@ function handleDeleteProfili(id:string) {
          closeFormProfili={handleFormCloseProfili}
          createOrEditProfili={handleCreateOrEditProfili}
          deleteProfili={handleDeleteProfili}
-
+          
          />
-
-
+         </Container>
+      {/* Mbikeqyresi i temave container */}
+      
+      <Container style={{marginTop:'7em'}}>
+        <MbikeqyresiTemaveDashboard 
+          mbikeqyresittemave={mbikeqyresittemave}
+          selectedMbikeqyresiTemave={selectedMbikeqyresiTemave}
+          selectMbikeqyresiTemave={handleSelectMbikeqyresiTemave}
+          cancelSelectMbikeqyresiTemave={handleCancelSelectMbikeqyresiTemave}
+          editModeMbikeqyresiTemave={editModeMbikeqyresiTemave}
+          openFormMbikeqyresiTemave={handleFormOpenMbikeqyresiTemave}
+          closeFormMbikeqyresiTemave={handleFormCloseMbikeqyresiTemave}
+          createOrEditMbikeqyresiTemave={handleCreateOrEditMbikeqyresiTemave}
+          deleteMbikeqyresiTemave={handleDeleteMbikeqyresiTemave}
+      />
       </Container>
-    </>
+   </>
   );
 }
+
 
 export default App;

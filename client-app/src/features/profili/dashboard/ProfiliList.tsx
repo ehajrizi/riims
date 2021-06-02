@@ -36,15 +36,15 @@ export default function ProfiliList({ profilet, selectProfili, deleteProfili }: 
                             <Item.Header as='a'> Profili im </Item.Header>
 
                             <Item.Description>
-                                <div>{profili.TitulliShkencor}</div>
-                                <div>{profili.Emri}</div>
-                                <div>{profili. EmriIMesem}</div>
-                                <div>{profili.Mbiemri}</div>
-                                <div>{profili.DataELindjes}</div>
-                                <div>{profili.VendiILindjes}</div>
-                                <div>{profili.ShtetiILindjes}</div>
-                                <div>{profili.NrTelefonit}</div>
-                                <div>{profili.Gjinia}</div>
+                                <div>{profili.titulliShkencor}</div>
+                                <div>{profili.emri}</div>
+                                <div>{profili.emriIMesem}</div>
+                                <div>{profili.mbiemri}</div>
+                                <div>{profili.dataELindjes}</div>
+                                <div>{profili.vendiILindjes}</div>
+                                <div>{profili.shtetiILindjes}</div>
+                                <div>{profili.nrTelefonit}</div>
+                                <div>{profili.gjinia}</div>
 
 
                             </Item.Description>

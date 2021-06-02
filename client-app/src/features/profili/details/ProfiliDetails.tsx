@@ -14,12 +14,12 @@ export default function ProfiliDetails ({profili,cancelSelectedProfili, openForm
         <Card fliud> 
         {/* <Image src={`/assets/categoryImages/${profili.category}.jpg`} />  */}
         <Card.Content>
-          <Card.Header>{profili.Emri},{profili.EmriIMesem},{profili.Mbiemri}</Card.Header>
+          <Card.Header>{profili.emri},{profili.emriIMesem},{profili.mbiemri}</Card.Header>
           {/* <Card.Meta>
             <span>{profili.date}</span>
           </Card.Meta> */}
           <Card.Description>
-            {profili.VendiILindjes},{profili.ShtetiILindjes},{profili.DataELindjes},{profili.NrTelefonit}
+            {profili.vendiILindjes},{profili.shtetiILindjes},{profili.dataELindjes},{profili.nrTelefonit}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>

@@ -1,13 +1,13 @@
 export interface Profili {
     id: string;
-    TitulliShkencor: string;
-    Emri:string;
-    EmriIMesem: string;
-    Mbiemri: string;
-    DataELindjes: string;
-    VendiILindjes: string;
-    ShtetiILindjes: string;
-    NrTelefonit: string;
-    Gjinia: string;
-    FotoUrl: string;
+    titulliShkencor: string;
+    emri:string;
+    emriIMesem: string;
+    mbiemri: string;
+    dataELindjes: string;
+    vendiILindjes: string;
+    shtetiILindjes: string;
+    nrTelefonit: string;
+    gjinia: string;
+    fotoUrl: string;
 }
