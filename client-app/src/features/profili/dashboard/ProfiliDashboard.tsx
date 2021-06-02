@@ -14,11 +14,10 @@ interface Props{
     openFormProfili: (id:string) => void;
     closeFormProfili: () => void;
     createOrEditProfili: (profili: Profili) => void;
-    deleteProfili: (id: string) => void;
 }
 
 export default function ProfiliDashboard({profilet,selectedProfili,
-    selectProfili,cancelSelectedProfili,editModeProfili,openFormProfili,closeFormProfili,createOrEditProfili,deleteProfili}:Props) {
+    selectProfili,cancelSelectedProfili,editModeProfili,openFormProfili,closeFormProfili,createOrEditProfili}:Props) {
 
     return (
         <Grid>
@@ -27,7 +26,6 @@ export default function ProfiliDashboard({profilet,selectedProfili,
                  <ProfiliList 
                  profilet={profilet}
                   selectProfili={selectProfili}
-                  deleteProfili={deleteProfili}
                   />  
 
                  

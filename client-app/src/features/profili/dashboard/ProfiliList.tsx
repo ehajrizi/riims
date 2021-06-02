@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Item, Label, Segment } from 'semantic-ui-react';
+import { Button, Item, Segment } from 'semantic-ui-react';
 import { Profili } from '../../../app/models/profili';
 
 
@@ -7,10 +7,9 @@ import { Profili } from '../../../app/models/profili';
 interface Props {
     profilet: Profili[];
     selectProfili: (id: string) => void;
-    deleteProfili: (id: string) => void;
 }
 
-export default function ProfiliList({ profilet, selectProfili, deleteProfili }: Props) {
+export default function ProfiliList({ profilet, selectProfili}: Props) {
     return (
         <Segment>
 
@@ -51,24 +50,11 @@ export default function ProfiliList({ profilet, selectProfili, deleteProfili }: 
 
                             <Item.Extra>
                                 <Button onClick={() => selectProfili(profili.id)} floated='right' content='View' color='blue' />
-                                <Button onClick={() => deleteProfili(profili.id)} floated='right' content='Delete' color='red' />
-
-                                
                             </Item.Extra>
-
-
-
                         </Item.Content>
-
                     </Item>
-
                 ))}
-
             </Item.Group>
-
         </Segment>
     )
-
-
-
 }

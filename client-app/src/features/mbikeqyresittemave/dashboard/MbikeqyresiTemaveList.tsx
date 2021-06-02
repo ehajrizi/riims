@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button, Item, Label, Segment } from 'semantic-ui-react';
+import { Button, Item, Segment } from 'semantic-ui-react';
 import {MbikeqyresiTemave } from '../../../app/models/mbikeqyresitemave';
 
 

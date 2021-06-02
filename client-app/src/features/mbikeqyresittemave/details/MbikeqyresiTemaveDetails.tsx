@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button, Card, Image } from 'semantic-ui-react';
+import { Button, Card } from 'semantic-ui-react';
 import {MbikeqyresiTemave } from '../../../app/models/mbikeqyresitemave';
 
 interface Props {

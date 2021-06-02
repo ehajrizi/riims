@@ -21,7 +21,7 @@ function App() {
 
   const [eksperiencat, setEksperiencat] = useState<Eksperienca[]>([]);
   const [selectedEksperienca, setSelectedEksperienca] = useState<Eksperienca | undefined>(undefined);
-  const [editMode, setEditMode] = useState(false);
+  const [editModeEksperienca, setEditModeEksperienca] = useState(false);
 
   const [edukimet, setEdukimet] = useState<Edukimi[]>([]);
   const [selectedEdukimi, setSelectedEdukimi] = useState<Edukimi | undefined>(undefined);
@@ -77,19 +77,19 @@ function App() {
     setSelectedEksperienca(undefined);
   }
 
-  function handleFormOpen(id? : string){
+  function handleFormOpenEksperienca(id? : string){
     id ?  handleSelectEksperienca(id):handleCancelSelectEksperienca();
-    setEditMode(true);
+    setEditModeEksperienca(true);
   }
 
-  function handleFormClose(){
-    setEditMode(false);
+  function handleFormCloseEksperienca(){
+    setEditModeEksperienca(false);
   }
 
   function handleCreateOrEditEksperienca(eksperienca: Eksperienca){
     eksperienca.id ? setEksperiencat([...eksperiencat.filter(x=> x.id !== eksperienca.id), eksperienca])
     :setEksperiencat([...eksperiencat,{...eksperienca,id: uuid()}]);
-    setEditMode(false);
+    setEditModeEksperienca(false);
     setSelectedEksperienca(eksperienca);
   }
 
@@ -214,9 +214,7 @@ function handleCreateOrEditProfili(profili: Profili) {
   setEditModeProfili(false);
   setSelectedProfili(profili);
 }
-function handleDeleteProfili(id:string) {
-  setProfilet([...profilet.filter(x=> x.id !== id )])
-}
+
 
 
 /**Metoda per mbikeqyresit e temave */
@@ -255,17 +253,17 @@ function handleDeleteMbikeqyresiTemave(id:string){
   
   return (
     <>
-      <NavBar openForm={handleFormOpen} openFormEdukimi={handleFormOpenEdukimi} openFormSpecializimi={handleFormOpenSpecializimi} openFormPublikimi={handleFormOpenPublikimi} openFormProfili={handleFormOpenProfili} openFormMbikeqyresiTemave={handleFormOpenMbikeqyresiTemave}/>
+      <NavBar openForm={handleFormOpenEksperienca} openFormEdukimi={handleFormOpenEdukimi} openFormSpecializimi={handleFormOpenSpecializimi} openFormPublikimi={handleFormOpenPublikimi} openFormProfili={handleFormOpenProfili} openFormMbikeqyresiTemave={handleFormOpenMbikeqyresiTemave}/>
       <Container style={{marginTop:'7em'}}>
         <EksperiencaDashboard 
           eksperiencat={eksperiencat}
           selectedEksperienca={selectedEksperienca}
           selectEksperienca={handleSelectEksperienca}
           cancelSelectEksperienca={handleCancelSelectEksperienca}
-          editMode={editMode}
-          openForm={handleFormOpen}
-          closeForm={handleFormClose}
-          createOrEdit={handleCreateOrEditEksperienca}
+          editModeEksperienca={editModeEksperienca}
+          openFormEksperienca={handleFormOpenEksperienca}
+          closeFormEksperienca={handleFormCloseEksperienca}
+          createOrEditEksperienca={handleCreateOrEditEksperienca}
           deleteEksperienca={handleDeleteEksperienca}
         />
       </Container>
@@ -326,9 +324,7 @@ function handleDeleteMbikeqyresiTemave(id:string){
          openFormProfili={handleFormOpenProfili}
          closeFormProfili={handleFormCloseProfili}
          createOrEditProfili={handleCreateOrEditProfili}
-         deleteProfili={handleDeleteProfili}
-          
-         />
+       />
          </Container>
       {/* Mbikeqyresi i temave container */}
       

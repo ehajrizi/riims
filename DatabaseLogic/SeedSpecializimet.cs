@@ -21,27 +21,34 @@ namespace DatabaseLogic
                     Lokacioni = "Prishtine",
                     DataFillestare = "01.01.2007",
                     DataPerfundimtare = "01.01.2012",
-                    Pershkrimi = "Specializimi i pare",
+                    Pershkrimi = "Specializimi i pare"
                 },
-		
-		new Specializimi
+		        new Specializimi
                 {
                     EmriInstitucionit= "UBT",
                     Titulli = "Specializimi 2",
                     Lokacioni = "Prishtine",
                     DataFillestare = "01.01.2007",
                     DataPerfundimtare = "01.01.2012",
-                    Pershkrimi = "Specializimi i dyte",
+                    Pershkrimi = "Specializimi i dyte"
                 },
-		
-		new Specializimi
+		        new Specializimi
                 {
                     EmriInstitucionit= "UBT",
                     Titulli = "Specializimi 3",
                     Lokacioni = "Prishtine",
                     DataFillestare = "01.01.2007",
                     DataPerfundimtare = "01.01.2012",
-                    Pershkrimi = "Specializimi i trete",
+                    Pershkrimi = "Specializimi i trete"
+                },
+                new Specializimi
+                {
+                    EmriInstitucionit= "UBT",
+                    Titulli = "Specializimi 4",
+                    Lokacioni = "Prishtine",
+                    DataFillestare = "01.01.2007",
+                    DataPerfundimtare = "01.01.2012",
+                    Pershkrimi = "Specializimi i katert"
                 }
                
             };

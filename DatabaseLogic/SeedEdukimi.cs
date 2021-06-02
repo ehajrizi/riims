@@ -34,6 +34,26 @@ namespace DatabaseLogic
                     DataFillestare = "test2",
                     DataPerfundimtare = "test2",
                     Pershkrimi = "test2",
+                },
+                new Edukimi
+                {
+                    Emri_i_Institucionit = "test3",
+                    Titulli = "test3",
+                    Fusha_e_Studimit = "test3",
+                    Lokacioni = "test3",
+                    DataFillestare = "test3",
+                    DataPerfundimtare = "test3",
+                    Pershkrimi = "test3",
+                },
+                new Edukimi
+                {
+                    Emri_i_Institucionit = "test4",
+                    Titulli = "test4",
+                    Fusha_e_Studimit = "test4",
+                    Lokacioni = "test4",
+                    DataFillestare = "test4",
+                    DataPerfundimtare = "test4",
+                    Pershkrimi = "test4",
                 }
             };
 

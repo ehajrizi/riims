@@ -27,19 +27,6 @@ namespace DatabaseLogic
                     NrTelefonit = "044123456",
                     Gjinia = 'F',
                     FotoUrl = "https://pbs.twimg.com/profile_images/485045592800772098/Ecv0A9gR.png",
-                },
-                new Profili
-                {
-                    TitulliShkencor = "test",
-                    Emri = "test",
-                    EmriIMesem = "test",
-                    Mbiemri = "test",
-                    DataELindjes = "test",
-                    VendiILindjes = "test",
-                    ShtetiILindjes = "test",
-                    NrTelefonit = "test",
-                    Gjinia = 'F',
-                    FotoUrl = "test",
                 }
             };
 

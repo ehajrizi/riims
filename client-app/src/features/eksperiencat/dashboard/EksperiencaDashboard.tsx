@@ -10,14 +10,14 @@ interface Props{
     selectedEksperienca: Eksperienca | undefined;
     selectEksperienca: (id:string) => void;
     cancelSelectEksperienca: () => void;
-    editMode: boolean;
-    openForm: (id:string) => void;
-    closeForm: () => void;
-    createOrEdit: (eksperienca : Eksperienca) => void;
+    editModeEksperienca: boolean;
+    openFormEksperienca: (id:string) => void;
+    closeFormEksperienca: () => void;
+    createOrEditEksperienca: (eksperienca : Eksperienca) => void;
     deleteEksperienca: (id:string) => void;
 }
 
-export default function EksperiencaDashboard({eksperiencat,selectedEksperienca, selectEksperienca,cancelSelectEksperienca,editMode,openForm,closeForm,createOrEdit,deleteEksperienca}:Props)
+export default function EksperiencaDashboard({eksperiencat,selectedEksperienca, selectEksperienca,cancelSelectEksperienca,editModeEksperienca,openFormEksperienca,closeFormEksperienca,createOrEditEksperienca,deleteEksperienca}:Props)
 {
     return(
         <Grid>
@@ -28,14 +28,14 @@ export default function EksperiencaDashboard({eksperiencat,selectedEksperienca, 
                 />
             </Grid.Column>
             <Grid.Column width='6'>
-                {selectedEksperienca && !editMode &&
+                {selectedEksperienca && !editModeEksperienca &&
                 <EksperiencaDetails 
                 eksperienca={selectedEksperienca} 
                 cancelSelectEksperienca={cancelSelectEksperienca}
-                openForm={openForm}
+                openFormEksperienca={openFormEksperienca}
                 />}
-                {editMode &&
-                <EksperiencaForm  closeForm={closeForm} eksperienca={selectedEksperienca} createOrEdit={createOrEdit}/>}
+                {editModeEksperienca &&
+                <EksperiencaForm  closeFormEksperienca={closeFormEksperienca} eksperienca={selectedEksperienca} createOrEditEksperienca={createOrEditEksperienca}/>}
             </Grid.Column>
         </Grid>
     )

@@ -1,15 +1,15 @@
 import React from 'react'
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Button, Card} from 'semantic-ui-react'
 import { Eksperienca } from '../../../app/models/eksperienca'
 
 
 interface Props{
     eksperienca: Eksperienca;
     cancelSelectEksperienca: () => void;
-    openForm: (id:string) => void;
+    openFormEksperienca: (id:string) => void;
 }
 
-export default function ActivityDetails({ eksperienca,cancelSelectEksperienca,openForm } : Props){
+export default function EksperiencaDetails({ eksperienca,cancelSelectEksperienca,openFormEksperienca } : Props){
     return(
         <Card fluid>
             <Card.Content>
@@ -23,7 +23,7 @@ export default function ActivityDetails({ eksperienca,cancelSelectEksperienca,op
             </Card.Content>
             <Card.Content extra>
                 <Button.Group widths='2'>
-                    <Button onClick={() => openForm(eksperienca.id)}basic color='blue' content='Edit'/>
+                    <Button onClick={() => openFormEksperienca(eksperienca.id)}basic color='blue' content='Edit'/>
                     <Button onClick={cancelSelectEksperienca} basic color='grey' content='Cancel'/>
                 </Button.Group>
             </Card.Content>

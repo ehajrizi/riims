@@ -1,4 +1,4 @@
-import react, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { Button, Form, Segment } from 'semantic-ui-react';
 import { Profili } from '../../../app/models/profili';
 
