@@ -4,8 +4,9 @@ import { Button, Container, Menu } from 'semantic-ui-react';
 interface Props{
     openForm: () =>void;
     openFormEdukimi: () =>void;
+    openFormSpecializimi: () =>void;
 }
-export default function NavBar({openForm, openFormEdukimi} : Props){
+export default function NavBar({openForm, openFormEdukimi, openFormSpecializimi} : Props){
     return (
         <Menu inverted fixed='top'>
             <Container>
@@ -24,7 +25,7 @@ export default function NavBar({openForm, openFormEdukimi} : Props){
                     <Button onClick={openFormEdukimi} primary content='Edukimi'/>
                 </Menu.Item>
                 <Menu.Item>
-                    <Button onClick={openForm} primary content='Specializimet'/>
+                    <Button onClick={openFormSpecializimi} primary content='Specializimet'/>
                 </Menu.Item>
                 <Menu.Item>
                     <Button onClick={openForm} primary content='Temat e mbikeqyrura'/>
