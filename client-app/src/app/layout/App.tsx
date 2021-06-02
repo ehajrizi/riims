@@ -9,6 +9,8 @@ import { Specializimi } from '../models/specializimi';
 import EksperiencaDashboard from '../../features/eksperiencat/dashboard/EksperiencaDashboard';
 import EdukimiDashboard from '../../features/edukimet/dashboard/EdukimiDashboard';
 import SpecializimiDashboard from '../../features/specializimet/dashboard/SpecializimiDashboard';
+import PublikimetDashboard from '../../features/publikimet/dashboard/PublikimetDashboard';
+import { Publikimi } from '../models/publikimi';
 
 
 function App() {
@@ -25,6 +27,10 @@ function App() {
   const [selectedSpecializimi, setSelectedSpecializimi] = useState<Specializimi | undefined>(undefined);
   const [editModeSpecializimi, setEditModeSpecializimi] = useState(false);
 
+  const [publikimet, setPublikimet] = useState<Publikimi[]>([]);
+  const [selectedPublikimi, setSelectedPublikimi] = useState<Publikimi | undefined>(undefined);
+  const [editModePublikimi, setEditModePublikimi] = useState(false);
+
   useEffect(() =>{
     axios.get<Eksperienca[]>('http://localhost:5000/api/eksperiencat').then(response => {
       setEksperiencat(response.data);
@@ -35,9 +41,13 @@ function App() {
     axios.get<Specializimi[]>('http://localhost:5000/api/specializimet').then(response => {
       setSpecializimet(response.data);
     })
+    axios.get<Publikimi[]>('http://localhost:5000/api/publikimet').then(response => {
+      setPublikimet(response.data);
+    })
 
   }, [])
 
+  /** Metodat per Eksperiencen */
   function handleSelectEksperienca(id : string){
     setSelectedEksperienca(eksperiencat.find(x => x.id === id));
   }
@@ -65,7 +75,7 @@ function App() {
   function handleDeleteEksperienca(id:string){
     setEksperiencat([...eksperiencat.filter(x => x.id !== id)])
   }
-
+  /** Metodat per Eksperienca */ 
 
   /** Metodat per Edukimin */
   function handleSelectEdukimi(id: string) {
@@ -130,10 +140,39 @@ function App() {
   }
   /* Metodat per Specializimet */
  
+  /** Metodat per Publikimet */
+  function handleSelectPublikimi(id: string) {
+    setSelectedPublikimi(publikimet.find(x => x.id === id));
+  }
+
+  function handleCancelSelectPublikimi() {
+    setSelectedPublikimi(undefined);
+  }
+
+  function handleFormOpenPublikimi(id?: string) {
+    id ? handleSelectPublikimi(id) : handleCancelSelectPublikimi();
+    setEditModePublikimi(true);
+  }
+
+  function handleFormClosePublikimi() {
+    setEditModePublikimi(false);
+  }
+
+  function handleCreateOrEditPublikimi(publikimi: Publikimi) {
+    publikimi.id ? setPublikimet([...publikimet.filter(x => x.id !== publikimi.id), publikimi]) : setPublikimet([...publikimet, {...publikimi, id: uuid()}]);
+    setEditModePublikimi(false);
+    setSelectedPublikimi(publikimi);
+  }
+
+  function handleDeletePublikimi(id: string) {
+    setPublikimet([...publikimet.filter(x => x.id !== id)])
+  }
+
+  /** Metodat per Publikimet */
 
   return (
     <>
-      <NavBar openForm={handleFormOpen} openFormEdukimi={handleFormOpenEdukimi} openFormSpecializimi={handleFormOpenSpecializimi}/>
+      <NavBar openForm={handleFormOpen} openFormEdukimi={handleFormOpenEdukimi} openFormSpecializimi={handleFormOpenSpecializimi} openFormPublikimi={handleFormOpenPublikimi}/>
       <Container style={{marginTop:'7em'}}>
         <EksperiencaDashboard 
           eksperiencat={eksperiencat}
@@ -178,7 +217,20 @@ function App() {
           
         />
       </Container>
-
+      {/* Publikimet Container */}
+      <Container style={{marginTop: '7em'}}>
+        <PublikimetDashboard 
+          publikimet={publikimet}
+          selectedPublikimi = {selectedPublikimi}
+          selectPublikimi = {handleSelectPublikimi}
+          cancelSelectPublikimi = {handleCancelSelectPublikimi}
+          editModePublikimi = {editModePublikimi}
+          openFormPublikimi = {handleFormOpenPublikimi}
+          closeFormPublikimi = {handleFormClosePublikimi}
+          createOrEditPublikimi = {handleCreateOrEditPublikimi}
+          deletePublikimi = {handleDeletePublikimi}
+        />
+      </Container>
     </>
   );
 }

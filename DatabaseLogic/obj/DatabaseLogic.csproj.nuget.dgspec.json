@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {}
+    "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {
+    "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
+        "projectUniqueName": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
         "projectName": "DatabaseLogic",
-        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
-        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\DatabaseLogic\\obj\\",
+        "projectPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
+        "packagesPath": "C:\\Users\\NESA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\NESA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\Domain.csproj"
+              "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj"
               }
             }
           }
@@ -68,24 +68,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
+    "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\NESA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\NESA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -126,7 +126,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
