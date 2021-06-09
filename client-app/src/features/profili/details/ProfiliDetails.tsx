@@ -1,35 +1,55 @@
-import React from 'react';
-import { Button, Card } from 'semantic-ui-react';
-import { Profili } from '../../../app/models/profili';
+import { observer } from "mobx-react-lite";
+import React, { useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom';
+import { Button, Card} from 'semantic-ui-react'
+import LoadingComponent from '../../../app/layout/LoadingComponents';
+import { Profili } from '../../../app/models/profili'
+import { useStore } from '../../../app/stores/store';
+
+export default function ProfiliDetails(){
+    const {profiliStore} = useStore();
+    const {selectedProfili: profili, loadProfili, loadingInitial} = profiliStore;
+    const {id} = useParams<{id: string}>();
+    
+    useEffect(() => {
+        if(id) loadProfili(id);
+    },[id,loadProfili])
 
 
-interface Props{
-    profili: Profili
-    cancelSelectedProfili :()=>void;
-    openFormProfili: (id:string) => void;
-}
+    if(loadingInitial || !profili) return <LoadingComponent/>;
 
-export default function ProfiliDetails ({profili,cancelSelectedProfili, openFormProfili}:Props) {
-    return (
-        <Card fliud> 
-        {/* <Image src={`/assets/categoryImages/${profili.category}.jpg`} />  */}
-        <Card.Content>
-          <Card.Header>{profili.emri},{profili.emriIMesem},{profili.mbiemri}</Card.Header>
-          {/* <Card.Meta>
-            <span>{profili.date}</span>
-          </Card.Meta> */}
-          <Card.Description>
-            {profili.vendiILindjes},{profili.shtetiILindjes},{profili.dataELindjes},{profili.nrTelefonit}
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-           <Button.Group width ='2'> 
-                <Button onClick={()=>openFormProfili(profili.id)} basic color='blue' content ='Edit'/> 
-                <Button onClick={cancelSelectedProfili} basic color='grey' content ='Cancel'/> 
-           
-           </Button.Group>
-        </Card.Content>
-      </Card>    
 
+    return(
+        <Card fluid>
+            <Card.Content>
+                <Card.Header> {profili.emri} - {profili.emriIMesem} - {profili.mbiemri} </Card.Header>
+                <Card.Meta>
+                    <span>{profili.titulliShkencor}</span>
+                </Card.Meta>
+                <Card.Description>
+				<div> 
+                    {profili.dataELindjes}
+				</div>
+				<div> 
+                    {profili.vendiILindjes}
+				</div>
+				<div> 
+                    {profili.shtetiILindjes}
+				</div>
+				<div> 
+                    {profili.nrTelefonit}
+				</div>
+				<div> 
+                    {profili.gjinia}
+				</div>
+                </Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+                <Button.Group widths='2'>
+                    <Button as={Link} to={`/manageProfili/${profili.id}`} basic color='blue' content='Edit'/>
+                    <Button as={Link} to='/profilet' basic color='grey' content='Cancel'/>
+                </Button.Group>
+            </Card.Content>
+        </Card>
     )
 }

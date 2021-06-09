@@ -4,6 +4,8 @@ import EksperiencaStore from "./eksperiencaStore";
 import MbikeqyresiTemaveStore from "./mbikeqyresitemaveStore";
 import PublikimiStore from "./publikimiStore";
 import SpecializimiStore from "./specializimiStore";
+import ProfiliStore from "./profiliStore";
+
 
 interface Store{
     eksperiencaStore: EksperiencaStore
@@ -11,6 +13,7 @@ interface Store{
     publikimiStore: PublikimiStore
     specializimiStore: SpecializimiStore
     mbikeqyresitemaveStore: MbikeqyresiTemaveStore
+    profiliStore: ProfiliStore
 
 }
 
@@ -20,6 +23,7 @@ export const store: Store = {
     publikimiStore: new PublikimiStore(),
     specializimiStore: new SpecializimiStore(),
     mbikeqyresitemaveStore: new MbikeqyresiTemaveStore(),
+    profiliStore: new ProfiliStore(),
 
 }//qka ruhet nstore
 

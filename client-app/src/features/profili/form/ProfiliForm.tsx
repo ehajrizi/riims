@@ -1,21 +1,26 @@
-import React, { ChangeEvent, useState } from 'react';
-import { Button, Form, Segment } from 'semantic-ui-react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { Button, Checkbox, Form, Segment } from 'semantic-ui-react';
 import { Profili } from '../../../app/models/profili';
+import {v4 as uuid} from 'uuid';
+import { Link, useHistory, useParams } from 'react-router-dom';
+import { useStore } from '../../../app/stores/store';
+import { observer } from 'mobx-react-lite';
+import LoadingComponent from '../../../app/layout/LoadingComponents';
 
-interface Props {
-   profili: Profili |undefined;
-   closeFormProfili: () => void;
-   createOrEditProfili: (profili:Profili) => void;
-   
-}
 
-export default function ProfiliForm({profili:selectedProfili, closeFormProfili, createOrEditProfili}:Props) {
-    const initialState= selectedProfili ??{
 
+export default observer(function ProfiliForm(){
+    const history = useHistory();
+
+    const {profiliStore} = useStore();
+    const {loadProfili,createProfili,updateProfili,loading, loadingInitial} = profiliStore;
+    const {id} = useParams<{id: string}>();
+
+    const [profili, setProfili] = useState({
         id: '',
         titulliShkencor: '',
-        emri:'',
-        emriIMesem: '',
+        emri: '',
+        emriIMesem:'',
         mbiemri: '',
         dataELindjes: '',
         vendiILindjes: '',
@@ -23,38 +28,52 @@ export default function ProfiliForm({profili:selectedProfili, closeFormProfili, 
         nrTelefonit: '',
         gjinia: '',
         fotoUrl: ''
+    
+    }); 
 
+    useEffect(() => {
+        if(id) loadProfili(id).then(profili => setProfili(profili!))
+    
+    },[id, loadProfili]);
+
+    function handleSubmitProfili(){
+        if(profili.id.length === 0){
+            let newProfili = { 
+                ...profili,
+                id: uuid()
+            };
+            createProfili(newProfili).then(() => history.push(`/profilet/${newProfili.id}`))
+      
+        }else{
+            updateProfili(profili).then(() => history.push(`/profilet/${profili.id}`))
+        }
     }
-    const [profili,setProfili] = useState(initialState);
 
-    function handleSubmit() {
-       createOrEditProfili(profili);
-
-
-    }
-    function handleInputChange(event: ChangeEvent<HTMLInputElement| HTMLTextAreaElement>){
+    function handleInputChangeProfili(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
         const {name,value} = event.target;
-        setProfili({...profili,[name]:value})
-
+        setProfili({...profili,[name]: value})
     }
-    return(
 
+    if(loadingInitial) return <LoadingComponent content='Loading profili...'/>
+
+
+    return(
         <Segment clearing>
-            <Form onSubmit={handleSubmit} autoComplete='off'> 
-                <Form.Input placeholder = 'Titulli Shkencor'value={profili.titulliShkencor} name='titulliShkencor' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Emri'value={profili.emri} name='emri' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Emri I Mesem'value={profili.emriIMesem} name='emriIMesem' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Mbiemri'value={profili.mbiemri} name='mbiemri' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Data E Lindjes'value={profili.dataELindjes} name='dataELindjes' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Vendi I Lindjes'value={profili.vendiILindjes} name='vendiILindjes' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Shteti I Lindjes'value={profili.shtetiILindjes} name='shtetiILindjes' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Nr. i Telefonit'value={profili.nrTelefonit} name='nrTelefonit' onChange={handleInputChange}/>
-                <Form.Input placeholder = 'Gjinia'value={profili.gjinia} name='gjinia' onChange={handleInputChange}/>
+            <Form onSubmit={handleSubmitProfili} autoComplete='off'> 
+                <Form.Input placeholder = 'Titulli Shkencor'value={profili.titulliShkencor} name='titulliShkencor' onChange={handleInputChangeProfili}/>
+                <Form.Input placeholder = 'Emri'value={profili.emri} name='emri' onChange={handleInputChangeProfili}/>
+                <Form.Input placeholder = 'Emri I Mesem'value={profili.emriIMesem} name='emriIMesem' onChange={handleInputChangeProfili}/>
+                <Form.Input placeholder = 'Mbiemri'value={profili.mbiemri} name='mbiemri' onChange={handleInputChangeProfili}/>
+                <Form.Input placeholder = 'Data E Lindjes'value={profili.dataELindjes} name='dataELindjes' onChange={handleInputChangeProfili}/>
+                <Form.Input placeholder = 'Vendi I Lindjes'value={profili.vendiILindjes} name='vendiILindjes' onChange={handleInputChangeProfili}/>
+                <Form.Input placeholder = 'Shteti I Lindjes'value={profili.shtetiILindjes} name='shtetiILindjes' onChange={handleInputChangeProfili}/>
+                <Form.Input placeholder = 'Nr. i Telefonit'value={profili.nrTelefonit} name='nrTelefonit' onChange={handleInputChangeProfili}/>
+                <Form.Input placeholder = 'Gjinia'value={profili.gjinia} name='gjinia' onChange={handleInputChangeProfili}/>
 
                 <Button floated='right' positive type ='submit' content='Submit'/>
-                <Button onClick={closeFormProfili} floated='right'  type ='button' content='Cancel'/>
+                <Button as={Link} to='/profilet' floated='right' type='button' content='Cancel'/>
                 
             </Form>
         </Segment>
     )
-}
+})

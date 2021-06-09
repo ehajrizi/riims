@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+
 import { Button, Container, Menu, Image } from 'semantic-ui-react';
 
 export default function NavBar(){
@@ -27,6 +28,9 @@ export default function NavBar(){
                     </Menu.Item>
                     <Menu.Item>
                         <Button as={NavLink} to='/createMbikeqyresiTemave' content='Create mbi'/>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Button as={NavLink} to='/createProfili' content='Create prof'/>
                     </Menu.Item>
                 </Menu.Menu>
             </Container>

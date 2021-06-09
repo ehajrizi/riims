@@ -1,55 +1,51 @@
-import React from 'react';
-import { Button, Item, Segment } from 'semantic-ui-react';
+import { observer } from 'mobx-react-lite';
+import React, { SyntheticEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button, Checkbox, Item, Segment } from 'semantic-ui-react';
 import { Profili } from '../../../app/models/profili';
+import { useStore } from '../../../app/stores/store';
 
+export default observer( function ProfiliList()
+{
+    const {profiliStore} = useStore();
+    const {deleteProfili, profiletByDate, loading} = profiliStore;
+   
+    const [target, setTarget] = useState('');
 
+    function handleProfiliDelete(e: SyntheticEvent<HTMLButtonElement>, id:string){
+        
+        setTarget(e.currentTarget.name);
+        deleteProfili(id);
+    }
 
-interface Props {
-    profilet: Profili[];
-    selectProfili: (id: string) => void;
-}
-
-export default function ProfiliList({ profilet, selectProfili}: Props) {
-    return (
+    return(
         <Segment>
-
-            <Item.Group devided>
-
-                {profilet.map(profili => (
+            <Item.Group divided>
+                {profiletByDate.map(profili =>(
                     <Item key={profili.id}>
                         <Item.Content>
-
-                            {/* <Item.Photo> 
-                                const ImageExampleCircular = () => (
-                                 <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium' circular />
-                                )
-
-                                export default ImageExampleCircular
-                                 )
-
-                                <img src="https://react.semantic-ui.com/images/wireframe/square-image.png" class="ui medium circular image"/>
-
-                            </Item.Photo> */}
-
-
-                            <Item.Header as='a'> Profili im </Item.Header>
-
+                            <Item.Header as='a'>{profili.emri} - {profili.emriIMesem} - {profili.mbiemri}</Item.Header>
+                 
+                            
+                            <Item.Meta>{profili.titulliShkencor}</Item.Meta>
+                            
                             <Item.Description>
-                                <div>{profili.titulliShkencor}</div>
-                                <div>{profili.emri}</div>
-                                <div>{profili.emriIMesem}</div>
-                                <div>{profili.mbiemri}</div>
                                 <div>{profili.dataELindjes}</div>
                                 <div>{profili.vendiILindjes}</div>
                                 <div>{profili.shtetiILindjes}</div>
-                                <div>{profili.nrTelefonit}</div>
-                                <div>{profili.gjinia}</div>
-
-
+								<div>{profili.nrTelefonit}</div>
+								<div>{profili.gjinia}</div>
+								
                             </Item.Description>
-
                             <Item.Extra>
-                                <Button onClick={() => selectProfili(profili.id)} floated='right' content='View' color='blue' />
+                                <Button as={Link} to={`/profilet/${profili.id}`} floated='right' content='View' color='blue'/>
+                                <Button 
+                                    name = {profili.id} 
+                                    loading={loading && target === profili.id} 
+                                    onClick={(e) => handleProfiliDelete(e,profili.id)} 
+                                    floated='right' 
+                                    content='Delete' 
+                                    color='red'/>
                             </Item.Extra>
                         </Item.Content>
                     </Item>
@@ -57,4 +53,4 @@ export default function ProfiliList({ profilet, selectProfili}: Props) {
             </Item.Group>
         </Segment>
     )
-}
+})

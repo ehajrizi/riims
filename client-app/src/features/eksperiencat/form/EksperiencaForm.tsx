@@ -2,10 +2,10 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Button, Checkbox, Form, Segment } from 'semantic-ui-react';
 import { Eksperienca } from '../../../app/models/eksperienca';
 import {v4 as uuid} from 'uuid';
-import { Link, useHistory, useParams } from 'react-router-dom';
 import { useStore } from '../../../app/stores/store';
-import { observer } from 'mobx-react-lite';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
+import { observer } from 'mobx-react-lite';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 
 

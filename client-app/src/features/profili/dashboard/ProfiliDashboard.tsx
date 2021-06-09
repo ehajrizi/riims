@@ -1,53 +1,29 @@
-import React from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { useEffect } from 'react';
 import { Grid} from 'semantic-ui-react';
-import { Profili } from '../../../app/models/profili';
-import ProfiliDetails from '../details/ProfiliDetails';
-import ProfiliForm from '../form/ProfiliForm';
+import LoadingComponent from '../../../app/layout/LoadingComponents';
+import { useStore } from '../../../app/stores/store';
 import ProfiliList from './ProfiliList';
 
-interface Props{
-    profilet: Profili[];
-    selectedProfili:Profili | undefined;
-    selectProfili: (id:string) =>void;
-    cancelSelectedProfili :()=>void;
-    editModeProfili : boolean;
-    openFormProfili: (id:string) => void;
-    closeFormProfili: () => void;
-    createOrEditProfili: (profili: Profili) => void;
-}
 
-export default function ProfiliDashboard({profilet,selectedProfili,
-    selectProfili,cancelSelectedProfili,editModeProfili,openFormProfili,closeFormProfili,createOrEditProfili}:Props) {
 
-    return (
+export default observer (function ProfiliDashboard(){
+
+    const {profiliStore} = useStore();
+    const {loadProfilet,profiliRegistry} = profiliStore;
+
+  useEffect(() =>{
+    if(profiliRegistry.size <= 1) loadProfilet();
+
+  }, [profiliRegistry.size, loadProfilet])
+
+  if(profiliStore.loadingInitial) return <LoadingComponent content='Loading app'/>
+
+    return(
         <Grid>
             <Grid.Column width='10'>
-
-                 <ProfiliList 
-                 profilet={profilet}
-                  selectProfili={selectProfili}
-                  />  
-
-                 
-             </Grid.Column>
-
-                 <Grid.Column width='6'>
-                     {selectedProfili && !editModeProfili &&
-                     <ProfiliDetails
-                      profili={selectedProfili} 
-                      cancelSelectedProfili={cancelSelectedProfili}
-                      openFormProfili={openFormProfili}
-
-                     /> }
-                     {editModeProfili &&
-                     <ProfiliForm closeFormProfili={closeFormProfili} profili={selectedProfili} createOrEditProfili={createOrEditProfili}/>}
-
-
-                 </Grid.Column>
-            
-    
+                <ProfiliList />
+            </Grid.Column>
         </Grid>
-
-    
     )
-}
+})

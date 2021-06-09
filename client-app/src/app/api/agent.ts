@@ -4,6 +4,7 @@ import { Eksperienca } from '../models/eksperienca';
 import { MbikeqyresiTemave } from '../models/mbikeqyresitemave';
 import { Publikimi } from '../models/publikimi';
 import { Specializimi } from '../models/specializimi';
+import { Profili } from '../models/profili';
 
 const sleep = (delay: number) => {
     return new Promise((resolve) => {
@@ -74,6 +75,15 @@ const MbikeqyresitTemave ={
     delete: (id:string)=> axios.delete<void>(`/mbikeqyresitemave/${id}`)
     
 }
+const Profilet ={
+    list: ()=> requests.get<Profili[]>('/profilet'),
+    details: (id:string)=> requests.get<Profili>(`/profilet/${id}`),
+    create:(profili:Profili)=>axios.post<void>('/profilet',profili),
+    update:(profili:Profili)=>axios.put<void>(`/profilet/${profili.id}`,profili),
+    delete: (id:string)=> axios.delete<void>(`/profilet/${id}`)
+    
+}
+
 
 const agent = {
     Eksperiencat,
@@ -81,6 +91,7 @@ const agent = {
     Publikimet,
     Specializimet,
     MbikeqyresitTemave,
+    Profilet
 }
 
 export default agent;
