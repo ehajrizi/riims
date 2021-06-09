@@ -1,40 +1,64 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Button, Checkbox, Form, Segment } from 'semantic-ui-react';
 import { Eksperienca } from '../../../app/models/eksperienca';
+import {v4 as uuid} from 'uuid';
+import { Link, useHistory, useParams } from 'react-router-dom';
+import { useStore } from '../../../app/stores/store';
+import { observer } from 'mobx-react-lite';
+import LoadingComponent from '../../../app/layout/LoadingComponents';
 
 
 
-interface Props{
-    eksperienca: Eksperienca | undefined;
-    closeFormEksperienca: () => void;
-    createOrEditEksperienca: (eksperienca: Eksperienca) => void;
-}
-export default function EksperiencaForm({eksperienca: selectedEksperienca,closeFormEksperienca,createOrEditEksperienca} : Props){
+export default observer(function EksperiencaForm(){
+    const history = useHistory();
 
-    const initialState = selectedEksperienca ?? {
+    const {eksperiencaStore} = useStore();
+    const {loadEksperienca,createEksperienca,updateEksperienca,loading, loadingInitial} = eksperiencaStore;
+    //na nimon mi marr krejt props te activityStore
+    //pa pas nevoje me shkru activityStore.prop... gjithkun
+    const {id} = useParams<{id: string}>();
+
+    const [eksperienca, setEksperienca] = useState({
         id: '',
         emriInstitucionit: '',
         titulli: '',
-        punePrimare: false,
+        punePrimare: true,
         lokacioni: '',
         dataFillestare: '',
         dataPerfundimtare: '',
         pershkrimi: '',
         personiKontaktues: '',
         email: '',
-        numriTelefonit: ''
-    }
-    
-    const[eksperienca, setEksperienca] = useState(initialState);
+        numriTelefonit: '',
+    }); //id ka me ekzistu gjithqysh se mrena useState
+
+    useEffect(() => {
+        if(id) loadEksperienca(id).then(eksperienca => setEksperienca(eksperienca!))
+        //jem sig qe sktheht undefines
+    },[id, loadEksperienca]);
+    //masi qe ka states duhet gjithqysh me add dependencies qe mos me render
+    //ton kohen pldh po veq kur ndryshon diqka
 
     function handleSubmitEksperienca(){
-        createOrEditEksperienca(eksperienca);
+        if(eksperienca.id.length === 0){
+            let newEksperienca = { //spread the activity
+                ...eksperienca,
+                id: uuid()
+            };
+            createEksperienca(newEksperienca).then(() => history.push(`/eksperiencat/${newEksperienca.id}`))
+            //mi push nnew location
+        }else{
+            updateEksperienca(eksperienca).then(() => history.push(`/eksperiencat/${eksperienca.id}`))
+        }
     }
 
     function handleInputChangeEksperienca(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
         const {name,value} = event.target;
         setEksperienca({...eksperienca,[name]: value})
     }
+
+    if(loadingInitial) return <LoadingComponent content='Loading activity...'/>
+
 
     return(
         <Segment clearing>
@@ -50,8 +74,8 @@ export default function EksperiencaForm({eksperienca: selectedEksperienca,closeF
                 <Form.Input placeholder='Email' value={eksperienca.email} name='email' onChange={handleInputChangeEksperienca}/>
                 <Form.Input placeholder='Numri i Telefonit'value={eksperienca.numriTelefonit} name='numriTelefonit' onChange={handleInputChangeEksperienca}/>
                 <Button floated='right' positive type='submit' content='Submit'/>
-                <Button onClick={closeFormEksperienca} floated='right' type='button' content='Cancel'/>
+                <Button as={Link} to='/eksperiencat' floated='right' type='button' content='Cancel'/>
             </Form>
         </Segment>
     )
-}
+})

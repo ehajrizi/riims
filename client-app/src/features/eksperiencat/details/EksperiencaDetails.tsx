@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom';
 import { Button, Card} from 'semantic-ui-react'
+import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { Eksperienca } from '../../../app/models/eksperienca'
+import { useStore } from '../../../app/stores/store';
 
+export default function EksperiencaDetails(){
+    const {eksperiencaStore} = useStore();
+    const {selectedEksperienca: eksperienca, loadEksperienca, loadingInitial} = eksperiencaStore;
+    const {id} = useParams<{id: string}>();
+    //mos me specifiku se njeh id si string po si objekt e 
+    //id'ja se ka tipin objekt
 
-interface Props{
-    eksperienca: Eksperienca;
-    cancelSelectEksperienca: () => void;
-    openFormEksperienca: (id:string) => void;
-}
+    useEffect(() => {
+        if(id) loadEksperienca(id);
+    },[id,loadEksperienca])
+    //se varet prej tyne
 
-export default function EksperiencaDetails({ eksperienca,cancelSelectEksperienca,openFormEksperienca } : Props){
+    if(loadingInitial || !eksperienca) return <LoadingComponent/>;
+     //ok
+
     return(
         <Card fluid>
             <Card.Content>
@@ -23,8 +33,8 @@ export default function EksperiencaDetails({ eksperienca,cancelSelectEksperienca
             </Card.Content>
             <Card.Content extra>
                 <Button.Group widths='2'>
-                    <Button onClick={() => openFormEksperienca(eksperienca.id)}basic color='blue' content='Edit'/>
-                    <Button onClick={cancelSelectEksperienca} basic color='grey' content='Cancel'/>
+                    <Button as={Link} to={`/manage/${eksperienca.id}`} basic color='blue' content='Edit'/>
+                    <Button as={Link} to='/eksperiencat' basic color='grey' content='Cancel'/>
                 </Button.Group>
             </Card.Content>
         </Card>
