@@ -1,32 +1,42 @@
-import React from 'react';
-import { Button, Card} from 'semantic-ui-react';
-import { Specializimi } from '../../../app/models/specializimi';
+import { observer } from 'mobx-react-lite';
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { Button, Card, Image } from 'semantic-ui-react';
+import LoadingComponent from '../../../app/layout/LoadingComponents';
+import { useStore } from '../../../app/stores/store';
 
-interface Props {
-    specializimi: Specializimi;
-    cancelSelectSpecializimi: () => void;
-    openFormSpecializimi: (id: string) => void;
-}
 
-export default function SpecializimiDetails({ specializimi, cancelSelectSpecializimi, openFormSpecializimi }: Props) {
+export default observer(function SpecializimiDetails() {
+    const {specializimiStore} = useStore();
+    const {selectedSpecializimi: specializimi, loadSpecializimi, loadingInitial} = specializimiStore;
+    const {id} = useParams<{id: string}>();
+
+    useEffect(() => {
+        if (id) loadSpecializimi(id);
+    }, [id, loadSpecializimi]);
+
+    
+    if (loadingInitial || !specializimi) return <LoadingComponent/>;
+
     return (
         <Card fluid>
-            {/* <Image src={`/assets/categoryImages/${activity.category}.jpg`}/> */}
             <Card.Content>
-            <Card.Header>{specializimi.emriInstitucionit}</Card.Header>
+            <Card.Header>{specializimi.titulli}</Card.Header>
             <Card.Meta>
-                <span>{specializimi.titulli}</span>
+                <span>{specializimi.emriInstitucionit}</span>
             </Card.Meta>
             <Card.Description>
-                {specializimi.lokacioni}
+                <div>{specializimi.pershkrimi}</div>
+		        <div>{specializimi.dataFillestare} - {specializimi.dataPerfundimtare}</div>
+		        <div>{specializimi.lokacioni}</div>
             </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Button.Group width='2'>
-                    <Button onClick={() => openFormSpecializimi(specializimi.id)} basic color='blue' content='Edit'/>
-                    <Button onClick={cancelSelectSpecializimi} basic color='grey' content='Cancel'/>
+                <Button.Group widths='2'>
+                    <Button as={Link} to={`/manageSpecializimi/${specializimi.id}`} basic color='blue' content='Edit'/>
+                    <Button as={Link} to='/specializimet' basic color='grey' content='Cancel'/>
                 </Button.Group>
             </Card.Content>
         </Card>
     )
-}
+})

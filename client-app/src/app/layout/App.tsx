@@ -8,7 +8,6 @@ import PublikimetDashboard from '../../features/publikimet/dashboard/PublikimetD
 import ProfiliDashboard from '../../features/profili/dashboard/ProfiliDashboard';
 import MbikeqyresiTemaveDashboard from '../../features/mbikeqyresittemave/dashboard/MbikeqyresiTemaveDashboard';
 import { useLocation } from 'react-router';
-
 import EksperiencaDetails from '../../features/eksperiencat/details/EksperiencaDetails';
 import EksperiencaForm from '../../features/eksperiencat/form/EksperiencaForm';
 import { observer } from 'mobx-react-lite';
@@ -17,6 +16,8 @@ import EdukimiForm from '../../features/edukimet/form/EdukimiForm';
 import PublikimetForm from '../../features/publikimet/form/PublikimetForm';
 import { Route } from 'react-router-dom';
 import PublikimetDetails from '../../features/publikimet/details/PublikimetDetails';
+import SpecializimiDetails from '../../features/specializimet/details/SpecializimiDetails';
+import SpecializimiForm from '../../features/specializimet/form/SpecializimiForm';
 
 
 function App() {
@@ -38,12 +39,19 @@ function App() {
                 <Route path='/edukimet/:id' component={EdukimiDetails}/>
                 <Route key={location.key} path={['/createEdukimi', '/manageEdukimi/:id']} component={EdukimiForm}/>
                 </Container>
-                <Container>
+              <Container>
                 {/* Publikimet */}
                 <Route exact path='/publikimet' component={PublikimetDashboard}/>
                 <Route path='/publikimet/:id' component={PublikimetDetails}/>
                 <Route key={location.key} path={['/createPublikimi', '/managePublikimi/:id']} component={PublikimetForm}/>
               </Container>
+              <Container>
+                {/* Specializimi */}
+                <Route exact path='/specializimet' component={SpecializimiDashboard}/>
+                <Route path='/specializimet/:id' component={SpecializimiDetails}/>
+                <Route key={location.key} path={['/createSpecializimi', '/manageSpecializimi/:id']} component={SpecializimiForm}/>
+              </Container>
+                
             </>
 
        

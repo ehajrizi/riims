@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Grid} from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
-import PublikimiList from './PublikimetList';
+import PublikimetList from './PublikimetList';
 
 
 
@@ -25,7 +25,7 @@ export default observer(function PublikimetDashboard(){
     return(
         <Grid>
             <Grid.Column width='10'>
-                <PublikimiList />
+                <PublikimetList/>
             </Grid.Column>
         </Grid>
     )

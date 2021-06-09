@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { Edukimi } from '../models/edukimi';
 import { Eksperienca } from '../models/eksperienca';
 import { Publikimi } from '../models/publikimi';
+import { Specializimi } from '../models/specializimi';
 
 const sleep = (delay: number) => {
     return new Promise((resolve) => {
@@ -56,10 +57,20 @@ const Publikimet = {
     delete: (id: string) => axios.delete<void>(`/publikimet/${id}`)
 }
 
+const Specializimet = {
+    list: () => requests.get<Specializimi[]>('/specializimet'),
+    details: (id: string) => requests.get<Specializimi>(`/specializimet/${id}`),
+    create: (specializimi : Specializimi) => axios.post<void>(`/specializimet`, specializimi),
+    update: (specializimi : Specializimi) => axios.put<void>(`/specializimet/${specializimi.id}`,specializimi),
+    delete: (id: string) => axios.delete<void>(`/specializimet/${id}`)
+}
+
+
 const agent = {
     Eksperiencat,
     Edukimet,
-    Publikimet
+    Publikimet,
+    Specializimet
 }
 
 export default agent;

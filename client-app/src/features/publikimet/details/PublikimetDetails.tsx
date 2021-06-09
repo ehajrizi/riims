@@ -3,7 +3,6 @@ import { observer } from 'mobx-react-lite';
 import { Link, useParams } from 'react-router-dom';
 import { Button, Card} from 'semantic-ui-react'
 import LoadingComponent from '../../../app/layout/LoadingComponents';
-import { Publikimi } from '../../../app/models/publikimi';
 import { useStore } from '../../../app/stores/store';
 
 export default observer(function PublikimetDetails(){
@@ -15,7 +14,7 @@ export default observer(function PublikimetDetails(){
 
     useEffect(() => {
         if(id) loadPublikimi(id);
-    },[id,loadPublikimi])
+    },[id,loadPublikimi]);
     //se varet prej tyne
 
     if(loadingInitial || !publikimi) return <LoadingComponent/>;

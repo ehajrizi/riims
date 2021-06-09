@@ -2,7 +2,6 @@ import { observer } from 'mobx-react-lite';
 import React, { SyntheticEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Checkbox, Item, Segment } from 'semantic-ui-react';
-import { Publikimi } from '../../../app/models/publikimi';
 import { useStore } from '../../../app/stores/store';
 
 export default observer(function PublikimetList()

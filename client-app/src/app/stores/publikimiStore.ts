@@ -17,7 +17,7 @@ export default class PublikimiStore{
 
     get publikimetByDate(){
         return Array.from(this.publikimiRegistry.values()).sort((a,b) => 
-        Date.parse(a.data)-Date.parse(b.data))
+        Date.parse(a.data)-Date.parse(b.data));
     } //a,b activities qe krahasohen 
 
     loadPublikimet = async () => {
@@ -59,11 +59,11 @@ export default class PublikimiStore{
     }
 
     private setPublikimi = (publikimi:  Publikimi) => {
-        publikimi.data = publikimi.data.split('T')[0]; 
+        //publikimi.data = publikimi.data.split('T')[0]; 
         this.publikimiRegistry.set(publikimi.id, publikimi);
     }
 
-    private getPublikimi = (id:string)=>{
+    private getPublikimi = (id: string)=>{
         return this.publikimiRegistry.get(id);
     }
 
@@ -72,20 +72,19 @@ export default class PublikimiStore{
     }
 
 
-    createPublikimi = async (publikimi:Publikimi) => {
+    createPublikimi = async (publikimi: Publikimi) => {
         this.loading = true;
-        try{
+        try {
             await agent.Publikimet.create(publikimi);
             runInAction(() => {
-                this.publikimiRegistry.set(publikimi.id,publikimi);
+                this.publikimiRegistry.set(publikimi.id, publikimi);
                 this.selectedPublikimi = publikimi;
                 this.editMode = false;
                 this.loading = false;
             })
-
-        }catch(error){
+        } catch (error) {
             console.log(error);
-            runInAction(()=>{
+            runInAction( () => {
                 this.loading = false;
             })
         }
@@ -95,7 +94,7 @@ export default class PublikimiStore{
         this.loading = true;
         try{
             await agent.Publikimet.update(publikimi);
-            runInAction(()=>{
+            runInAction(() => {
                 this.publikimiRegistry.set(publikimi.id, publikimi);
                 //e krijon ni array t'ri edhe e zevedsojm tani ^ e largojm qat aktivitet qe e bojm update 
                 this.selectedPublikimi = publikimi;

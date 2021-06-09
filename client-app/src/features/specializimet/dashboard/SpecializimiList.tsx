@@ -1,30 +1,42 @@
-import React from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { SyntheticEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Item, Label, Segment } from 'semantic-ui-react';
-import { Specializimi } from '../../../app/models/specializimi';
+import { useStore } from '../../../app/stores/store';
 
-interface Props {
-    specializimet: Specializimi[];
-    selectSpecializimi: (id: string) => void;
-    deleteSpecializimi: (id: string) => void;
-}
+export default observer(function SpecializimiList() {
+    const {specializimiStore} = useStore();
+    const {deleteSpecializimi, specializimetByDate, loading} = specializimiStore;
+   
+    const [target, setTarget] = useState('');
 
-export default function SpecializimiList({ specializimet, selectSpecializimi, deleteSpecializimi }: Props) {
+   function handleSpecializimiDelete(e: SyntheticEvent<HTMLButtonElement>, id: string) {
+        setTarget(e.currentTarget.name);
+        deleteSpecializimi(id);
+    }
+
     return (
         <Segment>
             <Item.Group divided>
-                {specializimet.map(specializimi => (
+                {specializimetByDate.map(specializimi => (
                     <Item key={specializimi.id}>
-                        <Item.Content>
-                            <Item.Header as='a'>{specializimi.emriInstitucionit}</Item.Header>    
-                            <Item.Meta>{specializimi.titulli}</Item.Meta>
+                         <Item.Content>
+                            <Item.Header as='a'>{specializimi.titulli}</Item.Header>    
+                            <Item.Meta>{specializimi.emriInstitucionit}</Item.Meta>
                             <Item.Description>
-                                <div>{specializimi.lokacioni}</div>
-                                <div>{specializimi.dataFillestare}, {specializimi.dataPerfundimtare}</div>
+                                <div>{specializimi.pershkrimi}</div>
+				<div>{specializimi.dataFillestare} - {specializimi.dataPerfundimtare}</div>
+				<div>{specializimi.lokacioni}</div>
                             </Item.Description>   
                             <Item.Extra>
-                                <Button onClick={() => selectSpecializimi(specializimi.id)} floated='right' content='View' color='blue'/>
-                                <Button onClick={() => deleteSpecializimi(specializimi.id)} floated='right' content='Delete' color='red'/>
-                                <Label basic content={specializimi.lokacioni}/>
+                                <Button as={Link} to={`/specializimet/${specializimi.id}`} floated='right' content='View' color='blue'/>
+                                <Button 
+                                    name = {specializimi.id}
+                                    loading={loading && target === specializimi.id} 
+                                    onClick={(e) => handleSpecializimiDelete(e,specializimi.id)} 
+                                    floated='right' 
+                                    content='Delete' 
+                                    color='red'/>
                             </Item.Extra>
                         </Item.Content>
                     </Item>
@@ -32,4 +44,4 @@ export default function SpecializimiList({ specializimet, selectSpecializimi, de
             </Item.Group>
         </Segment>
     )
-}
+})

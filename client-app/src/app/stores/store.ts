@@ -2,17 +2,21 @@ import { createContext, useContext } from "react";
 import EdukimiStore from "./edukimiStore";
 import EksperiencaStore from "./eksperiencaStore";
 import PublikimiStore from "./publikimiStore";
+import SpecializimiStore from "./specializimiStore";
 
 interface Store{
     eksperiencaStore: EksperiencaStore
     edukimiStore: EdukimiStore
     publikimiStore: PublikimiStore
+    specializimiStore: SpecializimiStore
+
 }
 
 export const store: Store = {
     eksperiencaStore: new EksperiencaStore(),
     edukimiStore: new EdukimiStore(),
-    publikimiStore: new PublikimiStore()
+    publikimiStore: new PublikimiStore(),
+    specializimiStore: new SpecializimiStore()
 }//qka ruhet nstore
 
 

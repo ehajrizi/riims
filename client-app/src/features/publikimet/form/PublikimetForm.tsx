@@ -1,11 +1,10 @@
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { Button, Form, Segment } from 'semantic-ui-react';
+import {v4 as uuid} from 'uuid';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { useStore } from '../../../app/stores/store';
 import { observer } from 'mobx-react-lite';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
-import React, { ChangeEvent, useEffect, useState } from 'react';
-// import publikimiStore from '../../../app/stores/publikimiStore';
-import {v4 as uuid} from 'uuid';
-import { Button, Checkbox, Form, Segment } from 'semantic-ui-react';
 
 export default observer(function PublikimetForm(){
     const history = useHistory();
