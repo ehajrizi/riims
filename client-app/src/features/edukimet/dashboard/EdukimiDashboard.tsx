@@ -1,42 +1,26 @@
-import React from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { useEffect } from 'react';
 import { Grid } from 'semantic-ui-react';
-import { Edukimi } from '../../../app/models/edukimi';
-import EdukimiDetails from '../details/EdukimiDetails';
-import EdukimiForm from '../form/EdukimiForm';
+import LoadingComponent from '../../../app/layout/LoadingComponents';
+import { useStore } from '../../../app/stores/store';
 import EdukimiList from './EdukimiList';
 
-interface Props {
-    edukimet: Edukimi[];
-    selectedEdukimi: Edukimi | undefined;
-    selectEdukimi: (id: string) => void;
-    cancelSelectEdukimi: () => void;
-    editModeEdukimi: boolean;
-    openFormEdukimi: (id: string) => void;
-    closeFormEdukimi: () => void;
-    createOrEditEdukimi: (edukimi: Edukimi) => void;
-    deleteEdukimi: (id: string) => void;
-}
+export default observer (function EdukimiDashboard(){
 
-export default function EdukimiDashboard({edukimet, selectedEdukimi, 
-    selectEdukimi, cancelSelectEdukimi, editModeEdukimi, openFormEdukimi, closeFormEdukimi, createOrEditEdukimi, deleteEdukimi}: Props) {
+    const {edukimiStore} = useStore();
+    const {loadEdukimet,edukimiRegistry} = edukimiStore;
+
+  useEffect(() =>{
+    if(edukimiRegistry.size <= 1) loadEdukimet();
+  }, [edukimiRegistry.size, loadEdukimet])
+
+  if(edukimiStore.loadingInitial) return <LoadingComponent content='Loading app'/>
+
     return(
         <Grid>
             <Grid.Column width='10'>
-                <EdukimiList edukimet={edukimet} 
-                    selectEdukimi={selectEdukimi}
-                    deleteEdukimi={deleteEdukimi}
-                />
-            </Grid.Column>
-            <Grid.Column width='6' >
-                {selectedEdukimi && !editModeEdukimi &&
-                <EdukimiDetails 
-                    edukimi={selectedEdukimi} 
-                    cancelSelectEdukimi={cancelSelectEdukimi} 
-                    openFormEdukimi={openFormEdukimi}
-                />}
-                {editModeEdukimi &&
-                <EdukimiForm closeFormEdukimi={closeFormEdukimi} edukimi={selectedEdukimi} createOrEditEdukimi={createOrEditEdukimi} />}
+                <EdukimiList />
             </Grid.Column>
         </Grid>
     )
-}
+})

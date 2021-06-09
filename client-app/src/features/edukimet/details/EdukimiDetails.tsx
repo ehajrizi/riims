@@ -1,18 +1,22 @@
-import React from "react";
+import { observer } from "mobx-react-lite";
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { Button, Card } from "semantic-ui-react";
-import { Edukimi } from "../../../app/models/edukimi";
+import LoadingComponent from "../../../app/layout/LoadingComponents";
+import { useStore } from "../../../app/stores/store";
 
-interface Props {
-  edukimi: Edukimi;
-  cancelSelectEdukimi: () => void;
-  openFormEdukimi: (id: string) => void;
-}
+export default observer(function EdukimiDetails() {
 
-export default function EdukimiDetails({
-  edukimi,
-  cancelSelectEdukimi,
-  openFormEdukimi,
-}: Props) {
+    const {edukimiStore} = useStore();
+    const {selectedEdukimi: edukimi, loadEdukimi, loadingInitial} = edukimiStore;
+    const {id} = useParams<{id: string}>();
+
+    useEffect(() => {
+        if(id) loadEdukimi(id);
+    },[id,loadEdukimi])
+
+    if(loadingInitial || !edukimi) return <LoadingComponent/>;
+
   return (
     <Card fluid>
       <Card.Content>
@@ -34,20 +38,10 @@ export default function EdukimiDetails({
       </Card.Content>
       <Card.Content extra>
         <Button.Group widths="2">
-          <Button
-            onClick={() => openFormEdukimi(edukimi.id)}
-            basic
-            color="blue"
-            content="Edit"
-          />
-          <Button
-            onClick={cancelSelectEdukimi}
-            basic
-            color="grey"
-            content="Cancel"
-          />
+          <Button as={Link} to={`/manageEdukimi/${edukimi.id}`} basic color='blue' content='Edit'/>
+          <Button as={Link} to='/edukimet' basic color='grey' content='Cancel'/>
         </Button.Group>
       </Card.Content>
     </Card>
   );
-}
+})

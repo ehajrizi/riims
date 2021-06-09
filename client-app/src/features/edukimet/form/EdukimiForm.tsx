@@ -1,16 +1,20 @@
-import React, { ChangeEvent, useState } from "react";
-import { Button, Form, Segment } from "semantic-ui-react";
-import { Edukimi } from "../../../app/models/edukimi";
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { Button, Form, Segment } from 'semantic-ui-react';
+import {v4 as uuid} from 'uuid';
+import { Link, useHistory, useParams } from 'react-router-dom';
+import { useStore } from '../../../app/stores/store';
+import { observer } from 'mobx-react-lite';
+import LoadingComponent from '../../../app/layout/LoadingComponents';
 
-interface Props {
-    edukimi: Edukimi | undefined;
-    closeFormEdukimi: () => void;
-    createOrEditEdukimi: (edukimi: Edukimi) => void;
-}
+export default observer(function EdukimiForm(){
 
-export default function EdukimiForm({edukimi: selectedEdukimi, closeFormEdukimi, createOrEditEdukimi}: Props) {
+    const history = useHistory();
 
-    const initialState = selectedEdukimi ?? {
+    const {edukimiStore} = useStore();
+    const {loadEdukimi,createEdukimi,updateEdukimi,loading, loadingInitial} = edukimiStore;
+    const {id} = useParams<{id: string}>();
+
+    const [edukimi, setEdukimi] = useState({
         id: '',
         emri_i_Institucionit: '',
         titulli: '',
@@ -19,18 +23,32 @@ export default function EdukimiForm({edukimi: selectedEdukimi, closeFormEdukimi,
         dataFillestare: '',
         dataPerfundimtare: '',
         pershkrimi: ''
+    }); 
+
+    useEffect(() => {
+        if(id) loadEdukimi(id).then(edukimi => setEdukimi(edukimi!))
+    },[id, loadEdukimi]);
+
+    function handleSubmitEdukimi(){
+        if(edukimi.id.length === 0){
+            let newEdukimi = {
+                ...edukimi,
+                id: uuid()
+            };
+            createEdukimi(newEdukimi).then(() => history.push(`/edukimet/${newEdukimi.id}`))
+        }else{
+            updateEdukimi(edukimi).then(() => history.push(`/edukimet/${edukimi.id}`))
+        }
     }
 
-    const [edukimi, setEdukimi] = useState(initialState); 
-
-    function handleSubmitEdukimi() {
-        createOrEditEdukimi(edukimi);
+    function handleInputChangeEdukimi(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+        const {name,value} = event.target;
+        setEdukimi({...edukimi,[name]: value})
     }
 
-    function handleInputChangeEdukimi(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-        const {name, value} = event.target;
-        setEdukimi({...edukimi, [name]: value})
-    }
+    if(loadingInitial) return <LoadingComponent content='Loading activity...'/>
+
+
 
     return (
         <Segment clearing>
@@ -42,9 +60,10 @@ export default function EdukimiForm({edukimi: selectedEdukimi, closeFormEdukimi,
                 <Form.Input placeholder='Lokacioni' value={edukimi.lokacioni} name='lokacioni' onChange={handleInputChangeEdukimi} />
                 <Form.Input placeholder='Data fillestare' value={edukimi.dataFillestare} name='dataFillestare' onChange={handleInputChangeEdukimi} />
                 <Form.Input placeholder='Data perfundimtare' value={edukimi.dataPerfundimtare} name='dataPerfundimtare' onChange={handleInputChangeEdukimi} />
-                <Button floated='right' positive type='submit' content="Submit" />
-                <Button onClick={closeFormEdukimi} floated='right' type='button' content="Cancel" />
+                <Button floated='right' positive type='submit' content='Submit'/>
+                <Button as={Link} to='/edukimet' floated='right' type='button' content='Cancel'/>
             </Form>
         </Segment>
     )
-}
+})
+

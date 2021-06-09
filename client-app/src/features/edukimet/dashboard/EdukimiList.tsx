@@ -1,18 +1,26 @@
-import React from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { SyntheticEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Item, Segment } from 'semantic-ui-react';
-import { Edukimi } from '../../../app/models/edukimi';
+import { useStore } from '../../../app/stores/store';
 
-interface Props {
-    edukimet: Edukimi[];
-    selectEdukimi: (id: string) => void;
-    deleteEdukimi: (id: string) => void;
-}
 
-export default function EdukimiList({edukimet, selectEdukimi, deleteEdukimi}: Props) {
+export default observer(function EdukimiList() {
+
+    const {edukimiStore} = useStore();
+    const {deleteEdukimi, edukimetByDate, loading} = edukimiStore;
+   
+    const [target, setTarget] = useState('');
+
+    function handleEdukimiDelete(e: SyntheticEvent<HTMLButtonElement>, id:string){
+        setTarget(e.currentTarget.name);
+        deleteEdukimi(id);
+    }
+
     return (
         <Segment>
             <Item.Group divided>
-                {edukimet.map(edukimi => (
+                {edukimetByDate.map(edukimi => (
                     <Item key={edukimi.id}>
                         <Item.Content>
                             <Item.Header as='a'>{edukimi.emri_i_Institucionit}</Item.Header>
@@ -23,9 +31,14 @@ export default function EdukimiList({edukimet, selectEdukimi, deleteEdukimi}: Pr
                                 <div>{edukimi.dataFillestare} - {edukimi.dataPerfundimtare}</div>
                             </Item.Description>
                             <Item.Extra>
-                                <Button onClick={() => selectEdukimi(edukimi.id)} floated='right' content='View' color='blue' />
-                                <Button onClick={() => deleteEdukimi(edukimi.id)} floated='right' content='Delete' color='red' />
-                                {/* <Label basic content={edukimi.category} /> */}
+                                <Button as={Link} to={`/edukimet/${edukimi.id}`} floated='right' content='View' color='blue'/>
+                                <Button 
+                                    name = {edukimi.id} 
+                                    loading={loading && target === edukimi.id} 
+                                    onClick={(e) => handleEdukimiDelete(e,edukimi.id)} 
+                                    floated='right' 
+                                    content='Delete' 
+                                    color='red'/>
                             </Item.Extra>
                         </Item.Content>
                     </Item>
@@ -33,4 +46,4 @@ export default function EdukimiList({edukimet, selectEdukimi, deleteEdukimi}: Pr
             </Item.Group>
         </Segment>
     )
-}
+})

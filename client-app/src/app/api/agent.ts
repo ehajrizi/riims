@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import { Edukimi } from '../models/edukimi';
 import { Eksperienca } from '../models/eksperienca';
 //import { Publikimi } from '../models/publikimi';
 
@@ -39,6 +40,14 @@ const Eksperiencat = {
     delete: (id: string) => axios.delete<void>(`/eksperiencat/${id}`)
 }
 
+const Edukimet = {
+    list: () => requests.get<Edukimi[]>('/edukimet'),
+    details: (id: string) => requests.get<Edukimi>(`/edukimet/${id}`),
+    create: (edukimi : Edukimi) => axios.post<void>(`/edukimet`, edukimi),
+    update: (edukimi : Edukimi) => axios.put<void>(`/edukimet/${edukimi.id}`,edukimi),
+    delete: (id: string) => axios.delete<void>(`/edukimet/${id}`)
+}
+
 // const Publikimet = {
 //     list: () => requests.get<Publikimi[]>('/publikimet'),
 //     details: (id: string) => requests.get<Publikimi>(`/publikimet/${id}`),
@@ -48,7 +57,8 @@ const Eksperiencat = {
 // }
 
 const agent = {
-    Eksperiencat
+    Eksperiencat,
+    Edukimet
     //Publikimet
 }
 

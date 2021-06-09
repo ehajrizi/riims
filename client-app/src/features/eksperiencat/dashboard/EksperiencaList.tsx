@@ -5,7 +5,7 @@ import { Button, Checkbox, Item, Segment } from 'semantic-ui-react';
 import { Eksperienca } from '../../../app/models/eksperienca';
 import { useStore } from '../../../app/stores/store';
 
-export default observer( function EksperiencaDashboard()
+export default observer( function EksperiencaList()
 {
     const {eksperiencaStore} = useStore();
     const {deleteEksperienca, eksperiencatByDate, loading} = eksperiencaStore;

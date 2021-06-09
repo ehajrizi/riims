@@ -12,6 +12,8 @@ import { Route } from 'react-router-dom';
 import EksperiencaDetails from '../../features/eksperiencat/details/EksperiencaDetails';
 import EksperiencaForm from '../../features/eksperiencat/form/EksperiencaForm';
 import { observer } from 'mobx-react-lite';
+import EdukimiDetails from '../../features/edukimet/details/EdukimiDetails';
+import EdukimiForm from '../../features/edukimet/form/EdukimiForm';
 
 
 function App() {
@@ -26,6 +28,11 @@ function App() {
                 <Route exact path='/eksperiencat' component={EksperiencaDashboard}/>
                 <Route path='/eksperiencat/:id' component={EksperiencaDetails}/>
                 <Route key={location.key} path={['/createEksperienca', '/manage/:id']} component={EksperiencaForm}/>
+
+                {/* Edukimi */}
+                <Route exact path='/edukimet' component={EdukimiDashboard}/>
+                <Route path='/edukimet/:id' component={EdukimiDetails}/>
+                <Route key={location.key} path={['/createEdukimi', '/manageEdukimi/:id']} component={EdukimiForm}/>
               </Container>
             </>
 

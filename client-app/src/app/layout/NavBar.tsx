@@ -14,7 +14,8 @@ export default function NavBar(){
                     <Menu.Item name="CV" />
                     <Menu.Item name="Profile" />
                     <Menu.Item>
-                        <Button as={NavLink} to='/createEksperienca' value='Create Eks'/>
+                        <Button as={NavLink} to='/createEksperienca' content='Create Eks'/>
+                        <Button as={NavLink} to='/createEdukimi' content='Create Edu'/>
                     </Menu.Item>
                 </Menu.Menu>
             </Container>
