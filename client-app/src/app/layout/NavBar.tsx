@@ -16,6 +16,7 @@ export default function NavBar(){
                     <Menu.Item>
                         <Button as={NavLink} to='/createEksperienca' content='Create Eks'/>
                         <Button as={NavLink} to='/createEdukimi' content='Create Edu'/>
+                        <Button as={NavLink} to='/createPublikimi' content='Create Pub'/>
                     </Menu.Item>
                 </Menu.Menu>
             </Container>

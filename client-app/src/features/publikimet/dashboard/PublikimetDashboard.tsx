@@ -1,38 +1,32 @@
-import React from 'react';
-import { Grid } from 'semantic-ui-react';
-import { Publikimi } from '../../../app/models/publikimi';
-import PublikimetDetails from '../details/PublikimetDetails';
-import PublikimetForm from '../form/PublikimetForm';
-import PublikimetList from './PublikimetList';
+import { observer } from 'mobx-react-lite';
+import React, { useEffect } from 'react';
+import { Grid} from 'semantic-ui-react';
+import LoadingComponent from '../../../app/layout/LoadingComponents';
+import { useStore } from '../../../app/stores/store';
+import PublikimiList from './PublikimetList';
 
-interface Props {
-    publikimet: Publikimi[];
-    selectedPublikimi: Publikimi | undefined;
-    selectPublikimi: (id: string) => void;
-    cancelSelectPublikimi: () => void;
-    editModePublikimi: boolean;
-    openFormPublikimi: (id: string) => void;
-    closeFormPublikimi: () => void
-    createOrEditPublikimi: (publikimi: Publikimi) => void;
-    deletePublikimi: (id: string) => void;
-}
 
-export default function PublikimetDashboard({publikimet, selectedPublikimi, selectPublikimi, cancelSelectPublikimi, editModePublikimi, openFormPublikimi, closeFormPublikimi, createOrEditPublikimi, deletePublikimi}: Props) {
-    return (
+
+export default observer(function PublikimetDashboard(){
+
+    const {publikimiStore} = useStore();
+   //i qitem knej qe mos me na dal shenja e loading edhe
+   //te home pa nevoje
+   const {loadPublikimet,publikimiRegistry} = publikimiStore;
+
+  useEffect(() =>{
+    if(publikimiRegistry.size <= 1) loadPublikimet();
+    //nese 0 i loadim se kur te inicializojm 0 a perndryshe e din
+    //appi qfar aplik ka  se  kur e bojm edit mos me na met veq qaj aktivitet
+  }, [publikimiRegistry.size, loadPublikimet])
+
+  if(publikimiStore.loadingInitial) return <LoadingComponent content='Loading app'/>
+
+    return(
         <Grid>
             <Grid.Column width='10'>
-                <PublikimetList publikimet={publikimet} selectPublikimi={selectPublikimi} deletePublikimi={deletePublikimi}/>
-            </Grid.Column>
-            <Grid.Column width='6'>
-                {selectedPublikimi && !editModePublikimi &&
-                <PublikimetDetails 
-                    publikimi={selectedPublikimi} 
-                    cancelSelectPublikimi={cancelSelectPublikimi} 
-                    openFormPublikimi = {openFormPublikimi}
-                />}
-                {editModePublikimi && 
-                <PublikimetForm closeFormPublikimi = {closeFormPublikimi} publikimi = {selectedPublikimi} createOrEditPublikimi = {createOrEditPublikimi}/>}
+                <PublikimiList />
             </Grid.Column>
         </Grid>
     )
-}
+})

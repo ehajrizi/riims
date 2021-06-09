@@ -8,12 +8,15 @@ import PublikimetDashboard from '../../features/publikimet/dashboard/PublikimetD
 import ProfiliDashboard from '../../features/profili/dashboard/ProfiliDashboard';
 import MbikeqyresiTemaveDashboard from '../../features/mbikeqyresittemave/dashboard/MbikeqyresiTemaveDashboard';
 import { useLocation } from 'react-router';
-import { Route } from 'react-router-dom';
+
 import EksperiencaDetails from '../../features/eksperiencat/details/EksperiencaDetails';
 import EksperiencaForm from '../../features/eksperiencat/form/EksperiencaForm';
 import { observer } from 'mobx-react-lite';
 import EdukimiDetails from '../../features/edukimet/details/EdukimiDetails';
 import EdukimiForm from '../../features/edukimet/form/EdukimiForm';
+import PublikimetForm from '../../features/publikimet/form/PublikimetForm';
+import { Route } from 'react-router-dom';
+import PublikimetDetails from '../../features/publikimet/details/PublikimetDetails';
 
 
 function App() {
@@ -28,11 +31,18 @@ function App() {
                 <Route exact path='/eksperiencat' component={EksperiencaDashboard}/>
                 <Route path='/eksperiencat/:id' component={EksperiencaDetails}/>
                 <Route key={location.key} path={['/createEksperienca', '/manage/:id']} component={EksperiencaForm}/>
-
+              </Container>
+              <Container>
                 {/* Edukimi */}
                 <Route exact path='/edukimet' component={EdukimiDashboard}/>
                 <Route path='/edukimet/:id' component={EdukimiDetails}/>
                 <Route key={location.key} path={['/createEdukimi', '/manageEdukimi/:id']} component={EdukimiForm}/>
+                </Container>
+                <Container>
+                {/* Publikimet */}
+                <Route exact path='/publikimet' component={PublikimetDashboard}/>
+                <Route path='/publikimet/:id' component={PublikimetDetails}/>
+                <Route key={location.key} path={['/createPublikimi', '/managePublikimi/:id']} component={PublikimetForm}/>
               </Container>
             </>
 

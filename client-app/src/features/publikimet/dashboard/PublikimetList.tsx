@@ -1,19 +1,28 @@
-import React from 'react';
-import { Button, Item, Label, Segment } from 'semantic-ui-react';
+import { observer } from 'mobx-react-lite';
+import React, { SyntheticEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button, Checkbox, Item, Segment } from 'semantic-ui-react';
 import { Publikimi } from '../../../app/models/publikimi';
+import { useStore } from '../../../app/stores/store';
 
-interface Props {
-    publikimet: Publikimi[];
-    selectPublikimi: (id: string) => void;
-    deletePublikimi: (id: string) => void;
-}
+export default observer(function PublikimetList()
+{
+    const {publikimiStore} = useStore();
+    const {deletePublikimi, publikimetByDate, loading} = publikimiStore;
+   
+    const [target, setTarget] = useState('');
 
-export default function PublikimetList({publikimet, selectPublikimi, deletePublikimi}: Props) {
-    return (
+    function handlePublikimiDelete(e: SyntheticEvent<HTMLButtonElement>, id:string){
+        //e eshte eventi/klikimi 
+        setTarget(e.currentTarget.name);
+        deletePublikimi(id);
+    }
+
+    return(
         <Segment>
             <Item.Group divided>
-                {publikimet.map(publikimi => (
-                    <Item key={publikimi.id}>
+                {publikimetByDate.map(publikimi =>(
+                    <Item key={(publikimi.id)}>
                         <Item.Content>
                             <Item.Header as='a'>{publikimi.titulli}</Item.Header>
                             <Item.Meta>{publikimi.data}</Item.Meta>
@@ -21,11 +30,17 @@ export default function PublikimetList({publikimet, selectPublikimi, deletePubli
                                 <div>{publikimi.statusi}, {publikimi.llojiPublikimit} </div>
                                 <div>{publikimi.lenda}, {publikimi.kategoria} </div>
                                 <div>{publikimi.departamenti}, {publikimi.institucioni}</div>
+				<Checkbox label='Autor kryesor' />
                             </Item.Description>
                             <Item.Extra>
-                                <Button onClick={() => selectPublikimi(publikimi.id)} floated='right' content='View' color='blue' />
-                                <Button onClick={() => deletePublikimi(publikimi.id)} floated='right' content='Delete' color='red' />
-                                <Label basic content={publikimi.referenca} />
+                                <Button as={Link} to={`/publikimet/${publikimi.id}`} floated='right' content='View' color='blue'/>
+                                <Button 
+                                    name = {publikimi.id} //se po bohen load krejt butonat delete 
+                                    loading={loading && target === publikimi.id} 
+                                    onClick={(e) => handlePublikimiDelete(e,publikimi.id)} 
+                                    floated='right' 
+                                    content='Delete' 
+                                    color='red'/>
                             </Item.Extra>
                         </Item.Content>
                     </Item>
@@ -33,4 +48,4 @@ export default function PublikimetList({publikimet, selectPublikimi, deletePubli
             </Item.Group>
         </Segment>
     )
-}
+})

@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { Edukimi } from '../models/edukimi';
 import { Eksperienca } from '../models/eksperienca';
-//import { Publikimi } from '../models/publikimi';
+import { Publikimi } from '../models/publikimi';
 
 const sleep = (delay: number) => {
     return new Promise((resolve) => {
@@ -48,18 +48,18 @@ const Edukimet = {
     delete: (id: string) => axios.delete<void>(`/edukimet/${id}`)
 }
 
-// const Publikimet = {
-//     list: () => requests.get<Publikimi[]>('/publikimet'),
-//     details: (id: string) => requests.get<Publikimi>(`/publikimet/${id}`),
-//     create: (publikimi : Publikimi) => axios.post<void>(`/publikimet`, publikimi),
-//     update: (publikimi : Publikimi) => axios.put<void>(`/publikimet/${publikimi.id}`,publikimi),
-//     delete: (id: string) => axios.delete<void>(`/publikimet/${id}`)
-// }
+const Publikimet = {
+    list: () => requests.get<Publikimi[]>('/publikimet'),
+    details: (id: string) => requests.get<Publikimi>(`/publikimet/${id}`),
+    create: (publikimi : Publikimi) => axios.post<void>(`/publikimet`, publikimi),
+    update: (publikimi : Publikimi) => axios.put<void>(`/publikimet/${publikimi.id}`,publikimi),
+    delete: (id: string) => axios.delete<void>(`/publikimet/${id}`)
+}
 
 const agent = {
     Eksperiencat,
-    Edukimet
-    //Publikimet
+    Edukimet,
+    Publikimet
 }
 
 export default agent;
