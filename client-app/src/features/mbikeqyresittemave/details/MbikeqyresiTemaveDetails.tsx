@@ -1,16 +1,23 @@
-
-import React from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { Button, Card } from 'semantic-ui-react';
-import {MbikeqyresiTemave } from '../../../app/models/mbikeqyresitemave';
+import LoadingComponent from '../../../app/layout/LoadingComponents';
+import { useStore } from '../../../app/stores/store';
 
-interface Props {
-    mbikeqyresitemave :MbikeqyresiTemave;
-    cancelSelectMbikeqyresiTemave:()=> void;
-    openFormMbikeqyresiTemave:(id:string)=> void;
-}
 
-export default function MbikeqyresiTemaveDetails({mbikeqyresitemave,cancelSelectMbikeqyresiTemave, openFormMbikeqyresiTemave}:Props){
-   return(
+export default observer (function MbikeqyresiTemaveDetails(){
+  const {mbikeqyresitemaveStore}= useStore();
+  const {selectedMbikeqyresiTemave:mbikeqyresitemave,loadMbikeqyresiTemave,loadingInitial}= mbikeqyresitemaveStore;
+  const {id}= useParams<{id:string}>();
+
+  useEffect (()=> {
+    if (id) loadMbikeqyresiTemave(id);
+  },[id, loadMbikeqyresiTemave]);
+
+if(loadingInitial || !mbikeqyresitemave) return <LoadingComponent/>;
+
+  return(
     <Card fluid>
     <Card.Content>
       <Card.Header>{mbikeqyresitemave.titulliTemes}</Card.Header>
@@ -32,10 +39,10 @@ export default function MbikeqyresiTemaveDetails({mbikeqyresitemave,cancelSelect
     </Card.Content>
     <Card.Content extra>
      <Button.Group widths='2'>
-        <Button onClick={()=>openFormMbikeqyresiTemave(mbikeqyresitemave.id)} basic color='blue' content='Edit'/>
-        <Button onClick={cancelSelectMbikeqyresiTemave} basic color='grey' content='Cancel'/>
+        <Button as={Link} to={`/managembikeqyresitemave/${mbikeqyresitemave.id}`} basic color='blue' content='Edit'/>
+        <Button as={Link} to='/mbikeqyresitemave' basic color='grey' content='Cancel'/>
      </Button.Group>
     </Card.Content>
   </Card>
    ) 
-}
+})

@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { Edukimi } from '../models/edukimi';
 import { Eksperienca } from '../models/eksperienca';
+import { MbikeqyresiTemave } from '../models/mbikeqyresitemave';
 import { Publikimi } from '../models/publikimi';
 import { Specializimi } from '../models/specializimi';
 
@@ -65,12 +66,21 @@ const Specializimet = {
     delete: (id: string) => axios.delete<void>(`/specializimet/${id}`)
 }
 
+const MbikeqyresitTemave ={
+    list: ()=> requests.get<MbikeqyresiTemave[]>('/mbikeqyresitemave'),
+    details: (id:string)=> requests.get<MbikeqyresiTemave>(`/mbikeqyresitemave/${id}`),
+    create:(mbikeqyresitemave:MbikeqyresiTemave)=>axios.post<void>('/mbikeqyresitemave',mbikeqyresitemave),
+    update:(mbikeqyresitemave:MbikeqyresiTemave)=>axios.put<void>(`/mbikeqyresitemave/${mbikeqyresitemave.id}`,mbikeqyresitemave),
+    delete: (id:string)=> axios.delete<void>(`/mbikeqyresitemave/${id}`)
+    
+}
 
 const agent = {
     Eksperiencat,
     Edukimet,
     Publikimet,
-    Specializimet
+    Specializimet,
+    MbikeqyresitTemave,
 }
 
 export default agent;

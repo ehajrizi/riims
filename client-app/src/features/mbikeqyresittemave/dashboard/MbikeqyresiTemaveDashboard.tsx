@@ -1,43 +1,26 @@
-
-import React from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { useEffect } from 'react';
 import { Grid } from 'semantic-ui-react';
-import { MbikeqyresiTemave } from '../../../app/models/mbikeqyresitemave';
-import MbikeqyresiTemaveDetails from '../details/MbikeqyresiTemaveDetails';
-import MbikeqyresiTemaveForm from '../form/MbikeqyresiTemaveForm';
+import LoadingComponent from '../../../app/layout/LoadingComponents';
+import { useStore } from '../../../app/stores/store';
 import MbikeqyresiTemaveList from './MbikeqyresiTemaveList';
 
-interface Props {
-    mbikeqyresittemave: MbikeqyresiTemave[];
-    selectedMbikeqyresiTemave: MbikeqyresiTemave | undefined;
-    selectMbikeqyresiTemave: (id: string) => void;
-    cancelSelectMbikeqyresiTemave:() => void;
-    editModeMbikeqyresiTemave: boolean;
-    openFormMbikeqyresiTemave:(id: string)=> void;
-    closeFormMbikeqyresiTemave:()=>void;
-    createOrEditMbikeqyresiTemave:(mbikeqyresitemave:MbikeqyresiTemave) => void;
-    deleteMbikeqyresiTemave:(id: string)=> void;
-}
 
-export default function MbikeqyresiTemaveDashboard({mbikeqyresittemave,selectedMbikeqyresiTemave, 
-    selectMbikeqyresiTemave, editModeMbikeqyresiTemave, 
-    closeFormMbikeqyresiTemave, openFormMbikeqyresiTemave ,cancelSelectMbikeqyresiTemave, createOrEditMbikeqyresiTemave,deleteMbikeqyresiTemave}:Props){
+export default observer (function MbikeqyresiTemaveDashboard() {
+
+    const { mbikeqyresitemaveStore } = useStore();
+    const {loadMbikeqyresittemave, mbikeqyresitemaveRegistry } = mbikeqyresitemaveStore;
+
+    useEffect(() =>{
+    if(mbikeqyresitemaveRegistry.size <=1 ) loadMbikeqyresittemave();
+  }, [mbikeqyresitemaveRegistry.size, mbikeqyresitemaveStore])
+    
+if(mbikeqyresitemaveStore.loadingInitial) return <LoadingComponent content='Loading Mbikeqyresit e Temave'/>
     return (
         <Grid>
             <Grid.Column width='10'>
-            <MbikeqyresiTemaveList mbikeqyresittemave={mbikeqyresittemave} 
-            selectMbikeqyresiTemave={selectMbikeqyresiTemave}
-            deleteMbikeqyresiTemave={deleteMbikeqyresiTemave}/>
-            </Grid.Column>
-            <Grid.Column width ='6'>
-                {selectedMbikeqyresiTemave && !editModeMbikeqyresiTemave &&
-                <MbikeqyresiTemaveDetails 
-                mbikeqyresitemave={selectedMbikeqyresiTemave} 
-                cancelSelectMbikeqyresiTemave={cancelSelectMbikeqyresiTemave}
-                openFormMbikeqyresiTemave={openFormMbikeqyresiTemave}
-                /> }
-                {editModeMbikeqyresiTemave &&
-                <MbikeqyresiTemaveForm closeFormMbikeqyresiTemave={closeFormMbikeqyresiTemave} mbikeqyresitemave={selectedMbikeqyresiTemave} createOrEditMbikeqyresiTemave={createOrEditMbikeqyresiTemave}/>}
+                <MbikeqyresiTemaveList/>
             </Grid.Column>
         </Grid>
     )
-}
+})

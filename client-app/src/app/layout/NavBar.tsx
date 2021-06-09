@@ -25,6 +25,9 @@ export default function NavBar(){
                     <Menu.Item>
                         <Button as={NavLink} to='/createSpecializimi' content='Create Spec'/>
                     </Menu.Item>
+                    <Menu.Item>
+                        <Button as={NavLink} to='/createMbikeqyresiTemave' content='Create mbi'/>
+                    </Menu.Item>
                 </Menu.Menu>
             </Container>
         </Menu>

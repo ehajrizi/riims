@@ -1,21 +1,28 @@
-
-import React from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { SyntheticEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Item, Segment } from 'semantic-ui-react';
-import {MbikeqyresiTemave } from '../../../app/models/mbikeqyresitemave';
+import { useStore } from '../../../app/stores/store';
 
 
-interface Props {
-    mbikeqyresittemave: MbikeqyresiTemave[];
+export default observer (function MbikeqyresiTemaveList()
+{
+    const{ mbikeqyresitemaveStore}= useStore();
+    const{deleteMbikeqyresiTemave,loading,mbikeqyresitemaveByStudenti}= mbikeqyresitemaveStore;
     
-    selectMbikeqyresiTemave: (id: string) => void;
-    deleteMbikeqyresiTemave:(id:string) => void;
-}
+    const[target, setTarget]= useState('');
 
-export default function MbikeqyresiTemaveList({mbikeqyresittemave, selectMbikeqyresiTemave,deleteMbikeqyresiTemave}:Props){
+    function handleMbikeqyresiTemaveDelete(e: SyntheticEvent<HTMLButtonElement>, id:string){
+        setTarget(e.currentTarget.name);
+        deleteMbikeqyresiTemave(id);
+    }
+    
+    
+
     return (
         <Segment>
             <Item.Group divided>
-                {mbikeqyresittemave.map(mbikeqyresitemave =>(
+                {mbikeqyresitemaveByStudenti.map(mbikeqyresitemave =>(
                     <Item key={mbikeqyresitemave.id}>
                         <Item.Content>
                             <Item.Header as='a'>{mbikeqyresitemave.titulliTemes}</Item.Header>
@@ -26,9 +33,14 @@ export default function MbikeqyresiTemaveList({mbikeqyresittemave, selectMbikeqy
                         <div>{mbikeqyresitemave.niveliAkademik}</div>      
                             </Item.Description>
                             <Item.Extra>
-                                <Button onClick={() => selectMbikeqyresiTemave(mbikeqyresitemave.id)} floated='right' content='View' color='blue'/>
-                                <Button onClick={() => deleteMbikeqyresiTemave(mbikeqyresitemave.id)} floated='right' content='delete' color='red'/>
-                                
+                                <Button as={Link} to={`/mbikeqyresitemave/${mbikeqyresitemave.id}`}floated='right' content='View' color='blue'/>
+                                <Button 
+                                    name={mbikeqyresitemave.id}
+                                    loading={loading && target ===mbikeqyresitemave.id}
+                                    onClick={(e) => handleMbikeqyresiTemaveDelete(e,mbikeqyresitemave.id)}
+                                    floated='right' 
+                                    content='delete' 
+                                    color='red'/>
                             </Item.Extra>
                         </Item.Content>
                     </Item>
@@ -36,4 +48,4 @@ export default function MbikeqyresiTemaveList({mbikeqyresittemave, selectMbikeqy
             </Item.Group>
         </Segment>
     )
-}
+})

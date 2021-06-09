@@ -1,17 +1,20 @@
-
-import React, { ChangeEvent, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { Button, Form, Segment } from 'semantic-ui-react';
-import {MbikeqyresiTemave } from '../../../app/models/mbikeqyresitemave';
+import { useStore } from '../../../app/stores/store';
+import {v4 as uuid} from 'uuid';
+import LoadingComponent from '../../../app/layout/LoadingComponents';
 
-interface Props {
-    mbikeqyresitemave: MbikeqyresiTemave | undefined;
-    closeFormMbikeqyresiTemave:() => void;
-    createOrEditMbikeqyresiTemave:(mbikeqyresitemave: MbikeqyresiTemave)=> void;
-}
 
-export default function MbikeqyresiTemaveForm({mbikeqyresitemave: selectedMbikeqyresiTemave,closeFormMbikeqyresiTemave,createOrEditMbikeqyresiTemave}:Props){
-    
-    const initialState = selectedMbikeqyresiTemave ?? {
+export default observer (function MbikeqyresiTemaveForm(){
+const history= useHistory();
+
+    const {mbikeqyresitemaveStore}= useStore();
+    const {loadingInitial,createMbikeqyresiTemave, loadMbikeqyresiTemave,updateMbikeqyresiTemave,loading}= mbikeqyresitemaveStore;
+    const {id}= useParams<{id: string}>();
+
+    const [mbikeqyresitemave, setMbikeqyresiTemave]= useState({
         id:'',
         titulliTemes: '',
         studenti:  '',
@@ -19,18 +22,32 @@ export default function MbikeqyresiTemaveForm({mbikeqyresitemave: selectedMbikeq
         viti: '' ,
         departamenti: '',
         niveliAkademik:''
-    }
 
-    const [mbikeqyresitemave, setMbikeqyresiTemave]= useState(initialState);
+    });
+
+    useEffect (() => {
+        if(id) loadMbikeqyresiTemave(id).then(mbikeqyresitemave => setMbikeqyresiTemave(mbikeqyresitemave!))
+    },[id, loadMbikeqyresiTemave])
 
     function handleSubmitMbikeqyresiTemave(){
-        createOrEditMbikeqyresiTemave(mbikeqyresitemave);
+        if (mbikeqyresitemave.id.length ===0){
+            let newMbikeqyresiTemave = {
+                ...mbikeqyresitemave,
+                id:uuid()
+            };
+            createMbikeqyresiTemave(newMbikeqyresiTemave).then(() =>history.push(`/mbikeqyresitemave/${newMbikeqyresiTemave.id}`))
+        }else{
+            updateMbikeqyresiTemave(mbikeqyresitemave).then(()=> history.push(`/mbikeqyresitemave/${mbikeqyresitemave.id}`))
+        }
     }
+
+
 
     function handleImputChangeMbikeqyresiTemave(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
         const {name, value}= event.target;
         setMbikeqyresiTemave({...mbikeqyresitemave,[name]:value})
     }
+    if(loadingInitial) return <LoadingComponent content ='Loading...'/>
     return (
         <Segment clearing>
             <Form onSubmit={handleSubmitMbikeqyresiTemave} autoComplete='off' >
@@ -40,11 +57,10 @@ export default function MbikeqyresiTemaveForm({mbikeqyresitemave: selectedMbikeq
                 <Form.Input placeholder='Viti' value={mbikeqyresitemave.viti} name='viti' onChange={handleImputChangeMbikeqyresiTemave}/>
                 <Form.Input placeholder='Departamenti' value={mbikeqyresitemave.departamenti} name='departamenti' onChange={handleImputChangeMbikeqyresiTemave}/>
                 <Form.Input placeholder='NiveliAkademik' value={mbikeqyresitemave.niveliAkademik} name='niveliAkademik' onChange={handleImputChangeMbikeqyresiTemave}/>
-                
                 <Button floated='right' positive type='submit' content='Submit'/>
-                <Button onClick={closeFormMbikeqyresiTemave} floated='right' type='button' content='Cancel'/>
+                <Button as={Link} to='/mbikeqyresitemave' floated='right' type='button' content='Cancel'/>
             </Form>
         </Segment>
     
     )
-}
+})
