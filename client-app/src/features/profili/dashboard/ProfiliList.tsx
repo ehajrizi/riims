@@ -38,7 +38,7 @@ export default observer( function ProfiliList()
 								
                             </Item.Description>
                             <Item.Extra>
-                                <Button as={Link} to={`/profilet/${profili.id}`} floated='right' content='View' color='blue'/>
+                                <Button as={Link} to={`/profili/${profili.id}`} floated='right' content='View' color='blue'/>
                                 <Button 
                                     name = {profili.id} 
                                     loading={loading && target === profili.id} 

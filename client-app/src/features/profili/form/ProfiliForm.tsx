@@ -42,10 +42,10 @@ export default observer(function ProfiliForm(){
                 ...profili,
                 id: uuid()
             };
-            createProfili(newProfili).then(() => history.push(`/profilet/${newProfili.id}`))
+            createProfili(newProfili).then(() => history.push(`/profili/${newProfili.id}`))
       
         }else{
-            updateProfili(profili).then(() => history.push(`/profilet/${profili.id}`))
+            updateProfili(profili).then(() => history.push(`/profili/${profili.id}`))
         }
     }
 
@@ -71,7 +71,7 @@ export default observer(function ProfiliForm(){
                 <Form.Input placeholder = 'Gjinia'value={profili.gjinia} name='gjinia' onChange={handleInputChangeProfili}/>
 
                 <Button floated='right' positive type ='submit' content='Submit'/>
-                <Button as={Link} to='/profilet' floated='right' type='button' content='Cancel'/>
+                <Button as={Link} to='/profili' floated='right' type='button' content='Cancel'/>
                 
             </Form>
         </Segment>

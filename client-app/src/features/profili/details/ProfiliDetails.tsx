@@ -47,7 +47,7 @@ export default function ProfiliDetails(){
             <Card.Content extra>
                 <Button.Group widths='2'>
                     <Button as={Link} to={`/manageProfili/${profili.id}`} basic color='blue' content='Edit'/>
-                    <Button as={Link} to='/profilet' basic color='grey' content='Cancel'/>
+                    <Button as={Link} to='/profili' basic color='grey' content='Cancel'/>
                 </Button.Group>
             </Card.Content>
         </Card>

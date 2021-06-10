@@ -76,11 +76,11 @@ const MbikeqyresitTemave ={
     
 }
 const Profilet ={
-    list: ()=> requests.get<Profili[]>('/profilet'),
-    details: (id:string)=> requests.get<Profili>(`/profilet/${id}`),
-    create:(profili:Profili)=>axios.post<void>('/profilet',profili),
-    update:(profili:Profili)=>axios.put<void>(`/profilet/${profili.id}`,profili),
-    delete: (id:string)=> axios.delete<void>(`/profilet/${id}`)
+    list: ()=> requests.get<Profili[]>('/profili'),
+    details: (id:string)=> requests.get<Profili>(`/profili/${id}`),
+    create:(profili:Profili)=>axios.post<void>('/profili',profili),
+    update:(profili:Profili)=>axios.put<void>(`/profili/${profili.id}`,profili),
+    delete: (id:string)=> axios.delete<void>(`/profili/${id}`)
     
 }
 

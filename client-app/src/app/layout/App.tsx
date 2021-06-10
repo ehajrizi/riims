@@ -66,8 +66,8 @@ function App() {
 
               <Container>
                 {/* Profili */}
-                <Route exact path='/profilet' component={ProfiliDashboard}/>
-                <Route path='/profilet/:id' component={ProfiliDetails}/>
+                <Route exact path='/profili' component={ProfiliDashboard}/>
+                <Route path='/profili/:id' component={ProfiliDetails}/>
                 <Route key={location.key} path={['/createProfili','/manageProfili/:id']} component={ProfiliForm}/>
               </Container>
                 
