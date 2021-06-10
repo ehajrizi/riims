@@ -18,7 +18,7 @@ export default class EksperiencaStore{
     get eksperiencatByDate(){
         return Array.from(this.eksperiencaRegistry.values()).sort((a,b) => 
         Date.parse(a.dataFillestare)-Date.parse(b.dataFillestare))
-    } //a,b activities qe krahasohen 
+    } 
 
     loadEksperiencat = async () => {
         this.loadingInitial = true;
@@ -26,7 +26,6 @@ export default class EksperiencaStore{
             const eksperiencat = await agent.Eksperiencat.list();
                 eksperiencat.forEach(eksperienca =>{
                     this.setEksperienca(eksperienca);
-                    //kryhet si action e sqet warnings
                   })
                   this.setLoadingInitial(false);
         }catch(error){
@@ -50,7 +49,6 @@ export default class EksperiencaStore{
                 })
                 this.setLoadingInitial(false);
                 return eksperienca;
-                //se perndryshe osht udefined e smeerret me set e sene
             }catch(error){
                 console.log(error);
                 this.setLoadingInitial(false);
@@ -59,7 +57,6 @@ export default class EksperiencaStore{
     }
 
     private setEksperienca = (eksperienca:  Eksperienca) => {
-        //eksperienca.dataFillestare = eksperienca.dataFillestare.split('T')[0]; 
         this.eksperiencaRegistry.set(eksperienca.id, eksperienca);
     }
 
@@ -97,7 +94,6 @@ export default class EksperiencaStore{
             await agent.Eksperiencat.update(eksperienca);
             runInAction(()=>{
                 this.eksperiencaRegistry.set(eksperienca.id,eksperienca);
-                //e krijon ni array t'ri edhe e zevedsojm tani ^ e largojm qat aktivitet qe e bojm update 
                 this.selectedEksperienca = eksperienca;
                 this.editMode = false;
                 this.loading = false;

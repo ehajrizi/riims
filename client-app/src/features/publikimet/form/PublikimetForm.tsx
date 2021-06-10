@@ -11,8 +11,6 @@ export default observer(function PublikimetForm(){
 
     const {publikimiStore} = useStore();
     const {loadPublikimi, createPublikimi, updatePublikimi, loading, loadingInitial} = publikimiStore;
-    //na nimon mi marr krejt props te activityStore
-    //pa pas nevoje me shkru activityStore.prop... gjithkun
     const {id} = useParams<{id: string}>();
 
     const [publikimi, setPublikimi] = useState({
@@ -31,23 +29,20 @@ export default observer(function PublikimetForm(){
         volumiFaqeve: '',
         referenca: '',
         autorKryesor: '',
-    }); //id ka me ekzistu gjithqysh se mrena useState
+    });
 
     useEffect(() => {
         if(id) loadPublikimi(id).then(publikimi => setPublikimi(publikimi!))
-        //jem sig qe sktheht undefines
+        
     },[id, loadPublikimi]);
-    //masi qe ka states duhet gjithqysh me add dependencies qe mos me render
-    //ton kohen pldh po veq kur ndryshon diqka
 
     function handleSubmitPublikimi(){
         if(publikimi.id.length === 0){
-            let newPublikimi = { //spread the activity
+            let newPublikimi = { 
                 ...publikimi,
                 id: uuid()
             };
             createPublikimi(newPublikimi).then(() => history.push(`/publikimet/${newPublikimi.id}`))
-            //mi push nnew location
         }else{
             updatePublikimi(publikimi).then(() => history.push(`/publikimet/${publikimi.id}`))
         }

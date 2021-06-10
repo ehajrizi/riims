@@ -34,7 +34,7 @@ export default observer(function PublikimetList()
                             <Item.Extra>
                                 <Button as={Link} to={`/publikimet/${publikimi.id}`} floated='right' content='View' color='blue'/>
                                 <Button 
-                                    name = {publikimi.id} //se po bohen load krejt butonat delete 
+                                    name = {publikimi.id}
                                     loading={loading && target === publikimi.id} 
                                     onClick={(e) => handlePublikimiDelete(e,publikimi.id)} 
                                     floated='right' 

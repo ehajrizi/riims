@@ -25,12 +25,11 @@ export const store: Store = {
     mbikeqyresitemaveStore: new MbikeqyresiTemaveStore(),
     profiliStore: new ProfiliStore(),
 
-}//qka ruhet nstore
+}
 
 
 export const StoreContext = createContext(store);
 
 export function useStore(){
     return useContext(StoreContext);
-} //react hook, qka dojm me perdor 
-//ku ruhen stores krejt qikjp store.ts
+} 

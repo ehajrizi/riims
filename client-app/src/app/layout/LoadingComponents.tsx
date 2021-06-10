@@ -2,7 +2,7 @@ import React from 'react';
 import { Dimmer, Loader } from 'semantic-ui-react';
 
 interface Props{
-    inverted?: boolean; //ngjyrat background ma dark
+    inverted?: boolean;
     content?: string;
 }
 

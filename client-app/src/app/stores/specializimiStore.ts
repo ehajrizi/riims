@@ -57,7 +57,6 @@ export default class SpecializimiStore {
     }
 
     private setSpecializimi = (specializimi: Specializimi) => {
-        //specializimi.date = specializimi.date.split('T')[0];
         this.specializimiRegistry.set(specializimi.id, specializimi);
     }
 

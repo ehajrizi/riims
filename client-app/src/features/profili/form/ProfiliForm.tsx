@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Button, Checkbox, Form, Segment } from 'semantic-ui-react';
-import { Profili } from '../../../app/models/profili';
 import {v4 as uuid} from 'uuid';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { useStore } from '../../../app/stores/store';

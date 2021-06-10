@@ -3,7 +3,6 @@ import { observer } from 'mobx-react-lite';
 import React, { SyntheticEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Checkbox, Item, Segment } from 'semantic-ui-react';
-import { Eksperienca } from '../../../app/models/eksperienca';
 import { useStore } from '../../../app/stores/store';
 
 export default observer( function EksperiencaList()
@@ -14,7 +13,6 @@ export default observer( function EksperiencaList()
     const [target, setTarget] = useState('');
 
     function handleEksperiencaDelete(e: SyntheticEvent<HTMLButtonElement>, id:string){
-        //e eshte eventi/klikimi 
         setTarget(e.currentTarget.name);
         deleteEksperienca(id);
     }
@@ -38,7 +36,7 @@ export default observer( function EksperiencaList()
                             <Item.Extra>
                                 <Button as={Link} to={`/eksperiencat/${eksperienca.id}`} floated='right' content='View' color='blue'/>
                                 <Button 
-                                    name = {eksperienca.id} //se po bohen load krejt butonat delete 
+                                    name = {eksperienca.id}
                                     loading={loading && target === eksperienca.id} 
                                     onClick={(e) => handleEksperiencaDelete(e,eksperienca.id)} 
                                     floated='right' 

@@ -43,7 +43,9 @@ export default observer(function SpecializimiForm() {
         const {name, value} = event.target;
         setSpecializimi({...specializimi, [name]: value})
     }
-    
+
+    if(loadingInitial) return <LoadingComponent content='Loading specializimi...'/>
+
     return (
         <Segment clearing>
             {<Form onSubmit={handleSubmitSpecializimi} autoComplete='off'>

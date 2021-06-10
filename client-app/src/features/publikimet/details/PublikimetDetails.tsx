@@ -9,16 +9,15 @@ export default observer(function PublikimetDetails(){
     const {publikimiStore} = useStore();
     const {selectedPublikimi: publikimi, loadPublikimi, loadingInitial} = publikimiStore;
     const {id} = useParams<{id: string}>();
-    //mos me specifiku se njeh id si string po si objekt e 
-    //id'ja se ka tipin objekt
+   
 
     useEffect(() => {
         if(id) loadPublikimi(id);
     },[id,loadPublikimi]);
-    //se varet prej tyne
+    
 
     if(loadingInitial || !publikimi) return <LoadingComponent/>;
-     //ok
+     
 
     return(
         <Card fluid>

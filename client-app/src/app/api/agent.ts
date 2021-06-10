@@ -16,17 +16,15 @@ axios.defaults.baseURL = 'http://localhost:5000/api';
 
 axios.interceptors.response.use(async response=> {
     try {
-        await sleep(1000); //delay by a second
-        return response; //tani ktheje response
-    } catch (error) { //nese ka error
+        await sleep(1000);
+        return response;
+    } catch (error) { 
         console.log(error);
         return await Promise.reject(error);
     }
 })
 
 const responseBody = <T> (response: AxiosResponse<T>) => response.data;
-//pasi qe skthen veq Activities, e qesim ni generic type ktu e e specifikojme 
-//me poshte
 
 const requests = {
     get: <T>(url: string) => axios.get<T>(url).then(responseBody),
