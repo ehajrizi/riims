@@ -4,6 +4,7 @@ export interface MbikeqyresiTemave{
     studenti:  string ;
     muaji: string ;
     viti: string ;
-    departamenti: string;
+    institucioni: string ;
+    fakulteti: string;
     niveliAkademik:string;  
 }

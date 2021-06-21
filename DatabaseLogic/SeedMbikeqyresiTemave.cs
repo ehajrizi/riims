@@ -19,36 +19,40 @@ namespace DatabaseLogic
                 {
                     TitulliTemes = "Roli i kompjutereve ne jeten e perditeshme",
                     Studenti = "Gertiana Sojeva",
-                    Muaji = "Shtator",
-                    Viti = "2019",
-                    Departamenti = "Shkenca Kompjuterike dhe Inxhinieri",
+                    Muaji = 10,
+                    Viti = 2019,
+                    Institucioni ="Ubt",
+                    Fakulteti = "Shkenca Kompjuterike dhe Inxhinieri",
                     NiveliAkademik = "Bsc",
                 },
                 new MbikeqyresiTemave
                 {
                     TitulliTemes = "Test1",
                     Studenti = "test",
-                    Muaji = "Shtator",
-                    Viti = "2019",
-                    Departamenti = "test",
+                    Muaji = 1,
+                    Viti = 2019,
+                    Institucioni ="Ubt",
+                    Fakulteti = "test",
                     NiveliAkademik = "Bsc",
                 },
                 new MbikeqyresiTemave
                 {
                     TitulliTemes = "Test2",
                     Studenti = "test2",
-                    Muaji = "Shtator",
-                    Viti = "2019",
-                    Departamenti = "test2",
+                    Muaji = 9,
+                    Viti = 2019,
+                    Institucioni ="Ubt",
+                    Fakulteti = "test2",
                     NiveliAkademik = "Bsc",
                 },
                 new MbikeqyresiTemave
                 {
                     TitulliTemes = "Test3",
                     Studenti = "test3",
-                    Muaji = "Shtator",
-                    Viti = "2019",
-                    Departamenti = "test3",
+                    Muaji = 2,
+                    Viti = 2019,
+                    Institucioni ="Ubt",
+                    Fakulteti = "test3",
                     NiveliAkademik = "Bsc",
                 }
             };

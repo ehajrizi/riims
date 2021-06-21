@@ -31,7 +31,10 @@ if(loadingInitial || !mbikeqyresitemave) return <LoadingComponent/>;
         {mbikeqyresitemave.viti}
       </Card.Description>
       <Card.Description>
-        {mbikeqyresitemave.departamenti}
+        {mbikeqyresitemave.institucioni}
+      </Card.Description>
+      <Card.Description>
+        {mbikeqyresitemave.fakulteti}
       </Card.Description>
       <Card.Description>
         {mbikeqyresitemave.niveliAkademik}

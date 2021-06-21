@@ -25,11 +25,12 @@ export default observer (function MbikeqyresiTemaveList()
                 {mbikeqyresitemaveByStudenti.map(mbikeqyresitemave =>(
                     <Item key={mbikeqyresitemave.id}>
                         <Item.Content>
-                            <Item.Header as='a'>{mbikeqyresitemave.titulliTemes}</Item.Header>
+                            <Item.Header >{mbikeqyresitemave.titulliTemes}</Item.Header>
                             <Item.Meta>{mbikeqyresitemave.studenti}</Item.Meta>
                             <Item.Description>
                         <div>{mbikeqyresitemave.muaji},{mbikeqyresitemave.viti} </div>  
-                        <div>{mbikeqyresitemave.departamenti}</div>      
+                        <div>{mbikeqyresitemave.institucioni}</div>  
+                        <div>{mbikeqyresitemave.fakulteti}</div>      
                         <div>{mbikeqyresitemave.niveliAkademik}</div>      
                             </Item.Description>
                             <Item.Extra>

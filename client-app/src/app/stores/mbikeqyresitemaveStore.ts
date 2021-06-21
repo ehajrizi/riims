@@ -15,7 +15,7 @@ export default class MbikeqyresiTemaveStore {
     }
 
     get mbikeqyresitemaveByStudenti() {
-        return Array.from(this.mbikeqyresitemaveRegistry.values()).sort((a, b) => (a.studenti.localeCompare(b.studenti))
+        return Array.from(this.mbikeqyresitemaveRegistry.values()).sort((a, b) => (a.titulliTemes.localeCompare(b.titulliTemes))
         )
     }
 

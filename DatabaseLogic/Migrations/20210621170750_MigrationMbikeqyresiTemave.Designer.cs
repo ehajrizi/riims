@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DatabaseLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210531123805_MigrationMbikeqyresiTemave")]
+    [Migration("20210621170750_MigrationMbikeqyresiTemave")]
     partial class MigrationMbikeqyresiTemave
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,6 +17,38 @@ namespace DatabaseLogic.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.6");
+
+            modelBuilder.Entity("Domain.Edukimi", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DataFillestare")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DataPerfundimtare")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Emri_i_Institucionit")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Fusha_e_Studimit")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Lokacioni")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Pershkrimi")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Titulli")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Edukimet");
+                });
 
             modelBuilder.Entity("Domain.Eksperienca", b =>
                 {
@@ -65,11 +97,14 @@ namespace DatabaseLogic.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Departamenti")
+                    b.Property<string>("Fakulteti")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Muaji")
+                    b.Property<string>("Institucioni")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("Muaji")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("NiveliAkademik")
                         .HasColumnType("TEXT");
@@ -80,12 +115,53 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("TitulliTemes")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Viti")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Viti")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.ToTable("MbikeqyresitTemave");
+                });
+
+            modelBuilder.Entity("Domain.Profili", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DataELindjes")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Emri")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmriIMesem")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FotoUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<char>("Gjinia")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Mbiemri")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NrTelefonit")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ShtetiILindjes")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TitulliShkencor")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("VendiILindjes")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Profilet");
                 });
 
             modelBuilder.Entity("Domain.Publikimi", b =>
@@ -139,6 +215,35 @@ namespace DatabaseLogic.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Publikimet");
+                });
+
+            modelBuilder.Entity("Domain.Specializimi", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DataFillestare")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DataPerfundimtare")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmriInstitucionit")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Lokacioni")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Pershkrimi")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Titulli")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Specializimet");
                 });
 #pragma warning restore 612, 618
         }

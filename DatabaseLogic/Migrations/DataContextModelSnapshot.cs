@@ -95,11 +95,14 @@ namespace DatabaseLogic.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Departamenti")
+                    b.Property<string>("Fakulteti")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Muaji")
+                    b.Property<string>("Institucioni")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("Muaji")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("NiveliAkademik")
                         .HasColumnType("TEXT");
@@ -110,8 +113,8 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("TitulliTemes")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Viti")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Viti")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
