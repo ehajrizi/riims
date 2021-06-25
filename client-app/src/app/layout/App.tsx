@@ -1,29 +1,15 @@
 import React from 'react';
-import { Container} from 'semantic-ui-react';
-import NavBar from './NavBar';
-import EksperiencaDashboard from '../../features/eksperiencat/dashboard/EksperiencaDashboard';
+import './styles.css';
+import { Button, Card, Container, Divider, Grid, Header, Segment } from 'semantic-ui-react';
+import { Link, Route, useLocation } from 'react-router-dom';
+import ImageExampleCircular from './Image';
+import scrollToPublikimet, { scrollToAnetaresia, scrollToCertifikimet, scrollToEdukimi, scrollToEksperiencat, scrollToHonorsAndAwards, scrollToMbikeqyresITemave, scrollToProjektet, scrollToTop } from '../styling-functions/Scrolling';
 import EdukimiDashboard from '../../features/edukimet/dashboard/EdukimiDashboard';
-import SpecializimiDashboard from '../../features/specializimet/dashboard/SpecializimiDashboard';
-import PublikimetDashboard from '../../features/publikimet/dashboard/PublikimetDashboard';
-import ProfiliDashboard from '../../features/profili/dashboard/ProfiliDashboard';
+import PublikimetDashboard from '../../features/Publikimet/dashboard/PublikimetDashboard';
+import Footer from './Footer';
+import EksperiencaDashboard from '../../features/eksperiencat/dashboard/EksperiencaDashboard';
 import MbikeqyresiTemaveDashboard from '../../features/mbikeqyresittemave/dashboard/MbikeqyresiTemaveDashboard';
-import EksperiencaDetails from '../../features/eksperiencat/details/EksperiencaDetails';
-import EksperiencaForm from '../../features/eksperiencat/form/EksperiencaForm';
-import EdukimiDetails from '../../features/edukimet/details/EdukimiDetails';
-import EdukimiForm from '../../features/edukimet/form/EdukimiForm';
-import PublikimetForm from '../../features/publikimet/form/PublikimetForm';
-import PublikimetDetails from '../../features/publikimet/details/PublikimetDetails';
-import SpecializimiDetails from '../../features/specializimet/details/SpecializimiDetails';
-import SpecializimiForm from '../../features/specializimet/form/SpecializimiForm';
-import MbikeqyresiTemaveDetails from '../../features/mbikeqyresittemave/details/MbikeqyresiTemaveDetails';
-import MbikeqyresiTemaveForm from '../../features/mbikeqyresittemave/form/MbikeqyresiTemaveForm';
-import ProfiliDetails from '../../features/profili/details/ProfiliDetails';
-import ProfiliForm from '../../features/profili/form/ProfiliForm';
-
-import { observer } from 'mobx-react-lite';
-import { Route, useLocation } from 'react-router-dom';
-
-
+import NavBar from './NavBar';
 
 
 function App() {
@@ -31,52 +17,79 @@ function App() {
   const location = useLocation();
   return (
     <>
-      
-            <>
-            <NavBar/>
-              <Container style={{marginTop:'7em'}}>
-                <Route exact path='/eksperiencat' component={EksperiencaDashboard}/>
-                <Route path='/eksperiencat/:id' component={EksperiencaDetails}/>
-                <Route key={location.key} path={['/createEksperienca', '/manage/:id']} component={EksperiencaForm}/>
-              </Container>
-              <Container>
-                {/* Edukimi */}
-                <Route exact path='/edukimet' component={EdukimiDashboard}/>
-                <Route path='/edukimet/:id' component={EdukimiDetails}/>
-                <Route key={location.key} path={['/createEdukimi', '/manageEdukimi/:id']} component={EdukimiForm}/>
-                </Container>
-              <Container>
-                {/* Publikimet */}
-                <Route exact path='/publikimet' component={PublikimetDashboard}/>
-                <Route path='/publikimet/:id' component={PublikimetDetails}/>
-                <Route key={location.key} path={['/createPublikimi', '/managePublikimi/:id']} component={PublikimetForm}/>
-              </Container>
-              <Container>
-                {/* Specializimi */}
-                <Route exact path='/specializimet' component={SpecializimiDashboard}/>
-                <Route path='/specializimet/:id' component={SpecializimiDetails}/>
-                <Route key={location.key} path={['/createSpecializimi', '/manageSpecializimi/:id']} component={SpecializimiForm}/>
-              </Container>
-              <Container>
-                {/* Mbikeqyresi */}
-                <Route exact path='/mbikeqyresitemave' component={MbikeqyresiTemaveDashboard}/>
-                <Route path='/mbikeqyresitemave/:id' component={MbikeqyresiTemaveDetails}/>
-                <Route key={location.key} path={['/createMbikeqyresiTemave','/managembikeqyresitemave/:id']} component={MbikeqyresiTemaveForm}/>
-              </Container>
-
-              <Container>
-                {/* Profili */}
-                <Route exact path='/profili' component={ProfiliDashboard}/>
-                <Route path='/profili/:id' component={ProfiliDetails}/>
-                <Route key={location.key} path={['/createProfili','/manageProfili/:id']} component={ProfiliForm}/>
-              </Container>
-                
-            </>
-
-       
-   </>
+      <Segment className={'navbar'}>
+        <NavBar />
+      </Segment>
+      <Grid centered>
+        <Grid.Column width='12'>
+          <Segment style={{ marginTop: 60 }}>
+            <Grid>
+              <Grid.Column width='5'>
+                <ImageExampleCircular />
+              </Grid.Column>
+              <Grid.Column width='11'>
+                <Grid columns={2}>
+                  <Grid.Column width='8'>
+                    <Header style={{ marginTop: 50 }}>Name Surname</Header>
+                    <Header style={{ marginTop: 20 }}>Name Surname</Header>
+                    <Header style={{ marginTop: 20 }}>Name Surname</Header>
+                  </Grid.Column>
+                  <Grid.Column width='8'>
+                    <Header style={{ marginTop: 50 }}>Name Surname</Header>
+                    <Header style={{ marginTop: 20 }}>Name Surname</Header>
+                  </Grid.Column>
+                </Grid>
+                <Divider vertical />
+              </Grid.Column>
+            </Grid>
+          </Segment>
+        </Grid.Column>
+      </Grid>
+      <Grid width='16' stretched centered>
+        <Card.Group itemsPerRow={8}>
+          <Card fluid color='orange' header='Eksperiencat' onClick={scrollToEksperiencat} />
+          <Card fluid color='yellow' header='Edukimi' onClick={scrollToEdukimi} />
+          <Card fluid color='green' header='Certifikimet' onClick={scrollToCertifikimet} />
+          <Card fluid color='blue' header='Mbikeqyres i temave' onClick={scrollToMbikeqyresITemave} />
+          <Card fluid color='red' header='Publikimet' onClick={scrollToPublikimet} as={Link} to='/publikimet' />
+          <Card fluid color='pink' header='Projektet' onClick={scrollToProjektet} />
+          <Card fluid color='pink' header='Anetaresia' onClick={scrollToAnetaresia} />
+          <Card fluid color='pink' header='Honors & Awards' onClick={scrollToHonorsAndAwards} />
+        </Card.Group>
+      </Grid>
+      <Segment className={'eksperiencat'} basic>
+        <EksperiencaDashboard />
+      </Segment>
+      <Segment className={'edukimi'} basic>
+        <EdukimiDashboard />
+      </Segment>
+      {/* <Segment className={'certifikimet'} basic>
+        <CertifikimetDashboard />
+      </Segment> */}
+      <Segment className={'mbikeqyrestemave'} basic>
+        <MbikeqyresiTemaveDashboard />
+      </Segment>
+      <Segment className={'publikimet'} basic>
+        <Container>
+          {/* Publikimet */}
+          <Route exact path='' component={PublikimetDashboard} />
+          {/* <Route path='/publikimet/:id' component={PublikimetDetails} /> */}
+          {/* <Route key={location.key} path={['/createPublikimi', '/managePublikimi/:id']} component={PublikimetForm} /> */}
+        </Container>
+      </Segment>
+      {/* <Segment className={'projektet'} basic>
+        <ProjektetDashboard />
+      </Segment>
+      <Segment className={'anetaresia'} basic>
+        <AnetaresiaDashboard />
+      </Segment>
+      <Segment className={'honorsawards'} basic>
+        <HonorsAndAwardsDashboard />
+      </Segment> */}
+          <Button className='angleUp' icon='angle up' size='massive' onClick={scrollToTop} as={Link} to='' />
+      <Footer />
+    </>
   );
 }
 
-
-export default observer(App);
+export default App;
