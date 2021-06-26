@@ -10,12 +10,11 @@ import {
     Wrapper,
     Header,
     StyledModal,
-    HeaderText,
     CloseButton,
-    Content,
     Backdrop,
     FormClass,
 } from '../../modal.style';
+
 export interface ModalProps {
     isShown: boolean;
     hide: () => void;
@@ -48,7 +47,6 @@ export default observer(function PublikimetForm({ isShown, hide }: ModalProps) {
 
     useEffect(() => {
         if (id) loadPublikimi(id).then(publikimi => setPublikimi(publikimi!))
-
     }, [id, loadPublikimi]);
 
     function handleSubmitPublikimi() {
