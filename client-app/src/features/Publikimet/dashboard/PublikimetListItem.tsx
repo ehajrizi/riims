@@ -38,7 +38,7 @@ export default observer(function PublikimetListItem({ publikimi }: Props) {
                     <Card.Content>
                         <Grid>
                             <Grid.Column width='12'>
-                                <Card.Header as={Link} to={`/publikimet/${publikimi.id}`}><a className="read-more-link" onClick={() => { setReadMore(!readMore) }}><h4>{publikimi.titulli}</h4></a></Card.Header>
+                                <Card.Header><a className="read-more-link" onClick={() => { setReadMore(!readMore) }}><h4>{publikimi.titulli}</h4></a></Card.Header>
                             </Grid.Column>
                             <Grid.Column width='4'>
                                 <Grid style={{ marginTop: '-25px' }}>

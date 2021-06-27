@@ -10,9 +10,6 @@ import Footer from './Footer';
 import EksperiencaDashboard from '../../features/eksperiencat/dashboard/EksperiencaDashboard';
 import MbikeqyresiTemaveDashboard from '../../features/mbikeqyresittemave/dashboard/MbikeqyresiTemaveDashboard';
 import NavBar from './NavBar';
-import HomePage from './HomePage';
-import PublikimetDetails from '../../features/Publikimet/details/PublikimetDetails';
-import PublikimetForm from '../../features/Publikimet/form/PublikimetForm';
 
 
 function App() {
@@ -20,22 +17,7 @@ function App() {
   const location = useLocation();
   return (
     <>
-    <HomePage/>
-    <Route
-        path={'/(.+)'}
-        render={() => (
-          <>
-            <NavBar />
-            <Container style={{ marginTop: '7em' }}>
-              <Switch>
-                <Route exact path='/publikimet' component={PublikimetDashboard} />
-                <Route key={location.key} path={['/createActivity', '/manage/:id']} component={PublikimetForm} />
-              </Switch>
-            </Container>
-          </>
-        )}
-      />
-      {/* <Segment className={'navbar'}>
+      <Segment className={'navbar'}>
         <NavBar />
       </Segment>
       <Grid centered>
@@ -84,17 +66,17 @@ function App() {
       {/* <Segment className={'certifikimet'} basic>
         <CertifikimetDashboard />
       </Segment> */}
-      {/* <Segment className={'mbikeqyrestemave'} basic>
+      <Segment className={'mbikeqyrestemave'} basic>
         <MbikeqyresiTemaveDashboard />
       </Segment>
       <Segment className={'publikimet'} basic>
-        <Container>
-          Publikimet
-          <Route exact path='' component={PublikimetDashboard} />
+        {/* <Container>
+          <Route exact path='/publikimet' component={PublikimetDashboard} />
           <Route path='/publikimet/:id' component={PublikimetDetails} />
           <Route key={location.key} path={['/createPublikimi', '/managePublikimi/:id']} component={PublikimetForm} />
-        </Container>
-      </Segment> */}
+        </Container> */}
+        <PublikimetDashboard/>
+      </Segment>
       {/* <Segment className={'projektet'} basic>
         <ProjektetDashboard />
       </Segment>
@@ -103,9 +85,9 @@ function App() {
       </Segment>
       <Segment className={'honorsawards'} basic>
         <HonorsAndAwardsDashboard />
-      </Segment> *
-          <Button className='angleUp' icon='angle up' size='massive' onClick={scrollToTop} as={Link} to='' />
-      <Footer /> */}
+      </Segment>  */}
+      <Button className='angleUp' icon='angle up' size='massive' onClick={scrollToTop} as={Link} to='' />
+      <Footer />
     </>
   );
 }

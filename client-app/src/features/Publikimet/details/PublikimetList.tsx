@@ -35,7 +35,9 @@ export default observer(function PublikimetList() {
                     <Header content='Publikimet' />
                 </Grid.Column>
                 <Grid.Column width='1' >
-                    <Button onClick={toggle} className="btn" ><Icon className='btnIcon' name='plus' size='large' /><Route key={location.key} path={['/createPublikimi', '/manage/:id']} component={PublikimetForm} /></Button>
+                    <Button onClick={toggle} as={Link} to='/createPublikimi' className="btn" ><Icon className='btnIcon' name='plus' size='large' />
+                        {/* <Route key={location.key} path={['/createPublikimi', '/manage/:id']} component={PublikimetForm} /> */}
+                    </Button>
                     <PublikimetForm isShown={isShown} hide={toggle} />
                 </Grid.Column>
             </Grid>
