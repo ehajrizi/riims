@@ -13,6 +13,7 @@ namespace Application.Core
             CreateMap<Specializimi, Specializimi>();
             CreateMap<Edukimi, Edukimi>();
             CreateMap<Profili, Profili>();
+            CreateMap<Certifikimi, Certifikimi>();
         }
     }
 }

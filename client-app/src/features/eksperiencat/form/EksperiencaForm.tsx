@@ -17,7 +17,7 @@ export default observer(function EksperiencaForm({isShown, hide} : ModalProps){
     const history = useHistory();
 
     const {eksperiencaStore} = useStore();
-    const {loadEksperienca,createEksperienca,updateEksperienca,loading, loadingInitial} = eksperiencaStore;
+    const {loadEksperienca,createEksperienca,updateEksperienca,loadingInitial} = eksperiencaStore;
     const {id} = useParams<{id: string}>();
 
     const [eksperienca, setEksperienca] = useState({
@@ -66,7 +66,7 @@ export default observer(function EksperiencaForm({isShown, hide} : ModalProps){
                             <CloseButton onClick={hide} as={Link} to='/eksperiencat'>X</CloseButton>
                         </Header>
                         <FormClass>
-                            <Form onSubmit={handleSubmitEksperienca} autoComplete='on'>
+                            <Form onSubmit={handleSubmitEksperienca} autoComplete='off'>
                                 <Form.Input placeholder='Titulli' value={eksperienca.titulli} name='titulli' onChange={handleInputChangeEksperienca}/>
                                 <Checkbox label='Pune primare' />
                                 <Form.Input placeholder='Emri i institucionit' value={eksperienca.emriInstitucionit} name='emriInstitucionit' onChange={handleInputChangeEksperienca}/>
@@ -78,7 +78,7 @@ export default observer(function EksperiencaForm({isShown, hide} : ModalProps){
                                 <Form.Input placeholder='Email' value={eksperienca.email} name='email' onChange={handleInputChangeEksperienca}/>
                                 <Form.Input placeholder='Numri i Telefonit'value={eksperienca.numriTelefonit} name='numriTelefonit' onChange={handleInputChangeEksperienca}/>
                                 <Button onClick={handleSubmitEksperienca} floated='right' positive type='submit' content='Submit'/>
-                                <Button onClick={hide} as={Link} to='/eksperiencat' floated='right' type='button' content='Cancel'/>
+                                <Button onClick={hide} as={Link} to='/eksperiencat' floated='right' content='Cancel'/>
                             </Form>
                         </FormClass>
                     </StyledModal>
