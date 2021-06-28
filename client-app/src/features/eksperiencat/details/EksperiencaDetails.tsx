@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { Button, Card} from 'semantic-ui-react'
 import LoadingComponent from '../../../app/layout/LoadingComponents';
-import { Eksperienca } from '../../../app/models/eksperienca'
 import { useStore } from '../../../app/stores/store';
 
 export default function EksperiencaDetails(){

@@ -47,7 +47,7 @@ function App() {
       </Grid>
       <Grid width='16' stretched centered>
         <Card.Group itemsPerRow={8}>
-          <Card fluid color='orange' header='Eksperiencat' onClick={scrollToEksperiencat} />
+          <Card fluid color='orange' header='Eksperiencat' onClick={scrollToEksperiencat} as={Link} to='/eksperiencat'/>
           <Card fluid color='yellow' header='Edukimi' onClick={scrollToEdukimi} />
           <Card fluid color='green' header='Certifikimet' onClick={scrollToCertifikimet} />
           <Card fluid color='blue' header='Mbikeqyres i temave' onClick={scrollToMbikeqyresITemave} />

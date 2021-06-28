@@ -4,10 +4,10 @@ import React, { useEffect } from 'react';
 import { Button, Divider, Form, Grid, Header, Icon, Item, Label, Modal } from 'semantic-ui-react';
 import { Publikimi } from '../../../app/models/publikimi';
 import { useModal } from '../../useModal';
-import PublikimetForm from '../form/PublikimetForm';
 import { useStore } from '../../../app/stores/store';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import PublikimetList from '../details/PublikimetList';
+
 
 interface Props {
     publikimet: Publikimi[];
