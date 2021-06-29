@@ -14,6 +14,7 @@ namespace Application.Core
             CreateMap<Edukimi, Edukimi>();
             CreateMap<Profili, Profili>();
             CreateMap<Certifikimi, Certifikimi>();
+            CreateMap<Projekti, Projekti>();
         }
     }
 }

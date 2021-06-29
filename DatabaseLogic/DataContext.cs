@@ -16,5 +16,6 @@ namespace DatabaseLogic
         public DbSet<Edukimi> Edukimet { get; set; }
         public DbSet<Profili> Profilet { get; set; }
         public DbSet<Certifikimi> Certifikimet { get; set; }
+        public DbSet<Projekti> Projektet { get; set; }
     }
 }

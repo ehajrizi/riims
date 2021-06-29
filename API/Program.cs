@@ -33,6 +33,7 @@ namespace API
                 await SeedEdukimi.SeedDataEd(context);
                 await SeedProfili.SeedDataP(context);
                 await SeedCertifikimi.SeedData(context);
+                await SeedProjektet.SeedDataProjekti(context);
             }
             catch(Exception ex)
             {

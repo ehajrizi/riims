@@ -42,6 +42,7 @@ namespace API.Extensions
             services.AddMediatR(typeof(Application.Edukimet.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.Profilet.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.Certifikimet.List.Handler).Assembly);
+            services.AddMediatR(typeof(Application.Projektet.List.Handler).Assembly);
             
 
             return services;

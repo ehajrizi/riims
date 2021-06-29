@@ -6,6 +6,7 @@ import { Publikimi } from '../../../app/models/publikimi';
 import { useStore } from '../../../app/stores/store';
 import { useModal } from '../../useModal';
 import PublikimetForm from '../form/PublikimetForm';
+import PublikimetFormEdit from '../form/PublikimetFormEdit';
 
 
 interface Props {
@@ -45,7 +46,7 @@ export default observer(function PublikimetListItem({ publikimi }: Props) {
                                 <Grid style={{ marginTop: '-25px' }}>
                                     <Grid.Column width='3'>
                                         <Button onClick={toggle} as={Link} to={`/managePublikimi/${publikimi.id}`} className="btn" style={{ marginLeft: '3.8em' }} size='small'><Icon className='btnIcon' name='edit' /></Button>
-                                        <PublikimetForm isShown={isShown} hide={toggle} />
+                                        <PublikimetFormEdit isShown={isShown} hide={toggle} />
                                     </Grid.Column>
                                     <Grid.Column width='1'>
                                         <Button name={publikimi.id}
