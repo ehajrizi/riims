@@ -49,7 +49,6 @@ export default observer(function EksperiencaForm({isShown, hide} : ModalProps){
         }else{
             updateEksperienca(eksperienca).then(() => history.push(`/eksperiencat/${eksperienca.id}`))
             modalStore.closeModal();
-
         }   
     }
 

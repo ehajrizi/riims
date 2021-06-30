@@ -19,7 +19,7 @@ interface Store{
     profiliStore: ProfiliStore
     projektiStore: ProjektiStore
     honorandawardStore:HonorandAwardStore
-    modalStore: ModalStore;
+    modalStore: ModalStore
 
 }
 
@@ -33,6 +33,8 @@ export const store: Store = {
     projektiStore: new ProjektiStore(),
     honorandawardStore: new HonorandAwardStore(),
     modalStore: new ModalStore(),
+
+
 }
 
 
