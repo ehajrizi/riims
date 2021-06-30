@@ -1,57 +1,56 @@
-import { format } from 'date-fns';
 import { observer } from 'mobx-react-lite';
 import React, { SyntheticEvent, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Button, Card, Checkbox, Divider, Grid, Header, Icon, Item, Segment } from 'semantic-ui-react';
-import { Publikimi } from '../../../app/models/publikimi';
+import { Projekti } from '../../../app/models/projekti';
 import { useStore } from '../../../app/stores/store';
 import { useModal } from '../../useModal';
-import PublikimetFormEdit from '../form/PublikimetFormEdit';
+import ProjektetFormEdit from '../form/ProjektetFormEdit';
 
 
 interface Props {
-    publikimi: Publikimi;
+    projekti: Projekti;
 }
 
-export default observer(function PublikimetListItem({ publikimi }: Props) {
+export default observer(function PublikimetListItem({ projekti }: Props) {
     const location = useLocation();
 
     const { isShown, toggle } = useModal();
-    const { publikimiStore } = useStore();
-    const { deletePublikimi, publikimetByDate, loading } = publikimiStore;
+    const { projektiStore } = useStore();
+    const { deleteProjekti, projektetByDate, loading } = projektiStore;
 
     const [target, setTarget] = useState('');
 
-    function handlePublikimiDelete(e: SyntheticEvent<HTMLButtonElement>, id: string) {
+    function handleProjektiDelete(e: SyntheticEvent<HTMLButtonElement>, id: string) {
         setTarget(e.currentTarget.name);
-        deletePublikimi(id);
+        deleteProjekti(id);
     }
     const [readMore, setReadMore] = useState(false);
     const extraContent = <div>
-        <Card.Meta>
-            <span>{publikimi.referenca}</span>
-            <span>{publikimi.linkuPublikimit}</span>
-        </Card.Meta>
+        {/* <Card.Meta>
+            <span>{projekti.referenca}</span>
+            <span>{projekti.linkuPublikimit}</span>
+        </Card.Meta> */}
     </div>
     return (
         <>
-            <Item key={(publikimi.id)}>
+            <Item key={(projekti.id)}>
                 <Card fluid style={{ marginBottom: '8px' }}>
                     <Card.Content>
                         <Grid>
                             <Grid.Column width='12'>
-                                <Card.Header><a className="read-more-link" onClick={() => { setReadMore(!readMore) }}><h4>{publikimi.titulli}</h4></a></Card.Header>
+                                <Card.Header><a className="read-more-link" onClick={() => { setReadMore(!readMore) }}><h4>{projekti.emriProjektit}</h4></a></Card.Header>
                             </Grid.Column>
                             <Grid.Column width='4'>
                                 <Grid style={{ marginTop: '-25px' }}>
                                     <Grid.Column width='3'>
-                                        <Button onClick={toggle} as={Link} to={`/managePublikimi/${publikimi.id}`} className="btn" style={{ marginLeft: '3.8em' }} size='small'><Icon className='btnIcon' name='edit' /></Button>
-                                        <PublikimetFormEdit isShown={isShown} hide={toggle} publikimi={publikimi}/>
+                                        <Button onClick={toggle} as={Link} to={`/managePublikimi/${projekti.id}`} className="btn" style={{ marginLeft: '3.8em' }} size='small'><Icon className='btnIcon' name='edit' /></Button>
+                                        <ProjektetFormEdit isShown={isShown} hide={toggle} />
                                     </Grid.Column>
                                     <Grid.Column width='1'>
-                                        <Button name={publikimi.id}
-                                            loading={loading && target === publikimi.id}
-                                            onClick={(e) => handlePublikimiDelete(e, publikimi.id)}
+                                        <Button name={projekti.id}
+                                            loading={loading && target === projekti.id}
+                                            onClick={(e) => handleProjektiDelete(e, projekti.id)}
                                             className="btn"
                                             style={{ marginLeft: '4.1em' }}
                                             size='small'>
@@ -62,13 +61,12 @@ export default observer(function PublikimetListItem({ publikimi }: Props) {
                             </Grid.Column>
                         </Grid>
                         <Card.Meta>
-                            <span>{publikimi.vendi}, {publikimi.emertimiEvent}, {publikimi.volumiFaqeve}</span>
-                            <span>{format(publikimi.data!, 'dd MMM yyyy')}</span>
+                            <span>{projekti.institucioni}, {projekti.lokacioni}</span>
                         </Card.Meta>
                         <Card.Description>
-                            {publikimi.statusi}, {publikimi.llojiPublikimit} <br />
-                            {publikimi.lenda}, {publikimi.kategoria} <br />
-                            {publikimi.departamenti}, {publikimi.institucioni}
+                            {projekti.dataFillimit} - {projekti.dataMbarimit} <br />
+                            {projekti.buxheti}, ({projekti.emriKlientit}) <br />
+                            {projekti.pershkrimi}
                         </Card.Description>
                         <Card.Meta>
                             {readMore && extraContent}

@@ -10,6 +10,7 @@ import Footer from './Footer';
 import EksperiencaDashboard from '../../features/eksperiencat/dashboard/EksperiencaDashboard';
 import MbikeqyresiTemaveDashboard from '../../features/mbikeqyresittemave/dashboard/MbikeqyresiTemaveDashboard';
 import NavBar from './NavBar';
+import ProjektetDashboard from '../../features/projektet/dashboard/ProjektetDashboard';
 
 
 function App() {
@@ -52,7 +53,7 @@ function App() {
           <Card fluid color='green' header='Certifikimet' onClick={scrollToCertifikimet} />
           <Card fluid color='blue' header='Mbikeqyres i temave' onClick={scrollToMbikeqyresITemave} />
           <Card fluid color='red' header='Publikimet' onClick={scrollToPublikimet} as={Link} to='/publikimet' />
-          <Card fluid color='pink' header='Projektet' onClick={scrollToProjektet} />
+          <Card fluid color='pink' header='Projektet' onClick={scrollToProjektet} as={Link} to='/projektet' />
           <Card fluid color='pink' header='Anetaresia' onClick={scrollToAnetaresia} />
           <Card fluid color='pink' header='Honors & Awards' onClick={scrollToHonorsAndAwards} />
         </Card.Group>
@@ -77,10 +78,10 @@ function App() {
         </Container> */}
         <PublikimetDashboard/>
       </Segment>
-      {/* <Segment className={'projektet'} basic>
+      <Segment className={'projektet'} basic>
         <ProjektetDashboard />
       </Segment>
-      <Segment className={'anetaresia'} basic>
+      {/* <Segment className={'anetaresia'} basic>
         <AnetaresiaDashboard />
       </Segment>
       <Segment className={'honorsawards'} basic>

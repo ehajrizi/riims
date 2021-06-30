@@ -5,6 +5,7 @@ import MbikeqyresiTemaveStore from "./mbikeqyresitemaveStore";
 import PublikimiStore from "./publikimiStore";
 import SpecializimiStore from "./specializimiStore";
 import ProfiliStore from "./profiliStore";
+import ProjektiStore from "./projektiStore";
 
 
 interface Store{
@@ -14,6 +15,7 @@ interface Store{
     specializimiStore: SpecializimiStore
     mbikeqyresitemaveStore: MbikeqyresiTemaveStore
     profiliStore: ProfiliStore
+    projektiStore: ProjektiStore
 
 }
 
@@ -24,8 +26,11 @@ export const store: Store = {
     specializimiStore: new SpecializimiStore(),
     mbikeqyresitemaveStore: new MbikeqyresiTemaveStore(),
     profiliStore: new ProfiliStore(),
+    projektiStore: new ProjektiStore(),
 
 }
+
+
 
 
 export const StoreContext = createContext(store);

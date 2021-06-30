@@ -8,19 +8,6 @@ import { useStore } from '../../../app/stores/store';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import PublikimetList from '../details/PublikimetList';
 
-
-interface Props {
-    publikimet: Publikimi[];
-    selectedPublikimi: Publikimi | undefined;
-    selectPublikimi: (id: string) => void;
-    cancelSelectPublikimi: () => void;
-    editModePublikimi: boolean;
-    openFormPublikimi: (id: string) => void;
-    closeFormPublikimi: () => void
-    createOrEditPublikimi: (publikimi: Publikimi) => void;
-    deletePublikimi: (id: string) => void;
-}
-
 export default observer(function PublikimetDashboard(){
 
 

@@ -2,7 +2,7 @@ export interface Publikimi {
     id: string;
     titulli: string;
     emertimiEvent: string;
-    data: string;
+    data: Date | null;
     vendi: string;
     statusi: string;
     llojiPublikimit: string;

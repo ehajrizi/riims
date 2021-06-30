@@ -1,4 +1,3 @@
-
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Publikimi } from "../models/publikimi";
@@ -9,7 +8,7 @@ export default class PublikimiStore {
     selectedPublikimi: Publikimi | undefined = undefined;
     editMode = false;
     loading = false;
-    loadingInitial = true;
+    loadingInitial = false;
 
 
     constructor() {
@@ -17,8 +16,7 @@ export default class PublikimiStore {
     }
 
     get publikimetByDate() {
-        return Array.from(this.publikimiRegistry.values()).sort((a, b) =>
-            Date.parse(a.data) - Date.parse(b.data));
+        return Array.from(this.publikimiRegistry.values()).sort((a, b) => a.data!.getTime() - b.data!.getTime());
     }
 
     loadPublikimet = async () => {
@@ -27,6 +25,7 @@ export default class PublikimiStore {
             const publikimet = await agent.Publikimet.list();
             publikimet.forEach(publikimi => {
                 this.setPublikimi(publikimi);
+                //kryhet si action e sqet warnings
             })
             this.setLoadingInitial(false);
         } catch (error) {
@@ -50,6 +49,7 @@ export default class PublikimiStore {
                 })
                 this.setLoadingInitial(false);
                 return publikimi;
+                //se perndryshe osht udefined e smeerret me set e sene
             } catch (error) {
                 console.log(error);
                 this.setLoadingInitial(false);
@@ -58,6 +58,7 @@ export default class PublikimiStore {
     }
 
     private setPublikimi = (publikimi: Publikimi) => {
+        publikimi.data = new Date(publikimi.data!);
         this.publikimiRegistry.set(publikimi.id, publikimi);
     }
 
@@ -69,13 +70,13 @@ export default class PublikimiStore {
         this.loadingInitial = state;
     }
 
+
     createPublikimi = async (publikimi: Publikimi) => {
         this.loading = true;
         try {
             await agent.Publikimet.create(publikimi);
             runInAction(() => {
                 this.publikimiRegistry.set(publikimi.id, publikimi);
-                this.selectedPublikimi = publikimi;//kqyre qitu mos ka gabim??
                 this.editMode = false;
                 this.loading = false;
             })

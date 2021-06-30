@@ -5,6 +5,7 @@ import { MbikeqyresiTemave } from '../models/mbikeqyresitemave';
 import { Publikimi } from '../models/publikimi';
 import { Specializimi } from '../models/specializimi';
 import { Profili } from '../models/profili';
+import { Projekti } from '../models/projekti';
 
 const sleep = (delay: number) => {
     return new Promise((resolve) => {
@@ -82,6 +83,13 @@ const Profilet ={
     
 }
 
+const Projektet = {
+    list: () => requests.get<Projekti[]>('/projektet'),
+    details: (id: string) => requests.get<Projekti>(`/projektet/${id}`),
+    create: (projekti : Projekti) => axios.post<void>(`/projektet`, projekti),
+    update: (projekti : Projekti) => axios.put<void>(`/projektet/${projekti.id}`, projekti),
+    delete: (id: string) => axios.delete<void>(`/projektet/${id}`)
+}
 
 const agent = {
     Eksperiencat,
@@ -89,7 +97,8 @@ const agent = {
     Publikimet,
     Specializimet,
     MbikeqyresitTemave,
-    Profilet
+    Profilet,
+    Projektet
 }
 
 export default agent;
