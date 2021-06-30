@@ -19,5 +19,6 @@ namespace DatabaseLogic
         public DbSet<Projekti> Projektet { get; set; }
         public DbSet<Gjuha> Gjuhet { get; set; }
         public DbSet<HonorandAward> HonorsandAwards { get; set; }
+        public DbSet<Anetaresia> Anetaresite { get; set; }
     }
 }

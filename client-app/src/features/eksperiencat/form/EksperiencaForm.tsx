@@ -16,7 +16,7 @@ export interface ModalProps{
 export default observer(function EksperiencaForm({isShown, hide} : ModalProps){
     const history = useHistory();
 
-    const {eksperiencaStore} = useStore();
+    const {eksperiencaStore, modalStore} = useStore();
     const {loadEksperienca,createEksperienca,updateEksperienca,loadingInitial} = eksperiencaStore;
     const {id} = useParams<{id: string}>();
 
@@ -45,8 +45,11 @@ export default observer(function EksperiencaForm({isShown, hide} : ModalProps){
                 id: uuid()
             };
             createEksperienca(newEksperienca).then(() => history.push(`/eksperiencat/${newEksperienca.id}`))
+            modalStore.closeModal();
         }else{
             updateEksperienca(eksperienca).then(() => history.push(`/eksperiencat/${eksperienca.id}`))
+            modalStore.closeModal();
+
         }   
     }
 

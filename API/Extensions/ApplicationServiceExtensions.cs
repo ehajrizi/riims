@@ -4,6 +4,7 @@ using Application.Eksperiencat;
 using Application.MbikeqyresitTemave;
 using Application.Specializimet;
 using Application.Edukimet;
+using Application.Anetaresite;
 using Application.Core;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -44,6 +45,8 @@ namespace API.Extensions
             services.AddMediatR(typeof(Application.Certifikimet.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.Projektet.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.Gjuhet.List.Handler).Assembly);
+            services.AddMediatR(typeof(Application.HonorsandAwards.List.Handler).Assembly);
+            services.AddMediatR(typeof(Application.Anetaresite.List.Handler).Assembly);
             
 
             return services;

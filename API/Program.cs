@@ -36,6 +36,7 @@ namespace API
                 await SeedProjektet.SeedDataProjekti(context);
                 await SeedGjuha.SeedDataGj(context);
                 await SeedHonorandAward.SeedDataHA(context);
+                await SeedAnetaresia.SeedDataAne(context);
             }
             catch(Exception ex)
             {

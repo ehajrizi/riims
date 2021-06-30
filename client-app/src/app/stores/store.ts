@@ -7,6 +7,7 @@ import SpecializimiStore from "./specializimiStore";
 import ProfiliStore from "./profiliStore";
 import ProjektiStore from "./projektiStore";
 import HonorandAwardStore from "./honorandawardStore";
+import ModalStore from "./modalStore";
 
 
 interface Store{
@@ -18,6 +19,7 @@ interface Store{
     profiliStore: ProfiliStore
     projektiStore: ProjektiStore
     honorandawardStore:HonorandAwardStore
+    modalStore: ModalStore;
 
 }
 
@@ -30,8 +32,7 @@ export const store: Store = {
     profiliStore: new ProfiliStore(),
     projektiStore: new ProjektiStore(),
     honorandawardStore: new HonorandAwardStore(),
-
-
+    modalStore: new ModalStore(),
 }
 
 
