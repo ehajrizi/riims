@@ -46,7 +46,7 @@ export default observer(function EdukimiForm(){
         setEdukimi({...edukimi,[name]: value})
     }
 
-    if(loadingInitial) return <LoadingComponent content='Loading activity...'/>
+    if(loadingInitial) return <LoadingComponent content='Loading Edukimi...'/>
 
 
 

@@ -76,7 +76,7 @@ export default observer(function PublikimetEditForm({ isShown, hide, publikimi }
         updatePublikimi(publikimi).then(() => history.push(`/publikimet/${publikimi.id}`))
     }
 
-    if (loadingInitial) return <LoadingComponent content='Loading Activity...' />
+    if (loadingInitial) return <LoadingComponent content='Loading Publikimi...' />
 
     const modal = (
         <Segment>

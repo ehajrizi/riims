@@ -15,6 +15,7 @@ namespace Application.Core
             CreateMap<Profili, Profili>();
             CreateMap<Certifikimi, Certifikimi>();
             CreateMap<Projekti, Projekti>();
+            CreateMap<Gjuha, Gjuha>();
         }
     }
 }

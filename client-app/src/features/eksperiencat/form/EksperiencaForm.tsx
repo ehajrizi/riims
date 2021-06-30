@@ -55,7 +55,7 @@ export default observer(function EksperiencaForm({isShown, hide} : ModalProps){
         setEksperienca({...eksperienca,[name]: value})
     }
 
-    if(loadingInitial) return <LoadingComponent content='Loading activity...'/>
+    if(loadingInitial) return <LoadingComponent content='Loading Eksperienca...'/>
 
     const modal =(
             <Segment>

@@ -84,7 +84,7 @@ export default observer(function PublikimetForm({ isShown, hide }: ModalProps) {
         }
     }
 
-    if (loadingInitial) return <LoadingComponent content='Loading Activity...' />
+    if (loadingInitial) return <LoadingComponent content='Loading Publikimi...' />
 
     const modal = (
         <Segment>
