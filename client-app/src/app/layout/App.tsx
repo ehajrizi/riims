@@ -11,6 +11,7 @@ import EksperiencaDashboard from '../../features/eksperiencat/dashboard/Eksperie
 import MbikeqyresiTemaveDashboard from '../../features/mbikeqyresittemave/dashboard/MbikeqyresiTemaveDashboard';
 import NavBar from './NavBar';
 import ProjektetDashboard from '../../features/projektet/dashboard/ProjektetDashboard';
+import HonorandAwardDashboard from '../../features/honorsandawards/dashboard/HonorandAwardDashboard';
 
 
 function App() {
@@ -87,6 +88,9 @@ function App() {
       <Segment className={'honorsawards'} basic>
         <HonorsAndAwardsDashboard />
       </Segment>  */}
+      <Segment className={'honorsandawards'} basic>
+        <HonorandAwardDashboard />
+      </Segment>
       <Button className='angleUp' icon='angle up' size='massive' onClick={scrollToTop} as={Link} to='' />
       <Footer />
     </>

@@ -6,6 +6,7 @@ import { Publikimi } from '../models/publikimi';
 import { Specializimi } from '../models/specializimi';
 import { Profili } from '../models/profili';
 import { Projekti } from '../models/projekti';
+import { HonorandAward } from '../models/honorandaward';
 
 const sleep = (delay: number) => {
     return new Promise((resolve) => {
@@ -90,7 +91,13 @@ const Projektet = {
     update: (projekti : Projekti) => axios.put<void>(`/projektet/${projekti.id}`, projekti),
     delete: (id: string) => axios.delete<void>(`/projektet/${id}`)
 }
-
+const HonorsandAwards= {
+    list: () => requests.get<HonorandAward[]>('/honorsandawards'),
+    details: (id: string) => requests.get<HonorandAward>(`/honorsandawards/${id}`),
+    create: (honorandaward : HonorandAward) => axios.post<void>(`/honorsandawards`, honorandaward),
+    update: (honorandaward : HonorandAward) => axios.put<void>(`/honorsandawards/${honorandaward.id}`, honorandaward),
+    delete: (id: string) => axios.delete<void>(`/honorsandawards/${id}`)
+}
 const agent = {
     Eksperiencat,
     Edukimet,
@@ -98,7 +105,8 @@ const agent = {
     Specializimet,
     MbikeqyresitTemave,
     Profilet,
-    Projektet
+    Projektet,
+    HonorsandAwards
 }
 
 export default agent;

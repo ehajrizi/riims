@@ -6,6 +6,7 @@ import PublikimiStore from "./publikimiStore";
 import SpecializimiStore from "./specializimiStore";
 import ProfiliStore from "./profiliStore";
 import ProjektiStore from "./projektiStore";
+import HonorandAwardStore from "./honorandawardStore";
 
 
 interface Store{
@@ -16,6 +17,7 @@ interface Store{
     mbikeqyresitemaveStore: MbikeqyresiTemaveStore
     profiliStore: ProfiliStore
     projektiStore: ProjektiStore
+    honorandawardStore:HonorandAwardStore
 
 }
 
@@ -27,6 +29,8 @@ export const store: Store = {
     mbikeqyresitemaveStore: new MbikeqyresiTemaveStore(),
     profiliStore: new ProfiliStore(),
     projektiStore: new ProjektiStore(),
+    honorandawardStore: new HonorandAwardStore(),
+
 
 }
 
