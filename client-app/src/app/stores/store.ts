@@ -2,12 +2,12 @@ import { createContext, useContext } from "react";
 import EdukimiStore from "./edukimiStore";
 import EksperiencaStore from "./eksperiencaStore";
 import MbikeqyresiTemaveStore from "./mbikeqyresitemaveStore";
-import PublikimiStore from "./publikimiStore";
 import SpecializimiStore from "./specializimiStore";
 import ProfiliStore from "./profiliStore";
 import ProjektiStore from "./projektiStore";
 import HonorandAwardStore from "./honorandawardStore";
 import ModalStore from "./modalStore";
+import PublikimiStore from "./publikimiStore";
 
 
 interface Store{
@@ -20,7 +20,6 @@ interface Store{
     projektiStore: ProjektiStore
     honorandawardStore:HonorandAwardStore
     modalStore: ModalStore
-
 }
 
 export const store: Store = {
@@ -33,8 +32,6 @@ export const store: Store = {
     projektiStore: new ProjektiStore(),
     honorandawardStore: new HonorandAwardStore(),
     modalStore: new ModalStore(),
-
-
 }
 
 

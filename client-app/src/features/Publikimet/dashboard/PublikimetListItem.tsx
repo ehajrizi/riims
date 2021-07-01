@@ -4,6 +4,7 @@ import React, { SyntheticEvent, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Button, Card, Checkbox, Divider, Grid, Header, Icon, Item, Segment } from 'semantic-ui-react';
 import { Publikimi } from '../../../app/models/publikimi';
+import modalStore from '../../../app/stores/modalStore';
 import { useStore } from '../../../app/stores/store';
 import { useModal } from '../../useModal';
 import PublikimetFormEdit from '../form/PublikimetFormEdit';
@@ -16,8 +17,7 @@ interface Props {
 export default observer(function PublikimetListItem({ publikimi }: Props) {
     const location = useLocation();
 
-    const { isShown, toggle } = useModal();
-    const { publikimiStore } = useStore();
+    const { publikimiStore, modalStore } = useStore();
     const { deletePublikimi, publikimetByDate, loading } = publikimiStore;
 
     const [target, setTarget] = useState('');
@@ -45,8 +45,7 @@ export default observer(function PublikimetListItem({ publikimi }: Props) {
                             <Grid.Column width='4'>
                                 <Grid style={{ marginTop: '-25px' }}>
                                     <Grid.Column width='3'>
-                                        <Button onClick={toggle} as={Link} to={`/managePublikimi/${publikimi.id}`} className="btn" style={{ marginLeft: '3.8em' }} size='small'><Icon className='btnIcon' name='edit' /></Button>
-                                        <PublikimetFormEdit isShown={isShown} hide={toggle} publikimi={publikimi}/>
+                                        <Button onClick={()=> modalStore.openModal(<PublikimetFormEdit publikimi={publikimi}/>)} className="btn" style={{ marginLeft: '3.8em' }} size='small'><Icon className='btnIcon' name='edit' /></Button>
                                     </Grid.Column>
                                     <Grid.Column width='1'>
                                         <Button name={publikimi.id}
@@ -62,7 +61,7 @@ export default observer(function PublikimetListItem({ publikimi }: Props) {
                             </Grid.Column>
                         </Grid>
                         <Card.Meta>
-                            <span>{publikimi.vendi}, {publikimi.emertimiEvent}, {publikimi.volumiFaqeve}</span>
+                            <span>{publikimi.vendi}, {publikimi.emertimiEvent}, {publikimi.volumiFaqeve},</span>
                             <span>{format(publikimi.data!, 'dd MMM yyyy')}</span>
                         </Card.Meta>
                         <Card.Description>

@@ -10,7 +10,6 @@ export default class ModalStore {
         open: false,
         body: null
     }
-
     constructor() {
         makeAutoObservable(this)
     }

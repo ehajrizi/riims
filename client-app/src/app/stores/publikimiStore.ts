@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Publikimi } from "../models/publikimi";
+import { store } from "./store";
 
 
 export default class PublikimiStore {
@@ -77,8 +78,10 @@ export default class PublikimiStore {
             await agent.Publikimet.create(publikimi);
             runInAction(() => {
                 this.publikimiRegistry.set(publikimi.id, publikimi);
+                this.selectedPublikimi = publikimi;
                 this.editMode = false;
                 this.loading = false;
+                store.modalStore.closeModal();
             })
         } catch (error) {
             console.log(error);

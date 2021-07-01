@@ -12,6 +12,7 @@ import MbikeqyresiTemaveDashboard from '../../features/mbikeqyresittemave/dashbo
 import NavBar from './NavBar';
 import ProjektetDashboard from '../../features/projektet/dashboard/ProjektetDashboard';
 import HonorandAwardDashboard from '../../features/honorsandawards/dashboard/HonorandAwardDashboard';
+import ModalContainer from '../api/common/modals/ModalContainer';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   const location = useLocation();
   return (
     <>
+    <ModalContainer />
       <Segment className={'navbar'}>
         <NavBar />
       </Segment>

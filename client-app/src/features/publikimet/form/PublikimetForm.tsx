@@ -6,12 +6,6 @@ import { Button, Header, Modal, Segment } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
 import { v4 as uuid } from 'uuid';
-import {
-    Wrapper,
-    StyledModal,
-    Backdrop,
-    FormClass,
-} from '../../modal.style';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
@@ -21,15 +15,10 @@ import MyDateInput from '../../../app/api/common/form/MyDateInput';
 import { Publikimi } from '../../../app/models/publikimi';
 import { Statusi } from '../../../app/api/common/options/publikimiOptions';
 
-export interface ModalProps {
-    isShown: boolean;
-    hide: () => void;
-}
-
-export default observer(function PublikimetForm({ isShown, hide }: ModalProps) {
+export default observer(function PublikimetForm() {
     const history = useHistory();
-    const { publikimiStore } = useStore();
-    const { createPublikimi, updatePublikimi, loading, loadPublikimi, loadingInitial } = publikimiStore;
+    const { publikimiStore, modalStore } = useStore();
+    const { createPublikimi, loading, loadPublikimi, loadingInitial } = publikimiStore;
     const { id } = useParams<{ id: string }>();
 
     const [publikimi, setPublikimi] = useState<Publikimi>({
@@ -45,14 +34,14 @@ export default observer(function PublikimetForm({ isShown, hide }: ModalProps) {
         lenda: '',
         kategoria: '',
         linkuPublikimit: '',
-        volumiFaqeve: '',
+        volumiFaqeve: 0,
         referenca: '',
-        autorKryesor: ''
+        autorKryesor: true
     });
 
-    const  validationSchema = Yup.object({
+    const validationSchema = Yup.object({
         titulli: Yup.string().required('The activity title is required'),
-        emertimiEventit: Yup.string().required('The activity description is required'),
+        emertimiEvent: Yup.string().required('The activity description is required'),
         data: Yup.string().required('Date is required').nullable(),
         vendi: Yup.string().required(),
         statusi: Yup.string().required(),
@@ -71,67 +60,56 @@ export default observer(function PublikimetForm({ isShown, hide }: ModalProps) {
         if (id) loadPublikimi(id).then(publikimi => setPublikimi(publikimi!))
     }, [id, loadPublikimi]);
 
-    function handleFormSubmit(publikimi: Publikimi) {
-        if(publikimi.id.length === 0) {
+    function handleFormSubmit(publikimi: Publikimi){
+        if(publikimi.id.length === 0){
             let newPublikimi = {
                 ...publikimi,
                 id: uuid()
             };
-            createPublikimi(newPublikimi).then(() => history.push(`/publikimet/${newPublikimi.id}`))
-        }
-        else {
-            updatePublikimi(publikimi).then(() => history.push(`/publikimet/${publikimi.id}`))
+            createPublikimi(newPublikimi).then(() => history.push(`/publikimet/${newPublikimi.id}`));
+            modalStore.closeModal();
         }
     }
 
     if (loadingInitial) return <LoadingComponent content='Loading Publikimi...' />
 
-    const modal = (
+    return (
         <Segment>
-            <Backdrop />
-            <Wrapper>
-                <StyledModal>
-                    <FormClass>
-                    <Header content='Publikimet Details' sub color='teal' />
-                    <Formik
-                        validationSchema={validationSchema}
-                        initialValues={publikimi}
-                        onSubmit={values => handleFormSubmit(values)}>
-                        {({ handleSubmit, isValid, isSubmitting, dirty }) => (
-                            <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
-                                <MyTextInput name='titulli' placeholder='Titulli' />
-                                <MyTextInput name='emertimiEventit' placeholder='Emertimi i eventit' />
-                                <MyDateInput
-                                    placeholderText='Data'
-                                    name='data'
-                                    showTimeSelect
-                                    timeCaption='time'
-                                    dateFormat='MMMM d, yyyy h: mm aa'
-                                />
-                                <MyTextInput name='vendi' placeholder='Vendi' />
-                                <MySelectInput options={Statusi} placeholder='Statusi' name='statusi' />
-                                <MyTextInput placeholder='Lloji i Publikimit' name='llojiPublikimit' />
-                                <MyTextInput placeholder='Institucioni' name='institucioni' />
-                                <MyTextInput placeholder='Departamenti' name='departamenti' />
-                                <MyTextInput placeholder='Lenda' name='lenda' />
-                                <MyTextInput placeholder='Kategoria' name='kategoria' />
-                                <MyTextInput placeholder='Linku i Publikimit' name='linkuPublikimit' />
-                                <MyTextInput placeholder='Volumi i Faqeve' name='volumiFaqeve' />
-                                <MyTextInput placeholder='Referenca' name='referenca' />
-                                <MyTextInput placeholder='Autori Kryesor' name='autorKryesor' />
-                                <Button
-                                    disabled={isSubmitting || !dirty || !isValid}
-                                    loading={loading}
-                                    floated='right'
-                                    positive type='submit' content='Submit' />
-                                <Button onClick={hide} as={Link} to='/publikimet' floated='right' type='button' content='Cancel' />
-                            </Form>
-                        )}
-                    </Formik>
-                    </FormClass>
-                </StyledModal>
-            </Wrapper>
+            <Formik
+                validationSchema={validationSchema}
+                initialValues={publikimi}
+                onSubmit={values => handleFormSubmit(values)}>
+                {({ handleSubmit, isValid, isSubmitting, dirty }) => (
+                    <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
+                        <MyTextInput name='titulli' placeholder='Titulli' />
+                        <MyTextInput name='emertimiEvent' placeholder='Emertimi i eventit' />
+                        <MyDateInput
+                            placeholderText='Data'
+                            name='data'
+                            showTimeSelect
+                            timeCaption='time'
+                            dateFormat='MMMM d, yyyy h: mm aa'
+                        />
+                        <MyTextInput name='vendi' placeholder='Vendi' />
+                        <MySelectInput options={Statusi} placeholder='Statusi' name='statusi' />
+                        <MyTextInput placeholder='Lloji i Publikimit' name='llojiPublikimit' />
+                        <MyTextInput placeholder='Institucioni' name='institucioni' />
+                        <MyTextInput placeholder='Departamenti' name='departamenti' />
+                        <MyTextInput placeholder='Lenda' name='lenda' />
+                        <MyTextInput placeholder='Kategoria' name='kategoria' />
+                        <MyTextInput placeholder='Linku i Publikimit' name='linkuPublikimit' />
+                        <MyTextInput placeholder='Volumi i Faqeve' name='volumiFaqeve' />
+                        <MyTextInput placeholder='Referenca' name='referenca' />
+                        <MyTextInput placeholder='Autori Kryesor' name='autorKryesor' />
+                        <Button
+                            disabled={isSubmitting || !dirty || !isValid}
+                            loading={loading}
+                            floated='right'
+                            positive type='submit' content='Submit' />
+                        <Button onClick={()=>modalStore.closeModal()}  as={Link} to='/publikimet' floated='right' type='button' content='Cancel' />
+                    </Form>
+                )}
+            </Formik>
         </Segment >
     );
-return isShown ? ReactDOM.createPortal(modal, document.body) : null;
 })
