@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction} from "mobx";
 import agent from "../api/agent";
 import { Eksperienca } from "../models/eksperienca";
+import { store } from "./store";
 
 
 export default class EksperiencaStore{
@@ -8,7 +9,7 @@ export default class EksperiencaStore{
     selectedEksperienca: Eksperienca | undefined = undefined;
     editMode = false;
     loading = false;
-    loadingInitial = true;
+    loadingInitial = false;
 
 
     constructor(){
@@ -17,7 +18,7 @@ export default class EksperiencaStore{
 
     get eksperiencatByDate(){
         return Array.from(this.eksperiencaRegistry.values()).sort((a,b) => 
-        Date.parse(a.dataFillestare)-Date.parse(b.dataFillestare))
+        a.dataFillestare!.getTime()-b.dataFillestare!.getTime())
     } 
 
     loadEksperiencat = async () => {
@@ -57,6 +58,8 @@ export default class EksperiencaStore{
     }
 
     private setEksperienca = (eksperienca:  Eksperienca) => {
+        eksperienca.dataFillestare = new Date(eksperienca.dataFillestare!);
+        eksperienca.dataPerfundimtare = new Date(eksperienca.dataPerfundimtare!);
         this.eksperiencaRegistry.set(eksperienca.id, eksperienca);
     }
 
@@ -78,6 +81,7 @@ export default class EksperiencaStore{
                 this.selectedEksperienca = eksperienca;
                 this.editMode = false;
                 this.loading = false;
+                store.modalStore.closeModal();
             })
 
         }catch(error){
@@ -123,6 +127,5 @@ export default class EksperiencaStore{
             })
         }
     }
-
 
 }

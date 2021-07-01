@@ -4,8 +4,8 @@ export interface Eksperienca {
     titulli: string;
     punePrimare: boolean;
     lokacioni: string;
-    dataFillestare: string;
-    dataPerfundimtare: string;
+    dataFillestare: Date | null;
+    dataPerfundimtare: Date | null;
     pershkrimi: string;
     personiKontaktues: string;
     email: string;

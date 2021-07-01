@@ -10,8 +10,7 @@ import EksperiencaListItem from './EksperiencaListItem';
 
 export default observer( function EksperiencaList()
 {
-    const {isShown, toggle} = useModal();
-    const {eksperiencaStore} = useStore();
+    const {eksperiencaStore, modalStore} = useStore();
     const { eksperiencatByDate} = eksperiencaStore;
 
     return(
@@ -21,10 +20,9 @@ export default observer( function EksperiencaList()
                     <Header content='Eksperiencat'/>
                 </Grid.Column>
                 <Grid.Column>
-                    <Button onClick={toggle} as={Link} to='/create' className="btn" >
+                    <Button onClick={() => modalStore.openModal(<EksperiencaForm/>)} className="btn" >
                         <Icon className='btnIcon' name='plus' size='large' />
                     </Button>
-                    <EksperiencaForm isShown={isShown} hide={toggle} />
                 </Grid.Column>
             </Grid>
             <Divider/>

@@ -14,9 +14,9 @@ namespace Domain
 
         public string Lokacioni { get; set; }
 
-        public string DataFillestare { get; set; }
+        public DateTime DataFillestare { get; set; }
 
-        public string DataPerfundimtare { get; set; }
+        public DateTime DataPerfundimtare { get; set; }
 
         public string Pershkrimi { get; set; }
 

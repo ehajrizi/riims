@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,12 +16,12 @@ namespace DatabaseLogic
 		{
 			new Eksperienca
 			{
-			   EmriInstitucionit = "UBT",
-			   Titulli = "Dekane e SHKI-se",
+			    EmriInstitucionit = "UBT",
+			    Titulli = "Dekane e SHKI-se",
                 PunePrimare = true,
                 Lokacioni = "Laggja Kalabria, Prishtine 10000",
-                DataFillestare = "12 Oct 2013",
-                DataPerfundimtare = " ",
+                DataFillestare = DateTime.Now.AddMonths(-15),
+                DataPerfundimtare = DateTime.Now.AddMonths(-10),
                 Pershkrimi ="Menaxhimi i fakultetit",
                 PersoniKontaktues = "Edmond Hajrizi",
                 Email = "ehajrizi@ubt-uni.net",
@@ -32,8 +33,8 @@ namespace DatabaseLogic
 			   Titulli = "Mbikeqyres i sistemeve",
                 PunePrimare = true,
                 Lokacioni = "Rr. Agim Ramadani, Prishtine 10000",
-                DataFillestare = "12 Oct 2011",
-                DataPerfundimtare = "6 Sept 2013",
+                DataFillestare = DateTime.Now.AddMonths(-9),
+                DataPerfundimtare = DateTime.Now.AddMonths(-2),
                 Pershkrimi ="Mirembajtje e sistemeve",
                 PersoniKontaktues = "Filan Fisteku",
                 Email = "ffisteku@gmail.com",
@@ -45,8 +46,8 @@ namespace DatabaseLogic
 			   Titulli = "TEST",
                 	   PunePrimare = false,
                 Lokacioni = "TEST",
-                DataFillestare = "12 Oct 2013",
-                DataPerfundimtare = "19 Jan 2020",
+                DataFillestare = DateTime.Now.AddMonths(-6),
+                DataPerfundimtare = DateTime.Now.AddMonths(-1),
                 Pershkrimi ="TEST",
                 PersoniKontaktues = "TEST",
                 Email = "TEST",
@@ -58,8 +59,8 @@ namespace DatabaseLogic
 			   Titulli = "TEST2",
                 PunePrimare = true,
                 Lokacioni = "TEST2",
-                DataFillestare = "12 Oct 2013",
-                DataPerfundimtare = "13 Aug 2019",
+                DataFillestare = DateTime.Now.AddMonths(-18),
+                DataPerfundimtare = DateTime.Now.AddMonths(-17),
                 Pershkrimi ="TEST2",
                 PersoniKontaktues = "TEST2",
                 Email = "TEST2",
@@ -71,8 +72,8 @@ namespace DatabaseLogic
 			   Titulli = "TEST3",
                 PunePrimare = true,
                 Lokacioni = "TEST3",
-                DataFillestare = "12 Oct 2013",
-                DataPerfundimtare = "13 Aug 2019",
+                DataFillestare = DateTime.Now.AddMonths(-1),
+                DataPerfundimtare = DateTime.Now,
                 Pershkrimi ="TEST3",
                 PersoniKontaktues = "TEST3",
                 Email = "TEST3",

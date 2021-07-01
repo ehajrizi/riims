@@ -1,10 +1,12 @@
+import { format } from 'date-fns';
+import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { Button, Card} from 'semantic-ui-react'
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
 
-export default function EksperiencaDetails(){
+export default observer(function EksperiencaDetails(){
     const {eksperiencaStore} = useStore();
     const {selectedEksperienca: eksperienca, loadEksperienca, loadingInitial} = eksperiencaStore;
     const {id} = useParams<{id: string}>();
@@ -24,7 +26,7 @@ export default function EksperiencaDetails(){
             <Card.Content>
                 <Card.Header>{eksperienca.titulli}</Card.Header>
                 <Card.Meta>
-                    <span>{eksperienca.dataFillestare},{eksperienca.dataPerfundimtare}</span>
+                    <span>{format(eksperienca.dataFillestare!,'dd MMM yyyy')},{format(eksperienca.dataPerfundimtare!,'dd MMM yyyy')}</span>
                 </Card.Meta>
                 <Card.Description>
                     {eksperienca.pershkrimi}
@@ -38,4 +40,4 @@ export default function EksperiencaDetails(){
             </Card.Content>
         </Card>
     )
-}
+})

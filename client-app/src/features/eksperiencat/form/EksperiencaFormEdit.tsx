@@ -6,33 +6,36 @@ import { useStore } from '../../../app/stores/store';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { observer } from 'mobx-react-lite';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import MyDateInput from '../../../app/api/common/form/MyDateInput';
-import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { Formik } from 'formik';
+import MyDateInput from '../../../app/api/common/form/MyDateInput';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import MyTextArea from '../../../app/api/common/form/MyTextArea';
 
+interface Props{
+    eksp: Eksperienca;
+}
 
 
-export default observer(function EksperiencaForm(){
+export default observer(function EksperiencaFormEdit({eksp}: Props){
     const history = useHistory();
 
     const {eksperiencaStore,modalStore} = useStore();
-    const {loadEksperienca,createEksperienca,updateEksperienca,loading, loadingInitial} = eksperiencaStore;
+    const {loadEksperienca,updateEksperienca, loadingInitial, loading} = eksperiencaStore;
     const {id} = useParams<{id: string}>();
 
     const [eksperienca, setEksperienca] = useState<Eksperienca>({
-        id: '',
-        emriInstitucionit: '',
-        titulli: '',
-        punePrimare: true,
-        lokacioni: '',
-        dataFillestare: null,
-        dataPerfundimtare: null,
-        pershkrimi: '',
-        personiKontaktues: '',
-        email: '',
-        numriTelefonit: '',
+        id: eksp.id,
+        emriInstitucionit: eksp.emriInstitucionit,
+        titulli: eksp.titulli,
+        punePrimare: eksp.punePrimare,
+        lokacioni: eksp.lokacioni ,
+        dataFillestare: eksp.dataFillestare,
+        dataPerfundimtare: eksp.dataPerfundimtare,
+        pershkrimi: eksp.pershkrimi,
+        personiKontaktues: eksp.personiKontaktues,
+        email: eksp.email,
+        numriTelefonit: eksp.numriTelefonit,
     }); 
 
     const validationSchema = Yup.object({
@@ -47,29 +50,17 @@ export default observer(function EksperiencaForm(){
         numriTelefonit: Yup.string().required(),
 
     })
-    
 
     useEffect(() => {
         if(id) loadEksperienca(id).then(eksperienca => setEksperienca(eksperienca!))
     },[id, loadEksperienca]);
-
-
+    
     function handleSubmitEksperienca(eksperienca: Eksperienca){
-        if(eksperienca.id.length === 0){
-            let newEksperienca = { 
-                ...eksperienca,
-                id: uuid()
-            };
-            createEksperienca(newEksperienca).then(() => history.push(`/eksperiencat/${newEksperienca.id}`))
-            modalStore.closeModal();
-        }else{
-            updateEksperienca(eksperienca).then(() => history.push(`/eksperiencat/${eksperienca.id}`))
-            modalStore.closeModal();
-        }
+        updateEksperienca(eksperienca).then(() => history.push(`/eksperiencat/${eksperienca.id}`))
+        modalStore.closeModal();
     }
 
-
-    if(loadingInitial) return <LoadingComponent content='Loading eksperienca...'/>
+    if(loadingInitial) return <LoadingComponent content='Loading activity...'/>
 
 
     return(
@@ -82,7 +73,7 @@ export default observer(function EksperiencaForm(){
                 {({handleSubmit, isValid, dirty, isSubmitting}) => (
                 <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
                     <MyTextInput placeholder='Titulli' name='titulli'/>
-                    <Checkbox label='Pune primare' />
+                    <Checkbox label='Pune primare'/>
                     <MyTextInput placeholder='Emri i institucionit' name='emriInstitucionit'/>
                     <MyTextInput placeholder='Lokacioni' name='lokacioni'/>
                     <MyTextArea placeholder='Pershkrimi'name='pershkrimi' rows={4}/>
