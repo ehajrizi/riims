@@ -47,7 +47,7 @@ export default observer(function SpecializimiEditForm({ specializimi }: Props) {
     }, [id, loadSpecializimi]);
 
     function handleFormSubmit(specializimi: Specializimi) {
-        updateSpecializimi(specializimi).then(() => history.push(`/specializimet/${specializimi.id}`));
+        updateSpecializimi(specializimi).then(() => history.push(`/specializimet`));
         modalStore.closeModal();
     }
 

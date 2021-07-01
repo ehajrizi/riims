@@ -47,7 +47,7 @@ export default observer(function SpecializimiForm() {
                 ...specializimi,
                 id: uuid()
             };
-            createSpecializimi(newSpecializimi).then(() => history.push(`/specializimet/${newSpecializimi.id}`))
+            createSpecializimi(newSpecializimi).then(() => history.push(`/specializimet`))
             modalStore.closeModal();
         }
     }

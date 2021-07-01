@@ -7,6 +7,8 @@ import { Specializimi } from '../models/specializimi';
 import { Profili } from '../models/profili';
 import { Projekti } from '../models/projekti';
 import { HonorandAward } from '../models/honorandaward';
+import { Anetaresia } from '../models/anetaresia';
+
 
 const sleep = (delay: number) => {
     return new Promise((resolve) => {
@@ -91,6 +93,14 @@ const Projektet = {
     update: (projekti : Projekti) => axios.put<void>(`/projektet/${projekti.id}`, projekti),
     delete: (id: string) => axios.delete<void>(`/projektet/${id}`)
 }
+
+const Anetaresite= {
+    list: () => requests.get<Anetaresia[]>('/anetaresite'),
+    details: (id: string) => requests.get<Anetaresia>(`/anetaresite/${id}`),
+    create: (anetaresia : Anetaresia) => axios.post<void>(`/anetaresite`, anetaresia),
+    update: (anetaresia : Anetaresia) => axios.put<void>(`/anetaresite/${anetaresia.id}`, anetaresia),
+    delete: (id: string) => axios.delete<void>(`/anetaresite/${id}`)
+}
 const HonorsandAwards= {
     list: () => requests.get<HonorandAward[]>('/honorsandawards'),
     details: (id: string) => requests.get<HonorandAward>(`/honorsandawards/${id}`),
@@ -106,6 +116,7 @@ const agent = {
     MbikeqyresitTemave,
     Profilet,
     Projektet,
+    Anetaresite,
     HonorsandAwards
 }
 

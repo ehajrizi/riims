@@ -6,6 +6,7 @@ import Footer from "../../app/layout/Footer";
 import ImageExampleCircular from "../../app/layout/Image";
 import NavBar from "../../app/layout/NavBar";
 import scrollToPublikimet, { scrollToAnetaresia, scrollToCertifikimet, scrollToEdukimi, scrollToEksperiencat, scrollToHonorsAndAwards, scrollToMbikeqyresITemave, scrollToProjektet, scrollToSpecializimet, scrollToTop } from "../../app/styling-functions/Scrolling";
+import AnetaresiaDashboard from "../anetaresite/dashboard/AnetaresiaDashboard";
 import EdukimiDashboard from "../edukimet/dashboard/EdukimiDashboard";
 import EksperiencaDashboard from "../eksperiencat/dashboard/EksperiencaDashboard";
 import HonorandAwardDashboard from "../honorsandawards/dashboard/HonorandAwardDashboard";
@@ -92,12 +93,12 @@ export default function Home(){
             <Segment className={'projektet'} basic>
                 <ProjektetDashboard />
             </Segment>
-            {/* <Segment className={'anetaresia'} basic>
-                <AnetaresiaDashboard />
+            <Segment className={'anetaresia'} basic>
+                <AnetaresiaDashboard/>
             </Segment>
-            <Segment className={'honorsawards'} basic>
+            {/* <Segment className={'honorsawards'} basic>
                 <HonorsAndAwardsDashboard />
-            </Segment>  */}
+            </Segment> */}
             <Segment className={'honorsandawards'} basic>
                 <HonorandAwardDashboard />
             </Segment>
