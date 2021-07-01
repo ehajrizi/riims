@@ -23,6 +23,10 @@ import MbikeqyresiTemaveListItem from '../../features/mbikeqyresittemave/dashboa
 import MbikeqyresiTemaveForm from '../../features/mbikeqyresittemave/form/MbikeqyresiTemaveForm';
 
 
+
+
+
+
 function App() {
 
   const location = useLocation();
@@ -40,7 +44,7 @@ function App() {
               <Route exact path='/certifikimet' component={Home}/>
               <Route exact path='/honorsandawards' component={Home}/>
               <Route exact path='/projektet' component={Home}/>
-              <Route exact path='/anetaresia' component={Home}/> 
+              <Route exact path='/anetaresite' component={Home}/> 
     </>
   );
 }

@@ -6,7 +6,7 @@ import { useStore } from '../../../app/stores/store';
 import SpecializimiListItem from '../dashboard/SpecializimiListItem';
 import SpecializimiForm from '../form/SpecializimiForm';
 
-export default observer(function PublikimetList() {
+export default observer(function SpecializimiList() {
     const { specializimiStore, modalStore } = useStore();
     const { specializimetByDate } = specializimiStore;
 

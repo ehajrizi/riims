@@ -8,6 +8,7 @@ import ProjektiStore from "./projektiStore";
 import HonorandAwardStore from "./honorandawardStore";
 import ModalStore from "./modalStore";
 import PublikimiStore from "./publikimiStore";
+import AnetaresiaStore from "./anetaresiaStore";
 
 
 interface Store{
@@ -18,6 +19,7 @@ interface Store{
     mbikeqyresitemaveStore: MbikeqyresiTemaveStore
     profiliStore: ProfiliStore
     projektiStore: ProjektiStore
+    anetaresiaStore:AnetaresiaStore
     honorandawardStore:HonorandAwardStore
     modalStore: ModalStore
 }
@@ -30,6 +32,7 @@ export const store: Store = {
     mbikeqyresitemaveStore: new MbikeqyresiTemaveStore(),
     profiliStore: new ProfiliStore(),
     projektiStore: new ProjektiStore(),
+    anetaresiaStore: new AnetaresiaStore(),
     honorandawardStore: new HonorandAwardStore(),
     modalStore: new ModalStore(),
 }
