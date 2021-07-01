@@ -6,7 +6,6 @@ import Footer from "../../app/layout/Footer";
 import ImageExampleCircular from "../../app/layout/Image";
 import NavBar from "../../app/layout/NavBar";
 import scrollToPublikimet, { scrollToAnetaresia, scrollToCertifikimet, scrollToEdukimi, scrollToEksperiencat, scrollToHonorsAndAwards, scrollToMbikeqyresITemave, scrollToProjektet, scrollToSpecializimet, scrollToTop } from "../../app/styling-functions/Scrolling";
-import AnetaresiaDashboard from "../anetaresite/dashboard/AnetaresiaDashboard";
 import EdukimiDashboard from "../edukimet/dashboard/EdukimiDashboard";
 import EksperiencaDashboard from "../eksperiencat/dashboard/EksperiencaDashboard";
 import HonorandAwardDashboard from "../honorsandawards/dashboard/HonorandAwardDashboard";
@@ -62,7 +61,7 @@ export default function Home(){
                 <Card fluid color='blue' header='Mbikeqyres i temave' onClick={scrollToMbikeqyresITemave} as={NavLink} to='/mbikeqyresitemave'/>
                 <Card fluid color='blue' header='Publikimet' onClick={scrollToPublikimet} as={NavLink} to='/publikimet' />
                 <Card fluid color='blue' header='Projektet' onClick={scrollToProjektet} as={NavLink} to='/projektet' />
-                <Card fluid color='blue' header='Anetaresia' onClick={scrollToAnetaresia} as={NavLink} to='/anetaresite'/>
+                <Card fluid color='blue' header='Anetaresia' onClick={scrollToAnetaresia} as={NavLink} to='/anetaresia'/>
                 <Card fluid color='blue' header='Honors & Awards' onClick={scrollToHonorsAndAwards} as={NavLink} to='/honorsandawards'/>
                 </Card.Group>
                 
@@ -93,10 +92,10 @@ export default function Home(){
             <Segment className={'projektet'} basic>
                 <ProjektetDashboard />
             </Segment>
-            <Segment className={'anetaresia'} basic>
+            {/* <Segment className={'anetaresia'} basic>
                 <AnetaresiaDashboard />
             </Segment>
-            {/* <Segment className={'honorsawards'} basic>
+            <Segment className={'honorsawards'} basic>
                 <HonorsAndAwardsDashboard />
             </Segment>  */}
             <Segment className={'honorsandawards'} basic>
