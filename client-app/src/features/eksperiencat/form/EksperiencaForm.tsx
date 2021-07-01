@@ -86,8 +86,11 @@ export default observer(function EksperiencaForm(){
                     <MyTextInput placeholder='Emri i institucionit' name='emriInstitucionit'/>
                     <MyTextInput placeholder='Lokacioni' name='lokacioni'/>
                     <MyTextArea placeholder='Pershkrimi'name='pershkrimi' rows={4}/>
-                    <MyDateInput placeholderText='Data e fillimit' name='dataFillestare' />
-                    <MyDateInput placeholderText='Data e perfundimit' name='dataPerfundimtare'/>
+                    <MyDateInput placeholderText='Data e fillimit' name='dataFillestare' showTimeSelect
+                            dateFormat='MMMM d, yyyy'/>
+                    <MyDateInput placeholderText='Data e perfundimit' name='dataPerfundimtare' 
+                            timeCaption='time'
+                            dateFormat='MMMM d, yyyy h: mm aa'/>
                     <MyTextInput placeholder='Personi kontaktues'  name='personiKontaktues'/>
                     <MyTextInput placeholder='Email' name='email'/>
                     <MyTextInput placeholder='Numri i Telefonit' name='numriTelefonit'/>

@@ -8,6 +8,7 @@ namespace Domain
         public string Titulli { get; set; }
         public string EmertimiEvent { get; set; }
         public DateTime Data { get; set; }
+        public DateTime Viti { get; set; }
         public string Vendi { get; set; }
         public string Statusi { get; set; }
         public string LlojiPublikimit { get; set; }

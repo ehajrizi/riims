@@ -13,7 +13,7 @@ import MyTextArea from '../../../app/api/common/form/MyTextArea';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import MyDateInput from '../../../app/api/common/form/MyDateInput';
 import { Publikimi } from '../../../app/models/publikimi';
-import { Statusi } from '../../../app/api/common/options/publikimiOptions';
+import { Departamenti, Institucioni, Kategorite, LlojiPublikimit, Statusi } from '../../../app/api/common/options/publikimiOptions';
 
 export default observer(function PublikimetForm() {
     const history = useHistory();
@@ -26,6 +26,7 @@ export default observer(function PublikimetForm() {
         titulli: '',
         emertimiEvent: '',
         data: null,
+        viti: null,
         vendi: '',
         statusi: '',
         llojiPublikimit: '',
@@ -43,6 +44,7 @@ export default observer(function PublikimetForm() {
         titulli: Yup.string().required('The activity title is required'),
         emertimiEvent: Yup.string().required('The activity description is required'),
         data: Yup.string().required('Date is required').nullable(),
+        viti: Yup.string().required('Date is required').nullable(),
         vendi: Yup.string().required(),
         statusi: Yup.string().required(),
         llojiPublikimit: Yup.string().required(),
@@ -84,19 +86,24 @@ export default observer(function PublikimetForm() {
                         <MyTextInput name='titulli' placeholder='Titulli' />
                         <MyTextInput name='emertimiEvent' placeholder='Emertimi i eventit' />
                         <MyDateInput
-                            placeholderText='Data'
+                            placeholderText='Muaji'
                             name='data'
-                            showTimeSelect
-                            timeCaption='time'
-                            dateFormat='MMMM d, yyyy h: mm aa'
+                            showMonthDropdown
+                            dateFormat='MM'
+                        />
+                        <MyDateInput
+                            placeholderText='Viti'
+                            name='viti'
+                            showYearPicker
+                            dateFormat='yyyy'
                         />
                         <MyTextInput name='vendi' placeholder='Vendi' />
                         <MySelectInput options={Statusi} placeholder='Statusi' name='statusi' />
-                        <MyTextInput placeholder='Lloji i Publikimit' name='llojiPublikimit' />
-                        <MyTextInput placeholder='Institucioni' name='institucioni' />
-                        <MyTextInput placeholder='Departamenti' name='departamenti' />
+                        <MySelectInput options={LlojiPublikimit} placeholder='Lloji i Publikimit' name='llojiPublikimit' />
+                        <MySelectInput options={Institucioni} placeholder='Institucioni' name='institucioni' />
+                        <MySelectInput options={Departamenti} placeholder='Departamenti' name='departamenti' />
                         <MyTextInput placeholder='Lenda' name='lenda' />
-                        <MyTextInput placeholder='Kategoria' name='kategoria' />
+                        <MySelectInput options={Kategorite} placeholder='Kategoria' name='kategoria' />
                         <MyTextInput placeholder='Linku i Publikimit' name='linkuPublikimit' />
                         <MyTextInput placeholder='Volumi i Faqeve' name='volumiFaqeve' />
                         <MyTextInput placeholder='Referenca' name='referenca' />

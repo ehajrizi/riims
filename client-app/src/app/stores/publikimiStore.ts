@@ -60,6 +60,7 @@ export default class PublikimiStore {
 
     private setPublikimi = (publikimi: Publikimi) => {
         publikimi.data = new Date(publikimi.data!);
+        publikimi.viti = new Date(publikimi.viti!);
         this.publikimiRegistry.set(publikimi.id, publikimi);
     }
 

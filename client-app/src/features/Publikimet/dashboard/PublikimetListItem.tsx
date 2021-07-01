@@ -62,7 +62,7 @@ export default observer(function PublikimetListItem({ publikimi }: Props) {
                         </Grid>
                         <Card.Meta>
                             <span>{publikimi.vendi}, {publikimi.emertimiEvent}, {publikimi.volumiFaqeve},</span>
-                            <span>{format(publikimi.data!, 'dd MMM yyyy')}</span>
+                            <span>{format(publikimi.data!, 'MMM')}, {format(publikimi.viti!, 'yyyy')}</span>
                         </Card.Meta>
                         <Card.Description>
                             {publikimi.statusi}, {publikimi.llojiPublikimit} <br />
