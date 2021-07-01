@@ -14,7 +14,7 @@ namespace DatabaseLogic.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.7");
+                .HasAnnotation("ProductVersion", "5.0.6");
 
             modelBuilder.Entity("Domain.Anetaresia", b =>
                 {
@@ -236,6 +236,23 @@ namespace DatabaseLogic.Migrations
                     b.ToTable("MbikeqyresitTemave");
                 });
 
+            modelBuilder.Entity("Domain.Pjesemarresi", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmriIPjesemarresit")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("roli")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pjesemarresit");
+                });
+
             modelBuilder.Entity("Domain.Profili", b =>
                 {
                     b.Property<Guid>("Id")
@@ -355,9 +372,6 @@ namespace DatabaseLogic.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Vendi")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("Viti")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("VolumiFaqeve")
