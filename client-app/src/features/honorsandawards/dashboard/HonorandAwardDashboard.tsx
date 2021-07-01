@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Grid } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
+import HonorsandAwardsList from '../details/HonorsandAwardsList';
 
 
 export default observer (function HonorandAwardDashboard() {
@@ -16,10 +17,12 @@ export default observer (function HonorandAwardDashboard() {
     
 if(honorandawardStore.loadingInitial) return <LoadingComponent content='Loading Honors & Awards'/>
     return (
-        <Grid>
-            <Grid.Column width='10'>
-                
+        <Grid centered style={{ marginTop: 50 }}>
+            <Grid.Column width='8' className={'grid-container'}>
+                <HonorsandAwardsList/>
             </Grid.Column>
+            <Grid.Column width='1' />
+            <Grid.Column width='4' />
         </Grid>
     )
 })

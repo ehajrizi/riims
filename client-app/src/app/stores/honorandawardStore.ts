@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction} from "mobx";
 import agent from "../api/agent";
 import { HonorandAward } from "../models/honorandaward";
+import { store } from "./store";
 
 
 export default class HonorandAwardStore{
@@ -78,6 +79,7 @@ export default class HonorandAwardStore{
                 this.selectedHonorandAward = honorandaward;
                 this.editMode = false;
                 this.loading = false;
+                store.modalStore.closeModal();
             })
 
         }catch(error){

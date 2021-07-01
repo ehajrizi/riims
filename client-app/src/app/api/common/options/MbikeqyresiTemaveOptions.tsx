@@ -1,0 +1,48 @@
+export const MuajiOptions = [
+    {text: 1, value: 1},
+    {text: 2, value: 2},
+    {text: 3, value: 3},
+    {text: 4, value: 4},
+    {text: 5, value: 5},
+    {text: 6, value: 6},
+    {text: 7, value: 7},
+    {text: 8, value: 8},
+    {text: 9, value: 9},
+    {text: 10, value: 10},
+    {text: 11, value: 11},
+    {text: 12, value: 12},
+];
+export const InstuticioniOptions =[
+    {text:'UBT', value:'ubt'},
+    {text:'UP', value:'up'},
+    {text:'Other', value:'other'},
+]
+export const FakultetiOptions =[
+    {text:'Ju lutem zgjedhni Departamentin', value:'JulutemzgjedhniDepartamentin'},
+    {text:'Menaxhment,Biznes dhe Ekonomi', value:'Menaxhment,Biznes,Ekonomi'},
+    {text:'Shkenca Kompjuterike dhe Inxhinieri', value:'ShkencaKompjuterikedheInxhinieri'},
+    {text:'Menaxhment I Mekatronikes', value:'MenaxhmentIMekatronikes'},
+    {text:'Sistemet e Informacionit', value:'SistemeteInformacionit'},
+    {text:'Arkitekture dhe Planifikim Hapesinor', value:'ArkitekturëdhePlanifikimHapsinorë'},
+    {text:'Inxhinieri Ndërtimore (Ndërtimtari) dhe Infrastrukturë', value:'InxhinieriNdërtimore(Ndërtimtari)dheInfrastrukturë'},
+    {text:'Shkenca Politike', value:'ShkencaPolitike'},
+    {text:'Juridik', value:'Juridik'},
+    {text:'Media dhe Komunikim', value:'MediadheKomunikim'},
+    {text:'Inxhinieri e Energjisë', value:'InxhinieriEnergjisë'},
+    {text:'Politika Publike dhe Menaxhimi', value:'PolitikaPublikedheMenaxhimi'},
+    {text:'Infermieri', value:'Infermieri'},
+    {text:'Farmaci', value:'Farmaci'},
+    {text:'Stomatologji', value:'Stomatologji'},
+    {text:'Shkenca e Ushqimit dhe Bioteknologji', value:'ShkencaeUshqimitdheBioteknologji'},
+    {text:'Dizajn i textegruar', value:'Dizajnitextegruar'},
+    {text:'Agrikulturë dhe Inxhinieri e Ambientit', value:'AgrikulturëdheInxhinierieAmbientit'},
+    {text:'Arti dhe Mediat Digjitale', value:'ArtidheMediatDigjitale'},
+    {text:'Muzika Moderne, Prodhimi Digjital dhe Menaxhimi', value:'MuzikaModerne,ProdhimiDigjitaldheMenaxhimi'},
+    {text:'Teknik i Anesteziologjisë', value:'TeknikiAnesteziologjisë'},
+    {text:'Teknik i Radiologjisë', value:'TeknikiRadiologjisë'},
+];
+export const NiveliAkademikOptions =[
+    {text:'Bsc', value:'bsc'},
+    {text:'MSc', value:'mSc'},
+    {text:'Phd', value:'phd'},
+]

@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 import { MbikeqyresiTemave } from "../models/mbikeqyresitemave";
+import { store } from "./store";
 
 
 export default class MbikeqyresiTemaveStore {
@@ -75,6 +76,7 @@ export default class MbikeqyresiTemaveStore {
                 this.selectedMbikeqyresiTemave = mbikeqyresitemave;
                 this.editModeMbikeqyresiTemave = false;
                 this.loading = false;
+                store.modalStore.closeModal();
             })
         } catch (error) {
             console.log(error);

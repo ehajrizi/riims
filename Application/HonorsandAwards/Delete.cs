@@ -25,6 +25,7 @@ namespace Application.HonorsandAwards
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
                 var honorandaward = await _context.HonorsandAwards.FindAsync(request.Id); 
+                
                 _context.Remove(honorandaward);
 
                 await _context.SaveChangesAsync();

@@ -58,7 +58,7 @@ export function scrollToAnetaresia() {
 };
 
 export function scrollToHonorsAndAwards() {
-    scroller.scrollTo("honorsawards", {
+    scroller.scrollTo("honorsandawards", {
         duration: 800,
         delay: 0,
         smooth: "easeInOutQuart",

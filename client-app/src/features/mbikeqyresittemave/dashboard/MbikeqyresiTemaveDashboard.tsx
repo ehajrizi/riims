@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Grid } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
-import MbikeqyresiTemaveList from './MbikeqyresiTemaveList';
+import MbikeqyresiTemaveList from '../details/MbikeqyresitTemaveList';
 
 
 export default observer (function MbikeqyresiTemaveDashboard() {
@@ -17,10 +17,12 @@ export default observer (function MbikeqyresiTemaveDashboard() {
     
 if(mbikeqyresitemaveStore.loadingInitial) return <LoadingComponent content='Loading Mbikeqyresit e Temave'/>
     return (
-        <Grid>
-            <Grid.Column width='10'>
+        <Grid centered style={{ marginTop: 50 }}>
+            <Grid.Column width='8' className={'grid-container'}>
                 <MbikeqyresiTemaveList/>
             </Grid.Column>
+            <Grid.Column width='1' />
+            <Grid.Column width='4' />
         </Grid>
     )
 })

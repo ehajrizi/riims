@@ -1,32 +1,36 @@
-import { observer } from 'mobx-react-lite';
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
-import { Button, Form, Header, Segment } from 'semantic-ui-react';
-import { useStore } from '../../../app/stores/store';
-import {v4 as uuid} from 'uuid';
-import LoadingComponent from '../../../app/layout/LoadingComponents';
-import * as Yup from 'yup';
+import { Button,  Header, Segment } from 'semantic-ui-react';
 import { HonorandAward } from '../../../app/models/honorandaward';
-import { Formik } from 'formik';
+import { useStore } from '../../../app/stores/store';
+import LoadingComponent from '../../../app/layout/LoadingComponents';
+import { observer } from 'mobx-react-lite';
+import { Link, useHistory, useParams } from 'react-router-dom';
+import { Formik,Form } from 'formik';
+import * as Yup from 'yup';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import { MuajiOptions } from '../../../app/api/common/options/HonorsandAwardsOptions';
 import MyTextArea from '../../../app/api/common/form/MyTextArea';
 
-export default observer (function HonorandAwardForm(){
-    const history= useHistory();
-    const {honorandawardStore,modalStore}= useStore();
-    const {loadingInitial,createHonorandAward, loadHonorandAward,updateHonorandAward,loading}= honorandawardStore;
-    const {id}= useParams<{id: string}>();
+interface Props{
+    honorandaward: HonorandAward;
+}
 
-    const [honorandaward, setHonorandAward]= useState({
-        id:'',
-        titulli: '',
-        muaji: '' ,
-        viti: '' ,
-        institucioni: '',
-        pozita: '' ,
 
+export default observer(function HonorandAwardFormEdit({honorandaward}:Props){
+    const history = useHistory();
+
+    const {honorandawardStore, modalStore} = useStore();
+    const {loadHonorandAward,updateHonorandAward, loadingInitial,loading} = honorandawardStore;
+    const {id} = useParams<{id: string}>();
+
+    const [HonorandAward, setHonorandAward] = useState<HonorandAward>({
+        id: honorandaward.id,
+        titulli: honorandaward.titulli,
+        muaji: honorandaward.muaji,
+        viti: honorandaward.viti,
+        institucioni: honorandaward.institucioni,
+        pozita: honorandaward.pozita,
     });
 
     const validationSchema=Yup.object ({
@@ -37,26 +41,19 @@ export default observer (function HonorandAwardForm(){
         pozita:Yup.string().required('Ju lutem shkruani Poziten dhe Pershkrimin'),
         })
 
-    useEffect (() => {
-        if(id) loadHonorandAward(id).then(honorandaward => setHonorandAward(honorandaward!))
-    },[id, loadHonorandAward])
-
-    function handleFormSubmit(honorandaward:HonorandAward){
-        if (honorandaward.id.length ===0){
-            let newHonorandAward = {
-                ...honorandaward,
-                id:uuid()
-            };
-            createHonorandAward(newHonorandAward).then(() =>history.push(`/honorandaward/${newHonorandAward.id}`))
-            modalStore.closeModal();
-        }
+    useEffect(() => {
+        if(id) loadHonorandAward(id).then(HonorandAward => setHonorandAward(HonorandAward!))
+    },[id, loadHonorandAward]);
+    function handleFormSubmit(HonorandAward: HonorandAward){
+        updateHonorandAward(HonorandAward).then(() => history.push(`/HonorandAward/${HonorandAward.id}`))
     }
 
+    
+
+    if(loadingInitial) return <LoadingComponent content='Loading honorandawardeqyresin...'/>
 
 
-   
-    if(loadingInitial) return <LoadingComponent content ='Loading...'/>
-    return (
+    return(
         <Segment clearing>
             <Header content='Mbikeqyresi i Temave' sub color='teal' />
             <Formik
@@ -79,6 +76,5 @@ export default observer (function HonorandAwardForm(){
             )}
             </Formik>
         </Segment>
-    
     )
 })
