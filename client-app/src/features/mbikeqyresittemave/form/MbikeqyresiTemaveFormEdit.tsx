@@ -11,6 +11,7 @@ import * as Yup from 'yup';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import { FakultetiOptions, InstuticioniOptions, MuajiOptions, NiveliAkademikOptions } from '../../../app/api/common/options/MbikeqyresiTemaveOptions';
+import MyDateInput from '../../../app/api/common/form/MyDateInput';
 
 interface Props{
     mbik: MbikeqyresiTemave;
@@ -47,7 +48,8 @@ export default observer(function MbikeqyresiTemaveFormEdit({mbik}:Props){
         if(id) loadMbikeqyresiTemave(id).then(mbikeqyresitemave => setMbikeqyresiTemave(mbikeqyresitemave!))
     },[id, loadMbikeqyresiTemave]);
     function handleFormSubmit(mbikeqyresitemave: MbikeqyresiTemave){
-        updateMbikeqyresiTemave(mbikeqyresitemave).then(() => history.push(`/mbikeqyresitemave/${mbikeqyresitemave.id}`))
+        updateMbikeqyresiTemave(mbikeqyresitemave).then(() => history.push(`/mbikeqyresitemave`));
+        modalStore.closeModal();
     }
 
     
@@ -68,7 +70,13 @@ export default observer(function MbikeqyresiTemaveFormEdit({mbik}:Props){
                 <MyTextInput placeholder='TitulliTemes' name='titulliTemes' />
                 <MyTextInput placeholder='Studenti'  name='studenti' />
                 <MySelectInput options={MuajiOptions} placeholder='Muaji'  name='muaji' />
-                <MyTextInput placeholder='Viti'  name='viti' />
+                <MyDateInput
+                    placeholderText='Viti'  
+                    name='viti'
+                    showYearPicker
+                    dateFormat='yyyy'
+                    yearItemNumber={15} 
+                />
                 <MySelectInput options={InstuticioniOptions} placeholder='Institucioni'  name='institucioni' />
                 <MySelectInput options={FakultetiOptions} placeholder='Fakulteti'  name='fakulteti' />
                 <MySelectInput options={NiveliAkademikOptions} placeholder='NiveliAkademik' name='niveliAkademik' />

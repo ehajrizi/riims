@@ -20,7 +20,7 @@ export default observer(function HonorsandAwardsList() {
                     <Header content='Honors & Awards' />
                 </Grid.Column>
                 <Grid.Column width='1' >
-                    <Button onClick={() => modalStore.openModal(<HonorsandAwardsForm />)} as={Link} to='/createHonorsandAwards' className="btn" ><Icon className='btnIcon' name='plus' size='large' />
+                    <Button onClick={() => modalStore.openModal(<HonorsandAwardsForm />)} as={Link} className="btn" ><Icon className='btnIcon' name='plus' size='large' />
                     </Button>
                 </Grid.Column>
             </Grid>

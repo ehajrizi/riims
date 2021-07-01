@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { observer } from 'mobx-react-lite';
 import React, { SyntheticEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -21,8 +22,12 @@ export default observer (function HonorandAwardList({honorandaward}: Props)
         DeleteHonorandAward(id);
     }
     
-    
-
+    const [readMore, setReadMore] = useState(false);
+    const extraContent = <div>
+        <Card.Meta>
+            <span>{honorandaward.titulli}</span>
+        </Card.Meta>
+    </div>
     return (
         <>
         <Item key={(honorandaward.id)}>
@@ -30,7 +35,7 @@ export default observer (function HonorandAwardList({honorandaward}: Props)
                 <Card.Content>
                     <Grid>
                         <Grid.Column width='12'>
-                            <Card.Header><h4>{honorandaward.titulli}</h4></Card.Header>
+                        <Card.Header><a className="read-more-link" onClick={() => { setReadMore(!readMore) }}><h4>{honorandaward.titulli}</h4></a></Card.Header>
                         </Grid.Column>
                         <Grid.Column width='4'>
                             <Grid style={{ marginTop: '-25px' }}>
@@ -50,14 +55,17 @@ export default observer (function HonorandAwardList({honorandaward}: Props)
                             </Grid>
                         </Grid.Column>
                     </Grid>
+                        <Card.Description>
+                            <span>{honorandaward.institucioni },</span><span>{honorandaward.pozita}</span>           
+                        </Card.Description>
                         <Card.Meta>
-                            <span>{honorandaward.titulli}</span>
-                            </Card.Meta>
-                            <Card.Description>
-                        <div>{honorandaward.muaji},{honorandaward.viti} </div>  
-                        <div>{honorandaward.institucioni}</div>  
-                        <div>{honorandaward.pozita}</div>           
-                            </Card.Description>
+                            <span>{honorandaward.muaji},</span><span>{format(honorandaward.viti!,'yyyy')}</span>
+                        </Card.Meta>
+
+                            
+                        <Card.Meta>
+                            {readMore && extraContent}
+                        </Card.Meta>
                         <Grid>
                             <Grid.Column width="15"><Divider /></Grid.Column>
                             <Grid.Column width="1"><Icon name='eye' style={{ marginLeft: "-20px" }} /></Grid.Column>

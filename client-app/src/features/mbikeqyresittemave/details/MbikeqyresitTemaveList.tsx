@@ -20,7 +20,7 @@ export default observer(function MbikeqyresitTemaveList() {
                     <Header content='Mbikeqyresit e Temave' />
                 </Grid.Column>
                 <Grid.Column width='1' >
-                    <Button onClick={() => modalStore.openModal(<MbikeqyresitTemaveForm />)} as={Link} to='/createMbikeqyresitTemave' className="btn" ><Icon className='btnIcon' name='plus' size='large' />
+                    <Button onClick={() => modalStore.openModal(<MbikeqyresitTemaveForm />)} className="btn" ><Icon className='btnIcon' name='plus' size='large' />
                     </Button>
                 </Grid.Column>
             </Grid>

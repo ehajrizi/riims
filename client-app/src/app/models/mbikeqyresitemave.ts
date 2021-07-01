@@ -3,7 +3,7 @@ export interface MbikeqyresiTemave{
     titulliTemes: string ;
     studenti:  string ;
     muaji: string ;
-    viti: string ;
+    viti: Date | null ;
     institucioni: string ;
     fakulteti: string;
     niveliAkademik:string;  

@@ -9,7 +9,7 @@ export default class HonorandAwardStore{
     selectedHonorandAward: HonorandAward | undefined = undefined;
     editMode = false;
     loading = false;
-    loadingInitial = true;
+    loadingInitial = false;
 
 
     constructor(){
@@ -58,6 +58,7 @@ export default class HonorandAwardStore{
     }
 
     private setHonorandAward = (honorandaward:  HonorandAward) => {
+        honorandaward.viti = new Date(honorandaward.viti!);
         this.honorandawardRegistry.set(honorandaward.id, honorandaward);
     }
 
@@ -79,7 +80,6 @@ export default class HonorandAwardStore{
                 this.selectedHonorandAward = honorandaward;
                 this.editMode = false;
                 this.loading = false;
-                store.modalStore.closeModal();
             })
 
         }catch(error){

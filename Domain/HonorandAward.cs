@@ -8,7 +8,7 @@ namespace Domain
         public string Titulli {get; set; }
         public string Institucioni {get; set; }
         public int Muaji {get; set; }
-        public int Viti {get; set; }
+        public DateTime Viti {get; set; }
         public string Pozita {get; set; }
     }
 }

@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< Updated upstream
   "dgSpecHash": "zx5u9gj8r9scC8wNLEA5K1j0ctrzTCzOPhaNxU2dnARgcxHGeKLhiFUZkpbRZTtigJPAyJnwiieVw7E6udbpRA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
+=======
+  "dgSpecHash": "hAL0f1XZFaOr+17l0ChVZVfRyQ4DYs2wa+LMcq2WSJiEgqfoCi3Q8MyxYTtpMOcXTecv/SeWneMW4gNZUfP9nA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
+>>>>>>> Stashed changes
   "expectedPackageFiles": [],
   "logs": []
 }

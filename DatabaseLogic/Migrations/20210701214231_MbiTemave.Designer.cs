@@ -3,14 +3,16 @@ using System;
 using DatabaseLogic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DatabaseLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210701214231_MbiTemave")]
+    partial class MbiTemave
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,32 +180,6 @@ namespace DatabaseLogic.Migrations
                     b.ToTable("Gjuhet");
                 });
 
-            modelBuilder.Entity("Domain.HonorandAward", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Institucioni")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Muaji")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Pozita")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Titulli")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("Viti")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HonorsandAwards");
-                });
-
             modelBuilder.Entity("Domain.MbikeqyresiTemave", b =>
                 {
                     b.Property<Guid>("Id")
@@ -234,23 +210,6 @@ namespace DatabaseLogic.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MbikeqyresitTemave");
-                });
-
-            modelBuilder.Entity("Domain.Pjesemarresi", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("EmriIPjesemarresit")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("roli")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Pjesemarresit");
                 });
 
             modelBuilder.Entity("Domain.Profili", b =>

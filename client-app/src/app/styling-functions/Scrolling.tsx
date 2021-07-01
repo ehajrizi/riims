@@ -42,7 +42,7 @@ export function scrollToCertifikimet() {
 };
 
 export function scrollToMbikeqyresITemave() {
-    scroller.scrollTo("mbikeqyrestemave", {
+    scroller.scrollTo("mbikeqyresitemave", {
         duration: 800,
         delay: 0,
         smooth: "easeInOutQuart",

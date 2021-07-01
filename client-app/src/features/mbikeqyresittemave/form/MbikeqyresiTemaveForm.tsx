@@ -11,6 +11,7 @@ import { Formik, Form } from 'formik';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import { FakultetiOptions, InstuticioniOptions, MuajiOptions, NiveliAkademikOptions } from '../../../app/api/common/options/MbikeqyresiTemaveOptions';
+import MyDateInput from '../../../app/api/common/form/MyDateInput';
 
 export default observer (function MbikeqyresiTemaveForm(){
     const history= useHistory();
@@ -23,7 +24,7 @@ export default observer (function MbikeqyresiTemaveForm(){
         titulliTemes: '',
         studenti:  '',
         muaji: '' ,
-        viti: '' ,
+        viti: null ,
         institucioni: '',
         fakulteti: '',
         niveliAkademik:''
@@ -44,20 +45,18 @@ export default observer (function MbikeqyresiTemaveForm(){
         if(id) loadMbikeqyresiTemave(id).then(mbikeqyresitemave => setMbikeqyresiTemave(mbikeqyresitemave!))
     },[id, loadMbikeqyresiTemave])
 
+
     function handleFormSubmit(mbikeqyresitemave:MbikeqyresiTemave){
         if (mbikeqyresitemave.id.length ===0){
             let newMbikeqyresiTemave = {
                 ...mbikeqyresitemave,
                 id:uuid()
             };
-            createMbikeqyresiTemave(newMbikeqyresiTemave).then(() =>history.push(`/mbikeqyresitemave/${newMbikeqyresiTemave.id}`));
+            createMbikeqyresiTemave(newMbikeqyresiTemave).then(() =>history.push(`/mbikeqyresitemave`));
             modalStore.closeModal();
         }
     }
 
-
-
-    
     if(loadingInitial) return <LoadingComponent content ='Loading...'/>
     return (
         <Segment clearing>
@@ -71,7 +70,13 @@ export default observer (function MbikeqyresiTemaveForm(){
                 <MyTextInput placeholder='TitulliTemes' name='titulliTemes' />
                 <MyTextInput placeholder='Studenti'  name='studenti' />
                 <MySelectInput options={MuajiOptions} placeholder='Muaji'  name='muaji' />
-                <MyTextInput placeholder='Viti'  name='viti' />
+                <MyDateInput
+                    placeholderText='Viti'  
+                    name='viti'
+                    showYearPicker
+                    dateFormat='yyyy'
+                    yearItemNumber={15} 
+                />
                 <MySelectInput options={InstuticioniOptions} placeholder='Institucioni'  name='institucioni' />
                 <MySelectInput options={FakultetiOptions} placeholder='Fakulteti'  name='fakulteti' />
                 <MySelectInput options={NiveliAkademikOptions} placeholder='NiveliAkademik' name='niveliAkademik' />

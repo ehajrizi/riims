@@ -12,6 +12,7 @@ import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import { MuajiOptions } from '../../../app/api/common/options/HonorsandAwardsOptions';
 import MyTextArea from '../../../app/api/common/form/MyTextArea';
+import MyDateInput from '../../../app/api/common/form/MyDateInput';
 
 export default observer (function HonorandAwardForm(){
     const history= useHistory();
@@ -19,11 +20,11 @@ export default observer (function HonorandAwardForm(){
     const {loadingInitial,createHonorandAward, loadHonorandAward,updateHonorandAward,loading}= honorandawardStore;
     const {id}= useParams<{id: string}>();
 
-    const [honorandaward, setHonorandAward]= useState({
+    const [honorandaward, setHonorandAward]= useState<HonorandAward>({
         id:'',
         titulli: '',
         muaji: '' ,
-        viti: '' ,
+        viti: null ,
         institucioni: '',
         pozita: '' ,
 
@@ -47,7 +48,7 @@ export default observer (function HonorandAwardForm(){
                 ...honorandaward,
                 id:uuid()
             };
-            createHonorandAward(newHonorandAward).then(() =>history.push(`/honorandaward/${newHonorandAward.id}`))
+            createHonorandAward(newHonorandAward).then(() =>history.push(`/honorsandawards`));
             modalStore.closeModal();
         }
     }
@@ -67,14 +68,20 @@ export default observer (function HonorandAwardForm(){
             <Form className='ui form' onSubmit={handleSubmit} autoComplete='off' >
                 <MyTextInput placeholder='Titulli' name='titulli' />
                 <MySelectInput options={MuajiOptions} placeholder='Muaji'  name='muaji' />
-                <MyTextInput placeholder='Viti'  name='viti' />
+                <MyDateInput
+                    placeholderText='Viti'  
+                    name='viti'
+                    showYearPicker
+                    dateFormat='yyyy'
+                    yearItemNumber={15} 
+                />
                 <MyTextInput  placeholder='Institucioni'  name='institucioni' />
                 <MyTextArea rows={3} placeholder='Pozita dhe Pershkrimi'  name='pozita' />
                 <Button 
                     disabled={isSubmitting || !dirty || !isValid}
                     loading={loading} floated='right'
                     positive type='submit' content='Submit' />
-                <Button onClick={()=> modalStore.closeModal()}as={Link} to='/honorandaward' floated='right' type='button' content='Cancel'/>
+                <Button onClick={()=> modalStore.closeModal()}as={Link} to='/honorsandawards' floated='right' type='button' content='Cancel'/>
             </Form>
             )}
             </Formik>

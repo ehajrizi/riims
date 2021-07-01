@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { observer } from 'mobx-react-lite';
 import React, { SyntheticEvent, useState } from 'react';
 import { Button,  Card, Divider, Grid, Icon, Item, Segment } from 'semantic-ui-react';
@@ -20,7 +21,12 @@ export default observer (function MbikeqyresiTemaveListItem({mbikeqyresitemave}:
         setTarget(e.currentTarget.name);
         deleteMbikeqyresiTemave(id);
     }
-    
+    const [readMore, setReadMore] = useState(false);
+    const extraContent = <div>
+        <Card.Meta>
+            <span>{mbikeqyresitemave.titulliTemes}</span>
+        </Card.Meta>
+    </div>
     return (
         <>
         <Item key={(mbikeqyresitemave.id)}>
@@ -28,8 +34,8 @@ export default observer (function MbikeqyresiTemaveListItem({mbikeqyresitemave}:
                 <Card.Content>
                     <Grid>
                         <Grid.Column width='12'>
-                            <Card.Header><h4>{mbikeqyresitemave.titulliTemes}</h4></Card.Header>
-                        </Grid.Column>
+                        <Card.Header><a className="read-more-link" onClick={() => { setReadMore(!readMore) }}><h4>{mbikeqyresitemave.titulliTemes}</h4></a></Card.Header>
+                            </Grid.Column>
                         <Grid.Column width='4'>
                             <Grid style={{ marginTop: '-25px' }}>
                                 <Grid.Column width='3'>
@@ -49,15 +55,18 @@ export default observer (function MbikeqyresiTemaveListItem({mbikeqyresitemave}:
                         </Grid.Column>
                     </Grid>
                         <Card.Meta>
-                            <span>{mbikeqyresitemave.titulliTemes}</span>
-                            <span>{mbikeqyresitemave.studenti}</span>
+                            <span>{mbikeqyresitemave.studenti},</span><span>{mbikeqyresitemave.niveliAkademik}</span>  
                             </Card.Meta>
                             <Card.Description>
-                        <div>{mbikeqyresitemave.muaji},{mbikeqyresitemave.viti} </div>  
                         <div>{mbikeqyresitemave.institucioni}</div>  
-                        <div>{mbikeqyresitemave.fakulteti}</div>      
-                        <div>{mbikeqyresitemave.niveliAkademik}</div>      
+                        <div>{mbikeqyresitemave.fakulteti}</div> 
                             </Card.Description>
+                            <Card.Meta>
+                            <span>{mbikeqyresitemave.muaji },</span><span>{ format(mbikeqyresitemave.viti!,'yyyy')} </span>  
+                            </Card.Meta>
+                            <Card.Meta>
+                            {readMore && extraContent}
+                        </Card.Meta>
                         <Grid>
                             <Grid.Column width="15"><Divider /></Grid.Column>
                             <Grid.Column width="1"><Icon name='eye' style={{ marginLeft: "-20px" }} /></Grid.Column>

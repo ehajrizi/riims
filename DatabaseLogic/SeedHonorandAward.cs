@@ -20,7 +20,7 @@ namespace DatabaseLogic
                     Titulli = "Test",
                     Institucioni = "Test",
                     Muaji = 3,
-                    Viti = 2019,
+                    Viti = DateTime.Now,
                     Pozita="test",
                     }
             };

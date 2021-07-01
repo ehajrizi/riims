@@ -9,7 +9,7 @@ export default class MbikeqyresiTemaveStore {
     selectedMbikeqyresiTemave: MbikeqyresiTemave | undefined = undefined;
     editModeMbikeqyresiTemave = false;
     loading = false;
-    loadingInitial = true;
+    loadingInitial = false;
 
     constructor() {
         makeAutoObservable(this)
@@ -56,6 +56,7 @@ export default class MbikeqyresiTemaveStore {
         }
     }
     private setMbikeqyresiTemave = (mbikeqyresitemave: MbikeqyresiTemave) => {
+        mbikeqyresitemave.viti= new Date(mbikeqyresitemave.viti!);
         this.mbikeqyresitemaveRegistry.set(mbikeqyresitemave.id, mbikeqyresitemave)
     }
 
