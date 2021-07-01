@@ -3,6 +3,7 @@ export interface Publikimi {
     titulli:         string;
     emertimiEvent:   string;
     data:            Date | null;
+    viti:            Date | null;
     vendi:           string;
     statusi:         string;
     llojiPublikimit: string;

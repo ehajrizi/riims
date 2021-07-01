@@ -28,6 +28,7 @@ export default observer(function PublikimetEditForm({ publikimi }: Props) {
         titulli: publikimi.titulli,
         emertimiEvent: publikimi.emertimiEvent,
         data: publikimi.data,
+        viti: publikimi.viti,
         vendi: publikimi.vendi,
         statusi: publikimi.statusi,
         llojiPublikimit: publikimi.llojiPublikimit,
@@ -45,6 +46,7 @@ export default observer(function PublikimetEditForm({ publikimi }: Props) {
         titulli: Yup.string().required('The activity title is required'),
         emertimiEvent: Yup.string().required('The activity description is required'),
         data: Yup.string().required('Date is required').nullable(),
+        viti: Yup.string().required('Date is required').nullable(),
         vendi: Yup.string().required(),
         statusi: Yup.string().required(),
         llojiPublikimit: Yup.string().required(),
@@ -81,11 +83,16 @@ export default observer(function PublikimetEditForm({ publikimi }: Props) {
                         <MyTextInput name='titulli' placeholder='Titulli' />
                         <MyTextInput name='emertimiEvent' placeholder='Emertimi i eventit' />
                         <MyDateInput
-                            placeholderText='Data'
+                            placeholderText='Muaji'
                             name='data'
-                            showTimeSelect
-                            timeCaption='time'
-                            dateFormat='MMMM d, yyyy h: mm aa'
+                            showMonthDropdown
+                            dateFormat='MM'
+                        />
+                        <MyDateInput
+                            placeholderText='Viti'
+                            name='viti'
+                            showYearPicker
+                            dateFormat='yyyy'
                         />
                         <MyTextInput name='vendi' placeholder='Vendi' />
                         <MySelectInput options={Statusi} placeholder='Statusi' name='statusi' />
