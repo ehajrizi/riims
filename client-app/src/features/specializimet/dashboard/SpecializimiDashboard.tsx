@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Grid } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
-import SpecializimiList from './SpecializimiList';
+import SpecializimiList from '../details/SpecializimiList';
 
 export default observer( function SpecializimiDashboard()
 {   const {specializimiStore} = useStore();
@@ -15,10 +15,12 @@ export default observer( function SpecializimiDashboard()
 
     if (specializimiStore.loadingInitial) return <LoadingComponent content='Loading app'/>
     return(
-        <Grid>
-           <Grid.Column width='10'>
-               <SpecializimiList/>
-           </Grid.Column>
+        <Grid centered style={{ marginTop: 50 }}>
+            <Grid.Column width='8' className={'grid-container'}>
+                <SpecializimiList/>
+            </Grid.Column>
+            <Grid.Column width='1' />
+            <Grid.Column width='4' />
         </Grid>
     )
 })

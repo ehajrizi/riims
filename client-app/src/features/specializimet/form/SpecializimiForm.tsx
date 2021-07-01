@@ -5,11 +5,16 @@ import { Button, Form, Segment } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
 import {v4 as uuid} from 'uuid';
+import * as Yup from 'yup';
+import MyTextArea from '../../../app/api/common/form/MyTextArea';
+import { Formik } from 'formik';
+import MyTextInput from '../../../app/api/common/form/MyTextInput';
+import { Specializimi } from '../../../app/models/specializimi';
 
 export default observer(function SpecializimiForm() {
     const history = useHistory();
-    const {specializimiStore} = useStore();
-    const {createSpecializimi, updateSpecializimi, loading,
+    const {specializimiStore, modalStore} = useStore();
+    const {createSpecializimi, loading,
              loadSpecializimi, loadingInitial} = specializimiStore;
     const {id} = useParams<{id: string}>();
 
@@ -18,45 +23,76 @@ export default observer(function SpecializimiForm() {
         emriInstitucionit: '' ,
         titulli: '' ,
         lokacioni: '' ,
-        dataFillestare: '' ,
+        dataFillestare: '' , /*boji null masi ti nderrojsh */
         dataPerfundimtare: '',
         pershkrimi: '' 
+    })
+
+    const validationSchema = Yup.object({
+        emriInstitucionit:Yup.string().required('Emri i institucionit duhet te plotesohet!'),
+        titulli: Yup.string().required('Titulli duhet te plotesohet!'),
+        lokacioni: Yup.string().required('Lokacioni duhet te plotesohet!'),
+        dataFillestare: Yup.string().required('Data fillestare duhet te plotesohet!'),
+        dataPerfundimtare: Yup.string().required('Data perfundimtare duhet te plotesohet!'),
+        pershkrimi: Yup.string().required('Pershkrimi duhet te plotesohet!'),
     })
 
     useEffect(() => {
         if (id) loadSpecializimi(id).then(specializimi => setSpecializimi(specializimi!))
     }, [id, loadSpecializimi]);
 
-    function handleSubmitSpecializimi() {
+    function handleFormSubmitSpecializimi(specializimi: Specializimi) {
         if (specializimi.id.length === 0) {
             let newSpecializimi = {
                 ...specializimi,
                 id: uuid()
             };
             createSpecializimi(newSpecializimi).then(() => history.push(`/specializimet/${newSpecializimi.id}`))
-        } else {
-            updateSpecializimi(specializimi).then(() => history.push(`/specializimet/${specializimi.id}`))
+            modalStore.closeModal();
         }
-    }
-    
-    function handleInputChangeSpecializimi(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-        const {name, value} = event.target;
-        setSpecializimi({...specializimi, [name]: value})
     }
 
     if(loadingInitial) return <LoadingComponent content='Loading specializimi...'/>
 
     return (
         <Segment clearing>
-            {<Form onSubmit={handleSubmitSpecializimi} autoComplete='off'>
-                <Form.Input placeholder='Emri i institucionit' value={specializimi.emriInstitucionit} name='emriInstitucionit' onChange={handleInputChangeSpecializimi}/>
-                <Form.TextArea placeholder='Titulli' value={specializimi.titulli} name='titulli' onChange={handleInputChangeSpecializimi}/>
-                <Form.Input placeholder='Lokacioni' value={specializimi.lokacioni} name='lokacioni' onChange={handleInputChangeSpecializimi}/>
-                <Form.Input placeholder='Data Fillestare' value={specializimi.dataFillestare} name='dataFillestare' onChange={handleInputChangeSpecializimi}/>
-                <Form.Input placeholder='Data Perfundimtare' value={specializimi.dataPerfundimtare} name='dataPerfundimtare' onChange={handleInputChangeSpecializimi}/>
-                <Form.Input placeholder='Pershkrimi' value={specializimi.pershkrimi} name='pershkrimi' onChange={handleInputChangeSpecializimi}/>
-                <Button floated='right' positive type='submit' content='Submit'/>
-            </Form> }
-        </Segment>
+        <Formik
+            validationSchema={validationSchema}
+            enableReinitialize
+            initialValues={specializimi}
+            onSubmit={values => handleFormSubmitSpecializimi(values)}>
+            {({ handleSubmit, isValid, isSubmitting, dirty }) => (
+                <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
+                    <MyTextInput name='emriInstitucionit' placeholder='Emri i institucionit' />
+                    <MyTextInput name='titulli' placeholder='Titulli' />
+                    <MyTextInput name='lokacioni' placeholder='Lokacioni' />
+                    <MyTextInput name='dataFillestare' placeholder='Data Fillestare' />
+                    <MyTextInput name='dataPerfundimtare' placeholder='Data Perfundimtare' />
+                    {/* <MyDateInput
+                        placeholderText='Data fillestare'
+                        name='dataFillestare'
+                        showTimeSelect
+                        timeCaption='time'
+                        dateFormat='MMMM d, yyyy '
+                    />
+                    <MyDateInput
+                        placeholderText='Data perfundimtare'
+                        name='dataPerfundimtare'
+                        showTimeSelect
+                        timeCaption='time'
+                        dateFormat='MMMM d, yyyy'
+                    /> */}
+
+                    <MyTextArea rows={3} name='pershkrimi' placeholder='Pershkrimi'/>
+                    <Button
+                        disabled={isSubmitting || !dirty || !isValid}
+                        loading={loading}
+                        floated='right'
+                        positive type='submit' content='Submit' />
+                    <Button onClick={()=>modalStore.closeModal()} as={Link} to='/specializimet' floated='right' type='button' content='Cancel' />
+                </Form>
+            )}
+        </Formik>
+    </Segment >
     )
 })

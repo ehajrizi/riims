@@ -25,8 +25,8 @@ export function scrollToEdukimi() {
     });
 };
 
-export function scrollToCertifikimet() {
-    scroller.scrollTo("certifikimet", {
+export function scrollToSpecializimi() {
+    scroller.scrollTo("specializimi", {
         duration: 800,
         delay: 0,
         smooth: "easeInOutQuart",

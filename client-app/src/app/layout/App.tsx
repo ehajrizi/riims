@@ -3,7 +3,7 @@ import './styles.css';
 import { Button, Card, Container, Divider, Grid, Header, Segment } from 'semantic-ui-react';
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
 import ImageExampleCircular from './Image';
-import scrollToPublikimet, { scrollToAnetaresia, scrollToCertifikimet, scrollToEdukimi, scrollToEksperiencat, scrollToHonorsAndAwards, scrollToMbikeqyresITemave, scrollToProjektet, scrollToTop } from '../styling-functions/Scrolling';
+import scrollToPublikimet, { scrollToAnetaresia, scrollToEdukimi, scrollToSpecializimi ,scrollToEksperiencat, scrollToHonorsAndAwards, scrollToMbikeqyresITemave, scrollToProjektet, scrollToTop } from '../styling-functions/Scrolling';
 import EdukimiDashboard from '../../features/edukimet/dashboard/EdukimiDashboard';
 import PublikimetDashboard from '../../features/Publikimet/dashboard/PublikimetDashboard';
 import Footer from './Footer';
@@ -13,6 +13,7 @@ import NavBar from './NavBar';
 import ProjektetDashboard from '../../features/projektet/dashboard/ProjektetDashboard';
 import HonorandAwardDashboard from '../../features/honorsandawards/dashboard/HonorandAwardDashboard';
 import ModalContainer from '../api/common/modals/ModalContainer';
+import SpecializimiDashboard from '../../features/specializimet/dashboard/SpecializimiDashboard';
 
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
         <Card.Group itemsPerRow={8}>
           <Card fluid color='orange' header='Eksperiencat' onClick={scrollToEksperiencat} as={Link} to='/eksperiencat'/>
           <Card fluid color='yellow' header='Edukimi' onClick={scrollToEdukimi} as={Link} to='/edukimet'/>
-          <Card fluid color='green' header='Certifikimet' onClick={scrollToCertifikimet} />
+          <Card fluid color='green' header='Specializimet' onClick={scrollToSpecializimi}  as={Link} to='/specializimet'/>
           <Card fluid color='blue' header='Mbikeqyres i temave' onClick={scrollToMbikeqyresITemave} />
           <Card fluid color='red' header='Publikimet' onClick={scrollToPublikimet} as={Link} to='/publikimet' />
           <Card fluid color='pink' header='Projektet' onClick={scrollToProjektet} as={Link} to='/projektet' />
@@ -67,9 +68,9 @@ function App() {
       <Segment className={'edukimi'} basic>
         <EdukimiDashboard />
       </Segment>
-      {/* <Segment className={'certifikimet'} basic>
-        <CertifikimetDashboard />
-      </Segment> */}
+      <Segment className={'specializimi'} basic>
+        <SpecializimiDashboard />
+      </Segment>
       <Segment className={'mbikeqyrestemave'} basic>
         <MbikeqyresiTemaveDashboard />
       </Segment>
