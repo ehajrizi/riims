@@ -19,7 +19,7 @@ export default observer(function EdukimiList() {
                     <Header content='Edukimi' />
                 </Grid.Column>
                 <Grid.Column width='1' >
-                    <Button onClick={() => modalStore.openModal(<EdukimiForm />)} as={Link} to='/createEdukimi' className="btn" ><Icon className='btnIcon' name='plus' size='large' />
+                    <Button onClick={() => modalStore.openModal(<EdukimiForm />)}  className="btn" ><Icon className='btnIcon' name='plus' size='large' />
                     </Button>
                 </Grid.Column>
             </Grid>

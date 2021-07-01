@@ -10,7 +10,6 @@ import * as Yup from 'yup';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import MyDateInput from '../../../app/api/common/form/MyDateInput';
-// import { Statusi } from '../../../app/api/common/options/publikimiOptions';
 import { Edukimi } from '../../../app/models/edukimi';
 import MyTextArea from '../../../app/api/common/form/MyTextArea';
 
@@ -50,7 +49,7 @@ export default observer(function EdukimitEditForm({ edukimi }: Props) {
     }, [id, loadEdukimi]);
 
     function handleFormSubmit(edukimi: Edukimi) {
-        updateEdukimi(edukimi).then(() => history.push(`/edukimet/${edukimi.id}`));
+        updateEdukimi(edukimi).then(() => history.push(`/edukimi`));
         modalStore.closeModal();
     }
 
@@ -93,7 +92,7 @@ export default observer(function EdukimitEditForm({ edukimi }: Props) {
                             loading={loading}
                             floated='right'
                             positive type='submit' content='Submit' />
-                        <Button onClick={()=>modalStore.closeModal()} as={Link} to='/edukimet' floated='right' type='button' content='Cancel' />
+                        <Button onClick={()=>modalStore.closeModal()} as={Link} to='/edukimi' floated='right' type='button' content='Cancel' />
                     </Form>
                 )}
             </Formik>
