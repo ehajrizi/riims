@@ -1,71 +1,69 @@
+import { observer } from 'mobx-react';
 import React, { useEffect, useState } from 'react';
-import { Button, Form, Header, Segment } from 'semantic-ui-react';
-import {v4 as uuid} from 'uuid';
+import ReactDOM from 'react-dom';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { useStore } from '../../../app/stores/store';
-import { observer } from 'mobx-react-lite';
+import { Button, Header, Modal, Segment } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
+import { useStore } from '../../../app/stores/store';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { Formik } from 'formik';
-import MyTextArea from '../../../app/api/common/form/MyTextArea';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
+import MySelectInput from '../../../app/api/common/form/MySelectInput';
+import MyDateInput from '../../../app/api/common/form/MyDateInput';
+// import { Statusi } from '../../../app/api/common/options/publikimiOptions';
 import { Edukimi } from '../../../app/models/edukimi';
+import MyTextArea from '../../../app/api/common/form/MyTextArea';
 
-export default observer(function EdukimiForm(){
+export interface Props {
+    edukimi: Edukimi;
+}
 
+export default observer(function EdukimitEditForm({ edukimi }: Props) {
     const history = useHistory();
+    const { edukimiStore, modalStore } = useStore();
+    const { updateEdukimi, loading, loadEdukimi, loadingInitial } = edukimiStore;
+    const { id } = useParams<{ id: string }>();
 
-    const {edukimiStore, modalStore} = useStore();
-    const {loadEdukimi, createEdukimi, loading, loadingInitial} = edukimiStore;
-    const {id} = useParams<{id: string}>();
-
-    const [edukimi, setEdukimi] = useState({
-        id: '',
-        emri_i_Institucionit: '',
-        titulli: '',
-        fusha_e_Studimit: '',
-        lokacioni: '',
-        dataFillestare: '',//BOJE NULL MASI E NDRRON TYPE
-        dataPerfundimtare: '',//BOJE NULL MASI E NDRRON TYPE
-        pershkrimi: ''
-    }); 
+    const [edukim, setEdukimi] = useState<Edukimi>({
+        id: edukimi.id,
+        emri_i_Institucionit: edukimi.emri_i_Institucionit,
+        titulli: edukimi.titulli,
+        fusha_e_Studimit: edukimi.fusha_e_Studimit,
+        lokacioni: edukimi.lokacioni,
+        dataFillestare: edukimi.dataFillestare,
+        dataPerfundimtare: edukimi.dataPerfundimtare,
+        pershkrimi: edukimi.pershkrimi
+    });
 
     const validationSchema = Yup.object({
         emri_i_Institucionit: Yup.string().required('Emri i Institucionit duhet te plotesohet!'),
         titulli: Yup.string().required('Titulli duhet te plotesohet!'),
-        fusha_e_Studimit: Yup.string().required(),
-        lokacioni: Yup.string().required(),
-        dataFillestare: Yup.string().required('Data Fillestare duhet te plotesohet!'), //shtoje .nullable()
-        dataPerfundimtare: Yup.string().required('Data Perfundimtare duhet te plotesohet!'), //shtoje .nullable()
-        pershkrimi: Yup.string().required()
+        fusha_e_Studimit: Yup.string().required('Fusha e Studimit duhet te plotesohet!'),
+        lokacioni: Yup.string().required('Lokacioni duhet te plotesohet!'),
+        dataFillestare: Yup.string().required('Data Fillestare duhet te plotesohet!'),//shtoje .nullable()
+        dataPerfundimtare: Yup.string().required('Data Perfundimtare duhet te plotesohet!'),//shtoje .nullable()
+        pershkrimi: Yup.string().required('Pershkrimi duhet te plotesohet!')
     })
 
     useEffect(() => {
-        if(id) loadEdukimi(id).then(edukimi => setEdukimi(edukimi!))
-    },[id, loadEdukimi]);
+        if (id) loadEdukimi(id).then(edukimi => setEdukimi(edukimi!))
+    }, [id, loadEdukimi]);
 
-    function handleSubmitEdukimi(edukimi: Edukimi){
-        if(edukimi.id.length === 0){
-            let newEdukimi = {
-                ...edukimi,
-                id: uuid()
-            };
-            createEdukimi(newEdukimi).then(() => history.push(`/edukimet/${newEdukimi.id}`));
-            modalStore.closeModal();
-        }
-        
+    function handleFormSubmit(edukimi: Edukimi) {
+        updateEdukimi(edukimi).then(() => history.push(`/edukimet/${edukimi.id}`));
+        modalStore.closeModal();
     }
 
-    if(loadingInitial) return <LoadingComponent content='Loading Edukimi...'/>
+    if (loadingInitial) return <LoadingComponent content='Loading Edukimi...' />
 
-    return (
+    return(
         <Segment clearing>
             <Header content='Edukimi' sub color='blue' />
             <Formik
                 validationSchema={validationSchema}
                 enableReinitialize
-                initialValues={edukimi}
-                onSubmit={values => handleSubmitEdukimi(values)}>
+                initialValues={edukim}
+                onSubmit={values => handleFormSubmit(values)}>
                 {({ handleSubmit, isValid, isSubmitting, dirty }) => (
                     <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
                         <MyTextInput name='emri_i_Institucionit' placeholder='Emri i Institucionit' />
@@ -100,6 +98,5 @@ export default observer(function EdukimiForm(){
                 )}
             </Formik>
         </Segment >
-    );
+    )
 })
-

@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { Grid } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
-import EdukimiList from './EdukimiList';
+import EdukimiList from '../details/EdukimiList';
 
 export default observer (function EdukimiDashboard(){
 
@@ -18,10 +18,12 @@ export default observer (function EdukimiDashboard(){
   if(edukimiStore.loadingInitial) return <LoadingComponent content='Loading app'/>
 
     return(
-        <Grid>
-            <Grid.Column width='10'>
-                <EdukimiList />
-            </Grid.Column>
-        </Grid>
+      <Grid centered style={{ marginTop: 50 }}>
+      <Grid.Column width='8' className={'grid-container'}>
+          <EdukimiList/>
+      </Grid.Column>
+      <Grid.Column width='1' />
+      <Grid.Column width='4' />
+  </Grid>
     )
 })
