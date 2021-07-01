@@ -25,8 +25,16 @@ export function scrollToEdukimi() {
     });
 };
 
-export function scrollToSpecializimi() {
-    scroller.scrollTo("specializimi", {
+export function scrollToSpecializimet() {
+    scroller.scrollTo("specializimet", {
+        duration: 800,
+        delay: 0,
+        smooth: "easeInOutQuart",
+    });
+};
+
+export function scrollToCertifikimet() {
+    scroller.scrollTo("certifikimet", {
         duration: 800,
         delay: 0,
         smooth: "easeInOutQuart",

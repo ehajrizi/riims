@@ -36,6 +36,10 @@ Header{
   color: #073b63 !important;
 }
 
+.navbar{
+  height: 5px;
+}
+
 .angleUp {
   color: black !important;
   background-color: #eaeaea !important;
