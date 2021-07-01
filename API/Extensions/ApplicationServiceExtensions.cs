@@ -46,6 +46,7 @@ namespace API.Extensions
             services.AddMediatR(typeof(Application.Gjuhet.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.Anetaresite.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.HonorsandAwards.List.Handler).Assembly);
+            services.AddMediatR(typeof(Application.Donatoret.List.Handler).Assembly);
             
 
             return services;
