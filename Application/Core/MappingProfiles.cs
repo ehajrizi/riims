@@ -19,6 +19,8 @@ namespace Application.Core
             CreateMap<Anetaresia, Anetaresia>();
             CreateMap<HonorandAward, HonorandAward>();
             CreateMap<Donatori, Donatori>();
+            CreateMap<Pjesemarresi, Pjesemarresi>();
+
         }
     }
 }

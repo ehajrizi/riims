@@ -3,14 +3,16 @@ using System;
 using DatabaseLogic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DatabaseLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210701215455_PjesemarresitMigration")]
+    partial class PjesemarresitMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,10 +93,10 @@ namespace DatabaseLogic.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DataFillestare")
+                    b.Property<string>("DataFillestare")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DataPerfundimtare")
+                    b.Property<string>("DataPerfundimtare")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Emri_i_Institucionit")
@@ -196,8 +198,8 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("Titulli")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Viti")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Viti")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -228,8 +230,8 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("TitulliTemes")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Viti")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Viti")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -374,9 +376,6 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("Vendi")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Viti")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("VolumiFaqeve")
                         .HasColumnType("INTEGER");
 
@@ -391,10 +390,10 @@ namespace DatabaseLogic.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DataFillestare")
+                    b.Property<string>("DataFillestare")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DataPerfundimtare")
+                    b.Property<string>("DataPerfundimtare")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("EmriInstitucionit")
