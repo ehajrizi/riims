@@ -72,14 +72,17 @@ export default function Home(){
                         <Segment className={'eksperiencat'} basic>
                         <EksperiencaDashboard />
                         </Segment>
-
                         <Segment className={'edukimi'} basic>
                             <EdukimiDashboard />
                         </Segment>
+                        <Segment className={'specializimet'} basic>
+                            <SpecializimiDashboard />
+                        </Segment>
+
                         {/* <Segment className={'certifikimet'} basic>
                             <CertifikimetDashboard />
                         </Segment> */}
-                        <Segment className={'mbikeqyrestemave'} basic>
+                        <Segment className={'mbikeqyresitemave'} basic>
                             <MbikeqyresiTemaveDashboard />
                         </Segment>
                         <Segment className={'publikimet'} basic>
