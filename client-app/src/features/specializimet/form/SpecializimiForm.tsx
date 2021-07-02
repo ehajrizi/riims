@@ -10,6 +10,7 @@ import MyTextArea from '../../../app/api/common/form/MyTextArea';
 import { Formik } from 'formik';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import { Specializimi } from '../../../app/models/specializimi';
+import MyDateInput from '../../../app/api/common/form/MyDateInput';
 
 export default observer(function SpecializimiForm() {
     const history = useHistory();
@@ -18,13 +19,13 @@ export default observer(function SpecializimiForm() {
              loadSpecializimi, loadingInitial} = specializimiStore;
     const {id} = useParams<{id: string}>();
 
-    const [specializimi, setSpecializimi] = useState({
+    const [specializimi, setSpecializimi] = useState<Specializimi>({
         id: '' ,
         emriInstitucionit: '' ,
         titulli: '' ,
         lokacioni: '' ,
-        dataFillestare: '' , /*boji null masi ti nderrojsh */
-        dataPerfundimtare: '',
+        dataFillestare: null, 
+        dataPerfundimtare: null,
         pershkrimi: '' 
     })
 
@@ -32,8 +33,8 @@ export default observer(function SpecializimiForm() {
         emriInstitucionit:Yup.string().required('Emri i institucionit duhet te plotesohet!'),
         titulli: Yup.string().required('Titulli duhet te plotesohet!'),
         lokacioni: Yup.string().required('Lokacioni duhet te plotesohet!'),
-        dataFillestare: Yup.string().required('Data fillestare duhet te plotesohet!'),
-        dataPerfundimtare: Yup.string().required('Data perfundimtare duhet te plotesohet!'),
+        dataFillestare: Yup.string().required('Data fillestare duhet te plotesohet!').nullable(),
+        dataPerfundimtare: Yup.string().required('Data perfundimtare duhet te plotesohet!').nullable(),
         pershkrimi: Yup.string().required('Pershkrimi duhet te plotesohet!'),
     })
 
@@ -66,22 +67,16 @@ export default observer(function SpecializimiForm() {
                     <MyTextInput name='emriInstitucionit' placeholder='Emri i institucionit' />
                     <MyTextInput name='titulli' placeholder='Titulli' />
                     <MyTextInput name='lokacioni' placeholder='Lokacioni' />
-                    <MyTextInput name='dataFillestare' placeholder='Data Fillestare' />
-                    <MyTextInput name='dataPerfundimtare' placeholder='Data Perfundimtare' />
-                    {/* <MyDateInput
-                        placeholderText='Data fillestare'
+                    <MyDateInput
+                        placeholderText='Data Fillestare'
                         name='dataFillestare'
-                        showTimeSelect
-                        timeCaption='time'
-                        dateFormat='MMMM d, yyyy '
+                        dateFormat='MMMM d, yyy'
                     />
                     <MyDateInput
-                        placeholderText='Data perfundimtare'
+                        placeholderText='Data Perfundimtare'
                         name='dataPerfundimtare'
-                        showTimeSelect
-                        timeCaption='time'
                         dateFormat='MMMM d, yyyy'
-                    /> */}
+                    />
 
                     <MyTextArea rows={3} name='pershkrimi' placeholder='Pershkrimi'/>
                     <Button

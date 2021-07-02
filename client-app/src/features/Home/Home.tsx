@@ -96,9 +96,7 @@ export default function Home(){
                         <Segment className={'projektet'} basic>
                             <ProjektetDashboard />
                         </Segment>
-                        {/* <Segment className={'anetaresia'} basic>
-                            <AnetaresiaDashboard />
-                        </Segment>
+                        {/*
                         <Segment className={'honorsawards'} basic>
                             <HonorsAndAwardsDashboard />
                         </Segment>  */}

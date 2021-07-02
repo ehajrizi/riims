@@ -1,3 +1,4 @@
+import format from "date-fns/format";
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -26,7 +27,7 @@ export default observer(function SpecializimiDetails() {
             </Card.Meta>
             <Card.Description>
                 <div>{specializimi.pershkrimi}</div>
-		        <div>{specializimi.dataFillestare} - {specializimi.dataPerfundimtare}</div>
+		        <div>{format(specializimi.dataFillestare!,'dd MMM yyyy')} - {format(specializimi.dataPerfundimtare!,'dd MMM yyyy')}</div>
 		        <div>{specializimi.lokacioni}</div>
             </Card.Description>
             </Card.Content>

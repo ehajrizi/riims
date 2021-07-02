@@ -10,7 +10,7 @@ namespace Application.Core
             CreateMap<Eksperienca, Eksperienca>();
             CreateMap<Publikimi, Publikimi>();
             CreateMap<MbikeqyresiTemave, MbikeqyresiTemave>();
-            CreateMap<Specializimi, Specializimi>();
+            // CreateMap<Specializimi, Specializimi>();
             CreateMap<Edukimi, Edukimi>();
             CreateMap<Profili, Profili>();
             CreateMap<Certifikimi, Certifikimi>();

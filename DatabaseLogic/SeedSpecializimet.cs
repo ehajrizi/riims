@@ -19,8 +19,8 @@ namespace DatabaseLogic
                     EmriInstitucionit= "UBT",
                     Titulli = "Specializimi 1",
                     Lokacioni = "Prishtine",
-                    DataFillestare = "01.01.2007",
-                    DataPerfundimtare = "01.01.2012",
+                    DataFillestare = DateTime.Now.AddMonths(-16),
+                    DataPerfundimtare = DateTime.Now.AddMonths(-10),
                     Pershkrimi = "Specializimi i pare"
                 },
 		        new Specializimi
@@ -28,8 +28,8 @@ namespace DatabaseLogic
                     EmriInstitucionit= "UBT",
                     Titulli = "Specializimi 2",
                     Lokacioni = "Prishtine",
-                    DataFillestare = "01.01.2007",
-                    DataPerfundimtare = "01.01.2012",
+                    DataFillestare = DateTime.Now.AddMonths(-16),
+                    DataPerfundimtare = DateTime.Now.AddMonths(-10),
                     Pershkrimi = "Specializimi i dyte"
                 },
 		        new Specializimi
@@ -37,8 +37,8 @@ namespace DatabaseLogic
                     EmriInstitucionit= "UBT",
                     Titulli = "Specializimi 3",
                     Lokacioni = "Prishtine",
-                    DataFillestare = "01.01.2007",
-                    DataPerfundimtare = "01.01.2012",
+                   DataFillestare = DateTime.Now.AddMonths(-16),
+                    DataPerfundimtare = DateTime.Now.AddMonths(-10),
                     Pershkrimi = "Specializimi i trete"
                 },
                 new Specializimi
@@ -46,8 +46,8 @@ namespace DatabaseLogic
                     EmriInstitucionit= "UBT",
                     Titulli = "Specializimi 4",
                     Lokacioni = "Prishtine",
-                    DataFillestare = "01.01.2007",
-                    DataPerfundimtare = "01.01.2012",
+                    DataFillestare = DateTime.Now.AddMonths(-16),
+                    DataPerfundimtare = DateTime.Now.AddMonths(-10),
                     Pershkrimi = "Specializimi i katert"
                 }
                

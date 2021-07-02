@@ -37,8 +37,8 @@ export default observer(function SpecializimiEditForm({ specializimi }: Props) {
         emriInstitucionit:Yup.string().required('Emri i institucionit duhet te plotesohet!'),
         titulli: Yup.string().required('Titulli duhet te plotesohet!'),
         lokacioni: Yup.string().required('Lokacioni duhet te plotesohet!'),
-        dataFillestare: Yup.string().required('Data fillestare duhet te plotesohet!'),
-        dataPerfundimtare: Yup.string().required('Data perfundimtare duhet te plotesohet!'),
+        dataFillestare: Yup.string().required('Data fillestare duhet te plotesohet!').nullable(),
+        dataPerfundimtare: Yup.string().required('Data perfundimtare duhet te plotesohet!').nullable(),
         pershkrimi: Yup.string().required(),
     })
 
@@ -66,22 +66,16 @@ export default observer(function SpecializimiEditForm({ specializimi }: Props) {
                         <MyTextInput name='emriInstitucionit' placeholder='Emri i institucionit' />
                         <MyTextInput name='titulli' placeholder='Titulli' />
                         <MyTextInput name='lokacioni' placeholder='Lokacioni' />
-                        <MyTextInput name='dataFillestare' placeholder='Data Fillestare' />
-                        <MyTextInput name='dataPerfundimtare' placeholder='Data Perfundimtare' />   
-                        {/* <MyDateInput
-                            placeholderText='Data fillestare'
+                        <MyDateInput
+                            placeholderText='Data Fillestare'
                             name='dataFillestare'
-                            showTimeSelect
-                            timeCaption='time'
-                            dateFormat='MMMM d, yyyy '
+                            dateFormat='MMMM d, yyy'
                         />
                         <MyDateInput
-                            placeholderText='Data perfundimtare'
+                            placeholderText='Data Perfundimtare'
                             name='dataPerfundimtare'
-                            showTimeSelect
-                            timeCaption='time'
                             dateFormat='MMMM d, yyyy'
-                        /> */}
+                        />
 
                         <MyTextArea rows={3} name='pershkrimi' placeholder='pershkrimi'/>
                         <Button

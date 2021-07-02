@@ -16,7 +16,7 @@ export default class SpecializimiStore {
 
     get specializimetByDate() {
         return Array.from(this.specializimiRegistry.values()).sort((a, b) => 
-            Date.parse(a.dataFillestare) - Date.parse(b.dataFillestare));
+        a.dataFillestare!.getTime()-b.dataFillestare!.getTime())
     }
 
     loadSpecializimet = async () => {
@@ -57,6 +57,8 @@ export default class SpecializimiStore {
     }
 
     private setSpecializimi = (specializimi: Specializimi) => {
+        specializimi.dataFillestare = new Date(specializimi.dataFillestare!);
+        specializimi.dataPerfundimtare = new Date(specializimi.dataPerfundimtare!);
         this.specializimiRegistry.set(specializimi.id, specializimi);
     }
 

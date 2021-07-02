@@ -17,7 +17,7 @@ export default observer(function SpecializimiList() {
                     <Header content='Specializimet' />
                 </Grid.Column>
                 <Grid.Column width='1' >
-                    <Button onClick={() => modalStore.openModal(<SpecializimiForm />)} as={Link} to='/createSpecializimi' className="btn" ><Icon className='btnIcon' name='plus' size='large' />
+                    <Button onClick={() => modalStore.openModal(<SpecializimiForm />)} as={Link} to='/specializimet' className="btn" ><Icon className='btnIcon' name='plus' size='large' />
                     </Button>
                 </Grid.Column>
             </Grid>

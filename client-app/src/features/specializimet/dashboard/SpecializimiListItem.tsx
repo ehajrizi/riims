@@ -64,8 +64,7 @@ export default observer(function SpecializimiListItem({ specializimi }: Props) {
                         </Card.Description>
                         <Card.Meta>
         
-                            {/* <span>{format(specializimi.dataFillestare!, 'dd MMM yyyy')}, {format(specializimi.dataPerfundimtare!, 'dd MMM yyyy')}</span> */}
-                            <span>{specializimi.dataFillestare} - {specializimi.dataPerfundimtare}</span>
+                            <span>{format(specializimi.dataFillestare!, 'dd MMM yyyy')} - {format(specializimi.dataPerfundimtare!, 'dd MMM yyyy')}</span>
                         </Card.Meta>
                         <Card.Meta>
                             {readMore && extraContent}
