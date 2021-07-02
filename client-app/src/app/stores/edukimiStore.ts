@@ -17,7 +17,7 @@ export default class EdukimiStore{
 
     get edukimetByDate(){
         return Array.from(this.edukimiRegistry.values()).sort((a,b) => 
-        Date.parse(a.dataFillestare)-Date.parse(b.dataFillestare))
+        a.dataFillestare!.getTime()-b.dataFillestare!.getTime())
     } 
 
     loadEdukimet = async () => {
@@ -57,6 +57,8 @@ export default class EdukimiStore{
     }
 
     private setEdukimi = (edukimi:  Edukimi) => {
+        edukimi.dataFillestare = new Date(edukimi.dataFillestare!);
+        edukimi.dataPerfundimtare = new Date(edukimi.dataPerfundimtare!);
         this.edukimiRegistry.set(edukimi.id, edukimi);
     }
 

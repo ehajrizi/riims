@@ -63,9 +63,9 @@ export default observer(function EdukimiListItem({ edukimi }: Props) {
                             {edukimi.emri_i_Institucionit}, {edukimi.lokacioni}
                         </Card.Description>
                         <Card.Meta>
-                            <span>{edukimi.dataFillestare} - {edukimi.dataPerfundimtare}</span>
-                            {/* <span>{format(edukimi.dataFillestare!, 'dd MMM yyyy')}</span> */}
-                            {/* <span>{format(edukimi.dataPerfundimtare!, 'dd MMM yyyy')}</span> */}
+                            <span>{format(edukimi.dataFillestare!, 'dd MMM yyyy')}</span>
+                                -
+                            <span>{format(edukimi.dataPerfundimtare!, 'dd MMM yyyy')}</span>
                         </Card.Meta>
                         <Card.Meta>
                             {readMore && extraContent}

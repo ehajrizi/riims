@@ -10,6 +10,7 @@ import { Formik } from 'formik';
 import MyTextArea from '../../../app/api/common/form/MyTextArea';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import { Edukimi } from '../../../app/models/edukimi';
+import MyDateInput from '../../../app/api/common/form/MyDateInput';
 
 export default observer(function EdukimiForm(){
 
@@ -19,14 +20,14 @@ export default observer(function EdukimiForm(){
     const {loadEdukimi, createEdukimi, loading, loadingInitial} = edukimiStore;
     const {id} = useParams<{id: string}>();
 
-    const [edukimi, setEdukimi] = useState({
+    const [edukimi, setEdukimi] = useState<Edukimi>({
         id: '',
         emri_i_Institucionit: '',
         titulli: '',
         fusha_e_Studimit: '',
         lokacioni: '',
-        dataFillestare: '',//BOJE NULL MASI E NDRRON TYPE
-        dataPerfundimtare: '',//BOJE NULL MASI E NDRRON TYPE
+        dataFillestare: null,
+        dataPerfundimtare: null,
         pershkrimi: ''
     }); 
 
@@ -35,8 +36,8 @@ export default observer(function EdukimiForm(){
         titulli: Yup.string().required('Titulli duhet te plotesohet!'),
         fusha_e_Studimit: Yup.string().required(),
         lokacioni: Yup.string().required(),
-        dataFillestare: Yup.string().required('Data Fillestare duhet te plotesohet!'), //shtoje .nullable()
-        dataPerfundimtare: Yup.string().required('Data Perfundimtare duhet te plotesohet!'), //shtoje .nullable()
+        dataFillestare: Yup.string().required('Data Fillestare duhet te plotesohet!').nullable(),
+        dataPerfundimtare: Yup.string().required('Data Perfundimtare duhet te plotesohet!').nullable(),
         pershkrimi: Yup.string().required()
     })
 
@@ -72,22 +73,16 @@ export default observer(function EdukimiForm(){
                         <MyTextInput name='titulli' placeholder='Titulli' />
                         <MyTextInput name='fusha_e_Studimit' placeholder='Fusha e Studimit' />
                         <MyTextInput placeholder='Lokacioni' name='lokacioni' />
-                        <MyTextInput placeholder='Data Fillestare' name='dataFillestare' />
-                        <MyTextInput placeholder='Data Perfundimtare' name='dataPerfundimtare' />
-                        {/* <MyDateInput
+                        <MyDateInput
                             placeholderText='Data Fillestare'
                             name='dataFillestare'
-                            showTimeSelect
-                            timeCaption='time'
                             dateFormat='MMMM d, yyy'
-                        /> */}
-                        {/* <MyDateInput
+                        />
+                        <MyDateInput
                             placeholderText='Data Perfundimtare'
                             name='dataPerfundimtare'
-                            showTimeSelect
-                            timeCaption='time'
                             dateFormat='MMMM d, yyyy'
-                        /> */}
+                        />
                         <MyTextArea placeholder='Pershkrimi' name='pershkrimi' rows={3} />
                         
                         <Button

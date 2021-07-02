@@ -39,8 +39,8 @@ export default observer(function EdukimiEditForm({ edukimi }: Props) {
         titulli: Yup.string().required('Titulli duhet te plotesohet!'),
         fusha_e_Studimit: Yup.string().required('Fusha e Studimit duhet te plotesohet!'),
         lokacioni: Yup.string().required('Lokacioni duhet te plotesohet!'),
-        dataFillestare: Yup.string().required('Data Fillestare duhet te plotesohet!'),//shtoje .nullable()
-        dataPerfundimtare: Yup.string().required('Data Perfundimtare duhet te plotesohet!'),//shtoje .nullable()
+        dataFillestare: Yup.string().required('Data Fillestare duhet te plotesohet!').nullable(),
+        dataPerfundimtare: Yup.string().required('Data Perfundimtare duhet te plotesohet!').nullable(),
         pershkrimi: Yup.string().required('Pershkrimi duhet te plotesohet!')
     })
 
@@ -69,22 +69,16 @@ export default observer(function EdukimiEditForm({ edukimi }: Props) {
                         <MyTextInput name='titulli' placeholder='Titulli' />
                         <MyTextInput name='fusha_e_Studimit' placeholder='Fusha e Studimit' />
                         <MyTextInput placeholder='Lokacioni' name='lokacioni' />
-                        <MyTextInput placeholder='Data Fillestare' name='dataFillestare' />
-                        <MyTextInput placeholder='Data Perfundimtare' name='dataPerfundimtare' />
-                        {/* <MyDateInput
+                        <MyDateInput
                             placeholderText='Data Fillestare'
                             name='dataFillestare'
-                            showTimeSelect
-                            timeCaption='time'
                             dateFormat='MMMM d, yyy'
-                        /> */}
-                        {/* <MyDateInput
+                        />
+                        <MyDateInput
                             placeholderText='Data Perfundimtare'
                             name='dataPerfundimtare'
-                            showTimeSelect
-                            timeCaption='time'
                             dateFormat='MMMM d, yyyy'
-                        /> */}
+                        />
                         <MyTextArea placeholder='Pershkrimi' name='pershkrimi' rows={3} />
                         
                         <Button

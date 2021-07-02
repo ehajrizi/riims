@@ -1,3 +1,4 @@
+import format from "date-fns/format";
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -32,7 +33,7 @@ export default observer(function EdukimiDetails() {
             {edukimi.lokacioni}
           </div>
           <div>
-            {edukimi.dataFillestare} - {edukimi.dataPerfundimtare}
+          <span>{format(edukimi.dataFillestare!,'dd MMM yyyy')} - {format(edukimi.dataPerfundimtare!,'dd MMM yyyy')}</span>
           </div>
         </Card.Description>
       </Card.Content>
