@@ -60,10 +60,10 @@ export default observer(function EksperiencaForm(){
                 ...eksperienca,
                 id: uuid()
             };
-            createEksperienca(newEksperienca).then(() => history.push(`/eksperiencat/${newEksperienca.id}`))
+            createEksperienca(newEksperienca).then(() => history.push(`/eksperiencat`))
             modalStore.closeModal();
         }else{
-            updateEksperienca(eksperienca).then(() => history.push(`/eksperiencat/${eksperienca.id}`))
+            updateEksperienca(eksperienca).then(() => history.push(`/eksperiencat`))
             modalStore.closeModal();
         }
     }

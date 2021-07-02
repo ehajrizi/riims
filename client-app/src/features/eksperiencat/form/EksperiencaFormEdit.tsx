@@ -56,7 +56,7 @@ export default observer(function EksperiencaFormEdit({eksp}: Props){
     },[id, loadEksperienca]);
     
     function handleSubmitEksperienca(eksperienca: Eksperienca){
-        updateEksperienca(eksperienca).then(() => history.push(`/eksperiencat/${eksperienca.id}`))
+        updateEksperienca(eksperienca).then(() => history.push(`/eksperiencat`))
         modalStore.closeModal();
     }
 

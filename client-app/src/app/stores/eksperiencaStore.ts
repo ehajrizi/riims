@@ -81,7 +81,6 @@ export default class EksperiencaStore{
                 this.selectedEksperienca = eksperienca;
                 this.editMode = false;
                 this.loading = false;
-                store.modalStore.closeModal();
             })
 
         }catch(error){
