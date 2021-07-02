@@ -68,7 +68,7 @@ export default observer(function PublikimetForm() {
                 ...publikimi,
                 id: uuid()
             };
-            createPublikimi(newPublikimi).then(() => history.push(`/publikimet/${newPublikimi.id}`));
+            createPublikimi(newPublikimi).then(() => history.push(`/publikimet/`));
             modalStore.closeModal();
         }
     }

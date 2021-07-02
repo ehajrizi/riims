@@ -20,7 +20,7 @@ export default observer(function PublikimetList() {
                     <Header content='Publikimet' />
                 </Grid.Column>
                 <Grid.Column width='1' >
-                    <Button onClick={() => modalStore.openModal(<PublikimetForm />)} as={Link} to='/createPublikimi' className="btn" ><Icon className='btnIcon' name='plus' size='large' />
+                    <Button onClick={() => modalStore.openModal(<PublikimetForm />)} className="btn" ><Icon className='btnIcon' name='plus' size='large' />
                     </Button>
                 </Grid.Column>
             </Grid>

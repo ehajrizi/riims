@@ -3,8 +3,8 @@ export interface Projekti {
     emriProjektit: string;
     pershkrimi: string;
     lokacioni: string;
-    dataFillimit: string;
-    dataMbarimit: string;
+    dataFillimit: Date | null;
+    dataMbarimit: Date | null;
     buxheti: number;
     emriKlientit: string;
     institucioni: string;

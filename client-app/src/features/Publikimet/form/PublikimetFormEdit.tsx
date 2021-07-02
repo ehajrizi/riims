@@ -65,7 +65,7 @@ export default observer(function PublikimetEditForm({ publikimi }: Props) {
     }, [id, loadPublikimi]);
 
     function handleFormSubmit(publikimi: Publikimi) {
-        updatePublikimi(publikimi).then(() => history.push(`/publikimet/${publikimi.id}`));
+        updatePublikimi(publikimi).then(() => history.push(`/publikimet/`));
         modalStore.closeModal();
     }
 

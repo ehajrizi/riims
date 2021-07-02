@@ -8,7 +8,7 @@ export default class ProjektiStore{
     selectedProjekti: Projekti | undefined = undefined;
     editMode = false;
     loading = false;
-    loadingInitial = true;
+    loadingInitial = false;
 
 
     constructor(){
@@ -16,8 +16,7 @@ export default class ProjektiStore{
     }
 
     get projektetByDate(){
-        return Array.from(this.projektiRegistry.values()).sort((a,b) => 
-        Date.parse(a.dataFillimit)-Date.parse(b.dataFillimit))
+        return Array.from(this.projektiRegistry.values()).sort((a, b) => a.dataFillimit!.getTime() - b.dataFillimit!.getTime());
     } 
 
     loadProjektet = async () => {
@@ -57,8 +56,8 @@ export default class ProjektiStore{
     }
 
     private setProjekti = (projekti:  Projekti) => {
-        projekti.dataFillimit = projekti.dataFillimit.split('T')[0];
-        projekti.dataMbarimit = projekti.dataMbarimit.split('T')[0];
+        projekti.dataFillimit = new Date(projekti.dataFillimit!);
+        projekti.dataMbarimit = new Date(projekti.dataMbarimit!);
         this.projektiRegistry.set(projekti.id, projekti);
     }
 

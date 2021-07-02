@@ -2,83 +2,100 @@ import { observer } from 'mobx-react';
 import React, { ChangeEvent, FunctionComponent, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { Button, Form, Modal, Segment } from 'semantic-ui-react';
+import { Button, Modal, Segment } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
 import { v4 as uuid } from 'uuid';
-import {
-    Wrapper,
-    Header,
-    StyledModal,
-    CloseButton,
-    Backdrop,
-    FormClass,
-} from '../../modal.style';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import MyTextInput from '../../../app/api/common/form/MyTextInput';
+import MyDateInput from '../../../app/api/common/form/MyDateInput';
+import MyTextArea from '../../../app/api/common/form/MyTextArea';
+import { Institucioni } from '../../../app/api/common/options/projektiOptions';
+import MySelectInput from '../../../app/api/common/form/MySelectInput';
+import { Projekti } from '../../../app/models/projekti';
 
-export interface ModalProps {
-    isShown: boolean;
-    hide: () => void;
+interface Props {
+    projekt: Projekti;
 }
 
-export default observer(function ProjektetFormEdit({ isShown, hide }: ModalProps) {
+export default observer(function ProjektetFormEdit({projekt}: Props) {
     const history = useHistory();
 
-    const { projektiStore } = useStore();
-    const { loadProjekti, createProjekti, updateProjekti, loading, loadingInitial } = projektiStore;
+    const { projektiStore, modalStore } = useStore();
+    const { loadProjekti, updateProjekti, loading, loadingInitial } = projektiStore;
     const { id } = useParams<{ id: string }>();
 
-    const [projekti, setProjekti] = useState({
-        id: '',
-        emriProjektit: '',
-        pershkrimi: '',
-        lokacioni: '',
-        dataFillimit: '',
-        dataMbarimit: '',
-        buxheti: 0,
-        emriKlientit: '',
-        institucioni: ''
+    const [projekti, setProjekti] = useState<Projekti>({
+        id: projekt.id,
+        emriProjektit: projekt.emriProjektit,
+        pershkrimi: projekt.pershkrimi,
+        lokacioni: projekt.lokacioni,
+        dataFillimit: projekt.dataFillimit,
+        dataMbarimit: projekt.dataMbarimit,
+        buxheti: projekt.buxheti,
+        emriKlientit: projekt.emriKlientit,
+        institucioni: projekt.institucioni
     });
+
+    const validationSchema = Yup.object({
+        emriProjektit: Yup.string().required('Fusha nuk guxon te jete e zbrazet'),
+        pershkrimi: Yup.string().required('The activity description is required'),
+        lokacioni: Yup.string().required(),
+        dataFillimit: Yup.string().required('Date is required').nullable(),
+        dataMbarimit: Yup.string().required('Date is required').nullable(),
+        buxheti: Yup.string().required(),
+        emriKlientit: Yup.string().required(),
+        institucioni: Yup.string().required(),
+    })
 
     useEffect(() => {
         if (id) loadProjekti(id).then(projekti => setProjekti(projekti!))
     }, [id, loadProjekti]);
 
-    function handleSubmitProjekti() {
-        updateProjekti(projekti).then(() => history.push(`/projektet/${projekti.id}`))
-    }
-
-    function handleInputChangeProjekti(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-        const { name, value } = event.target;
-        setProjekti({ ...projekti, [name]: value })
+    function handleFormSubmit(projekti: Projekti) {
+            updateProjekti(projekti).then(() => history.push(`/projektet/`));
+            modalStore.closeModal();
     }
 
     if (loadingInitial) return <LoadingComponent content='Loading publikimin...' />
 
-    const modal = (
+    return (
         <Segment>
-            <Backdrop />
-            <Wrapper>
-                <StyledModal>
-                    <Header>
-                        <CloseButton onClick={hide} as={Link} to='/projektet'>X</CloseButton>
-                    </Header>
-                    <FormClass>
-                        <Form onSubmit={handleSubmitProjekti} autoComplete='off'>
-                            <Form.Input placeholder='Emri i projektit' value={projekti.emriProjektit} name='emriProjektit' onChange={handleInputChangeProjekti} />
-                            <Form.TextArea placeholder='Pershkrimi' value={projekti.pershkrimi} name='pershkrimi' onChange={handleInputChangeProjekti} />
-                            <Form.Input placeholder='Lokacioni' value={projekti.lokacioni} name='lokacioni' onChange={handleInputChangeProjekti} />
-                            <Form.Input placeholder='Prej Dates' value={projekti.dataFillimit} name='dataFillimit' onChange={handleInputChangeProjekti} />
-                            <Form.Input placeholder='Deri me' value={projekti.dataMbarimit} name='dataMbarimit' onChange={handleInputChangeProjekti} />
-                            <Form.Input placeholder='Buxheti' value={projekti.buxheti} name='buxheti' onChange={handleInputChangeProjekti} />
-                            <Form.Input placeholder='Emri i klientit' value={projekti.emriKlientit} name='emriKlientit' onChange={handleInputChangeProjekti} />
-                            <Form.Input placeholder='Institucioni' value={projekti.institucioni} name='institucioni' onChange={handleInputChangeProjekti} />
-                            <Button onClick={handleSubmitProjekti} floated='right' positive type='submit' content='Submit' />
-                            <Button onClick={hide} as={Link} to='/publikimet' floated='right' type='button' content='Cancel' />
-                        </Form>
-                    </FormClass>
-                </StyledModal>
-            </Wrapper>
+            <Formik
+                validationSchema={validationSchema}
+                initialValues={projekti}
+                onSubmit={values => handleFormSubmit(values)}>
+                {({ handleSubmit, isValid, isSubmitting, dirty }) => (
+                    <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
+                        <MyTextInput placeholder='Emri i projektit' name='emriProjektit' />
+                        <MyTextArea rows={3} placeholder='Pershkrimi' name='pershkrimi' />
+                        <MyTextInput placeholder='Emri i projektit' name='emriProjektit' />
+                        <MyDateInput
+                            placeholderText='Prej Dates'
+                            name='dataFillimit'
+                            showTimeSelect
+                            dateFormat='MM, dd, yyyy'
+                        />
+                        <MyDateInput
+                            placeholderText='Deri Me'
+                            name='dataMbarimit'
+                            showTimeSelect
+                            minDate= {projekti.dataFillimit}
+                            dateFormat='MM, dd, yyyy'
+                        />
+                        <MyTextInput placeholder='Buxheti' name='buxheti' />
+                        <MyTextInput placeholder='Emri i klientit' name='emriKlientit' />
+                        <MySelectInput options={Institucioni} placeholder='Institucioni' name='institucioni' />
+                        <Button
+                            disabled={isSubmitting || !dirty || !isValid}
+                            loading={loading}
+                            floated='right'
+                            positive type='submit' content='Submit' />
+                        <Button onClick={()=>modalStore.closeModal()}  as={Link} to='/publikimet' floated='right' type='button' content='Cancel' />
+                    </Form>
+                )}
+            </Formik>
         </Segment>
     );
-    return isShown ? ReactDOM.createPortal(modal, document.body) : null;
 })

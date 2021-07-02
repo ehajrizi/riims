@@ -5,17 +5,17 @@ import { useStore } from '../../../app/stores/store';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import ProjektetList from './ProjektetList';
 
-export default observer(function ProjektetDashboard(){
+export default observer(function ProjektetDashboard() {
 
 
-    const {projektiStore} = useStore();
-    const {loadProjektet, projektiRegistry} = projektiStore;
- 
-   useEffect(() =>{
-     if(projektiRegistry.size <= 1) loadProjektet();
-   }, [projektiRegistry.size, loadProjektet])
- 
-   if(projektiStore.loadingInitial) return <LoadingComponent content='Loading app'/>
+    const { projektiStore } = useStore();
+    const { loadProjektet, projektiRegistry } = projektiStore;
+
+    useEffect(() => {
+        if (projektiRegistry.size <= 1) loadProjektet();
+    }, [projektiRegistry.size, loadProjektet])
+
+    if (projektiStore.loadingInitial) return <LoadingComponent content='Loading app' />
 
     return (
         <Grid centered style={{ marginTop: 50 }}>
