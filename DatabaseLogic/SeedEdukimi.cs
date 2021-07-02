@@ -21,8 +21,8 @@ namespace DatabaseLogic
                     Titulli = "test",
                     Fusha_e_Studimit = "Shkenca Kompjuterike dhe Inxhinieri",
                     Lokacioni = "Prishtine",
-                    DataFillestare = "01/10/2019",
-                    DataPerfundimtare = "01/06/2022",
+                    DataFillestare = DateTime.Now.AddMonths(-15),
+                    DataPerfundimtare = DateTime.Now.AddMonths(-10),
                     Pershkrimi = "test",
                 },
                 new Edukimi
@@ -31,8 +31,8 @@ namespace DatabaseLogic
                     Titulli = "test2",
                     Fusha_e_Studimit = "test2",
                     Lokacioni = "test2",
-                    DataFillestare = "test2",
-                    DataPerfundimtare = "test2",
+                    DataFillestare = DateTime.Now.AddMonths(-9),
+                    DataPerfundimtare = DateTime.Now.AddMonths(-2),
                     Pershkrimi = "test2",
                 },
                 new Edukimi
@@ -41,8 +41,8 @@ namespace DatabaseLogic
                     Titulli = "test3",
                     Fusha_e_Studimit = "test3",
                     Lokacioni = "test3",
-                    DataFillestare = "test3",
-                    DataPerfundimtare = "test3",
+                    DataFillestare = DateTime.Now.AddMonths(-5),
+                    DataPerfundimtare = DateTime.Now.AddMonths(-3),
                     Pershkrimi = "test3",
                 },
                 new Edukimi
@@ -51,8 +51,8 @@ namespace DatabaseLogic
                     Titulli = "test4",
                     Fusha_e_Studimit = "test4",
                     Lokacioni = "test4",
-                    DataFillestare = "test4",
-                    DataPerfundimtare = "test4",
+                    DataFillestare = DateTime.Now.AddMonths(-3),
+                    DataPerfundimtare = DateTime.Now,
                     Pershkrimi = "test4",
                 }
             };

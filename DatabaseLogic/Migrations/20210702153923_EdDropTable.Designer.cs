@@ -3,14 +3,16 @@ using System;
 using DatabaseLogic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DatabaseLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210702153923_EdDropTable")]
+    partial class EdDropTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,38 +85,6 @@ namespace DatabaseLogic.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Donatoret");
-                });
-
-            modelBuilder.Entity("Domain.Edukimi", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DataFillestare")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DataPerfundimtare")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Emri_i_Institucionit")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Fusha_e_Studimit")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Lokacioni")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Pershkrimi")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Titulli")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Edukimet");
                 });
 
             modelBuilder.Entity("Domain.Eksperienca", b =>

@@ -4,7 +4,7 @@ export interface Edukimi {
     titulli: string;
     fusha_e_Studimit: string;
     lokacioni: string;
-    dataFillestare: string;
-    dataPerfundimtare: string;
+    dataFillestare: Date | null;
+    dataPerfundimtare: Date | null;
     pershkrimi: string;
 }
