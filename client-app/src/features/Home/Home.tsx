@@ -14,12 +14,12 @@ import MbikeqyresiTemaveDashboard from "../mbikeqyresittemave/dashboard/Mbikeqyr
 import ProjektetDashboard from "../projektet/dashboard/ProjektetDashboard";
 import PublikimetDashboard from "../Publikimet/dashboard/PublikimetDashboard";
 import SpecializimiDashboard from "../specializimet/dashboard/SpecializimiDashboard";
+import GjuhaDashboard from '../../features/gjuhet/dashboard/GjuhaDashboard';
+
 
 export default function Home(){
     return (
         <>
-
-
             <Segment className={'navbar'} style={{marginTop: '-1em'}}>
             <NavBar />
             </Segment>
@@ -65,45 +65,58 @@ export default function Home(){
                 <Card fluid color='blue' header='Anetaresia' onClick={scrollToAnetaresia} as={NavLink} to='/anetaresia'/>
                 <Card fluid color='blue' header='Honors & Awards' onClick={scrollToHonorsAndAwards} as={NavLink} to='/honorsandawards'/>
                 </Card.Group>
-                
+
             </Grid>
-            <Segment className={'eksperiencat'} basic>
-                <EksperiencaDashboard />
-            </Segment>
-            <Segment className={'edukimi'} basic>
-                <EdukimiDashboard />
-            </Segment>
-            <Segment className={'specializimet'} basic>
-                <SpecializimiDashboard />
-            </Segment>
-            {/* <Segment className={'certifikimet'} basic>
-                <CertifikimetDashboard />
-            </Segment> */}
-            <Segment className={'mbikeqyresitemave'} basic>
-                <MbikeqyresiTemaveDashboard />
-            </Segment>
-            <Segment className={'publikimet'} basic>
-                {/* <Container>
-                <Route exact path='/publikimet' component={PublikimetDashboard} />
-                <Route path='/publikimet/:id' component={PublikimetDetails} />
-                <Route key={location.key} path={['/createPublikimi', '/managePublikimi/:id']} component={PublikimetForm} />
-                </Container> */}
-                <PublikimetDashboard/>
-            </Segment>
-            <Segment className={'projektet'} basic>
-                <ProjektetDashboard />
-            </Segment>
-            <Segment className={'anetaresia'} basic>
-                <AnetaresiaDashboard/>
-            </Segment>
-            {/* <Segment className={'honorsawards'} basic>
-                <HonorsAndAwardsDashboard />
-            </Segment> */}
-            <Segment className={'honorsandawards'} basic>
-                <HonorandAwardDashboard />
-            </Segment>
-            <Button className='angleUp' icon='angle up' size='massive' onClick={scrollToTop} as={Link} to='' />
-            <Footer />
+                <Grid style={{marginLeft: '6em'}} >
+                    <Grid.Column width='10' >
+                        <Segment className={'eksperiencat'} basic>
+                        <EksperiencaDashboard />
+                        </Segment>
+
+                        <Segment className={'edukimi'} basic>
+                            <EdukimiDashboard />
+                        </Segment>
+                        {/* <Segment className={'certifikimet'} basic>
+                            <CertifikimetDashboard />
+                        </Segment> */}
+                        <Segment className={'mbikeqyrestemave'} basic>
+                            <MbikeqyresiTemaveDashboard />
+                        </Segment>
+                        <Segment className={'publikimet'} basic>
+                        {/* <Container>
+                        <Route exact path='/publikimet' component={PublikimetDashboard} />
+                        <Route path='/publikimet/:id' component={PublikimetDetails} />
+                        <Route key={location.key} path={['/createPublikimi', '/managePublikimi/:id']} component={PublikimetForm} />
+                        </Container> */}
+                            <PublikimetDashboard/>
+                        </Segment>
+                        <Segment className={'projektet'} basic>
+                            <ProjektetDashboard />
+                        </Segment>
+                        {/* <Segment className={'anetaresia'} basic>
+                            <AnetaresiaDashboard />
+                        </Segment>
+                        <Segment className={'honorsawards'} basic>
+                            <HonorsAndAwardsDashboard />
+                        </Segment>  */}
+                        <Segment className={'anetaresia'} basic>
+                                <AnetaresiaDashboard/>
+                            </Segment>
+                        <Segment className={'honorsandawards'} basic>
+                            <HonorandAwardDashboard />
+                        </Segment>
+                        </Grid.Column>
+
+                    
+                        <Grid.Column style={{marginRight: '0.5em'}} width='5'>
+                        <Segment className={'gjuhet'} basic>
+                            <GjuhaDashboard />
+                        </Segment>
+                    </Grid.Column>
+                </Grid>
+                    
+                <Button className='angleUp' icon='angle up' size='massive' onClick={scrollToTop} as={Link} to='' />
+                <Footer />
     </>
     )
 }

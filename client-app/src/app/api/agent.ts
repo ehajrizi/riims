@@ -8,6 +8,7 @@ import { Profili } from '../models/profili';
 import { Projekti } from '../models/projekti';
 import { HonorandAward } from '../models/honorandaward';
 import { Anetaresia } from '../models/anetaresia';
+import { Gjuha } from '../models/gjuha';
 
 
 const sleep = (delay: number) => {
@@ -108,6 +109,14 @@ const HonorsandAwards= {
     update: (honorandaward : HonorandAward) => axios.put<void>(`/honorsandawards/${honorandaward.id}`, honorandaward),
     delete: (id: string) => axios.delete<void>(`/honorsandawards/${id}`)
 }
+const Gjuhet = {
+    list: () => requests.get<Gjuha[]>('/gjuhet'),
+    details: (id: string) => requests.get<Gjuha>(`/gjuhet/${id}`),
+    create: (gjuha : Gjuha) => axios.post<void>(`/gjuhet`, gjuha),
+    update: (gjuha : Gjuha) => axios.put<void>(`/gjuhet/${gjuha.id}`,gjuha),
+    delete: (id: string) => axios.delete<void>(`/gjuhet/${id}`)
+}
+
 const agent = {
     Eksperiencat,
     Edukimet,
@@ -117,7 +126,8 @@ const agent = {
     Profilet,
     Projektet,
     Anetaresite,
-    HonorsandAwards
+    HonorsandAwards,
+    Gjuhet
 }
 
 export default agent;

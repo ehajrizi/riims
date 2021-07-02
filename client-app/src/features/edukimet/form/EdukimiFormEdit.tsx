@@ -17,7 +17,7 @@ export interface Props {
     edukimi: Edukimi;
 }
 
-export default observer(function EdukimitEditForm({ edukimi }: Props) {
+export default observer(function EdukimiEditForm({ edukimi }: Props) {
     const history = useHistory();
     const { edukimiStore, modalStore } = useStore();
     const { updateEdukimi, loading, loadEdukimi, loadingInitial } = edukimiStore;

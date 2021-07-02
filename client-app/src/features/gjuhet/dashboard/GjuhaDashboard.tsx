@@ -4,23 +4,23 @@ import React, { useEffect } from 'react';
 import { Grid } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
-import EdukimiList from '../details/EdukimiList';
+import GjuhaList from '../details/GjuhaList';
 
-export default observer (function EdukimiDashboard(){
+export default observer (function GjuhaDashboard(){
 
-    const {edukimiStore} = useStore();
-    const {loadEdukimet,edukimiRegistry} = edukimiStore;
+    const {gjuhaStore} = useStore();
+    const {loadGjuhet,gjuhaRegistry} = gjuhaStore;
 
   useEffect(() =>{
-    if(edukimiRegistry.size <= 1) loadEdukimet();
-  }, [edukimiRegistry.size, loadEdukimet])
+    if(gjuhaRegistry.size <= 1) loadGjuhet();
+  }, [gjuhaRegistry.size, loadGjuhet])
 
-  if(edukimiStore.loadingInitial) return <LoadingComponent content='Loading app'/>
+  if(gjuhaStore.loadingInitial) return <LoadingComponent content='Loading app'/>
 
     return(
       <Grid centered style={{ marginTop: 50 }}>
       <Grid.Column width='16' className={'grid-container'}>
-          <EdukimiList/>
+          <GjuhaList/>
       </Grid.Column>
   </Grid>
     )

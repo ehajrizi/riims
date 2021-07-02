@@ -9,6 +9,8 @@ import AnetaresiaStore from "./anetaresiaStore";
 import HonorandAwardStore from "./honorandawardStore";
 import ModalStore from "./modalStore";
 import PublikimiStore from "./publikimiStore";
+import GjuhaStore from "./gjuhaStore";
+
 
 
 interface Store{
@@ -21,6 +23,7 @@ interface Store{
     projektiStore: ProjektiStore
     anetaresiaStore: AnetaresiaStore
     honorandawardStore:HonorandAwardStore
+    gjuhaStore:GjuhaStore
     modalStore: ModalStore
 }
 
@@ -34,6 +37,7 @@ export const store: Store = {
     projektiStore: new ProjektiStore(),
     anetaresiaStore: new AnetaresiaStore(),
     honorandawardStore: new HonorandAwardStore(),
+    gjuhaStore: new GjuhaStore(),
     modalStore: new ModalStore(),
 }
 

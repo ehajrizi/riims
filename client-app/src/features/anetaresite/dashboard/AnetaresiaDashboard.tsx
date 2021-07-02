@@ -16,11 +16,9 @@ export default observer( function AnetaresiaDashboard()
     if (anetaresiaStore.loadingInitial) return <LoadingComponent content='Loading app'/>
     return(
         <Grid centered style={{ marginTop: 50 }}>
-            <Grid.Column width='8' className={'grid-container'}>
+            <Grid.Column width='16' className={'grid-container'}>
                 <AnetaresiaList/>
             </Grid.Column>
-            <Grid.Column width='1' />
-            <Grid.Column width='4' />
         </Grid>
     )
 })

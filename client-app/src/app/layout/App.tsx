@@ -23,6 +23,7 @@ function App() {
       <Route exact path='/honorsandawards' component={Home} />
       <Route exact path='/projektet' component={Home} />
       <Route exact path='/anetaresia' component={Home} />
+      <Route exact path='/gjuhet' component={Home} />
     </>
   );
 }

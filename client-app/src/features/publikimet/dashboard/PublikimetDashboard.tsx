@@ -22,11 +22,9 @@ export default observer(function PublikimetDashboard(){
 
     return (
         <Grid centered style={{ marginTop: 50 }}>
-            <Grid.Column width='8' className={'grid-container'}>
+            <Grid.Column width='16' className={'grid-container'}>
                 <PublikimetList/>
             </Grid.Column>
-            <Grid.Column width='1' />
-            <Grid.Column width='4' />
         </Grid>
     )
 })

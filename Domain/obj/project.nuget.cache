@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dlfJ9Fwg4/G93eEyEcpebcG5oEc0OAvwdStoKSQO9mOhAAL5yYs5rgifmzgTNcU6WeTDhqYGEsrY/0hX3JLUnQ==",
+  "dgSpecHash": "zx5u9gj8r9scC8wNLEA5K1j0ctrzTCzOPhaNxU2dnARgcxHGeKLhiFUZkpbRZTtigJPAyJnwiieVw7E6udbpRA==",
   "success": true,
-  "projectFilePath": "c:\\Users\\HP\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file c:\\Users\\HP\\Documents\\GitHub\\riims\\Domain\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

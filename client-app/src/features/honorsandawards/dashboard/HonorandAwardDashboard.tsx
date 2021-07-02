@@ -18,11 +18,9 @@ export default observer (function HonorandAwardDashboard() {
 if(honorandawardStore.loadingInitial) return <LoadingComponent content='Loading Honors & Awards'/>
     return (
         <Grid centered style={{ marginTop: 50 }}>
-            <Grid.Column width='8' className={'grid-container'}>
+            <Grid.Column width='16' className={'grid-container'}>
                 <HonorsandAwardsList/>
             </Grid.Column>
-            <Grid.Column width='1' />
-            <Grid.Column width='4' />
         </Grid>
     )
 })
