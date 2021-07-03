@@ -10,6 +10,8 @@ import { HonorandAward } from '../models/honorandaward';
 import { Anetaresia } from '../models/anetaresia';
 import { Gjuha } from '../models/gjuha';
 import { Certifikimi } from '../models/certifikimi';
+import { Pjesemarresi } from '../models/pjesemarresi';
+import { Donatori } from '../models/donatori';
 
 
 const sleep = (delay: number) => {
@@ -125,6 +127,20 @@ const Gjuhet = {
     update: (gjuha : Gjuha) => axios.put<void>(`/gjuhet/${gjuha.id}`,gjuha),
     delete: (id: string) => axios.delete<void>(`/gjuhet/${id}`)
 }
+const Pjesemarresit= {
+    list: () => requests.get<Pjesemarresi[]>('/pjesemarresit'),
+    details: (id: string) => requests.get<Pjesemarresi>(`/pjesemarresit/${id}`),
+    create: (pjesemarresi : Pjesemarresi) => axios.post<void>(`/pjesemarresit`, pjesemarresi),
+    update: (pjesemarresi : Pjesemarresi) => axios.put<void>(`/pjesemarresit/${pjesemarresi.id}`, pjesemarresi),
+    delete: (id: string) => axios.delete<void>(`/pjesemarresit/${id}`)
+}
+const Donatoret= {
+    list: () => requests.get<Donatori[]>('/donatoret'),
+    details: (id: string) => requests.get<Donatori>(`/donatoret/${id}`),
+    create: (donatori : Donatori) => axios.post<void>(`/donatoret`, donatori),
+    update: (donatori : Donatori) => axios.put<void>(`/donatoret/${donatori.id}`, donatori),
+    delete: (id: string) => axios.delete<void>(`/donatoret/${id}`)
+}
 
 const agent = {
     Eksperiencat,
@@ -137,7 +153,10 @@ const agent = {
     Projektet,
     Anetaresite,
     HonorsandAwards,
-    Gjuhet
+    Gjuhet,
+    Pjesemarresit,
+    Donatoret
+
 }
 
 export default agent;

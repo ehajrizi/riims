@@ -11,6 +11,8 @@ import ModalStore from "./modalStore";
 import PublikimiStore from "./publikimiStore";
 import GjuhaStore from "./gjuhaStore";
 import CertifikimiStore from "./certifikimiStore";
+import PjesemarresiStore from "./pjesemarresiStore";
+import DonatoriStore from "./donatoriStore";
 
 
 
@@ -27,6 +29,9 @@ interface Store{
     honorandawardStore:HonorandAwardStore
     gjuhaStore:GjuhaStore
     modalStore: ModalStore
+    pjesemarresiStore: PjesemarresiStore
+    donatoriStore: DonatoriStore
+    
 }
 
 export const store: Store = {
@@ -42,6 +47,8 @@ export const store: Store = {
     honorandawardStore: new HonorandAwardStore(),
     gjuhaStore: new GjuhaStore(),
     modalStore: new ModalStore(),
+    pjesemarresiStore: new PjesemarresiStore(),
+    donatoriStore: new DonatoriStore(),
 }
 
 

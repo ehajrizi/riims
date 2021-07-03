@@ -741,23 +741,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lenovo\\.nuget\\packages\\": {},
+    "C:\\Users\\alban\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\alban\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\obj\\",
+      "projectPath": "C:\\Users\\alban\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
+      "packagesPath": "C:\\Users\\alban\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alban\\Documents\\GitHub\\riims\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\alban\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
