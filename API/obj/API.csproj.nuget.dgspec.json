@@ -1,33 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\elita\\Desktop\\riims\\API\\API.csproj": {}
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\api\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\elita\\Desktop\\riims\\API\\API.csproj": {
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elita\\Desktop\\riims\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\elita\\Desktop\\riims\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\elita\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\elita\\Desktop\\riims\\API\\obj\\",
+        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\api\\API.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\api\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\elita\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\elita\\Desktop\\riims\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\elita\\Desktop\\riims\\Application\\Application.csproj"
+              "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\Application.csproj"
               }
             }
           }
@@ -46,6 +52,10 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.6, )"
@@ -56,9 +66,17 @@
               "target": "Package",
               "version": "[5.0.2, )"
             },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.11.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.11.1, )"
             }
           },
           "imports": [
@@ -79,37 +97,43 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\elita\\Desktop\\riims\\Application\\Application.csproj": {
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elita\\Desktop\\riims\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\elita\\Desktop\\riims\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\elita\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\elita\\Desktop\\riims\\Application\\obj\\",
+        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\elita\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\elita\\Desktop\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {
-                "projectPath": "C:\\Users\\elita\\Desktop\\riims\\DatabaseLogic\\DatabaseLogic.csproj"
+              "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj"
               },
-              "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj"
+              "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj"
               }
             }
           }
@@ -148,34 +172,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\elita\\Desktop\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elita\\Desktop\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
         "projectName": "DatabaseLogic",
-        "projectPath": "C:\\Users\\elita\\Desktop\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
-        "packagesPath": "C:\\Users\\elita\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\elita\\Desktop\\riims\\DatabaseLogic\\obj\\",
+        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\DatabaseLogic\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\elita\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj"
+              "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj"
               }
             }
           }
@@ -210,26 +240,32 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj": {
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\elita\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\elita\\Desktop\\riims\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\elita\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -262,7 +298,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

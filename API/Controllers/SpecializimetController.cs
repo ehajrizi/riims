@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Application.Specializimet;
 
 namespace API.Controllers
 {
+    [AllowAnonymous]
     public class SpecializimetController : BaseApiController
     {   
 

@@ -25,6 +25,7 @@ namespace API
             try
             {
                 var context = services.GetRequiredService<DataContext>();
+                var userManager = services.GetRequiredService<UserManager<AppUser>>();
                 await context.Database.MigrateAsync();
                 await SeedPublikimet.SeedData(context);
                 await SeedDataEksperiencat.SeedDataEks(context);
@@ -39,6 +40,7 @@ namespace API
                 await SeedAnetaresia.SeedDataAne(context);
                 await SeedDonatoret.SeedDataDonatori(context);
                 await SeedPjesemarresit.SeedDataPjesemarresi(context);
+                await SeedUser.SeedDataUser(context, userManager);
             }
             catch(Exception ex)
             {
