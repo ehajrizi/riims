@@ -13,6 +13,8 @@ import GjuhaStore from "./gjuhaStore";
 import CertifikimiStore from "./certifikimiStore";
 import PjesemarresiStore from "./pjesemarresiStore";
 import DonatoriStore from "./donatoriStore";
+import UserStore from "./userStore";
+
 
 
 
@@ -31,6 +33,8 @@ interface Store{
     modalStore: ModalStore
     pjesemarresiStore: PjesemarresiStore
     donatoriStore: DonatoriStore
+    userStore: UserStore
+
     
 }
 
@@ -49,6 +53,7 @@ export const store: Store = {
     modalStore: new ModalStore(),
     pjesemarresiStore: new PjesemarresiStore(),
     donatoriStore: new DonatoriStore(),
+    userStore: new UserStore()
 }
 
 
