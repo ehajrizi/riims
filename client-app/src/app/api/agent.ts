@@ -9,6 +9,7 @@ import { Projekti } from '../models/projekti';
 import { HonorandAward } from '../models/honorandaward';
 import { Anetaresia } from '../models/anetaresia';
 import { Gjuha } from '../models/gjuha';
+import { Certifikimi } from '../models/certifikimi';
 
 
 const sleep = (delay: number) => {
@@ -52,6 +53,14 @@ const Edukimet = {
     create: (edukimi : Edukimi) => axios.post<void>(`/edukimet`, edukimi),
     update: (edukimi : Edukimi) => axios.put<void>(`/edukimet/${edukimi.id}`,edukimi),
     delete: (id: string) => axios.delete<void>(`/edukimet/${id}`)
+}
+
+const Certifikimet = {
+    list: () => requests.get<Certifikimi[]>('/certifikimet'),
+    details: (id: string) => requests.get<Certifikimi>(`/certifikimet/${id}`),
+    create: (certifikimi : Certifikimi) => axios.post<void>(`/certifikimet`, certifikimi),
+    update: (certifikimi : Certifikimi) => axios.put<void>(`/certifikimet/${certifikimi.id}`,certifikimi),
+    delete: (id: string) => axios.delete<void>(`/certifikimet/${id}`)
 }
 
 const Publikimet = {
@@ -120,6 +129,7 @@ const Gjuhet = {
 const agent = {
     Eksperiencat,
     Edukimet,
+    Certifikimet,
     Publikimet,
     Specializimet,
     MbikeqyresitTemave,

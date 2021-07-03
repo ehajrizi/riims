@@ -1,13 +1,9 @@
 import { format } from 'date-fns';
 import { observer } from 'mobx-react-lite';
 import React, { SyntheticEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Button, Card, Checkbox, Divider, Grid, Icon, Item } from 'semantic-ui-react';
 import { Eksperienca } from '../../../app/models/eksperienca';
-import { Publikimi } from '../../../app/models/publikimi';
 import { useStore } from '../../../app/stores/store';
-import { useModal } from '../../useModal';
-import EksperiencaForm from '../form/EksperiencaForm';
 import EksperiencaFormEdit from '../form/EksperiencaFormEdit';
 
 interface Props{

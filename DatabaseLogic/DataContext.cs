@@ -20,7 +20,6 @@ namespace DatabaseLogic
         public DbSet<Gjuha> Gjuhet { get; set; }
         public DbSet<HonorandAward> HonorsandAwards { get; set; }
         public DbSet<Anetaresia> Anetaresite { get; set; }
-
         public DbSet<Donatori> Donatoret { get; set; }
         public DbSet<Pjesemarresi> Pjesemarresit { get; set; }
     }

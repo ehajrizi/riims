@@ -3,14 +3,16 @@ using System;
 using DatabaseLogic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DatabaseLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210703013152_No_Cert")]
+    partial class No_Cert
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,35 +36,6 @@ namespace DatabaseLogic.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Anetaresite");
-                });
-
-            modelBuilder.Entity("Domain.Certifikimi", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DataFillestare")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DataPerfundimtare")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Emri_Institucionit")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Lokacioni")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Pershkrimi")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Titulli")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Certifikimet");
                 });
 
             modelBuilder.Entity("Domain.Donatori", b =>

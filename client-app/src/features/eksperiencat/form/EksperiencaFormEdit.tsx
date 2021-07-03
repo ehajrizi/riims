@@ -1,11 +1,10 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Checkbox, Form, Segment } from 'semantic-ui-react';
 import { Eksperienca } from '../../../app/models/eksperienca';
-import {v4 as uuid} from 'uuid';
 import { useStore } from '../../../app/stores/store';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { observer } from 'mobx-react-lite';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import MyDateInput from '../../../app/api/common/form/MyDateInput';
@@ -39,16 +38,15 @@ export default observer(function EksperiencaFormEdit({eksp}: Props){
     }); 
 
     const validationSchema = Yup.object({
-        emriInstitucionit: Yup.string().required('Emri i institucionit mungon!'),
-        titulli: Yup.string().required('Titulli mungon!'),
-        lokacioni: Yup.string().required(),
-        dataFillestare: Yup.string().required('Date is required').nullable(),
-        dataPerfundimtare: Yup.string().required('Date is required').nullable(),
-        pershkrimi: Yup.string().required(),
-        personiKontaktues: Yup.string().required(),
-        email: Yup.string().required(),
-        numriTelefonit: Yup.string().required(),
-
+        emriInstitucionit: Yup.string().required('Emri i institucionit duhet te plotesohet!'),
+        titulli: Yup.string().required('Titulli duhet te plotesohet!'),
+        lokacioni: Yup.string().required('Lokacioni duhet te plotesohet!'),
+        dataFillestare: Yup.string().required('Data e fillimit kerkohet').nullable(),
+        // dataPerfundimtare: Yup.string().required('Date is required').nullable(),
+        pershkrimi: Yup.string().required('Pershkrimi duhet te plotesohet!'),
+        personiKontaktues: Yup.string().required('Personi kontaktues duhet te plotesohet!'),
+        email: Yup.string().required('Email duhet te plotesohet!'),
+        numriTelefonit: Yup.string().required('Numri i telefonit duhet te plotesohet!'),
     })
 
     useEffect(() => {
@@ -77,8 +75,11 @@ export default observer(function EksperiencaFormEdit({eksp}: Props){
                     <MyTextInput placeholder='Emri i institucionit' name='emriInstitucionit'/>
                     <MyTextInput placeholder='Lokacioni' name='lokacioni'/>
                     <MyTextArea placeholder='Pershkrimi'name='pershkrimi' rows={4}/>
-                    <MyDateInput placeholderText='Data e fillimit' name='dataFillestare' />
-                    <MyDateInput placeholderText='Data e perfundimit' name='dataPerfundimtare'/>
+                    <MyDateInput placeholderText='Data e fillimit' name='dataFillestare' 
+                                 dateFormat='MMMM d, yyyy'/>
+                    <MyDateInput placeholderText='Data e perfundimit' name='dataPerfundimtare'
+                                 minDate = {eksperienca.dataFillestare}
+                                 dateFormat='MMMM d, yyyy'/>
                     <MyTextInput placeholder='Personi kontaktues'  name='personiKontaktues'/>
                     <MyTextInput placeholder='Email' name='email'/>
                     <MyTextInput placeholder='Numri i Telefonit' name='numriTelefonit'/>

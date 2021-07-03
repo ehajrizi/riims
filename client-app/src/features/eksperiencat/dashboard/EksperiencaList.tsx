@@ -1,10 +1,8 @@
 
+import React from 'react';
 import { observer } from 'mobx-react-lite';
-import React, { SyntheticEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Checkbox, Divider, Grid, Header, Icon, Item, Segment } from 'semantic-ui-react';
+import { Button,  Divider, Grid, Header, Icon} from 'semantic-ui-react';
 import { useStore } from '../../../app/stores/store';
-import { useModal } from '../../useModal';
 import EksperiencaForm from '../form/EksperiencaForm';
 import EksperiencaListItem from './EksperiencaListItem';
 

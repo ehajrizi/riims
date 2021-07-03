@@ -15,6 +15,7 @@ import ProjektetDashboard from "../projektet/dashboard/ProjektetDashboard";
 import PublikimetDashboard from "../Publikimet/dashboard/PublikimetDashboard";
 import SpecializimiDashboard from "../specializimet/dashboard/SpecializimiDashboard";
 import GjuhaDashboard from '../../features/gjuhet/dashboard/GjuhaDashboard';
+import CertifikimiDashboard from '../../features/certifikimet/dashboard/CertifikimiDashboard';
 
 
 export default function Home(){
@@ -79,9 +80,10 @@ export default function Home(){
                             <SpecializimiDashboard />
                         </Segment>
 
-                        {/* <Segment className={'certifikimet'} basic>
-                            <CertifikimetDashboard />
-                        </Segment> */}
+                        <Segment className={'certifikimet'} basic>
+                            <CertifikimiDashboard />
+                        </Segment>
+                        
                         <Segment className={'mbikeqyresitemave'} basic>
                             <MbikeqyresiTemaveDashboard />
                         </Segment>

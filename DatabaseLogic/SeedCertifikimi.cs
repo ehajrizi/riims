@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain;
+using System;
 
 namespace DatabaseLogic
 {
@@ -18,8 +19,8 @@ namespace DatabaseLogic
 			   Emri_Institucionit = "UBT",
 			   Titulli = "CERTIFIKIMI1",
                 Lokacioni = "Laggja Kalabria, Prishtine 10000",
-                DataFillestare = "12 Oct 2013",
-                DataPerfundimtare = " ",
+                DataFillestare = DateTime.Now,
+                DataPerfundimtare = DateTime.Now,
                 Pershkrimi ="Menaxhimi i fakultetit"
 			},
             new Certifikimi
@@ -27,8 +28,8 @@ namespace DatabaseLogic
 			   Emri_Institucionit = "Akademia e Shkencave",
 			   Titulli = "CERTIFIKIMI2",
                 Lokacioni = "Rr. Agim Ramadani, Prishtine 10000",
-                DataFillestare = "12 Oct 2011",
-                DataPerfundimtare = "6 Sept 2013",
+                DataFillestare = DateTime.Now,
+                DataPerfundimtare = DateTime.Now,
                 Pershkrimi ="Mirembajtje e sistemeve"
 			},
             new Certifikimi
@@ -36,8 +37,8 @@ namespace DatabaseLogic
 			   Emri_Institucionit = "TEST",
 			   Titulli = "CERTIFIKIMI3",
                 Lokacioni = "TEST",
-                DataFillestare = "12 Oct 2013",
-                DataPerfundimtare = "19 Jan 2020",
+                DataFillestare = DateTime.Now,
+                DataPerfundimtare = DateTime.Now,
                 Pershkrimi ="TEST"
 			},
             new Certifikimi
@@ -45,8 +46,8 @@ namespace DatabaseLogic
 			   Emri_Institucionit = "TEST2",
 			   Titulli = "CERTIFIKIMI4",
                 Lokacioni = "TEST2",
-                DataFillestare = "12 Oct 2013",
-                DataPerfundimtare = "13 Aug 2019",
+                DataFillestare = DateTime.Now,
+                DataPerfundimtare = DateTime.Now,
                 Pershkrimi ="TEST2"
 			},
             new Certifikimi
@@ -54,8 +55,8 @@ namespace DatabaseLogic
 			   Emri_Institucionit = "TEST3",
 			   Titulli = "CERTIFIKIMI5",
                 Lokacioni = "TEST3",
-                DataFillestare = "12 Oct 2013",
-                DataPerfundimtare = "13 Aug 2019",
+                DataFillestare = DateTime.Now,
+                DataPerfundimtare = DateTime.Now,
                 Pershkrimi ="TEST3"
 			}
 

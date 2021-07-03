@@ -10,12 +10,14 @@ import HonorandAwardStore from "./honorandawardStore";
 import ModalStore from "./modalStore";
 import PublikimiStore from "./publikimiStore";
 import GjuhaStore from "./gjuhaStore";
+import CertifikimiStore from "./certifikimiStore";
 
 
 
 interface Store{
     eksperiencaStore: EksperiencaStore
     edukimiStore: EdukimiStore
+    certifikimiStore: CertifikimiStore
     publikimiStore: PublikimiStore
     specializimiStore: SpecializimiStore
     mbikeqyresitemaveStore: MbikeqyresiTemaveStore
@@ -30,6 +32,7 @@ interface Store{
 export const store: Store = {
     eksperiencaStore: new EksperiencaStore(),
     edukimiStore: new EdukimiStore(),
+    certifikimiStore: new CertifikimiStore(),
     publikimiStore: new PublikimiStore(),
     specializimiStore: new SpecializimiStore(),
     mbikeqyresitemaveStore: new MbikeqyresiTemaveStore(),

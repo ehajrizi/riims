@@ -7,7 +7,7 @@ export default function NavBar() {
     return (
         <Menu inverted fixed='top'>
             <Container>
-                <Menu.Item>
+                <Menu.Item position='left'>
                     <Image src="http://riims.ubt-uni.net/images/logo.png" size='tiny' circular as={NavLink} exact to='/'/>
                 </Menu.Item>
                 <Menu.Menu position='right'>
