@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import { observer } from 'mobx-react-lite';
 import React, { SyntheticEvent, useState } from 'react';
+import { confirmAlert } from 'react-confirm-alert';
 import { Button, Card, Checkbox, Divider, Grid, Icon, Item } from 'semantic-ui-react';
 import { Eksperienca } from '../../../app/models/eksperienca';
 import { useStore } from '../../../app/stores/store';
@@ -18,7 +19,7 @@ export default observer(function EksperiencaListItem({eksperienca} : Props)
     const [target, setTarget] = useState('');
 
     function handleEksperiencaDelete(e: SyntheticEvent<HTMLButtonElement>, id:string){
-        setTarget(e.currentTarget.name);
+        setTarget(e.currentTarget.name);  
         deleteEksperienca(id);
     }
 

@@ -37,6 +37,8 @@ export default observer(function EksperiencaFormEdit({eksp}: Props){
         numriTelefonit: eksp.numriTelefonit,
     }); 
 
+    const phoneReg = /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
+
     const validationSchema = Yup.object({
         emriInstitucionit: Yup.string().required('Emri i institucionit duhet te plotesohet!'),
         titulli: Yup.string().required('Titulli duhet te plotesohet!'),
@@ -45,8 +47,8 @@ export default observer(function EksperiencaFormEdit({eksp}: Props){
         // dataPerfundimtare: Yup.string().required('Date is required').nullable(),
         pershkrimi: Yup.string().required('Pershkrimi duhet te plotesohet!'),
         personiKontaktues: Yup.string().required('Personi kontaktues duhet te plotesohet!'),
-        email: Yup.string().required('Email duhet te plotesohet!'),
-        numriTelefonit: Yup.string().required('Numri i telefonit duhet te plotesohet!'),
+        email: Yup.string().email().required('Email duhet te plotesohet!'),
+        numriTelefonit: Yup.string().matches(phoneReg, 'Numri i telefonit nuk eshte valid').required(),
     })
 
     useEffect(() => {
@@ -78,8 +80,8 @@ export default observer(function EksperiencaFormEdit({eksp}: Props){
                     <MyDateInput placeholderText='Data e fillimit' name='dataFillestare' 
                                  dateFormat='MMMM d, yyyy'/>
                     <MyDateInput placeholderText='Data e perfundimit' name='dataPerfundimtare'
-                                 minDate = {eksperienca.dataFillestare}
-                                 dateFormat='MMMM d, yyyy'/>
+                                 dateFormat='MMMM d, yyyy'
+                                 minDate = {eksperienca.dataFillestare}/>
                     <MyTextInput placeholder='Personi kontaktues'  name='personiKontaktues'/>
                     <MyTextInput placeholder='Email' name='email'/>
                     <MyTextInput placeholder='Numri i Telefonit' name='numriTelefonit'/>
