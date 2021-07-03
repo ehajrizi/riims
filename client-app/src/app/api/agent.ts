@@ -12,6 +12,8 @@ import { Gjuha } from '../models/gjuha';
 import { Certifikimi } from '../models/certifikimi';
 import { Pjesemarresi } from '../models/pjesemarresi';
 import { Donatori } from '../models/donatori';
+import { store } from '../stores/store';
+import { User, UserFormValues } from '../models/user';
 
 
 const sleep = (delay: number) => {
@@ -21,6 +23,12 @@ const sleep = (delay: number) => {
 } 
 
 axios.defaults.baseURL = 'http://localhost:5000/api';
+
+axios.interceptors.request.use(config => {
+    const token = store.commonStore.token;
+    if(token) config.headers.Authorization = `Bearer ${token}`
+    return config;
+})
 
 axios.interceptors.response.use(async response=> {
     try {
@@ -141,6 +149,11 @@ const Donatoret= {
     update: (donatori : Donatori) => axios.put<void>(`/donatoret/${donatori.id}`, donatori),
     delete: (id: string) => axios.delete<void>(`/donatoret/${id}`)
 }
+const Account = {
+    current: () => requests.get<User>('/account'),
+    login: (user: UserFormValues) => requests.post<User>(`/account/login`, user),
+    register: (user: UserFormValues) => requests.post<User>(`/account/register`, user),
+}
 
 const agent = {
     Eksperiencat,
@@ -155,7 +168,8 @@ const agent = {
     HonorsandAwards,
     Gjuhet,
     Pjesemarresit,
-    Donatoret
+    Donatoret,
+    Account
 
 }
 

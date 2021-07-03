@@ -48,3 +48,19 @@ Header{
   bottom: 0;
   right: 0;
 }
+
+.image-bg {
+  background-image: url('https://www.ubt-uni.net/wp-content/uploads/2019/08/UBT7784-e1564990441516.jpg') !important;
+  height: 100%  !important;
+  position: absolute  !important;
+  width: 100%  !important;
+  background-repeat: no-repeat  !important;
+  background-size: cover !important;
+}
+
+.blue-bg {
+  margin-top: 25em;
+  padding-bottom: 2em;
+  width: 100%  !important;
+  background-color: rgba(255, 255, 255, 0.73);
+}

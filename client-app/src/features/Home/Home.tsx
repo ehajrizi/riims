@@ -25,8 +25,6 @@ export default function Home(){
             <NavBar />
             </Segment>
             
-            
-            <ModalContainer />
                 
             <Grid centered>
            

@@ -14,6 +14,7 @@ import CertifikimiStore from "./certifikimiStore";
 import PjesemarresiStore from "./pjesemarresiStore";
 import DonatoriStore from "./donatoriStore";
 import UserStore from "./userStore";
+import CommonStore from "./commonStore";
 
 
 
@@ -34,8 +35,7 @@ interface Store{
     pjesemarresiStore: PjesemarresiStore
     donatoriStore: DonatoriStore
     userStore: UserStore
-
-    
+    commonStore: CommonStore
 }
 
 export const store: Store = {
@@ -53,7 +53,8 @@ export const store: Store = {
     modalStore: new ModalStore(),
     pjesemarresiStore: new PjesemarresiStore(),
     donatoriStore: new DonatoriStore(),
-    userStore: new UserStore()
+    userStore: new UserStore(),
+    commonStore: new CommonStore()
 }
 
 

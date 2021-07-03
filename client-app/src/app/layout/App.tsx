@@ -2,18 +2,20 @@ import React from 'react';
 import './styles.css';
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
 import EksperiencaDashboard from '../../features/eksperiencat/dashboard/EksperiencaDashboard';
-import NavBar from './NavBar';
 import Home from '../../features/Home/Home';
 import { observer } from 'mobx-react-lite';
+import ModalContainer from '../api/common/modals/ModalContainer';
+import LogReg from '../../features/LogReg/LogReg';
 
 function App() {
 
   const location = useLocation();
   return (
     <>
-      <NavBar />
-      <Route exact path='/' component={Home} />
+      <ModalContainer/>
+      <Route exact path='/' component={LogReg} />
       <Route exact path='/cv' component={EksperiencaDashboard} />
+      <Route exact path='/home' component={Home} />
       <Route exact path='/mbikeqyresitemave' component={Home} />
       <Route exact path='/eksperiencat' component={Home} />
       <Route exact path='/publikimet' component={Home} />
