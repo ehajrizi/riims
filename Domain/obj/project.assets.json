@@ -747,11 +747,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "c:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -765,6 +765,7 @@
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -803,7 +804,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
