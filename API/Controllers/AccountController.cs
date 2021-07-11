@@ -67,6 +67,7 @@ namespace API.Controllers
                 UserName = registerDto.Username
             };
 
+
             var result = await _userManager.CreateAsync(user, registerDto.Password);
 
             if (result.Succeeded)
@@ -80,7 +81,7 @@ namespace API.Controllers
 
         [Authorize]
         [HttpGet]
-        public async  Task<ActionResult<UserDto>> GetCurrentUser()
+        public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
             var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
 
@@ -89,14 +90,13 @@ namespace API.Controllers
 
         private UserDto CreateUserObject(AppUser user)
         {
-            return new UserDto 
-                {
-                    Emri = user.Emri,
-                    Mbiemri = user.Mbiemri,
-                    Image = null,
-                    Token = _tokenService.CreateToken(user),
-                    Username = user.UserName
-                };
+            return new UserDto
+            {
+                Emri = user.Emri,
+                Mbiemri = user.Mbiemri,
+                Image = null,
+                Token = _tokenService.CreateToken(user)
+            };
         }
     }
 }

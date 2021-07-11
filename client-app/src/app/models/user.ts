@@ -14,5 +14,4 @@ export interface UserFormValues {
     password: string;
     emri?: string;
     mbiemri?: string;
-    username?: string;
 }
