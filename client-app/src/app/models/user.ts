@@ -2,11 +2,22 @@ export interface User {
     emri?: string;
     mbiemri?: string;
     token: string;
-    username: string;
+    username: string | null;
     image?: string;
-    // displayName: string;
-    // roli?: number;
-    
+    emriMesem?: string | null;
+    gjinia?: string;
+    titulliShkencor?: string;
+    datelindja?: Date | null;
+    vendlindja?: string;
+    shtetiLindjes?: string;
+    rrugaCurrent?: string;
+    qytetiCurrent?: string;
+    zipKodiCurrent?: string;
+    shtetiCurrent?: string;
+    pershkrimi?: string | null;
+    linkedIn?: string | null;
+    phoneNumber?: string;
+    roli?: string;
 }
 
 export interface UserFormValues {
@@ -14,4 +25,19 @@ export interface UserFormValues {
     password: string;
     emri?: string;
     mbiemri?: string;
+    emriMesem?: string;
+    gjinia?: string;
+    titulliShkencor?: string;
+    datelindja?: Date | null;
+    vendlindja?: string;
+    shtetiLindjes?: string;
+    rrugaCurrent?: string;
+    qytetiCurrent?: string;
+    zipKodiCurrent?: string;
+    shtetiCurrent?: string;
+    pershkrimi?: string;
+    linkedIn?: string;
+    phoneNumber?: string;
+    confirmPassword?: string;
+    roli?: string;
 }

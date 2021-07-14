@@ -63,8 +63,22 @@ namespace API.Controllers
             {
                 Emri = registerDto.Emri,
                 Mbiemri = registerDto.Mbiemri,
+                EmriMesem = registerDto.EmriMesem,
+                Gjinia = registerDto.Gjinia,
+                UserName = registerDto.Username,
                 Email = registerDto.Email,
-                UserName = registerDto.Username
+                TitulliShkencor = registerDto.TitulliShkencor,
+                Roli = registerDto.Roli,
+                Datelindja = registerDto.Datelindja,
+                Vendlindja = registerDto.Vendlindja,
+                ShtetiLindjes = registerDto.ShtetiLindjes,
+                RrugaCurrent = registerDto.RrugaCurrent,
+                QytetiCurrent = registerDto.QytetiCurrent,
+                ZipKodiCurrent = registerDto.ZipKodiCurrent,
+                ShtetiCurrent = registerDto.ShtetiCurrent,
+                Pershkrimi = registerDto.Pershkrimi,
+                LinkedIn = registerDto.LinkedIn,
+                PhoneNumber = registerDto.PhoneNumber,
             };
 
 
@@ -94,8 +108,22 @@ namespace API.Controllers
             {
                 Emri = user.Emri,
                 Mbiemri = user.Mbiemri,
+                Token = _tokenService.CreateToken(user),
                 Image = null,
-                Token = _tokenService.CreateToken(user)
+                EmriMesem = user.EmriMesem,
+                Gjinia = user.Gjinia,
+                TitulliShkencor = user.TitulliShkencor,
+                Roli = user.Roli,
+                Datelindja = user.Datelindja,
+                Vendlindja = user.Vendlindja,
+                ShtetiLindjes = user.ShtetiLindjes,
+                RrugaCurrent = user.RrugaCurrent,
+                QytetiCurrent = user.QytetiCurrent,
+                ZipKodiCurrent = user.ZipKodiCurrent,
+                ShtetiCurrent = user.ShtetiCurrent,
+                Pershkrimi = user.Pershkrimi,
+                LinkedIn = user.LinkedIn,
+                PhoneNumber = user.PhoneNumber
             };
         }
     }

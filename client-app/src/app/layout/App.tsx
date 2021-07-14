@@ -6,15 +6,19 @@ import Home from '../../features/Home/Home';
 import { observer } from 'mobx-react-lite';
 import ModalContainer from '../api/common/modals/ModalContainer';
 import LogReg from '../../features/LogReg/LogReg';
+import { useStore } from '../stores/store';
+
 
 function App() {
 
   const location = useLocation();
+  const { userStore: { user, isLoggedIn } } = useStore();
   return (
     <>
       <ModalContainer/>
       <Route exact path='/' component={LogReg} />
-      <Route exact path='/cv' component={EksperiencaDashboard} />
+      <Route exact path='/adminDashboard' component={EksperiencaDashboard} />
+      {/* <Route exact path='/cv' component={EksperiencaDashboard} /> */}
       <Route exact path='/home' component={Home} />
       <Route exact path='/mbikeqyresitemave' component={Home} />
       <Route exact path='/eksperiencat' component={Home} />

@@ -2,15 +2,17 @@ import { makeAutoObservable, runInAction } from "mobx";
 import { history } from "../..";
 import agent from "../api/agent";
 import { User, UserFormValues } from "../models/user";
-import { store } from "./store";
+import { store, useStore } from "./store";
+
 
 export default class UserStore {
+    
     user: User | null = null;
 
     constructor() {
         makeAutoObservable(this)
     }
-
+    
     get isLoggedIn() {
         return !!this.user;
     }
@@ -20,7 +22,9 @@ export default class UserStore {
             const user = await agent.Account.login(creds);
             store.commonStore.setToken(user.token);
             runInAction(() => this.user = user);
-            history.push('/home');
+            {user?.roli == "simpleUser" ? (
+                history.push('/adminDashboard')
+            ): history.push('/home');}
             store.modalStore.closeModal();
         } catch (error) {
             throw error;

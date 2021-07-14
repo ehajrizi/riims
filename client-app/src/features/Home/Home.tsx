@@ -18,6 +18,7 @@ import SpecializimiDashboard from "../specializimet/dashboard/SpecializimiDashbo
 import GjuhaDashboard from '../../features/gjuhet/dashboard/GjuhaDashboard';
 import LogReg from '../LogReg/LogReg';
 import { useStore } from '../../app/stores/store';
+import CertifikimiDashboard from '../certifikimet/dashboard/CertifikimiDashboard';
 
 
 export default observer(function Home() {
@@ -82,9 +83,10 @@ export default observer(function Home() {
                                 <SpecializimiDashboard />
                             </Segment>
 
-                            {/* <Segment className={'certifikimet'} basic>
-                            <CertifikimetDashboard />
-                        </Segment> */}
+                            <Segment className={'certifikimet'} basic>
+                                <CertifikimiDashboard />
+                            </Segment>
+
                             <Segment className={'mbikeqyresitemave'} basic>
                                 <MbikeqyresiTemaveDashboard />
                             </Segment>
