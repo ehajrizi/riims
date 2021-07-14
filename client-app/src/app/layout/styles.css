@@ -1,5 +1,7 @@
 body {
   background-color: #eaeaea !important;
+  margin: 0;
+  padding: 0;
 }
 
 .ui.inverted.top.fixed.menu {
@@ -64,3 +66,8 @@ Header{
   width: 100%  !important;
   background-color: rgba(255, 255, 255, 0.73);
 }
+
+.menuitem{
+  margin-top: 20px;
+}
+

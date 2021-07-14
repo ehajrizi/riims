@@ -121,7 +121,7 @@ export default observer(function Home() {
                         </Grid.Column>
                     </Grid>
 
-                    <Button className='angleUp' icon='angle up' size='massive' onClick={scrollToTop} as={Link} to='' />
+                    <Button className='angleUp' icon='angle up' size='massive' onClick={scrollToTop} as={Link} to='/home'/>
                     <Footer />
                 </>
             ) : (

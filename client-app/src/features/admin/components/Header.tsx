@@ -1,29 +1,26 @@
-import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Container, Menu, Segment, Image, Dropdown } from 'semantic-ui-react';
-import { useStore } from '../stores/store';
+import "semantic-ui-css/semantic.min.css";
+import { useStore } from '../../../app/stores/store';
 
-export default observer(function NavBar() {
-    const { userStore: { user, logout, isLoggedIn} } = useStore();
+export default function NavBar(props: any) {
+
+    const { userStore: { user,logout, isLoggedIn} } = useStore();
+
     return (
-        <Menu inverted fixed='top'>
+        <div className='ui top inverted attached menu'>
             <Container>
-            {isLoggedIn ? (
                 <Menu.Item position='left'>
                     <Image src="http://riims.ubt-uni.net/images/logo.png" size='tiny' circular as={NavLink} exact to='/home'/>
                 </Menu.Item>
-            ): null}
-                <Menu.Menu position='right'>
-                    {isLoggedIn ? (
-                        <>
-                        <Menu.Item as={NavLink} exact to='/home' name="Home" />
-                        <Menu.Item as={NavLink} exact to='/cv' name="CV" />
-                        </>
-                    ): null}
+                <Menu.Item className='item link grey' name="Menu" position='left' onClick={props.onToggleMenu}/>
+                <Menu.Item position='right'>
+                    <Menu.Item as={NavLink} exact to='/home' name="Home" />
                     {isLoggedIn && user?.roli == "simpleUser" ? (
                         <Menu.Item as={NavLink} exact to='/adminDashboard' name="Dashboard" />
                     ): null}
+                    <Menu.Item as={NavLink} exact to='/cv' name="CV" />
                     <Menu.Item>
                     <Image src={user?.image || '/assets/user/png'} avatar spaced='right' />
                     <Dropdown pointing='top left' text={user?.emri+' '+user?.mbiemri}>
@@ -33,8 +30,8 @@ export default observer(function NavBar() {
                         </Dropdown.Menu>
                     </Dropdown>
                 </Menu.Item>
-                </Menu.Menu>
+                </Menu.Item>
             </Container>
-        </Menu>
+        </div>
     )
-})
+}

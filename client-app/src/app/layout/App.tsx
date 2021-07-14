@@ -7,6 +7,9 @@ import { observer } from 'mobx-react-lite';
 import ModalContainer from '../api/common/modals/ModalContainer';
 import LogReg from '../../features/LogReg/LogReg';
 import { useStore } from '../stores/store';
+import AdminDashboard from '../../features/admin/AdminDashboard';
+import Main from '../../features/admin/components/Main';
+import Main2 from '../../features/admin/components/Main2';
 
 
 function App() {
@@ -16,8 +19,9 @@ function App() {
   return (
     <>
       <ModalContainer/>
+      <Switch>
       <Route exact path='/' component={LogReg} />
-      <Route exact path='/adminDashboard' component={EksperiencaDashboard} />
+      <Route exact path='/adminDashboard' component={AdminDashboard} />
       {/* <Route exact path='/cv' component={EksperiencaDashboard} /> */}
       <Route exact path='/home' component={Home} />
       <Route exact path='/mbikeqyresitemave' component={Home} />
@@ -30,6 +34,9 @@ function App() {
       <Route exact path='/projektet' component={Home} />
       <Route exact path='/anetaresia' component={Home} />
       <Route exact path='/gjuhet' component={Home} />
+      <Route path='/adminDashboard/statistics' component={Main}/>
+      <Route path='/adminDashboard/users' component={Main2}/>
+      </Switch>
     </>
   );
 }
