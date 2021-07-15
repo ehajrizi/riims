@@ -422,7 +422,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.7"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.7",
+          "Microsoft.EntityFrameworkCore.Sqlite": "5.0.6"
         },
         "compile": {
           "bin/placeholder/Domain.dll": {}
@@ -1111,19 +1112,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\elita\\.nuget\\packages\\": {}
+    "C:\\Users\\Dell\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\elita\\Desktop\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
+      "projectUniqueName": "C:\\Users\\Dell\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
       "projectName": "DatabaseLogic",
-      "projectPath": "C:\\Users\\elita\\Desktop\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
-      "packagesPath": "C:\\Users\\elita\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\elita\\Desktop\\riims\\DatabaseLogic\\obj\\",
+      "projectPath": "C:\\Users\\Dell\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Dell\\Documents\\GitHub\\riims\\DatabaseLogic\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\elita\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -1135,8 +1136,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj"
+            "C:\\Users\\Dell\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\Dell\\Documents\\GitHub\\riims\\Domain\\Domain.csproj"
             }
           }
         }
@@ -1171,7 +1172,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

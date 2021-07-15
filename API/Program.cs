@@ -43,6 +43,7 @@ namespace API
                 await SeedDonatoret.SeedDataDonatori(context);
                 await SeedPjesemarresit.SeedDataPjesemarresi(context);
                 await SeedUser.SeedDataUser(context, userManager);
+                await SeedPjesemarresitPublikimet.SeedDataPjesemarresiPublikimi(context);
             }
             catch(Exception ex)
             {

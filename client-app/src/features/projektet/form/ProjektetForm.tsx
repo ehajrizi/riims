@@ -14,6 +14,7 @@ import MyTextArea from '../../../app/api/common/form/MyTextArea';
 import { Institucioni } from '../../../app/api/common/options/projektiOptions';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import { Projekti } from '../../../app/models/projekti';
+import DonatoretForm from '../../donatoret/form/DonatoretForm';
 
 export default observer(function ProjektetForm() {
     const history = useHistory();
@@ -56,7 +57,7 @@ export default observer(function ProjektetForm() {
                 id: uuid()
             };
             createProjekti(newProjekti).then(() => history.push(`/projektet/`));
-            modalStore.closeModal();
+            modalStore.openModal(<DonatoretForm/>);
         }
     }
 

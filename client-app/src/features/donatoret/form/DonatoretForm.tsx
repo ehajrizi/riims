@@ -13,6 +13,7 @@ import MyTextArea from '../../../app/api/common/form/MyTextArea';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import MyDateInput from '../../../app/api/common/form/MyDateInput';
 import { Donatori } from '../../../app/models/donatori';
+import PjesemarresitForm from '../../pjesemarresit/form/PjesemarresitForm';
 
 
 export default observer(function DonatoretForm() {
@@ -50,6 +51,7 @@ export default observer(function DonatoretForm() {
             createDonatori(newDonatori).then(() => history.push(`/donatoret/${newDonatori.id}`));
             modalStore.closeModal();
         }
+        
     }
 
     if (loadingInitial) return <LoadingComponent content='Loading Donatori...' />
@@ -73,7 +75,7 @@ export default observer(function DonatoretForm() {
                             disabled={isSubmitting || !dirty || !isValid}
                             loading={loading}
                             floated='right'
-                            positive type='submit' content='Submit' />
+                            positive type='submit' content='Next' />
                         <Button onClick={()=>modalStore.closeModal()}  as={Link} to='/donatoret' floated='right' type='button' content='Cancel' />
                     </Form>
                 )}

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj": {}
+    "C:\\Users\\Dell\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj": {
+    "C:\\Users\\Dell\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\elita\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\elita\\Desktop\\riims\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\Dell\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell\\Documents\\GitHub\\riims\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\elita\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -41,6 +41,10 @@
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.6, )"
             }
           },
           "imports": [
@@ -58,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -12,7 +12,7 @@ import { roli } from '../../../app/api/common/options/pjesemarresiOption';
 import { Donatori } from '../../../app/models/donatori';
 
 interface Props { donator : Donatori }
-export default observer(function DonatoretFormEdit({ donator}: Props) {
+export default observer(function DonatoretFormEdit({donator}: Props) {
     const history = useHistory();
 
     const { donatoriStore, modalStore } = useStore();

@@ -14,6 +14,8 @@ import MyTextArea from '../../../app/api/common/form/MyTextArea';
 import { Institucioni } from '../../../app/api/common/options/projektiOptions';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import { Projekti } from '../../../app/models/projekti';
+import DonatoretFormEdit from '../../donatoret/form/DonatoretFormEdit';
+import DonatoretForm from '../../donatoret/form/DonatoretForm';
 
 interface Props {
     projekt: Projekti;
@@ -55,7 +57,7 @@ export default observer(function ProjektetFormEdit({projekt}: Props) {
 
     function handleFormSubmit(projekti: Projekti) {
             updateProjekti(projekti).then(() => history.push(`/projektet/`));
-            modalStore.closeModal();
+            modalStore.openModal(<DonatoretForm/>);
     }
 
     if (loadingInitial) return <LoadingComponent content='Loading publikimin...' />
@@ -91,7 +93,7 @@ export default observer(function ProjektetFormEdit({projekt}: Props) {
                             disabled={isSubmitting || !dirty || !isValid}
                             loading={loading}
                             floated='right'
-                            positive type='submit' content='Submit' />
+                            positive type='submit' content='Next' />
                         <Button onClick={()=>modalStore.closeModal()}  as={Link} to='/publikimet' floated='right' type='button' content='Cancel' />
                     </Form>
                 )}

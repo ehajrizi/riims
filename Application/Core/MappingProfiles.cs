@@ -20,6 +20,7 @@ namespace Application.Core
             CreateMap<HonorandAward, HonorandAward>();
             CreateMap<Donatori, Donatori>();
             CreateMap<Pjesemarresi, Pjesemarresi>();
+            CreateMap<PjesemarresiPublikimi,PjesemarresiPublikimi>();
 
         }
     }

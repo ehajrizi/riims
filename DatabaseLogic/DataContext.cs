@@ -23,5 +23,7 @@ namespace DatabaseLogic
         public DbSet<Anetaresia> Anetaresite { get; set; }
         public DbSet<Donatori> Donatoret { get; set; }
         public DbSet<Pjesemarresi> Pjesemarresit { get; set; }
+
+         public DbSet<PjesemarresiPublikimi> PjesemarresitPublikimet { get; set; }
     }
 }
