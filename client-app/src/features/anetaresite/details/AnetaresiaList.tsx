@@ -8,7 +8,7 @@ import AnetaresiaListItem from '../dashboard/AnetaresiaListItem';
 import AnetaresiaForm from '../form/AnetaresiaForm';
 
 export default observer(function AnetaresiaList() {
-    const { anetaresiaStore, modalStore } = useStore();
+    const { anetaresiaStore, modalStore, userStore } = useStore();
     const { anetaresiteByEmriInstOrg } = anetaresiaStore;
 
     return (
@@ -18,13 +18,17 @@ export default observer(function AnetaresiaList() {
                     <Header content='Anetaresia' />
                 </Grid.Column>
                 <Grid.Column width='1' >
-                    <Button onClick={() => modalStore.openModal(<AnetaresiaForm />)}  className="btn" ><Icon className='btnIcon' name='plus' size='large' />
+                    <Button onClick={() => modalStore.openModal(<AnetaresiaForm />)} className="btn" ><Icon className='btnIcon' name='plus' size='large' />
                     </Button>
                 </Grid.Column>
             </Grid>
             <Divider />
             {anetaresiteByEmriInstOrg.map(anetaresia => (
-                <AnetaresiaListItem key={anetaresia.id} anetaresia={anetaresia} />
+                <>
+                    {anetaresia.useriId === userStore.UserId ? (
+                        <AnetaresiaListItem key={anetaresia.id} anetaresia={anetaresia} />
+                    ) : ('')}
+                </>
             ))}
         </>
     )

@@ -12,6 +12,7 @@ namespace Domain
         public DateTime DataFillestare { get; set; }
         public DateTime DataPerfundimtare { get; set; }
         public string Pershkrimi { get; set; }
-
+        public string UseriId { get; set; }
+        public AppUser User { get; set; }
     }
 }

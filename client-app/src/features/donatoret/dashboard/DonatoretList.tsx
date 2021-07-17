@@ -10,7 +10,7 @@ import DonatoretForm from '../form/DonatoretForm';
 export default observer(function DonatoretList() {
     const location = useLocation();
 
-    const { donatoriStore, modalStore } = useStore();
+    const { donatoriStore, modalStore, userStore } = useStore();
     const { DonatoretByEmri } = donatoriStore;
 
     return (
@@ -26,7 +26,11 @@ export default observer(function DonatoretList() {
             </Grid>
             <Divider />
             {DonatoretByEmri.map(donatori => (
-                <DonatoretListItem key={donatori.id} donatori={donatori} />
+                <>
+                    {donatori.useriId === userStore.UserId ? (
+                        <DonatoretListItem key={donatori.id} donatori={donatori} />
+                    ) : ('')}
+                </>
             ))}
         </>
     )

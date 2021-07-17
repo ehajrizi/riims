@@ -7,4 +7,5 @@ export interface Edukimi {
     dataFillestare: Date | null;
     dataPerfundimtare: Date | null;
     pershkrimi: string;
+    useriId: string;
 }

@@ -10,5 +10,6 @@ export interface Eksperienca {
     personiKontaktues: string;
     email: string;
     numriTelefonit: string;
+    useriId: string;
 }
 

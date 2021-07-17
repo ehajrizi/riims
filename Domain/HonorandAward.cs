@@ -10,5 +10,7 @@ namespace Domain
         public int Muaji {get; set; }
         public DateTime Viti {get; set; }
         public string Pozita {get; set; }
+        public string UseriId { get; set; }
+        public AppUser User { get; set; }
     }
 }

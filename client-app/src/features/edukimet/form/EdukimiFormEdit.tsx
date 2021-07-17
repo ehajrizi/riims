@@ -31,7 +31,8 @@ export default observer(function EdukimiEditForm({ edukimi }: Props) {
         lokacioni: edukimi.lokacioni,
         dataFillestare: edukimi.dataFillestare,
         dataPerfundimtare: edukimi.dataPerfundimtare,
-        pershkrimi: edukimi.pershkrimi
+        pershkrimi: edukimi.pershkrimi,
+        useriId: edukimi.useriId
     });
 
     const validationSchema = Yup.object({
@@ -49,7 +50,7 @@ export default observer(function EdukimiEditForm({ edukimi }: Props) {
     }, [id, loadEdukimi]);
 
     function handleFormSubmit(edukimi: Edukimi) {
-        updateEdukimi(edukimi).then(() => history.push(`/edukimi`));
+        updateEdukimi(edukimi).then(() => history.push(`/edukimet`));
         modalStore.closeModal();
     }
 
@@ -86,7 +87,7 @@ export default observer(function EdukimiEditForm({ edukimi }: Props) {
                             loading={loading}
                             floated='right'
                             positive type='submit' content='Submit' />
-                        <Button onClick={()=>modalStore.closeModal()} as={Link} to='/edukimi' floated='right' type='button' content='Cancel' />
+                        <Button onClick={()=>modalStore.closeModal()} as={Link} to='/edukimet' floated='right' type='button' content='Cancel' />
                     </Form>
                 )}
             </Formik>

@@ -7,24 +7,33 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using DatabaseLogic;
+using Application.Core;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
 
 namespace Application.Publikimet
 {
     public class List
     {
-        public class Query : IRequest<List<Publikimi>> { }
+        public class Query : IRequest<Result<List<PublikimiDto>>> { }
 
-        public class Handler : IRequestHandler<Query, List<Publikimi>>
+        public class Handler : IRequestHandler<Query, Result<List<PublikimiDto>>>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, IMapper mapper)
             {
+                _mapper = mapper;
                 _context = context;
             }
 
-            public async Task<List<Publikimi>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<List<PublikimiDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Publikimet.ToListAsync(cancellationToken);
+                var publikimet = await _context.Publikimet
+                    .ProjectTo<PublikimiDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync(cancellationToken);
+
+                return Result<List<PublikimiDto>>.Success(publikimet);
             }
         }
     }

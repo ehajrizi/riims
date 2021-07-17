@@ -4,17 +4,27 @@ using AutoMapper;
 using Domain;
 using MediatR;
 using DatabaseLogic;
+using FluentValidation;
+using Application.Core;
 
 namespace Application.Gjuhet
 {
     public class Edit
     {
-        public class Command : IRequest
+        public class Command : IRequest<Result<Unit>>
         {
             public Gjuha Gjuha { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class CommandValidatior : AbstractValidator<Command>
+        {
+            public CommandValidatior()
+            {
+                RuleFor(x => x.Gjuha).SetValidator(new GjuhaValidator());
+            }
+        }
+
+        public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -24,15 +34,19 @@ namespace Application.Gjuhet
                 _context = context;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var gjuha = await _context.Gjuhet.FindAsync(request.Gjuha.Id);
+                var gjuha = await _context.Publikimet.FindAsync(request.Gjuha.Id);
+
+                if(gjuha == null) return null;
 
                 _mapper.Map(request.Gjuha, gjuha);
 
-                await _context.SaveChangesAsync();
+                var result = await _context.SaveChangesAsync() > 0;
 
-                return Unit.Value;
+                if(!result) return Result<Unit>.Failure("Failed to update activity");
+
+                return Result<Unit>.Success(Unit.Value);
             }
         }
     }

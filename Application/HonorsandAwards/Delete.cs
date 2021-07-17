@@ -3,34 +3,36 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using DatabaseLogic;
+using Application.Core;
 
 namespace Application.HonorsandAwards
 {
     public class Delete
     {
-        public class Command : IRequest
+        public class Command : IRequest<Result<Unit>>
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
             public Handler(DataContext context)
             {
                 _context = context;
-
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var honorandaward = await _context.HonorsandAwards.FindAsync(request.Id); 
-                
-                _context.Remove(honorandaward);
+                var honorandAward = await _context.HonorsandAwards.FindAsync(request.Id);
 
-                await _context.SaveChangesAsync();
+                _context.Remove(honorandAward);
 
-                return Unit.Value;
+                var result = await _context.SaveChangesAsync() > 0;
+
+                if(!result) return Result<Unit>.Failure("Failed");
+
+                return Result<Unit>.Success(Unit.Value);
             }
         }
     }

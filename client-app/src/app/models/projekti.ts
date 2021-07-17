@@ -8,4 +8,5 @@ export interface Projekti {
     buxheti: number;
     emriKlientit: string;
     institucioni: string;
+    useriId: string;
 }

@@ -33,6 +33,7 @@ export default observer(function HonorandAwardFormEdit({honorandaward}:Props){
         viti: honorandaward.viti,
         institucioni: honorandaward.institucioni,
         pozita: honorandaward.pozita,
+        useriId: honorandaward.useriId
     });
 
     const validationSchema=Yup.object ({

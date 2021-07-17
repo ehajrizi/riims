@@ -7,24 +7,33 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using DatabaseLogic;
+using Application.Core;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
 
 namespace Application.Projektet
 {
     public class List
     {
-        public class Query : IRequest<List<Projekti>> { }
+        public class Query : IRequest<Result<List<ProjektiDto>>> { }
 
-        public class Handler : IRequestHandler<Query, List<Projekti>>
+        public class Handler : IRequestHandler<Query, Result<List<ProjektiDto>>>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, IMapper mapper)
             {
+                _mapper = mapper;
                 _context = context;
             }
 
-            public async Task<List<Projekti>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<List<ProjektiDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Projektet.ToListAsync(cancellationToken);
+                var projektet = await _context.Projektet
+                    .ProjectTo<ProjektiDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync(cancellationToken);
+
+                return Result<List<ProjektiDto>>.Success(projektet);
             }
         }
     }

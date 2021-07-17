@@ -2,11 +2,10 @@ import { makeAutoObservable, runInAction } from "mobx";
 import { history } from "../..";
 import agent from "../api/agent";
 import { User, UserFormValues } from "../models/user";
-import { store, useStore } from "./store";
+import { store } from "./store";
 
 
 export default class UserStore {
-    
     user: User | null = null;
 
     constructor() {
@@ -15,6 +14,11 @@ export default class UserStore {
     
     get isLoggedIn() {
         return !!this.user;
+    }
+
+    get UserId() {
+        // console.log(this.user?.id);
+        return this.user?.id;
     }
 
     login = async (creds: UserFormValues) => {
@@ -32,7 +36,9 @@ export default class UserStore {
     }
 
     logout = () => {
-        store.commonStore.setToken(null);
+        if(store.commonStore.token != null) {
+            store.commonStore.setToken(null);
+        }
         window.localStorage.removeItem('jwt');
         this.user = null;
         history.push('/');

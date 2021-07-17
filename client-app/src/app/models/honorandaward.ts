@@ -6,4 +6,5 @@ export interface HonorandAward
     viti: Date | null;
     institucioni: string ;
     pozita: string ;
+    useriId: string;
 }

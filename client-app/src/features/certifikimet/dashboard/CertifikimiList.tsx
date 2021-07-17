@@ -7,7 +7,7 @@ import CertifikimiForm from '../form/CertifikimiForm'
 import CertifikimiListItem from './CertifikimiListItem';
 
 export default observer(function CertifikimiList() {
-    const { certifikimiStore, modalStore } = useStore();
+    const { certifikimiStore, modalStore, userStore } = useStore();
     const { certifikimetByDate } = certifikimiStore;
 
     return (
@@ -23,7 +23,11 @@ export default observer(function CertifikimiList() {
             </Grid>
             <Divider />
             {certifikimetByDate.map(certifikimi => (
-                <CertifikimiListItem key={certifikimi.id} certifikimi={certifikimi}/>
+                <>
+                    {certifikimi.useriId === userStore.UserId ? (
+                        <CertifikimiListItem key={certifikimi.id} certifikimi={certifikimi} />
+                    ) : ('')}
+                </>
             ))}
         </>
     )

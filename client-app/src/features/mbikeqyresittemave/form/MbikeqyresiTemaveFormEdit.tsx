@@ -34,6 +34,7 @@ export default observer(function MbikeqyresiTemaveFormEdit({mbik}:Props){
         institucioni: mbik.institucioni,
         fakulteti: mbik.fakulteti,
         niveliAkademik: mbik.niveliAkademik,
+        useriId: mbik.useriId
     });
     const validationSchema=Yup.object ({
         titulliTemes:Yup.string().required('Ju lutem plotesoni Titullin e Temes'),

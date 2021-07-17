@@ -4,27 +4,37 @@ using System.Threading.Tasks;
 using Domain;
 using MediatR;
 using DatabaseLogic;
+using Application.Core;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.MbikeqyresitTemave
 {
-        public class Details
+    public class Details
     {
-        public class Query : IRequest<MbikeqyresiTemave>
+        public class Query : IRequest<Result<MbikeqyresiTemaveDto>>
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, MbikeqyresiTemave>
+        public class Handler : IRequestHandler<Query, Result<MbikeqyresiTemaveDto>>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, IMapper mapper)
             {
+                _mapper = mapper;
                 _context = context;
             }
 
-            public async Task<MbikeqyresiTemave> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<MbikeqyresiTemaveDto>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.MbikeqyresitTemave.FindAsync(request.Id);
+                var mbikeqyresiTemave = await _context.MbikeqyresitTemave
+                    .ProjectTo<MbikeqyresiTemaveDto>(_mapper.ConfigurationProvider)
+                    .FirstOrDefaultAsync(x => x.Id == request.Id);
+
+                return Result<MbikeqyresiTemaveDto>.Success(mbikeqyresiTemave);
             }
         }
     }

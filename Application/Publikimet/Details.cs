@@ -4,27 +4,37 @@ using System.Threading.Tasks;
 using Domain;
 using MediatR;
 using DatabaseLogic;
+using Application.Core;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Publikimet
 {
     public class Details
     {
-        public class Query : IRequest<Publikimi>
+        public class Query : IRequest<Result<PublikimiDto>>
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, Publikimi>
+        public class Handler : IRequestHandler<Query, Result<PublikimiDto>>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, IMapper mapper)
             {
+                _mapper = mapper;
                 _context = context;
             }
 
-            public async Task<Publikimi> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<PublikimiDto>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Publikimet.FindAsync(request.Id);
+                var publikimi = await _context.Publikimet
+                    .ProjectTo<PublikimiDto>(_mapper.ConfigurationProvider)
+                    .FirstOrDefaultAsync(x => x.Id == request.Id);
+
+                return Result<PublikimiDto>.Success(publikimi);
             }
         }
     }

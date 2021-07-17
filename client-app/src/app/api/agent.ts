@@ -32,7 +32,7 @@ axios.interceptors.request.use(config => {
 
 axios.interceptors.response.use(async response=> {
     try {
-        await sleep(1000);
+        await sleep(0.1);
         return response;
     } catch (error) { 
         console.log(error);
@@ -150,7 +150,8 @@ const Donatoret= {
     delete: (id: string) => axios.delete<void>(`/donatoret/${id}`)
 }
 const Account = {
-    current: () => requests.get<User>('/account'),
+    // current: () => requests.get<User>('/account'),
+    current: () => axios.get<User>('/account').then(responseBody),
     login: (user: UserFormValues) => axios.post<User>('/account/login', user).then(responseBody),
     register: (user: UserFormValues) => axios.post<User>('/account/register', user).then(responseBody),
 }

@@ -7,4 +7,5 @@ export interface MbikeqyresiTemave{
     institucioni: string ;
     fakulteti: string;
     niveliAkademik:string;  
+    useriId: string;
 }

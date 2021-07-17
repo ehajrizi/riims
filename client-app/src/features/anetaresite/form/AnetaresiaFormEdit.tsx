@@ -27,7 +27,8 @@ export default observer(function AnetaresiaEditForm({ anetaresia }: Props) {
         id: anetaresia.id,
         emriInstOrg: anetaresia.emriInstOrg,
         pozita: anetaresia.pozita,
-        pershkrimi: anetaresia.pershkrimi
+        pershkrimi: anetaresia.pershkrimi,
+        useriId: anetaresia.useriId
     });
 
     const validationSchema = Yup.object({

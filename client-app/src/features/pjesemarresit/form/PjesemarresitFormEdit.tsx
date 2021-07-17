@@ -22,7 +22,7 @@ export default observer(function PjesemarresitFormEdit({ pjesemarres}: Props) {
         id: pjesemarres.id,
         emriIPjesemarresit: pjesemarres.emriIPjesemarresit,
         roli: pjesemarres.roli,
-       
+        useriId: pjesemarres.useriId
     });
     const validationSchema = Yup.object({
         emriIPjesemarresit: Yup.string().required('Emri i pjesemarresit is required'),

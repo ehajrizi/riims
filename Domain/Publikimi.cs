@@ -20,5 +20,7 @@ namespace Domain
         public int VolumiFaqeve { get; set; }
         public string Referenca { get; set; }
         public bool AutorKryesor { get; set; }
+        public string UseriId { get; set; }
+        public AppUser User { get; set; }
     }
 }

@@ -9,8 +9,8 @@ import GjuhaForm from '../form/GjuhaForm';
 
 export default observer(function GjuhaList() {
 
-    const {gjuhaStore, modalStore} = useStore();
-    const {gjuhetByGjuha} = gjuhaStore;
+    const { gjuhaStore, modalStore, userStore } = useStore();
+    const { gjuhetByGjuha } = gjuhaStore;
 
     return (
         <>
@@ -19,13 +19,17 @@ export default observer(function GjuhaList() {
                     <Header content='Gjuha' />
                 </Grid.Column>
                 <Grid.Column width='1' >
-                    <Button onClick={() => modalStore.openModal(<GjuhaForm />)} style={{marginLeft:'-2em'}} className="btn" ><Icon className='btnIcon' name='plus' size='large' />
+                    <Button onClick={() => modalStore.openModal(<GjuhaForm />)} style={{ marginLeft: '-2em' }} className="btn" ><Icon className='btnIcon' name='plus' size='large' />
                     </Button>
                 </Grid.Column>
             </Grid>
             <Divider />
             {gjuhetByGjuha.map(gjuha => (
-                <GjuhaListItem key={gjuha.id} gjuha={gjuha} />
+                <>
+                    {gjuha.useriId === userStore.UserId ? (
+                        <GjuhaListItem key={gjuha.id} gjuha={gjuha} />
+                    ) : ('')}
+                </>
             ))}
         </>
     )

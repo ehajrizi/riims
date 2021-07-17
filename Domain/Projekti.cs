@@ -13,5 +13,7 @@ namespace Domain
         public int Buxheti { get; set; }
         public string EmriKlientit { get; set; }
         public string Institucioni { get; set; }
+        public string UseriId { get; set; }
+        public AppUser User { get; set; }
     }
 }

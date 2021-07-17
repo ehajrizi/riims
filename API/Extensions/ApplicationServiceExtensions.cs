@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using DatabaseLogic;
+using Application.Interfaces;
+using Infrastructure.Security;
 
 namespace API.Extensions
 {
@@ -49,6 +51,7 @@ namespace API.Extensions
             services.AddMediatR(typeof(Application.Donatoret.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.Pjesemarresit.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.PjesemarresitPublikimet.List.Handler).Assembly);
+            services.AddScoped<IUserAccessor, UserAccessor>();
 
             return services;
         }

@@ -12,5 +12,7 @@ namespace Domain
         public string Institucioni { get; set; }
         public string Fakulteti {get; set; }
         public string NiveliAkademik {get; set; }
+        public string UseriId { get; set; }
+        public AppUser User { get; set; }
     }
 }

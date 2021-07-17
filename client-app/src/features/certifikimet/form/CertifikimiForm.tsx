@@ -25,7 +25,8 @@ export default observer(function CertifikimiForm() {
         lokacioni: '' ,
         dataFillestare: null, 
         dataPerfundimtare: null,
-        pershkrimi: '' 
+        pershkrimi: '',
+        useriId: ''
     })
 
     const validationSchema = Yup.object({

@@ -37,7 +37,8 @@ export default observer(function ProjektetFormEdit({projekt}: Props) {
         dataMbarimit: projekt.dataMbarimit,
         buxheti: projekt.buxheti,
         emriKlientit: projekt.emriKlientit,
-        institucioni: projekt.institucioni
+        institucioni: projekt.institucioni,
+        useriId: projekt.useriId
     });
 
     const validationSchema = Yup.object({

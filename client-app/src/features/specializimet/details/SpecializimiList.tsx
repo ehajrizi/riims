@@ -7,7 +7,7 @@ import SpecializimiListItem from '../dashboard/SpecializimiListItem';
 import SpecializimiForm from '../form/SpecializimiForm';
 
 export default observer(function SpecializimiList() {
-    const { specializimiStore, modalStore } = useStore();
+    const { specializimiStore, modalStore, userStore } = useStore();
     const { specializimetByDate } = specializimiStore;
 
     return (
@@ -23,7 +23,11 @@ export default observer(function SpecializimiList() {
             </Grid>
             <Divider />
             {specializimetByDate.map(specializimi => (
-                <SpecializimiListItem key={specializimi.id} specializimi={specializimi} />
+                <>
+                    {specializimi.useriId === userStore.UserId ? (
+                        <SpecializimiListItem key={specializimi.id} specializimi={specializimi} />
+                    ) : ('')}
+                </>
             ))}
         </>
     )

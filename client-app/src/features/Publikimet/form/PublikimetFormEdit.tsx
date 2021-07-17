@@ -39,7 +39,8 @@ export default observer(function PublikimetEditForm({ publikimi }: Props) {
         linkuPublikimit: publikimi.linkuPublikimit,
         volumiFaqeve: publikimi.volumiFaqeve,
         referenca: publikimi.referenca,
-        autorKryesor: publikimi.autorKryesor
+        autorKryesor: publikimi.autorKryesor,
+        useriId: publikimi.useriId
     });
 
     const validationSchema = Yup.object({
@@ -105,11 +106,13 @@ export default observer(function PublikimetEditForm({ publikimi }: Props) {
                         <MyTextInput placeholder='Volumi i Faqeve' name='volumiFaqeve' />
                         <MyTextInput placeholder='Referenca' name='referenca' />
                         <MyTextInput placeholder='Autori Kryesor' name='autorKryesor' />
+                        <MyTextInput placeholder='User' name='user' />
                         <Button
                             disabled={isSubmitting || !dirty || !isValid}
                             loading={loading}
                             floated='right'
                             positive type='submit' content='Submit' />
+                            {/* {window.location.reload(true)} */}
                         <Button onClick={()=>modalStore.closeModal()} as={Link} to='/publikimet' floated='right' type='button' content='Cancel' />
                     </Form>
                 )}

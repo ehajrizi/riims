@@ -14,10 +14,11 @@ import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import MyDateInput from '../../../app/api/common/form/MyDateInput';
 import { Publikimi } from '../../../app/models/publikimi';
 import { Departamenti, Institucioni, Kategorite, LlojiPublikimit, Statusi } from '../../../app/api/common/options/publikimiOptions';
+import UserStore from '../../../app/stores/userStore';
 
 export default observer(function PublikimetForm() {
     const history = useHistory();
-    const { publikimiStore, modalStore } = useStore();
+    const { publikimiStore, modalStore, userStore } = useStore();
     const { createPublikimi, loading, loadPublikimi, loadingInitial } = publikimiStore;
     const { id } = useParams<{ id: string }>();
 
@@ -37,7 +38,8 @@ export default observer(function PublikimetForm() {
         linkuPublikimit: '',
         volumiFaqeve: 0,
         referenca: '',
-        autorKryesor: true
+        autorKryesor: true,
+        useriId: ''
     });
 
     const validationSchema = Yup.object({
@@ -69,6 +71,8 @@ export default observer(function PublikimetForm() {
                 id: uuid()
             };
             createPublikimi(newPublikimi).then(() => history.push(`/publikimet/`));
+            // .then(() => window.location.reload(true));
+            // {window.location.reload(true)}
             modalStore.closeModal();
         }
     }
@@ -113,6 +117,7 @@ export default observer(function PublikimetForm() {
                             loading={loading}
                             floated='right'
                             positive type='submit' content='Submit' />
+                            {/* {window.location.reload(true)} */}
                         <Button onClick={()=>modalStore.closeModal()}  as={Link} to='/publikimet' floated='right' type='button' content='Cancel' />
                     </Form>
                 )}

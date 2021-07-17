@@ -25,5 +25,7 @@ namespace Domain
         public string Email { get; set; }
 
         public string NumriTelefonit { get; set; }
+        public string UseriId { get; set; }
+        public AppUser User { get; set; }
     }
 }

@@ -24,7 +24,8 @@ export default observer(function GjuhaForm(){
         id: '',
         zgjedhGjuha: '',
         folur: '',
-        shkruar: ''
+        shkruar: '',
+        useriId: ''
     }); 
 
     const validationSchema = Yup.object({

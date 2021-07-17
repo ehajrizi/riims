@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles.css';
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
 import EksperiencaDashboard from '../../features/eksperiencat/dashboard/EksperiencaDashboard';
@@ -15,7 +15,17 @@ import Main2 from '../../features/admin/components/Main2';
 function App() {
 
   const location = useLocation();
-  const { userStore: { user, isLoggedIn } } = useStore();
+  const {commonStore, userStore} = useStore();
+
+  useEffect(() => {
+    if(commonStore.token) {
+      userStore.getUser().finally(() => commonStore.setAppLoaded());
+    } else {
+      commonStore.setAppLoaded();
+    }
+  }, [commonStore, userStore])
+
+  // const { userStore: { user, isLoggedIn } } = useStore();
   return (
     <>
       <ModalContainer/>
@@ -28,7 +38,7 @@ function App() {
       <Route exact path='/eksperiencat' component={Home} />
       <Route exact path='/publikimet' component={Home} />
       <Route exact path='/specializimet' component={Home} />
-      <Route exact path='/edukimi' component={Home} />
+      <Route exact path='/edukimet' component={Home} />
       <Route exact path='/certifikimet' component={Home} />
       <Route exact path='/honorsandawards' component={Home} />
       <Route exact path='/projektet' component={Home} />

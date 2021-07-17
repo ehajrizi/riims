@@ -31,7 +31,7 @@ export default observer(function PjesemarresitForm({ isShown, hide }: ModalProps
         id: '',
         emriIPjesemarresit: '',
         roli: '',
-     
+        useriId: ''
     });
 
     useEffect(() => {

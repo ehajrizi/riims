@@ -3,17 +3,18 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using DatabaseLogic;
+using Application.Core;
 
 namespace Application.MbikeqyresitTemave
 {
     public class Delete
     {
-          public class Command : IRequest
+        public class Command : IRequest<Result<Unit>>
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
             public Handler(DataContext context)
@@ -21,15 +22,17 @@ namespace Application.MbikeqyresitTemave
                 _context = context;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var activity = await _context.MbikeqyresitTemave.FindAsync(request.Id);
+                var mbikeqyresiTemave = await _context.MbikeqyresitTemave.FindAsync(request.Id);
 
-                _context.Remove(activity);
+                _context.Remove(mbikeqyresiTemave);
 
-                await _context.SaveChangesAsync();
+                var result = await _context.SaveChangesAsync() > 0;
 
-                return Unit.Value;
+                if(!result) return Result<Unit>.Failure("Failed");
+
+                return Result<Unit>.Success(Unit.Value);
             }
         }
     }

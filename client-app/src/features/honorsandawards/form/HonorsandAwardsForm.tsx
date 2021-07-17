@@ -27,7 +27,7 @@ export default observer (function HonorandAwardForm(){
         viti: null ,
         institucioni: '',
         pozita: '' ,
-
+        useriId: ''
     });
 
     const validationSchema=Yup.object ({

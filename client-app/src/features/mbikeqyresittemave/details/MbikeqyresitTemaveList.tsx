@@ -10,7 +10,7 @@ import MbikeqyresitTemaveForm from '../form/MbikeqyresiTemaveForm';
 export default observer(function MbikeqyresitTemaveList() {
     const location = useLocation();
 
-    const { mbikeqyresitemaveStore, modalStore } = useStore();
+    const { mbikeqyresitemaveStore, modalStore, userStore } = useStore();
     const { mbikeqyresitemaveByStudenti } = mbikeqyresitemaveStore;
 
     return (
@@ -26,7 +26,11 @@ export default observer(function MbikeqyresitTemaveList() {
             </Grid>
             <Divider />
             {mbikeqyresitemaveByStudenti.map(mbikeqyresitemave => (
-                <MbikeqyresitTemaveListItem key={mbikeqyresitemave.id} mbikeqyresitemave={mbikeqyresitemave} />
+                <>
+                    {mbikeqyresitemave.useriId === userStore.UserId ? (
+                        <MbikeqyresitTemaveListItem key={mbikeqyresitemave.id} mbikeqyresitemave={mbikeqyresitemave} />
+                    ) : ('')}
+                </>
             ))}
         </>
     )

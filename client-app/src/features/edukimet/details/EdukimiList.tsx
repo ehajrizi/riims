@@ -9,8 +9,8 @@ import EdukimiForm from '../form/EdukimiForm';
 
 export default observer(function EdukimiList() {
 
-    const {edukimiStore, modalStore} = useStore();
-    const {edukimetByDate} = edukimiStore;
+    const { edukimiStore, modalStore, userStore } = useStore();
+    const { edukimetByDate } = edukimiStore;
 
     return (
         <>
@@ -19,13 +19,18 @@ export default observer(function EdukimiList() {
                     <Header content='Edukimi' />
                 </Grid.Column>
                 <Grid.Column width='1' >
-                    <Button onClick={() => modalStore.openModal(<EdukimiForm />)}  className="btn" ><Icon className='btnIcon' name='plus' size='large' />
+                    <Button onClick={() => modalStore.openModal(<EdukimiForm />)} className="btn" ><Icon className='btnIcon' name='plus' size='large' />
                     </Button>
                 </Grid.Column>
             </Grid>
             <Divider />
             {edukimetByDate.map(edukimi => (
-                <EdukimiListItem key={edukimi.id} edukimi={edukimi} />
+                <>
+                    {edukimi.useriId === userStore.UserId ? (
+                        // <EdukimiListItem key={edukimi.id} edukimi={edukimi} />
+                        console.log(edukimi.useriId +"   --"+ userStore.UserId)
+                    ) : ('')}
+                </>
             ))}
         </>
     )

@@ -4,17 +4,27 @@ using AutoMapper;
 using Domain;
 using MediatR;
 using DatabaseLogic;
+using FluentValidation;
+using Application.Core;
 
 namespace Application.PjesemarresitPublikimet
 {
     public class Edit
     {
-        public class Command : IRequest
+        public class Command : IRequest<Result<Unit>>
         {
             public PjesemarresiPublikimi PjesemarresiPublikimi { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class CommandValidatior : AbstractValidator<Command>
+        {
+            public CommandValidatior()
+            {
+                RuleFor(x => x.PjesemarresiPublikimi).SetValidator(new PjesemarresiPublikimiValidator());
+            }
+        }
+
+        public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -24,15 +34,19 @@ namespace Application.PjesemarresitPublikimet
                 _context = context;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var pjesemarresiPublikimi = await _context.PjesemarresitPublikimet.FindAsync(request.PjesemarresiPublikimi.Id);
 
+                if(pjesemarresiPublikimi == null) return null;
+
                 _mapper.Map(request.PjesemarresiPublikimi, pjesemarresiPublikimi);
 
-                await _context.SaveChangesAsync();
+                var result = await _context.SaveChangesAsync() > 0;
 
-                return Unit.Value;
+                if(!result) return Result<Unit>.Failure("Failed to update activity");
+
+                return Result<Unit>.Success(Unit.Value);
             }
         }
     }

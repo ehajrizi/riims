@@ -3,4 +3,5 @@ export interface Anetaresia {
     emriInstOrg: string;
     pozita: string;
     pershkrimi: string; 
+    useriId: string;
 }

@@ -12,21 +12,21 @@ namespace API.Controllers
     public class CertifikimetController : BaseApiController
     {
         [HttpGet]
-        public async Task<ActionResult<List<Certifikimi>>> GetCertifikimet()
+        public async Task<IActionResult> GetCertifikimet()
         {
-            return await Mediator.Send(new List.Query());
+            return HandleResult(await Mediator.Send(new List.Query()));
         }
 
         [HttpGet("{id}")] 
-        public async Task<ActionResult<Certifikimi>> GetCertifikimi(Guid id)
+        public async Task<IActionResult> GetCertifikimi(Guid id)
         {
-            return await Mediator.Send(new Details.Query{Id = id});
+            return HandleResult(await Mediator.Send(new Details.Query{Id = id}));
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateCertifikimi(Certifikimi certifikimi)
         {
-            return Ok(await Mediator.Send(new Create.Command{Certifikimi = certifikimi}));
+            return HandleResult(await Mediator.Send(new Create.Command{Certifikimi = certifikimi}));
         }
 
         [HttpPut("{id}")]
@@ -34,14 +34,14 @@ namespace API.Controllers
         public async Task<IActionResult> EditCertifikimi(Guid id, Certifikimi certifikimi)
         {
             certifikimi.Id = id;
-            return Ok(await Mediator.Send(new Edit.Command{Certifikimi = certifikimi}));
+            return HandleResult(await Mediator.Send(new Edit.Command{Certifikimi = certifikimi}));
         }
 
         [HttpDelete("{id}")]
 
         public async Task<IActionResult> DeleteCertifikimi(Guid id)
         {
-            return Ok(await Mediator.Send(new Delete.Command{Id = id}));
+            return HandleResult(await Mediator.Send(new Delete.Command{Id = id}));
         }
 
         

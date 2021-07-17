@@ -13,34 +13,34 @@ namespace API.Controllers
     public class PjesemarresitPublikimetController : BaseApiController
     {
         [HttpGet]
-        public async Task<ActionResult<List<PjesemarresiPublikimi>>> GetPjesemarresitPublikimet()
+        public async Task<IActionResult> GetPjesemarresitPublikimet()
         {
-            return await Mediator.Send(new List.Query());
+            return HandleResult(await Mediator.Send(new List.Query()));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<PjesemarresiPublikimi>> GetPjesemarresiPublikimi(Guid id)
+        public async Task<IActionResult> GetPjesemarresiPublikimi(Guid id)
         {
-            return await Mediator.Send(new Details.Query { Id = id });
+            return HandleResult(await Mediator.Send(new Details.Query { Id = id }));
         }
 
         [HttpPost]
         public async Task<IActionResult> CreatePjesemarresiPublikimi(PjesemarresiPublikimi pjesemarresiPublikimi)
         {
-            return Ok(await Mediator.Send(new Create.Command { PjesemarresiPublikimi = pjesemarresiPublikimi }));
+            return HandleResult(await Mediator.Send(new Create.Command { PjesemarresiPublikimi = pjesemarresiPublikimi }));
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> EditPjesemarresiPublikimi(Guid id, PjesemarresiPublikimi pjesemarresiPublikimi)
         {
             pjesemarresiPublikimi.Id = id;
-            return Ok(await Mediator.Send(new Edit.Command { PjesemarresiPublikimi = pjesemarresiPublikimi }));
+            return HandleResult(await Mediator.Send(new Edit.Command { PjesemarresiPublikimi = pjesemarresiPublikimi }));
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePjesemarresiPublikimi(Guid id)
         {
-            return Ok(await Mediator.Send(new Delete.Command { Id = id }));
+            return HandleResult(await Mediator.Send(new Delete.Command { Id = id }));
         }
     }
 }

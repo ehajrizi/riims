@@ -25,7 +25,8 @@ export default observer(function GjuhaEditForm({ gjuha }: Props) {
         id: gjuha.id,
         zgjedhGjuha: gjuha.zgjedhGjuha,
         folur: gjuha.folur,
-        shkruar: gjuha.shkruar
+        shkruar: gjuha.shkruar,
+        useriId: gjuha.useriId
     });
 
     const validationSchema = Yup.object({

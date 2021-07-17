@@ -4,28 +4,37 @@ using System.Threading.Tasks;
 using Domain;
 using MediatR;
 using DatabaseLogic;
+using Application.Core;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Eksperiencat
 {
     public class Details
     {
-        public class Query : IRequest<Eksperienca>
+        public class Query : IRequest<Result<EksperiencaDto>>
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, Eksperienca>
+        public class Handler : IRequestHandler<Query, Result<EksperiencaDto>>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, IMapper mapper)
             {
+                _mapper = mapper;
                 _context = context;
-
             }
 
-            public async Task<Eksperienca> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<EksperiencaDto>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Eksperiencat.FindAsync(request.Id);
+                var eksperienca = await _context.Eksperiencat
+                    .ProjectTo<EksperiencaDto>(_mapper.ConfigurationProvider)
+                    .FirstOrDefaultAsync(x => x.Id == request.Id);
+
+                return Result<EksperiencaDto>.Success(eksperienca);
             }
         }
     }

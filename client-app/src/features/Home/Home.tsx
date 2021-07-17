@@ -60,7 +60,7 @@ export default observer(function Home() {
                     <Grid width='16' stretched centered>
                         <Card.Group itemsPerRow={9}>
                             <Card fluid color='blue' header='Eksperiencat' onClick={scrollToEksperiencat} as={NavLink} to='/eksperiencat' />
-                            <Card fluid color='blue' header='Edukimi' onClick={scrollToEdukimi} as={NavLink} to='/edukimi' />
+                            <Card fluid color='blue' header='Edukimi' onClick={scrollToEdukimi} as={NavLink} to='/edukimet' />
                             <Card fluid color='blue' header='Specializimet' onClick={scrollToSpecializimet} as={NavLink} to='/specializimet' />
                             <Card fluid color='blue' header='Certifikimet' onClick={scrollToCertifikimet} as={NavLink} to='/certifikimet' />
                             <Card fluid color='blue' header='Mbikeqyres i temave' onClick={scrollToMbikeqyresITemave} as={NavLink} to='/mbikeqyresitemave' />

@@ -10,7 +10,7 @@ import ProjektetListItem from './ProjektetListItem';
 export default observer(function ProjektetList() {
     const location = useLocation();
 
-    const { projektiStore, modalStore } = useStore();
+    const { projektiStore, modalStore, userStore } = useStore();
     const { projektetByDate } = projektiStore;
 
     return (
@@ -20,13 +20,17 @@ export default observer(function ProjektetList() {
                     <Header content='Projektet' />
                 </Grid.Column>
                 <Grid.Column width='1' >
-                <Button onClick={() => modalStore.openModal(<ProjektetForm />)} className="btn" ><Icon className='btnIcon' name='plus' size='large' />
+                    <Button onClick={() => modalStore.openModal(<ProjektetForm />)} className="btn" ><Icon className='btnIcon' name='plus' size='large' />
                     </Button>
                 </Grid.Column>
             </Grid>
             <Divider />
             {projektetByDate.map(projekti => (
-                <ProjektetListItem key={projekti.id} projekti={projekti} />
+                <>
+                    {projekti.useriId === userStore.UserId ? (
+                        <ProjektetListItem key={projekti.id} projekti={projekti} />
+                    ) : ('')}
+                </>
             ))}
         </>
     )

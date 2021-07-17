@@ -24,6 +24,7 @@ export default observer(function DonatoretFormEdit({donator}: Props) {
         emriIDonatorit: donator.emriIDonatorit,
         pershkrimiDonatorit: donator.pershkrimiDonatorit,
         kontributiIDhene: donator.kontributiIDhene,
+        useriId: donator.useriId
        
     });
     const validationSchema = Yup.object({

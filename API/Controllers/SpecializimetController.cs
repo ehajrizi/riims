@@ -13,23 +13,23 @@ namespace API.Controllers
     {   
 
         [HttpGet]
-        public async Task<ActionResult<List<Specializimi>>> GetSpecializimet()
+        public async Task<IActionResult> GetSpecializimet()
         {
-            return await Mediator.Send(new List.Query());
+            return HandleResult(await Mediator.Send(new List.Query()));
         }
 
 
         [HttpGet("{id}")] //specializimet/id
-        public async Task<ActionResult<Specializimi>> GetSpecializimi(Guid id)
+        public async Task<IActionResult> GetSpecializimi(Guid id)
         {
-            return await Mediator.Send(new Details.Query{Id = id});
+            return HandleResult(await Mediator.Send(new Details.Query{Id = id}));
         }
 
 
         [HttpPost]
         public async Task<IActionResult> CreateSpecializimi(Specializimi specializimi)
         {
-            return Ok(await Mediator.Send(new Create.Command {Specializimi = specializimi}));
+            return HandleResult(await Mediator.Send(new Create.Command {Specializimi = specializimi}));
         }
 
 
@@ -38,14 +38,14 @@ namespace API.Controllers
         {
             specializimi.Id = id;
 
-            return Ok(await Mediator.Send(new Edit.Command{Specializimi = specializimi}));
+            return HandleResult(await Mediator.Send(new Edit.Command{Specializimi = specializimi}));
         }
 
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSpecializimi(Guid id)
         {
-            return Ok(await Mediator.Send(new Delete.Command{Id = id})); 
+            return HandleResult(await Mediator.Send(new Delete.Command{Id = id})); 
         }
 
 

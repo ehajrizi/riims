@@ -7,24 +7,33 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using DatabaseLogic;
+using Application.Core;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
 
 namespace Application.PjesemarresitPublikimet
- {
+{
     public class List
     {
-        public class Query : IRequest<List<PjesemarresiPublikimi>> { }
+        public class Query : IRequest<Result<List<PjesemarresitPublikimiDto>>> { }
 
-        public class Handler : IRequestHandler<Query, List<PjesemarresiPublikimi>>
+        public class Handler : IRequestHandler<Query, Result<List<PjesemarresitPublikimiDto>>>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, IMapper mapper)
             {
+                _mapper = mapper;
                 _context = context;
             }
 
-            public async Task<List<PjesemarresiPublikimi>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<List<PjesemarresitPublikimiDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.PjesemarresitPublikimet.ToListAsync(cancellationToken);
+                var pjesemarresitPublikimet = await _context.PjesemarresitPublikimet
+                    .ProjectTo<PjesemarresitPublikimiDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync(cancellationToken);
+
+                return Result<List<PjesemarresitPublikimiDto>>.Success(pjesemarresitPublikimet);
             }
         }
     }

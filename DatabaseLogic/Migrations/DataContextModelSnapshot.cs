@@ -31,7 +31,15 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("Pozita")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Anetaresite");
                 });
@@ -169,7 +177,15 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("Titulli")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Certifikimet");
                 });
@@ -189,7 +205,15 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("PershkrimiDonatorit")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Donatoret");
                 });
@@ -221,7 +245,15 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("Titulli")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Edukimet");
                 });
@@ -262,7 +294,15 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("Titulli")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Eksperiencat");
                 });
@@ -279,10 +319,18 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("Shkruar")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ZgjedhGjuha")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Gjuhet");
                 });
@@ -305,10 +353,18 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("Titulli")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("Viti")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("HonorsandAwards");
                 });
@@ -337,10 +393,18 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("TitulliTemes")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("Viti")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("MbikeqyresitTemave");
                 });
@@ -354,10 +418,18 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("EmriIPjesemarresit")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("roli")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Pjesemarresit");
                 });
@@ -371,10 +443,18 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("EmriIPjesemarresit")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("roli")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("PjesemarresitPublikimet");
                 });
@@ -450,7 +530,15 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("Pershkrimi")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Projektet");
                 });
@@ -497,6 +585,12 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("Titulli")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Vendi")
                         .HasColumnType("TEXT");
 
@@ -507,6 +601,8 @@ namespace DatabaseLogic.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Publikimet");
                 });
@@ -535,7 +631,15 @@ namespace DatabaseLogic.Migrations
                     b.Property<string>("Titulli")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Specializimet");
                 });
@@ -668,6 +772,123 @@ namespace DatabaseLogic.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Domain.Anetaresia", b =>
+                {
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("Anetaresite")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Certifikimi", b =>
+                {
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("Certifikimet")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Donatori", b =>
+                {
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("Donatoret")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Edukimi", b =>
+                {
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("Edukimi")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Eksperienca", b =>
+                {
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("Eksperiencat")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Gjuha", b =>
+                {
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("Gjuhet")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.HonorandAward", b =>
+                {
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("HonorsandAwards")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.MbikeqyresiTemave", b =>
+                {
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("MbikeqyresiTemave")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Pjesemarresi", b =>
+                {
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("Pjesemarresit")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.PjesemarresiPublikimi", b =>
+                {
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("PjesemarresitPublikimet")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Projekti", b =>
+                {
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("Projektet")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Publikimi", b =>
+                {
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("Publikimet")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Specializimi", b =>
+                {
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("Specializimet")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -717,6 +938,35 @@ namespace DatabaseLogic.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.AppUser", b =>
+                {
+                    b.Navigation("Anetaresite");
+
+                    b.Navigation("Certifikimet");
+
+                    b.Navigation("Donatoret");
+
+                    b.Navigation("Edukimi");
+
+                    b.Navigation("Eksperiencat");
+
+                    b.Navigation("Gjuhet");
+
+                    b.Navigation("HonorsandAwards");
+
+                    b.Navigation("MbikeqyresiTemave");
+
+                    b.Navigation("Pjesemarresit");
+
+                    b.Navigation("PjesemarresitPublikimet");
+
+                    b.Navigation("Projektet");
+
+                    b.Navigation("Publikimet");
+
+                    b.Navigation("Specializimet");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using System;
+using System.Collections.Generic;
 
 namespace Domain
 {
@@ -20,6 +21,19 @@ namespace Domain
         public string ShtetiCurrent { get; set; }
         public string Pershkrimi { get; set; }
         public string LinkedIn { get; set; }
+        public ICollection<Publikimi> Publikimet { get; set; }
+        public ICollection<Eksperienca> Eksperiencat { get; set; }
+        public ICollection<Anetaresia> Anetaresite { get; set; }
+        public ICollection<Certifikimi> Certifikimet { get; set; }
+        public ICollection<Edukimi> Edukimi { get; set; }
+        public ICollection<Gjuha> Gjuhet { get; set; }
+        public ICollection<HonorandAward> HonorsandAwards { get; set; }
+        public ICollection<MbikeqyresiTemave> MbikeqyresiTemave { get; set; }
+        public ICollection<Pjesemarresi> Pjesemarresit { get; set; }
+        public ICollection<PjesemarresiPublikimi> PjesemarresitPublikimet { get; set; }
+        public ICollection<Projekti> Projektet { get; set; }
+        public ICollection<Specializimi> Specializimet { get; set; }
+        public ICollection<Donatori> Donatoret { get; set; }
 
     }
 }

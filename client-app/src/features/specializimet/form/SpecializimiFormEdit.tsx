@@ -30,7 +30,8 @@ export default observer(function SpecializimiEditForm({ specializimi }: Props) {
         lokacioni: specializimi.lokacioni,
         dataFillestare: specializimi.dataFillestare,
         dataPerfundimtare: specializimi.dataPerfundimtare,
-        pershkrimi: specializimi.pershkrimi
+        pershkrimi: specializimi.pershkrimi,
+        useriId: specializimi.useriId
     });
 
     const validationSchema = Yup.object({

@@ -4,17 +4,27 @@ using AutoMapper;
 using Domain;
 using MediatR;
 using DatabaseLogic;
+using FluentValidation;
+using Application.Core;
 
 namespace Application.MbikeqyresitTemave
 {
     public class Edit
     {
-        public class Command : IRequest
+        public class Command : IRequest<Result<Unit>>
         {
             public MbikeqyresiTemave MbikeqyresiTemave { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class CommandValidatior : AbstractValidator<Command>
+        {
+            public CommandValidatior()
+            {
+                RuleFor(x => x.MbikeqyresiTemave).SetValidator(new MbikeqyresiTemaveValidator());
+            }
+        }
+
+        public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -24,15 +34,19 @@ namespace Application.MbikeqyresitTemave
                 _context = context;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var activity = await _context.MbikeqyresitTemave.FindAsync(request.MbikeqyresiTemave.Id);
+                var mbikeqyresiTemave = await _context.MbikeqyresitTemave.FindAsync(request.MbikeqyresiTemave.Id);
 
-                _mapper.Map(request.MbikeqyresiTemave, activity);
+                if(mbikeqyresiTemave == null) return null;
 
-                await _context.SaveChangesAsync();
+                _mapper.Map(request.MbikeqyresiTemave, mbikeqyresiTemave);
 
-                return Unit.Value;
+                var result = await _context.SaveChangesAsync() > 0;
+
+                if(!result) return Result<Unit>.Failure("Failed to update activity");
+
+                return Result<Unit>.Success(Unit.Value);
             }
         }
     }

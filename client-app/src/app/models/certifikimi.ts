@@ -6,4 +6,5 @@ export interface Certifikimi {
     dataFillestare: Date | null;
     dataPerfundimtare: Date | null;
     pershkrimi: string;
+    useriId: string;
    }

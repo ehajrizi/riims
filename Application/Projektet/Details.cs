@@ -4,27 +4,37 @@ using System.Threading.Tasks;
 using Domain;
 using MediatR;
 using DatabaseLogic;
+using Application.Core;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Projektet
 {
     public class Details
     {
-        public class Query : IRequest<Projekti>
+        public class Query : IRequest<Result<ProjektiDto>>
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, Projekti>
+        public class Handler : IRequestHandler<Query, Result<ProjektiDto>>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, IMapper mapper)
             {
+                _mapper = mapper;
                 _context = context;
             }
 
-            public async Task<Projekti> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<ProjektiDto>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Projektet.FindAsync(request.Id);
+                var projekti = await _context.Projektet
+                    .ProjectTo<ProjektiDto>(_mapper.ConfigurationProvider)
+                    .FirstOrDefaultAsync(x => x.Id == request.Id);
+
+                return Result<ProjektiDto>.Success(projekti);
             }
         }
     }

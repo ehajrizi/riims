@@ -3,4 +3,5 @@ export interface Gjuha {
     zgjedhGjuha: string;
     folur: string;
     shkruar: string;
+    useriId: string;
 }

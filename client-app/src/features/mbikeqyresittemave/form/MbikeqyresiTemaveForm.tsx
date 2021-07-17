@@ -27,8 +27,8 @@ export default observer (function MbikeqyresiTemaveForm(){
         viti: null ,
         institucioni: '',
         fakulteti: '',
-        niveliAkademik:''
-
+        niveliAkademik: '',
+        useriId: ''
     });
 
     const validationSchema=Yup.object ({

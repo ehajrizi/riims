@@ -27,7 +27,7 @@ export default observer(function DonatoretForm() {
         emriIDonatorit: '',
         pershkrimiDonatorit: '',
         kontributiIDhene: 0,
-       
+        useriId: ''
     });
 
     const validationSchema = Yup.object({

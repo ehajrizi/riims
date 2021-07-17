@@ -15,4 +15,5 @@ export interface Publikimi {
     volumiFaqeve:    number;
     referenca:       string;
     autorKryesor:    boolean;
+    useriId:         string;
 }

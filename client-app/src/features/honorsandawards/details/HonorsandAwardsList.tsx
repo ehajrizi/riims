@@ -10,7 +10,7 @@ import HonorsandAwardsForm from '../form/HonorsandAwardsForm';
 export default observer(function HonorsandAwardsList() {
     const location = useLocation();
 
-    const { honorandawardStore, modalStore } = useStore();
+    const { honorandawardStore, modalStore, userStore } = useStore();
     const { honorsandawardsByTitulli } = honorandawardStore;
 
     return (
@@ -26,7 +26,11 @@ export default observer(function HonorsandAwardsList() {
             </Grid>
             <Divider />
             {honorsandawardsByTitulli.map(honorandaward => (
-                <HonorsandAwardsListItem key={honorandaward.id} honorandaward={honorandaward} />
+                <>
+                    {honorandaward.useriId === userStore.UserId ? (
+                        <HonorsandAwardsListItem key={honorandaward.id} honorandaward={honorandaward} />
+                    ) : ('')}
+                </>
             ))}
         </>
     )

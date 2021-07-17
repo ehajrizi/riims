@@ -45,7 +45,7 @@ export default observer(function PublikimetListItem({ publikimi }: Props) {
                             <Grid.Column width='4'>
                                 <Grid style={{ marginTop: '-25px' }}>
                                     <Grid.Column width='3'>
-                                        <Button onClick={()=> modalStore.openModal(<PublikimetFormEdit publikimi={publikimi}/>)} className="btn" style={{ marginLeft: '3.8em' }} size='small'><Icon className='btnIcon' name='edit' /></Button>
+                                        <Button onClick={() => modalStore.openModal(<PublikimetFormEdit publikimi={publikimi} />)} className="btn" style={{ marginLeft: '3.8em' }} size='small'><Icon className='btnIcon' name='edit' /></Button>
                                     </Grid.Column>
                                     <Grid.Column width='1'>
                                         <Button name={publikimi.id}

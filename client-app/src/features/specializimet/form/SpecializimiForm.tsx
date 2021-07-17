@@ -26,7 +26,8 @@ export default observer(function SpecializimiForm() {
         lokacioni: '' ,
         dataFillestare: null, 
         dataPerfundimtare: null,
-        pershkrimi: '' 
+        pershkrimi: '',
+        useriId: ''
     })
 
     const validationSchema = Yup.object({

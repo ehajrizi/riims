@@ -29,7 +29,8 @@ export default observer(function CertifikimiEditForm({ cert }: Props) {
         lokacioni: cert.lokacioni,
         dataFillestare: cert.dataFillestare,
         dataPerfundimtare: cert.dataPerfundimtare,
-        pershkrimi: cert.pershkrimi
+        pershkrimi: cert.pershkrimi,
+        useriId: cert.useriId
     });
 
     const validationSchema = Yup.object({
