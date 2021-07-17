@@ -1,83 +1,89 @@
 import { observer } from 'mobx-react';
-import React, { ChangeEvent, FunctionComponent, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { Button, Form, Modal, Segment } from 'semantic-ui-react';
-import LoadingComponent from '../../../app/layout/LoadingComponents';
+import { Button, Segment } from 'semantic-ui-react';
 import { useStore } from '../../../app/stores/store';
 import { v4 as uuid } from 'uuid';
-import {
-    Wrapper,
-    Header,
-    StyledModal,
-    CloseButton,
-    Backdrop,
-    FormClass,
-} from '../../modal.style';
+import * as Yup from 'yup';
+import { Formik,Form } from 'formik';
+import MySelectInput from '../../../app/api/common/form/MySelectInput';
+import MyTextInput from '../../../app/api/common/form/MyTextInput';
+import { RoliPublikimiOptions } from '../../../app/api/common/options/pjesemarresiOption';
+import{ Pjesemarresi } from '../../../app/models/pjesemarresi';
+import PjesemarresitList from '../dashboard/PjesemarresitList';
+import IsbntForm from '../../isbnt/form/IsbntForm';
+import LoadingComponent from '../../../app/layout/LoadingComponents';
 
-export interface ModalProps {
-    isShown: boolean;
-    hide: () => void;
-}
-
-export default observer(function PjesemarresitForm({ isShown, hide }: ModalProps) {
+export default observer(function PjesemarresitForm() {
     const history = useHistory();
 
-    const { pjesemarresiStore } = useStore();
-    const { loadPjesemarresi, createPjesemarresi, updatePjesemarresi, loading, loadingInitial } = pjesemarresiStore;
+    const { pjesemarresiStore,modalStore } = useStore();
+    const { loadPjesemarresi, createPjesemarresi, loading, loadingInitial } = pjesemarresiStore;
     const { id } = useParams<{ id: string }>();
 
-    const [pjesemarresi, setPjesemarresi] = useState({
+    const [pjesemarresi, setPjesemarresi] = useState<Pjesemarresi>({
         id: '',
         emriIPjesemarresit: '',
         roli: '',
         useriId: ''
     });
 
+    const validationSchema = Yup.object({
+        emriIPjesemarresit: Yup.string().required('Fusha nuk guxon te jete e zbrazet'),
+        roli: Yup.string().required('The activity description is required'),
+       
+    })
+
     useEffect(() => {
         if (id) loadPjesemarresi(id).then(pjesemarresi => setPjesemarresi(pjesemarresi!))
     }, [id, loadPjesemarresi]);
 
-    function handleSubmitPjesemarresi() {
+    function handleFormSubmit(pjesemarresi: Pjesemarresi) {
         if (pjesemarresi.id.length === 0) {
             let newPjesemarresi = {
                 ...pjesemarresi,
                 id: uuid()
             };
-            createPjesemarresi(newPjesemarresi).then(() => history.push(`/pjesemarresit/${newPjesemarresi.id}`))
-        } else {
-            updatePjesemarresi(pjesemarresi).then(() => history.push(`/pjesemarresit/${pjesemarresi.id}`))
-        }
+            createPjesemarresi(newPjesemarresi).then(() => history.push(`/home`));
+             
+        } 
     }
 
-    function handleInputChangePjesemarresi(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-        const { name, value } = event.target;
-        setPjesemarresi({ ...pjesemarresi, [name]: value })
-    }
+   
 
     if (loadingInitial) return <LoadingComponent content='Loading pjesemarresin...' />
 
-    const modal = (
-        <Segment>
-            <Backdrop />
-            <Wrapper>
-                <StyledModal>
-                    <Header>
-                        <CloseButton onClick={hide} as={Link} to='/pjesemarresit'>X</CloseButton>
-                    </Header>
-                    <FormClass>
-                        <Form onSubmit={handleSubmitPjesemarresi} autoComplete='off'>
-                            <Form.Input placeholder='Emri i pjesemarresit' value={pjesemarresi.emriIPjesemarresit} name='emriPjesemarresit' onChange={handleInputChangePjesemarresi} />
-                            
-                            <Form.Input placeholder='roli' value={pjesemarresi.roli} name='roli' onChange={handleInputChangePjesemarresi} />
-                           
-                            <Button onClick={handleSubmitPjesemarresi}  floated='right' positive type='submit' content='Submit' />
-                            <Button onClick={hide} as={Link} to='/publikimet' floated='right' type='button' content='Cancel' />
-                        </Form>
-                    </FormClass>
-                </StyledModal>
-            </Wrapper>
+    return(
+        <Segment clearing>
+            <Formik
+                validationSchema={validationSchema}
+                initialValues={pjesemarresi}
+                onSubmit={(values,{resetForm})=>{
+                    handleFormSubmit(values);
+                    resetForm({});
+                } }>
+                {({ handleSubmit, isValid, isSubmitting, dirty}) => (
+                    <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
+                        <MyTextInput name='emriIPjesemarresit' placeholder='Emri i Pjesemarresit' />
+                        <MySelectInput options={RoliPublikimiOptions} placeholder='Roli' name='roli' />
+                        <Button 
+                        disabled={isSubmitting || !dirty || !isValid }
+                            loading={loading}
+                            floated='right'
+                            type='button'
+                            positive  content='Add'  
+                             />
+                        <PjesemarresitList/>
+                        <Button onClick={() => modalStore.closeModal()} 
+                         floated='right'
+                             content='Close' type='button'/>
+                        <Button onClick={() => modalStore.openModal(<IsbntForm/>)}   floated='right' type='button' content='Prev' />
+                    </Form>
+                )}
+            </Formik>
         </Segment>
     );
-    return isShown ? ReactDOM.createPortal(modal, document.body) : null;
 })
+
+
+                       

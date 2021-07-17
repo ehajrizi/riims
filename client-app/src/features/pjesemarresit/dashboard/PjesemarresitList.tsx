@@ -11,34 +11,23 @@ import PjesemarresitListItem from './PjesemarresitListItem';
 export default observer(function PjesemarresitList() {
     const location = useLocation();
 
-    const { isShown, toggle } = useModal();
-    const { pjesemarresiStore } = useStore();
-    const { deletePjesemarresi, loading } = pjesemarresiStore;
+    
+    const { pjesemarresiStore ,modalStore} = useStore();
+    const { deletePjesemarresi, pjesemarresiByEmri} = pjesemarresiStore;
 
-    const [target, setTarget] = useState('');
-
-    function handlePjesemarresiDelete(e: SyntheticEvent<HTMLButtonElement>, id: string) {
-        setTarget(e.currentTarget.name);
-        deletePjesemarresi(id);
-    }
-    const [readMore, setReadMore] = useState(false);
+    
     return (
         <>
             <Grid>
+                <Grid.Column width='9' />
                 <Grid.Column width='14'>
-                    <Header content='Pjesemarresit' />
-                </Grid.Column>
-                <Grid.Column width='1' >
-                    <Button onClick={toggle} as={Link} to='/createPjesemarresi' className="btn" ><Icon className='btnIcon' name='plus' size='large' />
-                        {/* <Route key={location.key} path={['/createPublikimi', '/manage/:id']} component={PublikimetForm} /> */}
-                    </Button>
-                    <PjesemarresitForm isShown={isShown} hide={toggle} />
+                    <Header content='Pjesëmarresit' />
                 </Grid.Column>
             </Grid>
             <Divider />
-            {/* {pjesemarresitByDate.map(pjesemarresi => (
+            {pjesemarresiByEmri.map(pjesemarresi => (
                 <PjesemarresitListItem key={pjesemarresi.id} pjesemarresi={pjesemarresi} />
-            ))} */}
+            ))}
         </>
     )
 })

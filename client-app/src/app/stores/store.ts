@@ -15,6 +15,7 @@ import PjesemarresiStore from "./pjesemarresiStore";
 import DonatoriStore from "./donatoriStore";
 import UserStore from "./userStore";
 import CommonStore from "./commonStore";
+import IsbnStore from "./isbnStore";
 
 
 
@@ -35,6 +36,7 @@ interface Store{
     pjesemarresiStore: PjesemarresiStore
     donatoriStore: DonatoriStore
     userStore: UserStore
+    isbnStore: IsbnStore
     commonStore: CommonStore
 }
 
@@ -54,6 +56,7 @@ export const store: Store = {
     pjesemarresiStore: new PjesemarresiStore(),
     donatoriStore: new DonatoriStore(),
     userStore: new UserStore(),
+    isbnStore: new IsbnStore(),
     commonStore: new CommonStore()
 }
 

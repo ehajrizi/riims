@@ -8,7 +8,6 @@ import { Pjesemarresi } from '../../../app/models/pjesemarresi';
 import { Form, Formik } from 'formik';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
-import { roli } from '../../../app/api/common/options/pjesemarresiOption';
 import { Donatori } from '../../../app/models/donatori';
 
 interface Props { donator : Donatori }

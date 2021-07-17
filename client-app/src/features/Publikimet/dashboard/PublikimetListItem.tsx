@@ -6,6 +6,7 @@ import { Button, Card, Checkbox, Divider, Grid, Header, Icon, Item, Segment } fr
 import { Publikimi } from '../../../app/models/publikimi';
 import modalStore from '../../../app/stores/modalStore';
 import { useStore } from '../../../app/stores/store';
+import IsbntList from '../../isbnt/dashboard/IsbntList';
 import { useModal } from '../../useModal';
 import PublikimetFormEdit from '../form/PublikimetFormEdit';
 

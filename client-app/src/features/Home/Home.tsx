@@ -19,6 +19,8 @@ import GjuhaDashboard from '../../features/gjuhet/dashboard/GjuhaDashboard';
 import LogReg from '../LogReg/LogReg';
 import { useStore } from '../../app/stores/store';
 import CertifikimiDashboard from '../certifikimet/dashboard/CertifikimiDashboard';
+import IsbntDashboard from '../isbnt/dashboard/IsbntDashboard';
+import PjesemarresitDashboard from '../pjesemarresit/dashboard/PjesemarresitDashboard';
 
 
 export default observer(function Home() {
@@ -101,11 +103,17 @@ export default observer(function Home() {
                             <Segment className={'projektet'} basic>
                                 <ProjektetDashboard />
                             </Segment>
-                            {/*
+                            
                         <Segment className={'honorsawards'} basic>
-                            <HonorsAndAwardsDashboard />
-                        </Segment>  */}
-                            <Segment className={'anetaresia'} basic>
+                            <HonorandAwardDashboard />
+                        </Segment> 
+                        <Segment className={'isbn'} basic>
+                            <IsbntDashboard />
+                        </Segment> 
+                        <Segment className={'pjesemarresi'} basic> 
+                            <PjesemarresitDashboard />
+                        </Segment>  
+                            <Segment className={'anetaresia'} basic> 
                                 <AnetaresiaDashboard />
                             </Segment>
                             <Segment className={'honorsandawards'} basic>

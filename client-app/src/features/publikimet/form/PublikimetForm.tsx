@@ -14,7 +14,7 @@ import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import MyDateInput from '../../../app/api/common/form/MyDateInput';
 import { Publikimi } from '../../../app/models/publikimi';
 import { Departamenti, Institucioni, Kategorite, LlojiPublikimit, Statusi } from '../../../app/api/common/options/publikimiOptions';
-import UserStore from '../../../app/stores/userStore';
+import IsbntForm from '../../isbnt/form/IsbntForm';
 
 export default observer(function PublikimetForm() {
     const history = useHistory();
@@ -73,14 +73,14 @@ export default observer(function PublikimetForm() {
             createPublikimi(newPublikimi).then(() => history.push(`/publikimet/`));
             // .then(() => window.location.reload(true));
             // {window.location.reload(true)}
-            modalStore.closeModal();
+            modalStore.openModal(<IsbntForm/>);
         }
     }
 
     if (loadingInitial) return <LoadingComponent content='Loading Publikimi...' />
 
     return (
-        <Segment>
+        <Segment clearing>
             <Formik
                 validationSchema={validationSchema}
                 initialValues={publikimi}
@@ -116,8 +116,7 @@ export default observer(function PublikimetForm() {
                             disabled={isSubmitting || !dirty || !isValid}
                             loading={loading}
                             floated='right'
-                            positive type='submit' content='Submit' />
-                            {/* {window.location.reload(true)} */}
+                            positive type='submit' content='Next' />
                         <Button onClick={()=>modalStore.closeModal()}  as={Link} to='/publikimet' floated='right' type='button' content='Cancel' />
                     </Form>
                 )}

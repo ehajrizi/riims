@@ -10,8 +10,9 @@ import * as Yup from 'yup';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import MyDateInput from '../../../app/api/common/form/MyDateInput';
-import { Statusi } from '../../../app/api/common/options/publikimiOptions';
+import { Departamenti, Institucioni, Kategorite, LlojiPublikimit, Statusi } from '../../../app/api/common/options/publikimiOptions';
 import { Publikimi } from '../../../app/models/publikimi';
+import IsbntForm from '../../isbnt/form/IsbntForm';
 
 export interface Props {
     publikimi: Publikimi;
@@ -67,7 +68,7 @@ export default observer(function PublikimetEditForm({ publikimi }: Props) {
 
     function handleFormSubmit(publikimi: Publikimi) {
         updatePublikimi(publikimi).then(() => history.push(`/publikimet/`));
-        modalStore.closeModal();
+        modalStore.openModal(<IsbntForm/>);
     }
 
     if (loadingInitial) return <LoadingComponent content='Loading Publikimi...' />
@@ -97,22 +98,21 @@ export default observer(function PublikimetEditForm({ publikimi }: Props) {
                         />
                         <MyTextInput name='vendi' placeholder='Vendi' />
                         <MySelectInput options={Statusi} placeholder='Statusi' name='statusi' />
-                        <MyTextInput placeholder='Lloji i Publikimit' name='llojiPublikimit' />
-                        <MyTextInput placeholder='Institucioni' name='institucioni' />
-                        <MyTextInput placeholder='Departamenti' name='departamenti' />
+                        <MySelectInput options={LlojiPublikimit} placeholder='Lloji i Publikimit' name='llojiPublikimit' />
+                        <MySelectInput options={Institucioni} placeholder='Institucioni' name='institucioni' />
+                        <MySelectInput options={Departamenti} placeholder='Departamenti' name='departamenti' />
                         <MyTextInput placeholder='Lenda' name='lenda' />
-                        <MyTextInput placeholder='Kategoria' name='kategoria' />
+                        <MySelectInput options={Kategorite} placeholder='Kategoria' name='kategoria' />
                         <MyTextInput placeholder='Linku i Publikimit' name='linkuPublikimit' />
                         <MyTextInput placeholder='Volumi i Faqeve' name='volumiFaqeve' />
                         <MyTextInput placeholder='Referenca' name='referenca' />
                         <MyTextInput placeholder='Autori Kryesor' name='autorKryesor' />
-                        <MyTextInput placeholder='User' name='user' />
                         <Button
                             disabled={isSubmitting || !dirty || !isValid}
                             loading={loading}
-                            floated='right'
-                            positive type='submit' content='Submit' />
+                            floated='right'positive type='submit' content='Next' />
                             {/* {window.location.reload(true)} */}
+                             
                         <Button onClick={()=>modalStore.closeModal()} as={Link} to='/publikimet' floated='right' type='button' content='Cancel' />
                     </Form>
                 )}

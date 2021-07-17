@@ -52,6 +52,8 @@ namespace API.Extensions
             services.AddMediatR(typeof(Application.Pjesemarresit.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.PjesemarresitPublikimet.List.Handler).Assembly);
             services.AddScoped<IUserAccessor, UserAccessor>();
+            services.AddMediatR(typeof(Application.Isbnt.List.Handler).Assembly);
+            
 
             return services;
         }

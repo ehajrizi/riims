@@ -14,6 +14,7 @@ import { Pjesemarresi } from '../models/pjesemarresi';
 import { Donatori } from '../models/donatori';
 import { store } from '../stores/store';
 import { User, UserFormValues } from '../models/user';
+import { Isbn } from '../models/isbn';
 
 
 const sleep = (delay: number) => {
@@ -149,6 +150,13 @@ const Donatoret= {
     update: (donatori : Donatori) => axios.put<void>(`/donatoret/${donatori.id}`, donatori),
     delete: (id: string) => axios.delete<void>(`/donatoret/${id}`)
 }
+const Isbnt= {
+    list: () => requests.get<Isbn[]>('/isbnt'),
+    details: (id: string) => requests.get<Isbn>(`/isbnt/${id}`),
+    create: (isbn : Isbn) => axios.post<void>(`/isbnt`, isbn),
+    update: (isbn : Isbn) => axios.put<void>(`/isbnt/${isbn.id}`, isbn),
+    delete: (id: string) => axios.delete<void>(`/isbnt/${id}`)
+}
 const Account = {
     // current: () => requests.get<User>('/account'),
     current: () => axios.get<User>('/account').then(responseBody),
@@ -170,6 +178,7 @@ const agent = {
     Gjuhet,
     Pjesemarresit,
     Donatoret,
+    Isbnt,
     Account
 
 }

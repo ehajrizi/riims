@@ -47,6 +47,9 @@ namespace Application.Core
             CreateMap<Donatori, DonatoriDto>();
             CreateMap<Pjesemarresi, PjesemarresitDto>();
             CreateMap<PjesemarresiPublikimi, PjesemarresitPublikimiDto>();
+            CreateMap<PjesemarresiPublikimi,PjesemarresiPublikimi>();
+            CreateMap<Isbn, Isbn>();
+
         }
     }
 }

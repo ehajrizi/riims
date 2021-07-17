@@ -15,10 +15,11 @@ export default class PjesemarresiStore{
         makeAutoObservable(this)
     }
 
-    // get projektetByDate(){
-    //     return Array.from(this.pjesemarresiRegistry.values()).sort((a,b) => 
-    //     Date.parse(a.dataFillimit)-Date.parse(b.dataFillimit))
-    // } 
+    get pjesemarresiByEmri(){
+        return Array.from(this.pjesemarresiRegistry.values()).sort((a,b) => 
+        (a.emriIPjesemarresit.localeCompare(b.emriIPjesemarresit))
+        )
+    } 
 
     loadPjesemarresit = async () => {
         this.loadingInitial = true;

@@ -65,7 +65,7 @@ export default observer(function ProjektetForm() {
     if (loadingInitial) return <LoadingComponent content='Loading publikimin...' />
 
     return (
-        <Segment>
+        <Segment clearing>
             <Formik
                 validationSchema={validationSchema}
                 initialValues={projekti}

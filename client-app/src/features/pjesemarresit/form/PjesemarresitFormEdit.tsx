@@ -8,9 +8,11 @@ import { Pjesemarresi } from '../../../app/models/pjesemarresi';
 import { Form, Formik } from 'formik';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
-import { roli } from '../../../app/api/common/options/pjesemarresiOption';
+import { RoliPublikimiOptions } from '../../../app/api/common/options/pjesemarresiOption';
 
-interface Props { pjesemarres : Pjesemarresi }
+interface Props { 
+    pjesemarres : Pjesemarresi 
+}
 export default observer(function PjesemarresitFormEdit({ pjesemarres}: Props) {
     const history = useHistory();
 
@@ -46,22 +48,19 @@ export default observer(function PjesemarresitFormEdit({ pjesemarres}: Props) {
         <Segment clearing>
             <Formik
                 validationSchema={validationSchema}
-                
                 initialValues={pjesemarresi}
                 onSubmit={values => handleFormSubmit(values)}>
                 {({ handleSubmit, isValid, isSubmitting, dirty }) => (
-                    <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
-                        <MyTextInput name='emriIPjesemarresit' placeholder='Emrii Pjesemarresit' />
-                      
-                       
-                        <MySelectInput options={roli} placeholder='roli' name='roli' />
+                    <Form className='ui form' onSubmit={handleSubmit} autoComplete='on'>
+                        <MyTextInput name='emriIPjesemarresit' placeholder='Emri i Pjesemarresit' />
+                        <MySelectInput options={RoliPublikimiOptions} placeholder='Roli' name='roli' />
                        
                         <Button
                             disabled={isSubmitting || !dirty || !isValid}
                             loading={loading}
                             floated='right'
                             positive type='submit' content='Submit' />
-                        <Button onClick={()=>modalStore.closeModal()} as={Link} to='/pjesemarresit' floated='right' type='button' content='Cancel' />
+                        <Button onClick={()=>modalStore.closeModal()} as={Link} to='/publikimet' floated='right' type='button' content='Cancel' />
                     </Form>
                 )}
             </Formik>

@@ -57,7 +57,7 @@ export default observer(function DonatoretForm() {
     if (loadingInitial) return <LoadingComponent content='Loading Donatori...' />
 
     return (
-        <Segment>
+        <Segment clearing>
             <Formik
                 validationSchema={validationSchema}
                 initialValues={donatori}
