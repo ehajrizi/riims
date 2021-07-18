@@ -109,20 +109,20 @@ export default observer(function Home() {
                         <Segment className={'honorsawards'} basic>
                             <HonorandAwardDashboard />
                         </Segment> 
-                        <Segment className={'isbn'} basic>
+                        <Segment className={'isbn'} hidden basic>
                             <IsbntDashboard />
-                        </Segment> 
-                        <Segment className={'pjesemarresi'}hidden basic> 
+                        </Segment >
+                        <Segment className={'pjesemarresit'} hidden basic> 
                             <PjesemarresitDashboard />
                         </Segment>  
-                            <Segment className={'anetaresia'} basic> 
+                            <Segment className={'anetaresia'}  basic> 
                                 <AnetaresiaDashboard />
                             </Segment>
                             <Segment className={'honorsandawards'} basic>
                                 <HonorandAwardDashboard />
                             </Segment>
 
-                            <Segment className={'pjesemarresitPublikimet'} basic>
+                            <Segment className={'pjesemarresitPublikimet'} hidden basic>
                                 <PjesemarresitPublikimetDashboard />
                             </Segment>
 

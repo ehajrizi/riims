@@ -14,7 +14,6 @@ import MyTextArea from '../../../app/api/common/form/MyTextArea';
 import { Institucioni } from '../../../app/api/common/options/projektiOptions';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import { Projekti } from '../../../app/models/projekti';
-import DonatoretFormEdit from '../../donatoret/form/DonatoretFormEdit';
 import DonatoretForm from '../../donatoret/form/DonatoretForm';
 
 interface Props {
@@ -64,7 +63,7 @@ export default observer(function ProjektetFormEdit({projekt}: Props) {
     if (loadingInitial) return <LoadingComponent content='Loading publikimin...' />
 
     return (
-        <Segment>
+        <Segment clearing>
             <Formik
                 validationSchema={validationSchema}
                 initialValues={projekti}

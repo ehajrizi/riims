@@ -5,7 +5,6 @@ import { Button, Card, Checkbox, Divider, Grid, Header, Icon, Item, Segment } fr
 import { PjesemarresiPublikimi } from '../../../app/models/pjesemarresiPublikimi';
 import { useStore } from '../../../app/stores/store';
 import { useModal } from '../../useModal';
-import PjesemarresitPublikimetFormEdit from '../form/PjesemarresitPublikimetFormEdit';
 
 
 interface Props {

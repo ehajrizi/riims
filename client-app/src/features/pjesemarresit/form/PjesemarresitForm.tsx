@@ -8,11 +8,11 @@ import * as Yup from 'yup';
 import { Formik,Form } from 'formik';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
-import { RoliPublikimiOptions } from '../../../app/api/common/options/pjesemarresiOption';
 import{ Pjesemarresi } from '../../../app/models/pjesemarresi';
 import PjesemarresitList from '../dashboard/PjesemarresitList';
 import DonatoretForm from '../../donatoret/form/DonatoretForm';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
+import { RoliProjektOptions } from '../../../app/api/common/options/roliOptions';
 
 
 export default observer(function PjesemarresitForm() {
@@ -66,7 +66,7 @@ export default observer(function PjesemarresitForm() {
                 {({ handleSubmit, isValid, isSubmitting, dirty}) => (
                     <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
                         <MyTextInput name='emriIPjesemarresit' placeholder='Emri i Pjesemarresit' />
-                        <MySelectInput options={RoliPublikimiOptions} placeholder='Roli' name='roli' />
+                        <MySelectInput options={RoliProjektOptions} placeholder='Roli' name='roli' />
                         <Button 
                         disabled={isSubmitting || !dirty || !isValid }
                             loading={loading}

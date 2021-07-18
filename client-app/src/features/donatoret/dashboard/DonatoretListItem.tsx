@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 import { Button, Card, Divider, Grid, Icon, Item } from 'semantic-ui-react';
 import { Donatori } from '../../../app/models/donatori';
 import { useStore } from '../../../app/stores/store';
-import DonatoretFormEdit from '../form/DonatoretFormEdit';
 
 
 

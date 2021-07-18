@@ -15,6 +15,7 @@ import MyDateInput from '../../../app/api/common/form/MyDateInput';
 import { Publikimi } from '../../../app/models/publikimi';
 import { Departamenti, Institucioni, Kategorite, LlojiPublikimit, Statusi } from '../../../app/api/common/options/publikimiOptions';
 import IsbntForm from '../../isbnt/form/IsbntForm';
+import IsbntDashboard from '../../isbnt/dashboard/IsbntDashboard';
 
 export default observer(function PublikimetForm() {
     const history = useHistory();
@@ -73,7 +74,7 @@ export default observer(function PublikimetForm() {
             createPublikimi(newPublikimi).then(() => history.push(`/publikimet/`));
             // .then(() => window.location.reload(true));
             // {window.location.reload(true)}
-            modalStore.openModal(<IsbntForm/>);
+            modalStore.openModal(<IsbntDashboard/>);
         }
     }
 

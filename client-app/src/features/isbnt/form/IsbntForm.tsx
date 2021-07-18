@@ -14,8 +14,8 @@ import { Isbn } from '../../../app/models/isbn';
 import { IsbnIssn } from '../../../app/api/common/options/isbnissnOptions';
 import PjesemarresitForm from '../../pjesemarresit/form/PjesemarresitForm';
 import IsbntList from '../dashboard/IsbntList';
-import PublikimetFormEdit from '../../Publikimet/form/PublikimetFormEdit';
 import PublikimetForm from '../../Publikimet/form/PublikimetForm';
+import PjesemarresitPublikimetForm from '../../pjesemarresitpublikimet/form/PjesemarresitPublikimetForm';
 
 export default observer(function IsbntForm() {
     const history = useHistory();
@@ -50,19 +50,13 @@ export default observer(function IsbntForm() {
                 ...isbn,
                 id: uuid()
             };
-            createIsbn(newisbn).then(() => history.push(`/home`),
+            createIsbn(newisbn).then(() => history.push(`/publikimet`),
             );
-            
-            // modalStore.openModal(<PjesemarresitForm/>);
-            
+           
            
         }
     }
-    // function handleReset(isbn: Isbn) {
-    //     llojiNumrit: '',
-    //     numri: '',
-
-    // }
+   
    
     
     if (loadingInitial) return <LoadingComponent content='Loading...' />
@@ -85,10 +79,10 @@ export default observer(function IsbntForm() {
                             loading={loading}
                             floated='right'
                             positive  content='Add'  
-                            type='button'
+                            type='Submit'
                              />
                         <IsbntList/>
-                        <Button onClick={() => modalStore.openModal(<PjesemarresitForm/>)} 
+                        <Button onClick={() => modalStore.openModal(<PjesemarresitPublikimetForm/>)} 
                          floated='right' type='button'
                              content='Next' />
                         <Button onClick={() => modalStore.openModal(<PublikimetForm/>)}   floated='right' type='button' content='Prev' />

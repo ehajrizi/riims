@@ -10,13 +10,10 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
-
-import { roli } from '../../../app/api/common/options/pjesemarresiOption';
-import PjesemarresitForm from '../../pjesemarresit/form/PjesemarresitForm';
 import PjesemarresitPublikimetList from '../dashboard/PjesemarresitPublikimetList';
-import PublikimetFormEdit from '../../Publikimet/form/PublikimetFormEdit';
 import PublikimetForm from '../../Publikimet/form/PublikimetForm';
 import { PjesemarresiPublikimi } from '../../../app/models/pjesemarresiPublikimi';
+import { RoliPublikimiOptions } from '../../../app/api/common/options/roliOptions';
 
 export default observer(function PjesemarresitPublikimetForm() {
     const history = useHistory();
@@ -54,17 +51,10 @@ export default observer(function PjesemarresitPublikimetForm() {
             createPjesemarresiPublikimi(newpjesemarresiPublikimi).then(() => history.push(`/home`),
             );
             
-            // modalStore.openModal(<PjesemarresitForm/>);
-            
            
         }
     }
-    // function handleReset(pjesemarresiPublikimi:PjesemarresiPublikimi ) {
-    //     emriIPjesemarresit: '' ,
-    //     roli: '',
-        
-
-    // }
+   
    
     
     if (loadingInitial) return <LoadingComponent content='Loading...' />
@@ -80,20 +70,22 @@ export default observer(function PjesemarresitPublikimetForm() {
                 } }>
                 {({ handleSubmit, isValid, isSubmitting, dirty}) => (
                     <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
-                        <MySelectInput  options={roli} placeholder='Roli' name='Roli' />
-                        <MyTextInput placeholder='Numri ' name='numri'  />
+                        <MyTextInput placeholder='Emri i Pjesemarresit ' name='emriIPjesemarresit'  />
+                        <MySelectInput  options={RoliPublikimiOptions} placeholder='Roli i Pjesemarresit' name='roli' />
+                        
                         <Button 
                         disabled={isSubmitting || !dirty || !isValid }
                             loading={loading}
                             floated='right'
-                            positive  content='Add'  
                             type='Submit'
+                            positive  content='Add'  
+                            
                              />
                         <PjesemarresitPublikimetList/>
-                        {/* <Button onClick={() => modalStore.openModal(<PjesemarresitForm/>)} 
+                        <Button onClick={() => modalStore.closeModal()} 
                          floated='right' type='button'
-                             content='Next' />
-                        <Button onClick={() => modalStore.openModal(<PublikimetForm/>)}   floated='right' type='button' content='Prev' /> */}
+                             content='close' />
+                        <Button onClick={() => modalStore.openModal(<PublikimetForm/>)}   floated='right' type='button' content='Prev' />
                     </Form>
                 )}
             </Formik>
