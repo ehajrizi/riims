@@ -22,6 +22,7 @@ namespace DatabaseLogic
                     
                     
                 },
+                
             };
 
             await context.PjesemarresitPublikimet.AddRangeAsync(pjesemarresitpublikimet);

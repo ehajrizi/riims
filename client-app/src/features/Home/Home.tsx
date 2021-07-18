@@ -21,6 +21,8 @@ import { useStore } from '../../app/stores/store';
 import CertifikimiDashboard from '../certifikimet/dashboard/CertifikimiDashboard';
 import IsbntDashboard from '../isbnt/dashboard/IsbntDashboard';
 import PjesemarresitDashboard from '../pjesemarresit/dashboard/PjesemarresitDashboard';
+import PjesemarresitPublikimetDashboard from '../pjesemarresitpublikimet/dashboard/PjesemarresitPublikimetDashboard';
+import DonatoretDashboard from '../donatoret/dashboard/DonatoretDashboard';
 
 
 export default observer(function Home() {
@@ -110,7 +112,7 @@ export default observer(function Home() {
                         <Segment className={'isbn'} basic>
                             <IsbntDashboard />
                         </Segment> 
-                        <Segment className={'pjesemarresi'} basic> 
+                        <Segment className={'pjesemarresi'}hidden basic> 
                             <PjesemarresitDashboard />
                         </Segment>  
                             <Segment className={'anetaresia'} basic> 
@@ -118,6 +120,14 @@ export default observer(function Home() {
                             </Segment>
                             <Segment className={'honorsandawards'} basic>
                                 <HonorandAwardDashboard />
+                            </Segment>
+
+                            <Segment className={'pjesemarresitPublikimet'} basic>
+                                <PjesemarresitPublikimetDashboard />
+                            </Segment>
+
+                            <Segment className={'donatoret'}hidden  basic>
+                                <DonatoretDashboard />
                             </Segment>
                         </Grid.Column>
 

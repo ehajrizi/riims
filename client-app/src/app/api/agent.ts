@@ -15,6 +15,7 @@ import { Donatori } from '../models/donatori';
 import { store } from '../stores/store';
 import { User, UserFormValues } from '../models/user';
 import { Isbn } from '../models/isbn';
+import { PjesemarresiPublikimi } from '../models/pjesemarresiPublikimi';
 
 
 const sleep = (delay: number) => {
@@ -163,6 +164,13 @@ const Account = {
     login: (user: UserFormValues) => axios.post<User>('/account/login', user).then(responseBody),
     register: (user: UserFormValues) => axios.post<User>('/account/register', user).then(responseBody),
 }
+const PjesemarresitPublikimet= {
+    list: () => requests.get<PjesemarresiPublikimi[]>('/pjesemarresitPublikimet'),
+    details: (id: string) => requests.get<PjesemarresiPublikimi>(`/pjesemarresitPublikimet/${id}`),
+    create: (pjesemarresiPublikimi : PjesemarresiPublikimi) => axios.post<void>(`/pjesemarresitPublikimet`, pjesemarresiPublikimi),
+    update: (pjesemarresiPublikimi : PjesemarresiPublikimi) => axios.put<void>(`/pjesemarresitPublikimet/${pjesemarresiPublikimi.id}`, pjesemarresiPublikimi),
+    delete: (id: string) => axios.delete<void>(`/pjesemarresitPublikimet/${id}`)
+}
 
 const agent = {
     Eksperiencat,
@@ -179,7 +187,8 @@ const agent = {
     Pjesemarresit,
     Donatoret,
     Isbnt,
-    Account
+    Account,
+    PjesemarresitPublikimet
 
 }
 

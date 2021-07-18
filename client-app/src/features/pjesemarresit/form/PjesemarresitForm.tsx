@@ -11,8 +11,9 @@ import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import { RoliPublikimiOptions } from '../../../app/api/common/options/pjesemarresiOption';
 import{ Pjesemarresi } from '../../../app/models/pjesemarresi';
 import PjesemarresitList from '../dashboard/PjesemarresitList';
-import IsbntForm from '../../isbnt/form/IsbntForm';
+import DonatoretForm from '../../donatoret/form/DonatoretForm';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
+
 
 export default observer(function PjesemarresitForm() {
     const history = useHistory();
@@ -70,14 +71,14 @@ export default observer(function PjesemarresitForm() {
                         disabled={isSubmitting || !dirty || !isValid }
                             loading={loading}
                             floated='right'
-                            type='button'
+                            type='Submit'
                             positive  content='Add'  
                              />
                         <PjesemarresitList/>
                         <Button onClick={() => modalStore.closeModal()} 
                          floated='right'
                              content='Close' type='button'/>
-                        <Button onClick={() => modalStore.openModal(<IsbntForm/>)}   floated='right' type='button' content='Prev' />
+                        <Button onClick={() => modalStore.openModal(<DonatoretForm/>)}   floated='right' type='button' content='Prev' />
                     </Form>
                 )}
             </Formik>

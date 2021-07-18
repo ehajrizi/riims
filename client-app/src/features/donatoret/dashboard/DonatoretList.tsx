@@ -16,12 +16,9 @@ export default observer(function DonatoretList() {
     return (
         <>
             <Grid>
-                <Grid.Column width='14'>
+                <Grid.Column width='9'/>
+                <Grid.Column width='14' >
                     <Header content='Donatoret' />
-                </Grid.Column>
-                <Grid.Column width='1' >
-                    <Button onClick={() => modalStore.openModal(<DonatoretForm />)} as={Link} to='/createDonatori' className="btn" ><Icon className='btnIcon' name='plus' size='large' />
-                    </Button>
                 </Grid.Column>
             </Grid>
             <Divider />
