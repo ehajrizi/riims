@@ -51,23 +51,37 @@ Header{
   right: 0;
 }
 
+.menuitem{
+  margin-top: 20px;
+}
+
 .image-bg {
   background-image: url('https://www.ubt-uni.net/wp-content/uploads/2019/08/UBT7784-e1564990441516.jpg') !important;
   height: 100%  !important;
   position: absolute  !important;
-  width: 100%  !important;
+  width: 50%  !important;
   background-repeat: no-repeat  !important;
   background-size: cover !important;
+  grid-column: 1;
+  grid-row: 1;
 }
-
-.blue-bg {
-  margin-top: 25em;
-  padding-bottom: 2em;
-  width: 100%  !important;
-  background-color: rgba(255, 255, 255, 0.73);
+.bottomPane {
+  grid-column: 2;
+  grid-row: 1;
+  margin-top: 0 !important;
+  background-color: rgb(235, 245, 251)!important;
 }
-
-.menuitem{
-  margin-top: 20px;
+.splitScreen {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding-top: 200px;
+  padding-left: 20px;
 }
 

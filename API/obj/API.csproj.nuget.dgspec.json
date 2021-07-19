@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Documents\\GitHub\\riims\\api\\API.csproj": {}
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\api\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Documents\\GitHub\\riims\\api\\API.csproj": {
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Documents\\GitHub\\riims\\api\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\api\\API.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\api\\obj\\",
+        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\api\\API.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -32,11 +32,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\HP\\Documents\\GitHub\\riims\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Application\\Application.csproj"
+              "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\Application.csproj"
               },
-              "C:\\Users\\HP\\Documents\\GitHub\\riims\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -114,24 +114,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\HP\\Documents\\GitHub\\riims\\Application\\Application.csproj": {
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Application\\obj\\",
+        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -146,11 +146,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\HP\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {
-                "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj"
+              "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj"
               },
-              "C:\\Users\\HP\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Domain\\Domain.csproj"
+              "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj"
               }
             }
           }
@@ -193,24 +193,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\HP\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
         "projectName": "DatabaseLogic",
-        "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\DatabaseLogic\\obj\\",
+        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\DatabaseLogic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -225,8 +225,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\HP\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Domain\\Domain.csproj"
+              "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj"
               }
             }
           }
@@ -261,24 +261,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\HP\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -329,24 +329,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\HP\\Documents\\GitHub\\riims\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -361,8 +361,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\HP\\Documents\\GitHub\\riims\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\HP\\Documents\\GitHub\\riims\\Application\\Application.csproj"
+              "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\riims\\Application\\Application.csproj"
               }
             }
           }
@@ -397,7 +397,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
