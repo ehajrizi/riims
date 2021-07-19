@@ -8,5 +8,7 @@ public interface IUserRepository
     Task<AppUser> GetUser(string Email);
     // Task<AppUser> AddUser(AppUser user);
     Task<AppUser> UpdateUser(AppUser user);
+
+    Task<IEnumerable<AppUser>> Search(string emri);
     void DeleteUser(string Email);
 }

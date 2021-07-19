@@ -1,9 +1,9 @@
 
 import { format } from 'date-fns';
 import { observer } from 'mobx-react-lite';
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { Button, Grid, Header, Icon, Table, TableCell, TableRow } from 'semantic-ui-react'
+import React, { SyntheticEvent, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom';
+import { Button, Grid, Header, Icon, Input, Table, TableCell, TableRow } from 'semantic-ui-react'
 import { useStore } from '../../app/stores/store';
 import EksperiencaForm from '../eksperiencat/form/EksperiencaForm';
 import EditUserForm from './components/EditUserForm';
@@ -11,15 +11,36 @@ import EditUserForm from './components/EditUserForm';
 
 export default observer( function UsersTable()
 {
-    const {userStore, modalStore, eksperiencaStore} = useStore();
-    const { userat} = userStore;
-    const {deleteEksperienca, loading} = eksperiencaStore;
+    const history = useHistory();
+    const {userStore, modalStore} = useStore();
+    const { userat, deleteUser, loading} = userStore;
+    const [search, setSearch] = useState('');
+
+    const [target, setTarget] = useState('');
+
+    // return userat.filter(user => (
+    //    user.emri?.toLowerCase().includes(search.toLowerCase())
+    // ))
+
+    function handleUserDelete(e: SyntheticEvent<HTMLButtonElement>, email:string){
+      setTarget(e.currentTarget.name);  
+      deleteUser(email);
+  }
     return(
         <>
         <Grid>
           <Grid.Row style={{marginTop: '10px'}}>
                 <Grid.Column width='15'>
                     <Header content='Users'/>
+                </Grid.Column>
+                <Grid.Column>
+                    {/* {search} */}
+                    {/* <Input type="text" placeholder="Search" onChange={e => setSearch(e.target.value) }/>
+                    {filteredUsers.map((user, idx)=>(
+                        <>
+                          
+                        </>
+                    ) ) } */}
                 </Grid.Column>
                 <Grid.Column>
                     <Button onClick={() => modalStore.openModal(<EksperiencaForm/>)} className="btn" >
@@ -58,7 +79,7 @@ export default observer( function UsersTable()
                       <TableRow key={(user.email)}>
                         <Table.Cell>{user.image}</Table.Cell>
                         <Table.Cell>{user.titulliShkencor}</Table.Cell>
-                        <Link to="/hello"><Table.Cell>{user.emri}</Table.Cell></Link>
+                        <Table.Cell><Link to="/hello">{user.emri}</Link></Table.Cell>
                         <Table.Cell>{user.emriMesem}</Table.Cell>
                         <Table.Cell>{user.mbiemri}</Table.Cell>
                         <Table.Cell>{user.gjinia}</Table.Cell>
@@ -74,14 +95,13 @@ export default observer( function UsersTable()
                         <Button onClick={()=> modalStore.openModal(<EditUserForm usr={user}/>)} className="btn" size='small'><Icon className='btnIcon' name='edit' /></Button>
                         </Table.Cell>
                         <TableCell>
-                        {/* <Button name={eksperienca.id}
-                                                    loading={loading && target === eksperienca.id}
-                                                    onClick={(e) => handleEksperiencaDelete(e, eksperienca.id)} */}
-                                                    <Button
-                                                    className="btn"
-                                                    size='small'>
-                                                    <Icon className='btnIcon' name='trash' />
-                                                </Button>
+                          <Button name={user.email}
+                            loading={loading && target === user.email}
+                            onClick={(e) => handleUserDelete(e, user.email)}
+                            className="btn"
+                            size='small'>
+                            <Icon className='btnIcon' name='trash' />
+                          </Button>
                         </TableCell>
                       </TableRow>
                     ))} 

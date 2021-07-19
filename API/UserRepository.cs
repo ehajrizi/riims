@@ -4,6 +4,7 @@ using Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 
@@ -71,6 +72,18 @@ namespace API
 
             return null;
         }
+
+        public async Task<IEnumerable<AppUser>> Search(string emri)
+    {
+        IQueryable<AppUser> query = _userManager.Users;
+            
+        if (!string.IsNullOrEmpty(emri))
+        {
+            query = query.Where(e => e.Emri.Contains(emri));
+        }
+
+        return await query.ToListAsync();
+    }
 
         public async void DeleteUser(string Email)
         {

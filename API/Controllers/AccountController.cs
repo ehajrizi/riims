@@ -190,6 +190,28 @@ namespace API.Controllers
         }
 
         [Authorize]
+        [HttpGet("{search}")]
+        public async Task<ActionResult<IEnumerable<AppUser>>> Search(string emri)
+        {
+            try
+            {
+                var result = await _userRepository.Search(emri);
+
+                if (result.Any())
+                {
+                    return Ok(result);
+                }
+
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from the database");
+            }
+        }
+
+        [Authorize]
         [HttpDelete("{email}")]
 
         public async Task<IActionResult> DeleteUser(string email)

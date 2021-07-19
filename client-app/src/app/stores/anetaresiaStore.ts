@@ -19,6 +19,10 @@ export default class AnetaresiaStore {
         )
     }
 
+    get anetaresite() {
+        return Array.from(this.anetaresiaRegistry.values());
+    }
+
     loadAnetaresite = async () => {
         this.loadingInitial = true;
         try {

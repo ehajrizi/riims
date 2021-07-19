@@ -21,7 +21,7 @@ export default observer(function NavBar() {
                         <Menu.Item as={NavLink} exact to='/cv' name="CV" />
                         </>
                     ): null}
-                    {isLoggedIn && user?.roli == "simpleUser" ? (
+                    {isLoggedIn && user?.roli == "admin" ? (
                         <Menu.Item as={NavLink} exact to='/adminDashboard' name="Dashboard" />
                     ): null}
                     <Menu.Item>

@@ -10,6 +10,7 @@ import { useStore } from '../stores/store';
 import AdminDashboard from '../../features/admin/AdminDashboard';
 import Main from '../../features/admin/components/Main';
 import Main2 from '../../features/admin/components/Main2';
+import EkspoTable from '../../features/admin/EkspoTable';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
       <Route exact path='/adminDashboard' component={AdminDashboard} />
       {/* <Route exact path='/cv' component={EksperiencaDashboard} /> */}
       <Route exact path='/home' component={Home} />
+      <Route exact path='/hello' component={EkspoTable} />
       <Route exact path='/mbikeqyresitemave' component={Home} />
       <Route exact path='/eksperiencat' component={Home} />
       <Route exact path='/publikimet' component={Home} />

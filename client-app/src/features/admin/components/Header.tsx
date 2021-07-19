@@ -17,7 +17,7 @@ export default function NavBar(props: any) {
                 <Menu.Item className='item link grey' name="Menu" position='left' onClick={props.onToggleMenu}/>
                 <Menu.Item position='right'>
                     <Menu.Item as={NavLink} exact to='/home' name="Home" />
-                    {isLoggedIn && user?.roli == "simpleUser" ? (
+                    {isLoggedIn && user?.roli == "admin" ? (
                         <Menu.Item as={NavLink} exact to='/adminDashboard' name="Dashboard" />
                     ): null}
                     <Menu.Item as={NavLink} exact to='/cv' name="CV" />

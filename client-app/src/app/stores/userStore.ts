@@ -30,7 +30,7 @@ export default class UserStore {
             const user = await agent.Account.login(creds);
             store.commonStore.setToken(user.token);
             runInAction(() => this.user = user);
-            {user?.roli == "simpleUser" ? (
+            {user?.roli == "admin" ? (
                 history.push('/adminDashboard')
             ): history.push('/home');}
             store.modalStore.closeModal();
@@ -149,6 +149,23 @@ export default class UserStore {
             })   
         } catch (error) {
             console.log(error);
+        }
+    }
+
+    deleteUser = async (email:string) => {
+        this.loading = true;
+        try{
+            await agent.Account.delete(email);
+            runInAction(() => {
+                this.userRegistry.delete(email);
+                this.loading = false;
+            })
+
+        }catch(error){
+            console.log(error);
+            runInAction(() => {
+                this.loading = false;
+            })
         }
     }
 }

@@ -166,6 +166,7 @@ const Account = {
     list: () => requests.get<User[]>('/account/users'),
     details: (email: string) => requests.get<User>(`/account/${email}`),
     update: (user : User) => axios.put<void>(`/account/${user.email}`, user),
+    delete: (email: string) => axios.delete<void>(`/account/${email}`)
 }
 const PjesemarresitPublikimet= {
     list: () => requests.get<PjesemarresiPublikimi[]>('/pjesemarresitPublikimet'),
