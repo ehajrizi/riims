@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Domain
 {
@@ -22,5 +23,7 @@ namespace Domain
         public bool AutorKryesor { get; set; }
         public string UseriId { get; set; }
         public AppUser User { get; set; }
+        public ICollection<Isbn> Isbnt { get; set; } = new List<Isbn>();
+        public ICollection<PjesemarresiPublikimi> PjesemarresiPublikimet { get; set; } = new List<PjesemarresiPublikimi>();
     }
 }

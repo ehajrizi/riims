@@ -4,17 +4,27 @@ using AutoMapper;
 using Domain;
 using MediatR;
 using DatabaseLogic;
+using FluentValidation;
+using Application.Core;
 
 namespace Application.Isbnt
 {
     public class Edit
     {
-        public class Command : IRequest
+        public class Command : IRequest<Result<Unit>>
         {
             public Isbn Isbn { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class CommandValidatior : AbstractValidator<Command>
+        {
+            public CommandValidatior()
+            {
+                RuleFor(x => x.Isbn).SetValidator(new IsbnValidator());
+            }
+        }
+
+        public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -24,15 +34,19 @@ namespace Application.Isbnt
                 _context = context;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var Isbn = await _context.Isbnt.FindAsync(request.Isbn.Id);
+                var isbn = await _context.Isbnt.FindAsync(request.Isbn.Id);
 
-                _mapper.Map(request.Isbn, Isbn);
+                if(isbn == null) return null;
 
-                await _context.SaveChangesAsync();
+                _mapper.Map(request.Isbn, isbn);
 
-                return Unit.Value;
+                var result = await _context.SaveChangesAsync() > 0;
+
+                if(!result) return Result<Unit>.Failure("Failed");
+
+                return Result<Unit>.Success(Unit.Value);
             }
         }
     }

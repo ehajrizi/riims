@@ -7,6 +7,9 @@ using FluentValidation;
 using Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Application.Core;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Application.PjesemarresitPublikimet
 {
@@ -15,6 +18,7 @@ namespace Application.PjesemarresitPublikimet
         public class Command : IRequest<Result<Unit>>
         {
             public PjesemarresiPublikimi PjesemarresiPublikimi { get; set; }
+            // public Publikimi Publikimi { get; set; }
         }
         public class CommandValidatior : AbstractValidator<Command>
         {
@@ -36,14 +40,12 @@ namespace Application.PjesemarresitPublikimet
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == _userAccessor.GetId());
 
                 var pjesemarresiPublikimi = new PjesemarresiPublikimi
                 {
-                    User = user,
-                    UseriId = user.Id,
                     EmriIPjesemarresit = request.PjesemarresiPublikimi.EmriIPjesemarresit,
                     roli = request.PjesemarresiPublikimi.roli,
+                    PublikimId = request.PjesemarresiPublikimi.PublikimId
                 };
 
                 _context.PjesemarresitPublikimet.Add(pjesemarresiPublikimi);

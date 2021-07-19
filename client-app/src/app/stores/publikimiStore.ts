@@ -16,6 +16,10 @@ export default class PublikimiStore {
         makeAutoObservable(this)
     }
 
+    get publikimiId() {
+        return this.selectedPublikimi?.id;
+    }
+
     get publikimetByDate() {
         return Array.from(this.publikimiRegistry.values()).sort((a, b) => a.data!.getTime() - b.data!.getTime());
     }
@@ -64,7 +68,7 @@ export default class PublikimiStore {
         this.publikimiRegistry.set(publikimi.id, publikimi);
     }
 
-    private getPublikimi = (id: string) => {
+    public getPublikimi = (id: string) => {
         return this.publikimiRegistry.get(id);
     }
 
@@ -82,7 +86,6 @@ export default class PublikimiStore {
                 this.selectedPublikimi = publikimi;
                 this.editMode = false;
                 this.loading = false;
-                store.modalStore.closeModal();
             })
         } catch (error) {
             console.log(error);

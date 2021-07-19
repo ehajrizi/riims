@@ -15,10 +15,10 @@ import Main2 from '../../features/admin/components/Main2';
 function App() {
 
   const location = useLocation();
-  const {commonStore, userStore} = useStore();
+  const { commonStore, userStore } = useStore();
 
   useEffect(() => {
-    if(commonStore.token) {
+    if (commonStore.token) {
       userStore.getUser().finally(() => commonStore.setAppLoaded());
     } else {
       commonStore.setAppLoaded();
@@ -28,9 +28,11 @@ function App() {
   // const { userStore: { user, isLoggedIn } } = useStore();
   return (
     <>
-      <ModalContainer/>
+      <ModalContainer />
       <Switch>
-      <Route exact path='/' component={LogReg} />
+        {userStore.isLoggedIn ? (
+          <Route exact path='/' component={Home} />
+        ) : (<Route exact path='/' component={LogReg} />)}
       <Route exact path='/adminDashboard' component={AdminDashboard} />
       {/* <Route exact path='/cv' component={EksperiencaDashboard} /> */}
       <Route exact path='/home' component={Home} />

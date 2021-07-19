@@ -80,7 +80,7 @@ export default observer(function PublikimetEditForm({ publikimi }: Props) {
                 enableReinitialize
                 initialValues={publikim}
                 onSubmit={values => handleFormSubmit(values)}>
-                {({ handleSubmit, isValid, isSubmitting, dirty }) => (
+                {({ handleSubmit, isValid, isSubmitting }) => (
                     <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
                         <MyTextInput name='titulli' placeholder='Titulli' />
                         <MyTextInput name='emertimiEvent' placeholder='Emertimi i eventit' />
@@ -108,7 +108,7 @@ export default observer(function PublikimetEditForm({ publikimi }: Props) {
                         <MyTextInput placeholder='Referenca' name='referenca' />
                         <MyTextInput placeholder='Autori Kryesor' name='autorKryesor' />
                         <Button
-                            disabled={isSubmitting || !dirty || !isValid}
+                            disabled={isSubmitting || !isValid}
                             loading={loading}
                             floated='right'positive type='submit' content='Next' />
                             {/* {window.location.reload(true)} */}

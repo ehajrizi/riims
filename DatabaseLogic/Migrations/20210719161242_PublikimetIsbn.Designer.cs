@@ -3,14 +3,16 @@ using System;
 using DatabaseLogic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DatabaseLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210719161242_PublikimetIsbn")]
+    partial class PublikimetIsbn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -465,16 +467,16 @@ namespace DatabaseLogic.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("EmriIPjesemarresit")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PublikimId")
+                    b.Property<Guid?>("PublikimiId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("PublikimiId")
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UseriId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("roli")
@@ -482,9 +484,9 @@ namespace DatabaseLogic.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
-
                     b.HasIndex("PublikimiId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("PjesemarresitPublikimet");
                 });
@@ -894,15 +896,15 @@ namespace DatabaseLogic.Migrations
 
             modelBuilder.Entity("Domain.PjesemarresiPublikimi", b =>
                 {
-                    b.HasOne("Domain.AppUser", null)
-                        .WithMany("PjesemarresitPublikimet")
-                        .HasForeignKey("AppUserId");
-
-                    b.HasOne("Domain.Publikimi", "Publikimi")
+                    b.HasOne("Domain.Publikimi", null)
                         .WithMany("PjesemarresiPublikimet")
                         .HasForeignKey("PublikimiId");
 
-                    b.Navigation("Publikimi");
+                    b.HasOne("Domain.AppUser", "User")
+                        .WithMany("PjesemarresitPublikimet")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Projekti", b =>

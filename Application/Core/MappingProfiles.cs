@@ -5,6 +5,7 @@ using Application.Edukimet;
 using Application.Eksperiencat;
 using Application.Gjuhet;
 using Application.HonorsandAwards;
+using Application.Isbnt;
 using Application.MbikeqyresitTemave;
 using Application.Pjesemarresit;
 using Application.PjesemarresitPublikimet;
@@ -46,10 +47,10 @@ namespace Application.Core
             CreateMap<HonorandAward, HonorsandAwardsDto>();
             CreateMap<Donatori, DonatoriDto>();
             CreateMap<Pjesemarresi, PjesemarresitDto>();
-            CreateMap<PjesemarresiPublikimi, PjesemarresitPublikimiDto>();
-            CreateMap<PjesemarresiPublikimi,PjesemarresiPublikimi>();
+            CreateMap<PjesemarresiPublikimi, PjesemarresiPublikimi>();
+            CreateMap<PjesemarresiPublikimi, PjesemarresiPublikimiDto>();
             CreateMap<Isbn, Isbn>();
-
+            CreateMap<Isbn, IsbnDto>();
         }
     }
 }

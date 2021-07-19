@@ -14,35 +14,36 @@ import PjesemarresitPublikimetList from '../dashboard/PjesemarresitPublikimetLis
 import PublikimetForm from '../../Publikimet/form/PublikimetForm';
 import { PjesemarresiPublikimi } from '../../../app/models/pjesemarresiPublikimi';
 import { RoliPublikimiOptions } from '../../../app/api/common/options/roliOptions';
+import IsbntForm from '../../isbnt/form/IsbntForm';
 
 export default observer(function PjesemarresitPublikimetForm() {
     const history = useHistory();
 
-    const { pjesemarresiPublikimiStore, modalStore } = useStore();
+    const { pjesemarresiPublikimiStore, modalStore, publikimiStore } = useStore();
     const { loadPjesemarresiPublikimi, createPjesemarresiPublikimi, loading, loadingInitial } = pjesemarresiPublikimiStore;
     const { id } = useParams<{ id: string }>();
 
     const [pjesemarresiPublikimi, setpjesemarresiPublikimi] = useState<PjesemarresiPublikimi>({
-        id: '' ,
-        emriIPjesemarresit: '' ,
+        id: '',
+        emriIPjesemarresit: '',
         roli: '',
-        
+        publikimId: '',
     });
 
-    
+
     const validationSchema = Yup.object({
         emriIPjesemarresit: Yup.string().required('Fusha nuk guxon te jete e zbrazet'),
         roli: Yup.string().required('The activity description is required'),
-        
+
     })
 
     useEffect(() => {
         if (id) loadPjesemarresiPublikimi(id).then(pjesemarresiPublikimi => setpjesemarresiPublikimi(pjesemarresiPublikimi!))
     }, [id, loadPjesemarresiPublikimi]);
 
-    
 
-    function handleFormSubmit(pjesemarresiPublikimi:PjesemarresiPublikimi ) {
+
+    function handleFormSubmit(pjesemarresiPublikimi: PjesemarresiPublikimi) {
         if (pjesemarresiPublikimi.id.length === 0) {
             let newpjesemarresiPublikimi = {
                 ...pjesemarresiPublikimi,
@@ -50,13 +51,13 @@ export default observer(function PjesemarresitPublikimetForm() {
             };
             createPjesemarresiPublikimi(newpjesemarresiPublikimi).then(() => history.push(`/home`),
             );
-            
-           
+
+
         }
     }
-   
-   
-    
+
+
+
     if (loadingInitial) return <LoadingComponent content='Loading...' />
 
     return (
@@ -64,28 +65,29 @@ export default observer(function PjesemarresitPublikimetForm() {
             <Formik
                 validationSchema={validationSchema}
                 initialValues={pjesemarresiPublikimi}
-                onSubmit={(values,{resetForm})=>{
+                onSubmit={(values, { resetForm }) => {
                     handleFormSubmit(values);
                     resetForm({});
-                } }>
-                {({ handleSubmit, isValid, isSubmitting, dirty}) => (
+                }}>
+                {({ handleSubmit, isValid, isSubmitting, dirty }) => (
                     <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
-                        <MyTextInput placeholder='Emri i Pjesemarresit ' name='emriIPjesemarresit'  />
-                        <MySelectInput  options={RoliPublikimiOptions} placeholder='Roli i Pjesemarresit' name='roli' />
-                        
-                        <Button 
-                        disabled={isSubmitting || !dirty || !isValid }
+                        <MyTextInput placeholder='Emri i Pjesemarresit ' name='emriIPjesemarresit' />
+                        <MySelectInput options={RoliPublikimiOptions} placeholder='Roli i Pjesemarresit' name='roli' />
+                        <MyTextInput placeholder='PublikimiId ' name='publikimId' defaultValue={publikimiStore.publikimiId!} value={publikimiStore.publikimiId!} type='hidden' />
+
+                        <Button
+                            disabled={isSubmitting || !dirty || !isValid}
                             loading={loading}
                             floated='right'
                             type='Submit'
-                            positive  content='Add'  
-                            
-                             />
-                        <PjesemarresitPublikimetList/>
-                        <Button onClick={() => modalStore.closeModal()} 
-                         floated='right' type='button'
-                             content='close' />
-                        <Button onClick={() => modalStore.openModal(<PublikimetForm/>)}   floated='right' type='button' content='Prev' />
+                            positive content='Add'
+                            onClick={()=>{pjesemarresiPublikimi.publikimId = publikimiStore.publikimiId!}}
+                        />
+                        <PjesemarresitPublikimetList />
+                        <Button onClick={() => modalStore.closeModal()}
+                            floated='right' type='button'
+                            content='close' />
+                        <Button onClick={() => modalStore.openModal(<IsbntForm />)} floated='right' type='button' content='Prev' />
                     </Form>
                 )}
             </Formik>

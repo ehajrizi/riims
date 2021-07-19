@@ -55,10 +55,10 @@ export default observer(function PjesemarresitPublikimetListItem({ pjesemarresiP
                         <Card.Meta>
                             <span>{pjesemarresiPublikimi.roli}</span>
                         </Card.Meta>
-                        <Grid>
+                        {/* <Grid>
                             <Grid.Column width="15"><Divider /></Grid.Column>
                             <Grid.Column width="1"><Icon name='eye' style={{ marginLeft: "-20px" }} /></Grid.Column>
-                        </Grid>
+                        </Grid> */}
                     </Card.Content>
                 </Card>
             </Item>

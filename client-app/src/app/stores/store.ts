@@ -18,9 +18,6 @@ import CommonStore from "./commonStore";
 import IsbnStore from "./isbnStore";
 import PjesemarresiPublikimiStore from "./pjesemarresiPublikimiStore";
 
-
-
-
 interface Store{
     eksperiencaStore: EksperiencaStore
     edukimiStore: EdukimiStore

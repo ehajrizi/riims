@@ -13,12 +13,12 @@ namespace Application.PjesemarresitPublikimet
 {
     public class Details
     {
-        public class Query : IRequest<Result<PjesemarresitPublikimiDto>>
+        public class Query : IRequest<Result<PjesemarresiPublikimiDto>>
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, Result<PjesemarresitPublikimiDto>>
+        public class Handler : IRequestHandler<Query, Result<PjesemarresiPublikimiDto>>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -28,13 +28,13 @@ namespace Application.PjesemarresitPublikimet
                 _context = context;
             }
 
-            public async Task<Result<PjesemarresitPublikimiDto>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<PjesemarresiPublikimiDto>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var pjesemarresitPublikimi = await _context.PjesemarresitPublikimet
-                    .ProjectTo<PjesemarresitPublikimiDto>(_mapper.ConfigurationProvider)
+                var pjesemarresiPublikimi = await _context.PjesemarresitPublikimet
+                    .ProjectTo<PjesemarresiPublikimiDto>(_mapper.ConfigurationProvider)
                     .FirstOrDefaultAsync(x => x.Id == request.Id);
 
-                return Result<PjesemarresitPublikimiDto>.Success(pjesemarresitPublikimi);
+                return Result<PjesemarresiPublikimiDto>.Success(pjesemarresiPublikimi);
             }
         }
     }

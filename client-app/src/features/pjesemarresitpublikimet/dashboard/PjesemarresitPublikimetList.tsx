@@ -7,23 +7,27 @@ import PjesemarresitPublikimetListItem from './PjesemarresitPublikimetListItem';
 
 export default observer(function PjesemarresitPublikimetList() {
 
-    
-    const { pjesemarresiPublikimiStore} = useStore();
-    const {pjesemarresiPublikimiByEmri} = pjesemarresiPublikimiStore;
 
-    
+    const { pjesemarresiPublikimiStore, publikimiStore } = useStore();
+    const { pjesemarresiPublikimiByEmri } = pjesemarresiPublikimiStore;
+
+
     return (
         <>
             <Grid>
-                <Grid.Column width='9'/>
-                    <Grid.Column width='14' >
+                <Grid.Column width='9' />
+                <Grid.Column width='14' >
                     <Header content='Pjesemarresit' />
                 </Grid.Column>
-                
+
             </Grid>
             <Divider />
             {pjesemarresiPublikimiByEmri.map(pjesemarresiPublikimi => (
-                <PjesemarresitPublikimetListItem key={pjesemarresiPublikimi.id}pjesemarresiPublikimi={pjesemarresiPublikimi} />
+                <>
+                    {pjesemarresiPublikimi.publikimId === publikimiStore.publikimiId ? (
+                        <PjesemarresitPublikimetListItem key={pjesemarresiPublikimi.id} pjesemarresiPublikimi={pjesemarresiPublikimi} />
+                    ) : ('')}
+                </>
             ))}
         </>
     )

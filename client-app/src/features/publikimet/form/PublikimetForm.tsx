@@ -74,7 +74,7 @@ export default observer(function PublikimetForm() {
             createPublikimi(newPublikimi).then(() => history.push(`/publikimet/`));
             // .then(() => window.location.reload(true));
             // {window.location.reload(true)}
-            modalStore.openModal(<IsbntDashboard/>);
+            modalStore.openModal(<IsbntForm/>);
         }
     }
 

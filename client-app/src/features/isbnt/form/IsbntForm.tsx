@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import React, { ChangeEvent, FunctionComponent, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { Button, Modal, Segment } from 'semantic-ui-react';
+import { Button, Input, Modal, Segment } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
 import { v4 as uuid } from 'uuid';
@@ -14,51 +14,58 @@ import { Isbn } from '../../../app/models/isbn';
 import { IsbnIssn } from '../../../app/api/common/options/isbnissnOptions';
 import PjesemarresitForm from '../../pjesemarresit/form/PjesemarresitForm';
 import IsbntList from '../dashboard/IsbntList';
+import PublikimetFormEdit from '../../Publikimet/form/PublikimetFormEdit';
 import PublikimetForm from '../../Publikimet/form/PublikimetForm';
 import PjesemarresitPublikimetForm from '../../pjesemarresitpublikimet/form/PjesemarresitPublikimetForm';
 
 export default observer(function IsbntForm() {
     const history = useHistory();
 
-    const { isbnStore, modalStore } = useStore();
+    const { isbnStore, modalStore, publikimiStore } = useStore();
     const { loadIsbn, createIsbn, loading, loadingInitial } = isbnStore;
     const { id } = useParams<{ id: string }>();
 
     const [isbn, setisbn] = useState<Isbn>({
-        id: '' ,
-        llojiNumrit: '' ,
+        id: '',
+        llojiNumrit: '',
         numri: '',
-        
+        publikimId: '',
     });
 
-    
+
     const validationSchema = Yup.object({
         llojiNumrit: Yup.string().required('Fusha nuk guxon te jete e zbrazet'),
         numri: Yup.string().required('The activity description is required'),
-        
     })
 
     useEffect(() => {
         if (id) loadIsbn(id).then(isbn => setisbn(isbn!))
     }, [id, loadIsbn]);
 
-    
 
-    function handleFormSubmit(isbn:Isbn ) {
+
+    function handleFormSubmit(isbn: Isbn) {
         if (isbn.id.length === 0) {
             let newisbn = {
                 ...isbn,
-                id: uuid()
+                id: uuid(),
+                // publikimId: publikimiStore.publikimiId!
             };
-            createIsbn(newisbn).then(() => history.push(`/publikimet`),
+            createIsbn(newisbn).then(() => history.push(`/home`),
             );
-           
-           
+
+            // modalStore.openModal(<PjesemarresitForm/>);
+
+
         }
     }
-   
-   
-    
+    // function handleReset(isbn: Isbn) {
+    //     llojiNumrit: '',
+    //     numri: '',
+
+    // }
+
+
     if (loadingInitial) return <LoadingComponent content='Loading...' />
 
     return (
@@ -66,26 +73,31 @@ export default observer(function IsbntForm() {
             <Formik
                 validationSchema={validationSchema}
                 initialValues={isbn}
-                onSubmit={(values,{resetForm})=>{
+                onSubmit={(values, { resetForm }) => {
                     handleFormSubmit(values);
                     resetForm({});
-                } }>
-                {({ handleSubmit, isValid, isSubmitting, dirty}) => (
+                }}>
+                {({ handleSubmit, isValid, isSubmitting, dirty }) => (
                     <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
-                        <MySelectInput  options={IsbnIssn} placeholder='Lloji i Numrit' name='llojiNumrit' />
-                        <MyTextInput placeholder='Numri ' name='numri'  />
-                        <Button 
-                        disabled={isSubmitting || !dirty || !isValid }
+                        <MySelectInput options={IsbnIssn} placeholder='Lloji i Numrit' name='llojiNumrit' />
+                        <MyTextInput placeholder='Numri ' name='numri' />
+                        <MyTextInput placeholder='PublikimiId ' name='publikimId' defaultValue={publikimiStore.publikimiId!} value={publikimiStore.publikimiId!} type='hidden'/>
+                        {/* <Input placeholder='PublikimiId ' name='publikimId' value=/> */}
+                        <Button
+                            disabled={isSubmitting || !dirty || !isValid}
                             loading={loading}
                             floated='right'
-                            positive  content='Add'  
-                            type='Submit'
-                             />
-                        <IsbntList/>
-                        <Button onClick={() => modalStore.openModal(<PjesemarresitPublikimetForm/>)} 
-                         floated='right' type='button'
-                             content='Next' />
-                        <Button onClick={() => modalStore.openModal(<PublikimetForm/>)}   floated='right' type='button' content='Prev' />
+                            positive content='Add'
+                            type='submit'
+                            onClick={()=>{isbn.publikimId = publikimiStore.publikimiId!}}
+                        />
+                        {/* {publikimiStore.publikimiId!} */}
+                        <IsbntList />
+                        {/* {isbn.publikimId} */}
+                        <Button onClick={() => modalStore.openModal(<PjesemarresitPublikimetForm />)}
+                            floated='right' type='button'
+                            content='Next' />
+                        <Button onClick={() => modalStore.openModal(<PublikimetFormEdit publikimi={publikimiStore.getPublikimi(publikimiStore.publikimiId!)!} />)} floated='right' type='button' content='Prev' />
                     </Form>
                 )}
             </Formik>

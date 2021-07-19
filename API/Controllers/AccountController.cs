@@ -106,7 +106,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
-            var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
+            var user = await _userManager.FindByIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             return CreateUserObject(user);
         }
@@ -219,6 +219,7 @@ namespace API.Controllers
         {
             return new UserDto
             {
+                Id = user.Id,
                 Emri = user.Emri,
                 Mbiemri = user.Mbiemri,
                 Token = _tokenService.CreateToken(user),
