@@ -27,7 +27,6 @@ export default function AdminDashboard()
                 <div className='ui attached pushable' style={{height: '100vh'}}>
                     <Sidebar toggleMenu={toggle}/>
                     <div className={classes}>
-                        
                     </div>
                 </div>
             </div>

@@ -43,6 +43,7 @@ namespace API
             
             services.AddApplicationServices(_config);
             services.AddIdentityServices(_config);
+            services.AddScoped<IUserRepository, UserRepository>();
             
         }
 

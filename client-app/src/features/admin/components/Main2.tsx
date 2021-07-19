@@ -1,15 +1,26 @@
-import NavBar from "../../../app/layout/NavBar";
 import "semantic-ui-css/semantic.min.css";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import cx from 'classnames';
-import EksperiencaForm from "../../eksperiencat/form/EksperiencaForm";
-import { Route } from "react-router-dom";
+import { useStore } from "../../../app/stores/store";
+import LoadingComponent from "../../../app/layout/LoadingComponents";
+import { observer } from "mobx-react";
+import UsersTable from "../UsersTable";
 
-export default function Main2()
+
+export default observer( function Main2()
 {
     const [toggle, setToggle] = useState(false);
+    const {userStore} = useStore();
+   const {loadUsers,userRegistry} = userStore;
+
+
+  useEffect(() =>{
+    if(userRegistry.size <= 1) loadUsers();
+  }, [userRegistry.size, loadUsers])
+
+  if(userStore.loadingInitial) return <LoadingComponent content='Loading app'/>
 
     const classes = cx(
         'pusher', 'bottom', {'dimmed': toggle}
@@ -26,10 +37,10 @@ export default function Main2()
                 <div className='ui attached pushable' style={{height: '100vh'}}>
                     <Sidebar toggleMenu={toggle}/>
                     <div className={classes}>
-                        users
+                        <UsersTable/>
                     </div>
                 </div>
             </div>
         </>
         )
-}
+})

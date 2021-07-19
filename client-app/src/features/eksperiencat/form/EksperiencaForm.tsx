@@ -64,9 +64,6 @@ export default observer(function EksperiencaForm(){
             };
             createEksperienca(newEksperienca).then(() => history.push(`/eksperiencat`))
             modalStore.closeModal();
-        }else{
-            updateEksperienca(eksperienca).then(() => history.push(`/eksperiencat`))
-            modalStore.closeModal();
         }
     }
 
