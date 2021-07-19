@@ -15,6 +15,7 @@ namespace Application.Donatoret
         public class Command : IRequest<Result<Unit>>
         {
             public Donatori Donatori { get; set; }
+            public Projekti Projekti { get; set; }
         }
         public class CommandValidatior : AbstractValidator<Command>
         {
@@ -36,15 +37,15 @@ namespace Application.Donatoret
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == _userAccessor.GetId());
+                
 
                 var donatori = new Donatori
                 {
-                    User = user,
-                    UseriId = user.Id,
+                    
                     EmriIDonatorit = request.Donatori.EmriIDonatorit,
                     PershkrimiDonatorit = request.Donatori.PershkrimiDonatorit,
                     KontributiIDhene = request.Donatori.KontributiIDhene,
+                    ProjektId= request.Donatori.ProjektId,
                 };
 
                 _context.Donatoret.Add(donatori);

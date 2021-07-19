@@ -15,10 +15,7 @@ export default class DonatoriStore{
         makeAutoObservable(this)
     }
 
-    // get projektetByDate(){
-    //     return Array.from(this.pjesemarresiRegistry.values()).sort((a,b) => 
-    //     Date.parse(a.dataFillimit)-Date.parse(b.dataFillimit))
-    // } 
+   
 
     loadDonatoret = async () => {
         this.loadingInitial = true;

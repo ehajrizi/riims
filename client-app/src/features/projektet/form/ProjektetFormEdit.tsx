@@ -17,27 +17,27 @@ import { Projekti } from '../../../app/models/projekti';
 import DonatoretForm from '../../donatoret/form/DonatoretForm';
 
 interface Props {
-    projekt: Projekti;
+    projekti: Projekti;
 }
 
-export default observer(function ProjektetFormEdit({projekt}: Props) {
+export default observer(function ProjektetFormEdit({ projekti }: Props) {
     const history = useHistory();
 
     const { projektiStore, modalStore } = useStore();
     const { loadProjekti, updateProjekti, loading, loadingInitial } = projektiStore;
     const { id } = useParams<{ id: string }>();
 
-    const [projekti, setProjekti] = useState<Projekti>({
-        id: projekt.id,
-        emriProjektit: projekt.emriProjektit,
-        pershkrimi: projekt.pershkrimi,
-        lokacioni: projekt.lokacioni,
-        dataFillimit: projekt.dataFillimit,
-        dataMbarimit: projekt.dataMbarimit,
-        buxheti: projekt.buxheti,
-        emriKlientit: projekt.emriKlientit,
-        institucioni: projekt.institucioni,
-        useriId: projekt.useriId
+    const [projekt, setProjekti] = useState<Projekti>({
+        id: projekti.id,
+        emriProjektit: projekti.emriProjektit,
+        pershkrimi: projekti.pershkrimi,
+        lokacioni: projekti.lokacioni,
+        dataFillimit: projekti.dataFillimit,
+        dataMbarimit: projekti.dataMbarimit,
+        buxheti: projekti.buxheti,
+        emriKlientit: projekti.emriKlientit,
+        institucioni: projekti.institucioni,
+        useriId: projekti.useriId
     });
 
     const validationSchema = Yup.object({
@@ -66,9 +66,9 @@ export default observer(function ProjektetFormEdit({projekt}: Props) {
         <Segment clearing>
             <Formik
                 validationSchema={validationSchema}
-                initialValues={projekti}
+                initialValues={projekt}
                 onSubmit={values => handleFormSubmit(values)}>
-                {({ handleSubmit, isValid, isSubmitting, dirty }) => (
+                {({ handleSubmit, isValid, isSubmitting}) => (
                     <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
                         <MyTextInput placeholder='Emri i projektit' name='emriProjektit' />
                         <MyTextArea rows={3} placeholder='Pershkrimi' name='pershkrimi' />
@@ -90,7 +90,7 @@ export default observer(function ProjektetFormEdit({projekt}: Props) {
                         <MyTextInput placeholder='Emri i klientit' name='emriKlientit' />
                         <MySelectInput options={Institucioni} placeholder='Institucioni' name='institucioni' />
                         <Button
-                            disabled={isSubmitting || !dirty || !isValid}
+                            disabled={isSubmitting || !isValid}
                             loading={loading}
                             floated='right'
                             positive type='submit' content='Next' />

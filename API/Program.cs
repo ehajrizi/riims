@@ -41,7 +41,7 @@ namespace API
                 await SeedHonorandAward.SeedDataHA(context);
                 await SeedAnetaresia.SeedDataAne(context);
                 await SeedDonatoret.SeedDataDonatori(context);
-                await SeedPjesemarresit.SeedDataPjesemarresi(context);
+                 await SeedPjesemarresit.SeedDataPjesemarresi(context);
                 await SeedIsbn.SeedDataIsbn(context);
                 await SeedUser.SeedDataUser(context, userManager);
                 await SeedPjesemarresitPublikimet.SeedDataPjesemarresiPublikimi(context);

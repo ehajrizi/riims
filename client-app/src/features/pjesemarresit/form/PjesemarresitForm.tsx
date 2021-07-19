@@ -18,7 +18,7 @@ import { RoliProjektOptions } from '../../../app/api/common/options/roliOptions'
 export default observer(function PjesemarresitForm() {
     const history = useHistory();
 
-    const { pjesemarresiStore,modalStore } = useStore();
+    const { pjesemarresiStore,modalStore,projektiStore } = useStore();
     const { loadPjesemarresi, createPjesemarresi, loading, loadingInitial } = pjesemarresiStore;
     const { id } = useParams<{ id: string }>();
 
@@ -26,7 +26,7 @@ export default observer(function PjesemarresitForm() {
         id: '',
         emriIPjesemarresit: '',
         roli: '',
-        useriId: ''
+        projektId: ''
     });
 
     const validationSchema = Yup.object({
@@ -67,12 +67,16 @@ export default observer(function PjesemarresitForm() {
                     <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
                         <MyTextInput name='emriIPjesemarresit' placeholder='Emri i Pjesemarresit' />
                         <MySelectInput options={RoliProjektOptions} placeholder='Roli' name='roli' />
+                        <MyTextInput placeholder='ProjektiId ' name='projektId' defaultValue={projektiStore.projektId!} value={projektiStore.projektId!} type='hidden'/>
+
                         <Button 
                         disabled={isSubmitting || !dirty || !isValid }
                             loading={loading}
                             floated='right'
                             type='Submit'
                             positive  content='Add'  
+                            onClick={()=>{pjesemarresi.projektId = projektiStore.projektId!}} 
+
                              />
                         <PjesemarresitList/>
                         <Button onClick={() => modalStore.closeModal()} 

@@ -29,11 +29,11 @@ namespace Domain
         public ICollection<Gjuha> Gjuhet { get; set; }
         public ICollection<HonorandAward> HonorsandAwards { get; set; }
         public ICollection<MbikeqyresiTemave> MbikeqyresiTemave { get; set; }
-        public ICollection<Pjesemarresi> Pjesemarresit { get; set; }
+        //public ICollection<Pjesemarresi> Pjesemarresit { get; set; }
         public ICollection<PjesemarresiPublikimi> PjesemarresitPublikimet { get; set; }
         public ICollection<Projekti> Projektet { get; set; }
         public ICollection<Specializimi> Specializimet { get; set; }
-        public ICollection<Donatori> Donatoret { get; set; }
+        //public ICollection<Donatori> Donatoret { get; set; }
 
     }
 }

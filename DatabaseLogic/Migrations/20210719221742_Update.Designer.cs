@@ -3,14 +3,16 @@ using System;
 using DatabaseLogic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DatabaseLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210719221742_Update")]
+    partial class Update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -188,34 +190,6 @@ namespace DatabaseLogic.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Certifikimet");
-                });
-
-            modelBuilder.Entity("Domain.Donatori", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("EmriIDonatorit")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("KontributiIDhene")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("PershkrimiDonatorit")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProjektId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("ProjektiId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjektiId");
-
-                    b.ToTable("Donatoret");
                 });
 
             modelBuilder.Entity("Domain.Edukimi", b =>
@@ -434,31 +408,6 @@ namespace DatabaseLogic.Migrations
                     b.ToTable("MbikeqyresitTemave");
                 });
 
-            modelBuilder.Entity("Domain.Pjesemarresi", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("EmriIPjesemarresit")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProjektId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("ProjektiId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("roli")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjektiId");
-
-                    b.ToTable("Pjesemarresit");
-                });
-
             modelBuilder.Entity("Domain.PjesemarresiPublikimi", b =>
                 {
                     b.Property<Guid>("Id")
@@ -528,49 +477,6 @@ namespace DatabaseLogic.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Profilet");
-                });
-
-            modelBuilder.Entity("Domain.Projekti", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Buxheti")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DataFillimit")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DataMbarimit")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("EmriKlientit")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("EmriProjektit")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Institucioni")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Lokacioni")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Pershkrimi")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UseriId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Projektet");
                 });
 
             modelBuilder.Entity("Domain.Publikimi", b =>
@@ -820,15 +726,6 @@ namespace DatabaseLogic.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Domain.Donatori", b =>
-                {
-                    b.HasOne("Domain.Projekti", "Projekti")
-                        .WithMany("Donatoret")
-                        .HasForeignKey("ProjektiId");
-
-                    b.Navigation("Projekti");
-                });
-
             modelBuilder.Entity("Domain.Edukimi", b =>
                 {
                     b.HasOne("Domain.AppUser", "User")
@@ -883,15 +780,6 @@ namespace DatabaseLogic.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Domain.Pjesemarresi", b =>
-                {
-                    b.HasOne("Domain.Projekti", "Projekti")
-                        .WithMany("Pjesemarresi")
-                        .HasForeignKey("ProjektiId");
-
-                    b.Navigation("Projekti");
-                });
-
             modelBuilder.Entity("Domain.PjesemarresiPublikimi", b =>
                 {
                     b.HasOne("Domain.AppUser", null)
@@ -903,15 +791,6 @@ namespace DatabaseLogic.Migrations
                         .HasForeignKey("PublikimiId");
 
                     b.Navigation("Publikimi");
-                });
-
-            modelBuilder.Entity("Domain.Projekti", b =>
-                {
-                    b.HasOne("Domain.AppUser", "User")
-                        .WithMany("Projektet")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Publikimi", b =>
@@ -1001,18 +880,9 @@ namespace DatabaseLogic.Migrations
 
                     b.Navigation("PjesemarresitPublikimet");
 
-                    b.Navigation("Projektet");
-
                     b.Navigation("Publikimet");
 
                     b.Navigation("Specializimet");
-                });
-
-            modelBuilder.Entity("Domain.Projekti", b =>
-                {
-                    b.Navigation("Donatoret");
-
-                    b.Navigation("Pjesemarresi");
                 });
 
             modelBuilder.Entity("Domain.Publikimi", b =>

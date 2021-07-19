@@ -1,8 +1,7 @@
 import { observer } from 'mobx-react';
-import React, { ChangeEvent, FunctionComponent, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import { Link, useHistory, useParams } from 'react-router-dom';
-import { Button, Input, Modal, Segment } from 'semantic-ui-react';
+import { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import { Button, Segment } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
 import { v4 as uuid } from 'uuid';
@@ -12,10 +11,8 @@ import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import { Isbn } from '../../../app/models/isbn';
 import { IsbnIssn } from '../../../app/api/common/options/isbnissnOptions';
-import PjesemarresitForm from '../../pjesemarresit/form/PjesemarresitForm';
 import IsbntList from '../dashboard/IsbntList';
 import PublikimetFormEdit from '../../Publikimet/form/PublikimetFormEdit';
-import PublikimetForm from '../../Publikimet/form/PublikimetForm';
 import PjesemarresitPublikimetForm from '../../pjesemarresitpublikimet/form/PjesemarresitPublikimetForm';
 
 export default observer(function IsbntForm() {
@@ -59,11 +56,7 @@ export default observer(function IsbntForm() {
 
         }
     }
-    // function handleReset(isbn: Isbn) {
-    //     llojiNumrit: '',
-    //     numri: '',
-
-    // }
+    
 
 
     if (loadingInitial) return <LoadingComponent content='Loading...' />

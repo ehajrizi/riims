@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Application
 {
-    public class DonatoriValidator : AbstractValidator<Donatori>
+    public class DonatoriValidator :AbstractValidator<Donatori>
     {
         public DonatoriValidator()
         {

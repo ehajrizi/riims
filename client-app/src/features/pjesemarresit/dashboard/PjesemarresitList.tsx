@@ -8,7 +8,7 @@ import PjesemarresitListItem from './PjesemarresitListItem';
 export default observer(function PjesemarresitList() {
 
     
-    const { pjesemarresiStore} = useStore();
+    const { pjesemarresiStore,projektiStore} = useStore();
     const { pjesemarresiByEmri} = pjesemarresiStore;
 
     
@@ -22,8 +22,12 @@ export default observer(function PjesemarresitList() {
             </Grid>
             <Divider />
             {pjesemarresiByEmri.map(pjesemarresi => (
-                <PjesemarresitListItem key={pjesemarresi.id} pjesemarresi={pjesemarresi} />
-            ))}
+                <>
+                {pjesemarresi.projektId === projektiStore.projektId ?(
+                    <PjesemarresitListItem key={pjesemarresi.id} pjesemarresi={pjesemarresi} />
+           
+                ) :('')}
+                </>))}
         </>
     )
 })

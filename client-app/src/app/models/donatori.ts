@@ -5,5 +5,5 @@ export interface Donatori {
     emriIDonatorit: string;
     pershkrimiDonatorit: string;
     kontributiIDhene: number;
-    useriId: string;
+    projektId: string;
 }

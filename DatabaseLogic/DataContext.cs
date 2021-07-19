@@ -17,12 +17,12 @@ namespace DatabaseLogic
         public DbSet<Edukimi> Edukimet { get; set; }
         public DbSet<Profili> Profilet { get; set; }
         public DbSet<Certifikimi> Certifikimet { get; set; }
-        public DbSet<Projekti> Projektet { get; set; }
+         public DbSet<Projekti> Projektet { get; set; }
         public DbSet<Gjuha> Gjuhet { get; set; }
         public DbSet<HonorandAward> HonorsandAwards { get; set; }
         public DbSet<Anetaresia> Anetaresite { get; set; }
-        public DbSet<Donatori> Donatoret { get; set; }
-        public DbSet<Pjesemarresi> Pjesemarresit { get; set; }
+         public DbSet<Donatori> Donatoret { get; set; }
+         public DbSet<Pjesemarresi> Pjesemarresit { get; set; }
          public DbSet<PjesemarresiPublikimi> PjesemarresitPublikimet { get; set; }
         public DbSet<Isbn> Isbnt { get; set; }
     }

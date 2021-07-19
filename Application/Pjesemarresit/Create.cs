@@ -15,6 +15,7 @@ namespace Application.Pjesemarresit
         public class Command : IRequest<Result<Unit>>
         {
             public Pjesemarresi Pjesemarresi { get; set; }
+            public Projekti Projekti { get; set; }
         }
         public class CommandValidatior : AbstractValidator<Command>
         {
@@ -36,14 +37,13 @@ namespace Application.Pjesemarresit
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == _userAccessor.GetId());
-
+                
                 var pjesemarresi = new Pjesemarresi
                 {
-                    User = user,
-                    UseriId = user.Id,
+                    
                     EmriIPjesemarresit = request.Pjesemarresi.EmriIPjesemarresit,
                     roli = request.Pjesemarresi.roli,
+                    ProjektId= request.Pjesemarresi.ProjektId,
                 };
 
                 _context.Pjesemarresit.Add(pjesemarresi);

@@ -30,7 +30,6 @@ export default class PublikimiStore {
             const publikimet = await agent.Publikimet.list();
             publikimet.forEach(publikimi => {
                 this.setPublikimi(publikimi);
-                //kryhet si action e sqet warnings
             })
             this.setLoadingInitial(false);
         } catch (error) {

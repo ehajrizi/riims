@@ -10,11 +10,17 @@ export default class ProjektiStore{
     loading = false;
     loadingInitial = false;
 
+    public getProjekt = (id:string)=> {
+            return this.projektiRegistry.get(id);
+    }
 
     constructor(){
         makeAutoObservable(this)
     }
 
+    get projektId() {
+        return this.selectedProjekti?.id;
+    }
     get projektetByDate(){
         return Array.from(this.projektiRegistry.values()).sort((a, b) => a.dataFillimit!.getTime() - b.dataFillimit!.getTime());
     } 
@@ -54,7 +60,7 @@ export default class ProjektiStore{
             }
         }
     }
-
+    
     private setProjekti = (projekti:  Projekti) => {
         projekti.dataFillimit = new Date(projekti.dataFillimit!);
         projekti.dataMbarimit = new Date(projekti.dataMbarimit!);
@@ -107,7 +113,7 @@ export default class ProjektiStore{
             })
         }
     }
-
+    
     deleteProjekti = async (id: string) => {
         this.loading = true;
         try{

@@ -79,7 +79,7 @@ export default observer(function PjesemarresitPublikimetForm() {
                             disabled={isSubmitting || !dirty || !isValid}
                             loading={loading}
                             floated='right'
-                            type='Submit'
+                            type='submit'
                             positive content='Add'
                             onClick={()=>{pjesemarresiPublikimi.publikimId = publikimiStore.publikimiId!}}
                         />

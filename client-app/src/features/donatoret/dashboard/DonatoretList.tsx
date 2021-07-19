@@ -7,7 +7,7 @@ import DonatoretListItem from '../dashboard/DonatoretListItem';
 
 export default observer(function DonatoretList() {
 
-    const { donatoriStore } = useStore();
+    const { donatoriStore,projektiStore } = useStore();
     const { DonatoretByEmri } = donatoriStore;
 
     return (
@@ -20,7 +20,12 @@ export default observer(function DonatoretList() {
             </Grid>
             <Divider />
             {DonatoretByEmri.map(donatori => (
-                <DonatoretListItem key={donatori.id} donatori={donatori} />
+                <>
+                {donatori.projektId === projektiStore.projektId ?(
+                    <DonatoretListItem key={donatori.id} donatori={donatori} />
+           
+                ) :('')}
+                </>
             ))}
         </>
     )

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Domain
 {
@@ -15,5 +16,7 @@ namespace Domain
         public string Institucioni { get; set; }
         public string UseriId { get; set; }
         public AppUser User { get; set; }
+        public ICollection<Donatori> Donatoret { get; set; }
+        public ICollection<Pjesemarresi> Pjesemarresi { get; set; }
     }
 }
