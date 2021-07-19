@@ -20,7 +20,7 @@ export default observer(function LogReg() {
                             <Home />
                     ) : (
                         <>  
-                            <div className='content'>
+                            <div className='logreg-btn'>
                                 <Header style={{fontSize: "120px", color: "rgb(51,73,111)"}}>RIIMS</Header>
                                 <Header style={{fontSize: "30px", color: "rgb(51,73,111)"}}>Join us today</Header>
                                 

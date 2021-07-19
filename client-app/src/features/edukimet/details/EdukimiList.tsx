@@ -27,8 +27,8 @@ export default observer(function EdukimiList() {
             {edukimetByDate.map(edukimi => (
                 <>
                     {edukimi.useriId === userStore.UserId ? (
-                        // <EdukimiListItem key={edukimi.id} edukimi={edukimi} />
-                        console.log(edukimi.useriId +"   --"+ userStore.UserId)
+                        <EdukimiListItem key={edukimi.id} edukimi={edukimi} />
+                        // console.log(edukimi.useriId +"   --"+ userStore.UserId)
                     ) : ('')}
                 </>
             ))}

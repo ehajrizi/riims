@@ -65,19 +65,22 @@ Header{
   grid-column: 1;
   grid-row: 1;
 }
+
 .bottomPane {
   grid-column: 2;
   grid-row: 1;
   margin-top: 0 !important;
   background-color: rgb(235, 245, 251)!important;
 }
+
 .splitScreen {
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
 }
-.content {
+
+.logreg-btn {
   display: flex;
   flex-direction: column;
   width: 50%;

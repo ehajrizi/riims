@@ -1093,24 +1093,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\elita\\.nuget\\packages\\": {}
+    "C:\\Users\\Lenovo\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\elita\\Desktop\\riims\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\elita\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\elita\\Desktop\\riims\\Domain\\obj\\",
+      "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\Domain.csproj",
+      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\GitHub\\riims\\Domain\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\elita\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
