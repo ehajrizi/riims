@@ -29,7 +29,7 @@ namespace Application.Edukimet
 
             public async Task<Result<List<EdukimiDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var edukimet = await _context.Publikimet
+                var edukimet = await _context.Edukimet
                     .ProjectTo<EdukimiDto>(_mapper.ConfigurationProvider)
                     .ToListAsync(cancellationToken);
 

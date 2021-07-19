@@ -52,7 +52,7 @@ export default observer(function EdukimiForm(){
                 ...edukimi,
                 id: uuid()
             };
-            createEdukimi(newEdukimi).then(() => history.push(`/edukimet`));
+            createEdukimi(newEdukimi).then(() => history.push(`/edukimi`));
             modalStore.closeModal();
         }
         
@@ -91,7 +91,7 @@ export default observer(function EdukimiForm(){
                             loading={loading}
                             floated='right'
                             positive type='submit' content='Submit' />
-                        <Button onClick={()=>modalStore.closeModal()} as={Link} to='/edukimet' floated='right' type='button' content='Cancel' />
+                        <Button onClick={()=>modalStore.closeModal()} as={Link} to='/edukimi' floated='right' type='button' content='Cancel' />
                     </Form>
                 )}
             </Formik>

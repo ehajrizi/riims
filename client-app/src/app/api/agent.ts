@@ -59,11 +59,11 @@ const Eksperiencat = {
 }
 
 const Edukimet = {
-    list: () => requests.get<Edukimi[]>('/edukimet'),
-    details: (id: string) => requests.get<Edukimi>(`/edukimet/${id}`),
-    create: (edukimi : Edukimi) => axios.post<void>(`/edukimet`, edukimi),
-    update: (edukimi : Edukimi) => axios.put<void>(`/edukimet/${edukimi.id}`,edukimi),
-    delete: (id: string) => axios.delete<void>(`/edukimet/${id}`)
+    list: () => requests.get<Edukimi[]>('/edukimi'),
+    details: (id: string) => requests.get<Edukimi>(`/edukimi/${id}`),
+    create: (edukimi : Edukimi) => axios.post<void>(`/edukimi`, edukimi),
+    update: (edukimi : Edukimi) => axios.put<void>(`/edukimi/${edukimi.id}`,edukimi),
+    delete: (id: string) => axios.delete<void>(`/edukimi/${id}`)
 }
 
 const Certifikimet = {

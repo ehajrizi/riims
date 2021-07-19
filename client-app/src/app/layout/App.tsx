@@ -38,7 +38,7 @@ function App() {
       <Route exact path='/eksperiencat' component={Home} />
       <Route exact path='/publikimet' component={Home} />
       <Route exact path='/specializimet' component={Home} />
-      <Route exact path='/edukimet' component={Home} />
+      <Route exact path='/edukimi' component={Home} />
       <Route exact path='/certifikimet' component={Home} />
       <Route exact path='/honorsandawards' component={Home} />
       <Route exact path='/projektet' component={Home} />

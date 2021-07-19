@@ -36,7 +36,7 @@ namespace Application.Eksperiencat
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var eksperienca = await _context.Publikimet.FindAsync(request.Eksperienca.Id);
+                var eksperienca = await _context.Eksperiencat.FindAsync(request.Eksperienca.Id);
 
                 if(eksperienca == null) return null;
 

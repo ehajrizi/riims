@@ -40,7 +40,7 @@ export default observer(function EdukimiDetails() {
       <Card.Content extra>
         <Button.Group widths="2">
           <Button as={Link} to={`/manageEdukimi/${edukimi.id}`} basic color='blue' content='Edit'/>
-          <Button as={Link} to='/edukimet' basic color='grey' content='Cancel'/>
+          <Button as={Link} to='/edukimi' basic color='grey' content='Cancel'/>
         </Button.Group>
       </Card.Content>
     </Card>
