@@ -4,9 +4,6 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
 import cx from 'classnames';
-import EksperiencaForm from "../../eksperiencat/form/EksperiencaForm";
-import { Route } from "react-router-dom";
-import TableExampleSingleLine from "../TableExampleSingleLine";
 
 export default function Main()
 {
@@ -35,7 +32,7 @@ export default function Main()
                     </div>
                    
                 </div>
-                <TableExampleSingleLine/>
+                {/* <TableExampleSingleLine/> */}
             </div>
         </>
         )

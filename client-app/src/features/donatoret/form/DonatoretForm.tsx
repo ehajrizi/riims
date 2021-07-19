@@ -14,6 +14,8 @@ import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import MyDateInput from '../../../app/api/common/form/MyDateInput';
 import { Donatori } from '../../../app/models/donatori';
 import PjesemarresitForm from '../../pjesemarresit/form/PjesemarresitForm';
+import ProjektetForm from '../../projektet/form/ProjektetForm';
+import DonatoretList from '../dashboard/DonatoretList';
 
 
 export default observer(function DonatoretForm() {
@@ -48,8 +50,8 @@ export default observer(function DonatoretForm() {
                 ...donatori,
                 id: uuid()
             };
-            createDonatori(newDonatori).then(() => history.push(`/donatoret/${newDonatori.id}`));
-            modalStore.closeModal();
+            createDonatori(newDonatori).then(() => history.push(`/home`));
+        
         }
         
     }
@@ -61,7 +63,10 @@ export default observer(function DonatoretForm() {
             <Formik
                 validationSchema={validationSchema}
                 initialValues={donatori}
-                onSubmit={values => handleFormSubmit(values)}>
+                onSubmit={(values,{resetForm})=>{
+                    handleFormSubmit(values);
+                    resetForm({});
+                } }>
                 {({ handleSubmit, isValid, isSubmitting, dirty }) => (
                     <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
                         
@@ -75,8 +80,14 @@ export default observer(function DonatoretForm() {
                             disabled={isSubmitting || !dirty || !isValid}
                             loading={loading}
                             floated='right'
-                            positive type='submit' content='Next' />
-                        <Button onClick={()=>modalStore.closeModal()}  as={Link} to='/donatoret' floated='right' type='button' content='Cancel' />
+                            type='Submit'
+                            positive  content='Add'  
+                             />
+                        <DonatoretList/>
+                        <Button onClick={() => modalStore.openModal(<PjesemarresitForm/>)} 
+                         floated='right' type='button'
+                             content='Next' />
+                        <Button onClick={() => modalStore.openModal(<ProjektetForm/>)}   floated='right' type='button' content='Prev' />
                     </Form>
                 )}
             </Formik>

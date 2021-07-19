@@ -21,6 +21,8 @@ import { useStore } from '../../app/stores/store';
 import CertifikimiDashboard from '../certifikimet/dashboard/CertifikimiDashboard';
 import IsbntDashboard from '../isbnt/dashboard/IsbntDashboard';
 import PjesemarresitDashboard from '../pjesemarresit/dashboard/PjesemarresitDashboard';
+import PjesemarresitPublikimetDashboard from '../pjesemarresitpublikimet/dashboard/PjesemarresitPublikimetDashboard';
+import DonatoretDashboard from '../donatoret/dashboard/DonatoretDashboard';
 
 
 export default observer(function Home() {
@@ -107,17 +109,25 @@ export default observer(function Home() {
                         <Segment className={'honorsawards'} basic>
                             <HonorandAwardDashboard />
                         </Segment> 
-                        <Segment className={'isbn'} basic>
+                        <Segment className={'isbn'} hidden basic>
                             <IsbntDashboard />
-                        </Segment> 
-                        <Segment className={'pjesemarresi'} basic> 
+                        </Segment >
+                        <Segment className={'pjesemarresit'} hidden basic> 
                             <PjesemarresitDashboard />
                         </Segment>  
-                            <Segment className={'anetaresia'} basic> 
+                            <Segment className={'anetaresia'}  basic> 
                                 <AnetaresiaDashboard />
                             </Segment>
                             <Segment className={'honorsandawards'} basic>
                                 <HonorandAwardDashboard />
+                            </Segment>
+
+                            <Segment className={'pjesemarresitPublikimet'} hidden basic>
+                                <PjesemarresitPublikimetDashboard />
+                            </Segment>
+
+                            <Segment className={'donatoret'}hidden  basic>
+                                <DonatoretDashboard />
                             </Segment>
                         </Grid.Column>
 

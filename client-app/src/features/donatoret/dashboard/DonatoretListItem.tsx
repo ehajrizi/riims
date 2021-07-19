@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 import { Button, Card, Divider, Grid, Icon, Item } from 'semantic-ui-react';
 import { Donatori } from '../../../app/models/donatori';
 import { useStore } from '../../../app/stores/store';
-import DonatoretFormEdit from '../form/DonatoretFormEdit';
 
 
 
@@ -42,10 +41,7 @@ export default observer(function PublikimetListItem({ donatori }: Props) {
                             </Grid.Column>
                             <Grid.Column width='4'>
                                 <Grid style={{ marginTop: '-25px' }}>
-                                    <Grid.Column width='3'>
-                                    <Button onClick={()=> modalStore.openModal(<DonatoretFormEdit donator={donatori}/>)}  className="btn" style={{ marginLeft: '3.8em' }} size='small'><Icon className='btnIcon' name='edit' /></Button>
-                                        
-                                    </Grid.Column>
+                                    
                                     <Grid.Column width='1'>
                                         <Button name={donatori.id}
                                             loading={loading && target === donatori.id}
@@ -59,9 +55,6 @@ export default observer(function PublikimetListItem({ donatori }: Props) {
                                 </Grid>
                             </Grid.Column>
                         </Grid>
-                        <Card.Meta>
-                            <span>{donatori.emriIDonatorit}</span>
-                        </Card.Meta>
                        <Card.Description>
                            
                               {donatori.pershkrimiDonatorit} <br />
@@ -72,13 +65,9 @@ export default observer(function PublikimetListItem({ donatori }: Props) {
                         <Card.Meta>
                             {readMore && extraContent}
                         </Card.Meta>
-                        <Grid>
-                            <Grid.Column width="15"><Divider /></Grid.Column>
-                            <Grid.Column width="1"><Icon name='eye' style={{ marginLeft: "-20px" }} /></Grid.Column>
-                        </Grid>
                     </Card.Content>
                 </Card>
             </Item>
         </>
-    );
+    )
 })

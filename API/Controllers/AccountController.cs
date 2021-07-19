@@ -1,10 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Services;
 using Domain;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,14 +24,16 @@ namespace API.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly TokenService _tokenService;
+        private readonly IUserRepository _userRepository;
 
         public AccountController(UserManager<AppUser> userManager,
                                 SignInManager<AppUser> signInManager,
-                                TokenService tokenService)
+                                TokenService tokenService, IUserRepository userRepository)
         {
             _tokenService = tokenService;
             _signInManager = signInManager;
             _userManager = userManager;
+            _userRepository = userRepository;
         }
 
         [HttpPost("login")]
@@ -93,20 +101,124 @@ namespace API.Controllers
 
         }
 
+        
         [Authorize]
         [HttpGet]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
-            var user = await _userManager.FindByIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
 
             return CreateUserObject(user);
         }
 
+        [Authorize]
+        [HttpGet("{email}")]
+        public async Task<ActionResult<AppUser>> GetUser(string email)
+        {
+            try
+            {
+                var result = await _userRepository.GetUser(email);
+
+                if (result == null) return NotFound();
+
+                return result;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from the database");
+            }
+        }
+
+        [Authorize]
+        [HttpGet("users")]
+        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+        {
+            try
+            {
+                return (await _userRepository.GetUsers()).ToList(); 
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, 
+					"Error retrieving data from the database");
+            }
+        }
+
+        // [HttpPost]
+        // public async Task<ActionResult<AppUser>> AddUser(AppUser user)
+        // {
+        //     try
+        //     {
+        //         if (user == null)
+        //             return BadRequest();
+
+        //         var createdUser = await _userRepository.AddUser(user);
+
+        //         return CreatedAtAction(nameof(GetUser),
+        //             new { email = createdUser.Email }, createdUser);
+        //     }
+        //     catch (Exception)
+        //     {
+        //         return StatusCode(StatusCodes.Status500InternalServerError,
+        //             "Error creating new user record");
+        //     }
+        // }
+
+        [Authorize]
+        [HttpPut("{email}")]
+        public async Task<ActionResult<AppUser>> UpdateUser(string email, AppUser user)
+        {
+            try
+            {
+                if (email != user.Email)
+                    return BadRequest("User Email mismatch");
+
+                var userToUpdate = await _userRepository.GetUser(email);
+
+                if (userToUpdate == null)
+                    return NotFound($"User with Email = {email} not found");
+
+                return await _userRepository.UpdateUser(user);
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error updating data");
+            }
+        }
+
+        [Authorize]
+        [HttpDelete("{email}")]
+
+        public async Task<IActionResult> DeleteUser(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            if(user == null){
+                return NotFound();
+            }
+            else{
+                 var result = await _userManager.DeleteAsync(user);
+
+                 if(result.Succeeded){
+                     return RedirectToAction("GetUsers");
+                 }
+            }
+
+            return ViewComponent("GetUsers");
+        }
+
+        private IActionResult ViewComponent(string v)
+        {
+            throw new NotImplementedException();
+        }
+    
         private UserDto CreateUserObject(AppUser user)
         {
             return new UserDto
             {
-                Id = user.Id,
                 Emri = user.Emri,
                 Mbiemri = user.Mbiemri,
                 Token = _tokenService.CreateToken(user),

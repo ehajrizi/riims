@@ -10,49 +10,47 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
-import { Isbn } from '../../../app/models/isbn';
-import { IsbnIssn } from '../../../app/api/common/options/isbnissnOptions';
-import PjesemarresitForm from '../../pjesemarresit/form/PjesemarresitForm';
-import IsbntList from '../dashboard/IsbntList';
+import PjesemarresitPublikimetList from '../dashboard/PjesemarresitPublikimetList';
 import PublikimetForm from '../../Publikimet/form/PublikimetForm';
-import PjesemarresitPublikimetForm from '../../pjesemarresitpublikimet/form/PjesemarresitPublikimetForm';
+import { PjesemarresiPublikimi } from '../../../app/models/pjesemarresiPublikimi';
+import { RoliPublikimiOptions } from '../../../app/api/common/options/roliOptions';
 
-export default observer(function IsbntForm() {
+export default observer(function PjesemarresitPublikimetForm() {
     const history = useHistory();
 
-    const { isbnStore, modalStore } = useStore();
-    const { loadIsbn, createIsbn, loading, loadingInitial } = isbnStore;
+    const { pjesemarresiPublikimiStore, modalStore } = useStore();
+    const { loadPjesemarresiPublikimi, createPjesemarresiPublikimi, loading, loadingInitial } = pjesemarresiPublikimiStore;
     const { id } = useParams<{ id: string }>();
 
-    const [isbn, setisbn] = useState<Isbn>({
+    const [pjesemarresiPublikimi, setpjesemarresiPublikimi] = useState<PjesemarresiPublikimi>({
         id: '' ,
-        llojiNumrit: '' ,
-        numri: '',
+        emriIPjesemarresit: '' ,
+        roli: '',
         
     });
 
     
     const validationSchema = Yup.object({
-        llojiNumrit: Yup.string().required('Fusha nuk guxon te jete e zbrazet'),
-        numri: Yup.string().required('The activity description is required'),
+        emriIPjesemarresit: Yup.string().required('Fusha nuk guxon te jete e zbrazet'),
+        roli: Yup.string().required('The activity description is required'),
         
     })
 
     useEffect(() => {
-        if (id) loadIsbn(id).then(isbn => setisbn(isbn!))
-    }, [id, loadIsbn]);
+        if (id) loadPjesemarresiPublikimi(id).then(pjesemarresiPublikimi => setpjesemarresiPublikimi(pjesemarresiPublikimi!))
+    }, [id, loadPjesemarresiPublikimi]);
 
     
 
-    function handleFormSubmit(isbn:Isbn ) {
-        if (isbn.id.length === 0) {
-            let newisbn = {
-                ...isbn,
+    function handleFormSubmit(pjesemarresiPublikimi:PjesemarresiPublikimi ) {
+        if (pjesemarresiPublikimi.id.length === 0) {
+            let newpjesemarresiPublikimi = {
+                ...pjesemarresiPublikimi,
                 id: uuid()
             };
-            createIsbn(newisbn).then(() => history.push(`/publikimet`),
+            createPjesemarresiPublikimi(newpjesemarresiPublikimi).then(() => history.push(`/home`),
             );
-           
+            
            
         }
     }
@@ -65,26 +63,28 @@ export default observer(function IsbntForm() {
         <Segment clearing>
             <Formik
                 validationSchema={validationSchema}
-                initialValues={isbn}
+                initialValues={pjesemarresiPublikimi}
                 onSubmit={(values,{resetForm})=>{
                     handleFormSubmit(values);
                     resetForm({});
                 } }>
                 {({ handleSubmit, isValid, isSubmitting, dirty}) => (
                     <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
-                        <MySelectInput  options={IsbnIssn} placeholder='Lloji i Numrit' name='llojiNumrit' />
-                        <MyTextInput placeholder='Numri ' name='numri'  />
+                        <MyTextInput placeholder='Emri i Pjesemarresit ' name='emriIPjesemarresit'  />
+                        <MySelectInput  options={RoliPublikimiOptions} placeholder='Roli i Pjesemarresit' name='roli' />
+                        
                         <Button 
                         disabled={isSubmitting || !dirty || !isValid }
                             loading={loading}
                             floated='right'
-                            positive  content='Add'  
                             type='Submit'
+                            positive  content='Add'  
+                            
                              />
-                        <IsbntList/>
-                        <Button onClick={() => modalStore.openModal(<PjesemarresitPublikimetForm/>)} 
+                        <PjesemarresitPublikimetList/>
+                        <Button onClick={() => modalStore.closeModal()} 
                          floated='right' type='button'
-                             content='Next' />
+                             content='close' />
                         <Button onClick={() => modalStore.openModal(<PublikimetForm/>)}   floated='right' type='button' content='Prev' />
                     </Form>
                 )}
@@ -92,4 +92,3 @@ export default observer(function IsbntForm() {
         </Segment>
     );
 })
-

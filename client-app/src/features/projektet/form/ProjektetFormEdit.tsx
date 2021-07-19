@@ -14,7 +14,6 @@ import MyTextArea from '../../../app/api/common/form/MyTextArea';
 import { Institucioni } from '../../../app/api/common/options/projektiOptions';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import { Projekti } from '../../../app/models/projekti';
-import DonatoretFormEdit from '../../donatoret/form/DonatoretFormEdit';
 import DonatoretForm from '../../donatoret/form/DonatoretForm';
 
 interface Props {
@@ -43,10 +42,10 @@ export default observer(function ProjektetFormEdit({projekt}: Props) {
 
     const validationSchema = Yup.object({
         emriProjektit: Yup.string().required('Fusha nuk guxon te jete e zbrazet'),
-        pershkrimi: Yup.string().required('The activity description is required'),
+        pershkrimi: Yup.string().required('Fusha nuk guxon te jete e zbrazet'),
         lokacioni: Yup.string().required(),
-        dataFillimit: Yup.string().required('Date is required').nullable(),
-        dataMbarimit: Yup.string().required('Date is required').nullable(),
+        dataFillimit: Yup.string().required('Fusha nuk guxon te jete e zbrazet').nullable(),
+        dataMbarimit: Yup.string().required('Fusha nuk guxon te jete e zbrazet').nullable(),
         buxheti: Yup.string().required(),
         emriKlientit: Yup.string().required(),
         institucioni: Yup.string().required(),
@@ -64,7 +63,7 @@ export default observer(function ProjektetFormEdit({projekt}: Props) {
     if (loadingInitial) return <LoadingComponent content='Loading publikimin...' />
 
     return (
-        <Segment>
+        <Segment clearing>
             <Formik
                 validationSchema={validationSchema}
                 initialValues={projekti}

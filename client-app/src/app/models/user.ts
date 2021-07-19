@@ -19,6 +19,7 @@ export interface User {
     linkedIn?: string | null;
     phoneNumber?: string;
     roli?: string;
+    email: string;
 }
 
 export interface UserFormValues {

@@ -15,6 +15,7 @@ import { Donatori } from '../models/donatori';
 import { store } from '../stores/store';
 import { User, UserFormValues } from '../models/user';
 import { Isbn } from '../models/isbn';
+import { PjesemarresiPublikimi } from '../models/pjesemarresiPublikimi';
 
 
 const sleep = (delay: number) => {
@@ -162,6 +163,16 @@ const Account = {
     current: () => axios.get<User>('/account').then(responseBody),
     login: (user: UserFormValues) => axios.post<User>('/account/login', user).then(responseBody),
     register: (user: UserFormValues) => axios.post<User>('/account/register', user).then(responseBody),
+    list: () => requests.get<User[]>('/account/users'),
+    details: (email: string) => requests.get<User>(`/account/${email}`),
+    update: (user : User) => axios.put<void>(`/account/${user.email}`, user),
+}
+const PjesemarresitPublikimet= {
+    list: () => requests.get<PjesemarresiPublikimi[]>('/pjesemarresitPublikimet'),
+    details: (id: string) => requests.get<PjesemarresiPublikimi>(`/pjesemarresitPublikimet/${id}`),
+    create: (pjesemarresiPublikimi : PjesemarresiPublikimi) => axios.post<void>(`/pjesemarresitPublikimet`, pjesemarresiPublikimi),
+    update: (pjesemarresiPublikimi : PjesemarresiPublikimi) => axios.put<void>(`/pjesemarresitPublikimet/${pjesemarresiPublikimi.id}`, pjesemarresiPublikimi),
+    delete: (id: string) => axios.delete<void>(`/pjesemarresitPublikimet/${id}`)
 }
 
 const agent = {
@@ -179,7 +190,8 @@ const agent = {
     Pjesemarresit,
     Donatoret,
     Isbnt,
-    Account
+    Account,
+    PjesemarresitPublikimet
 
 }
 

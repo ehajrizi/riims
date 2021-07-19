@@ -95,7 +95,7 @@ export default observer(function ProjektetForm() {
                             disabled={isSubmitting || !dirty || !isValid}
                             loading={loading}
                             floated='right'
-                            positive type='submit' content='Submit' />
+                            positive type='submit' content='Next' />
                         <Button onClick={()=>modalStore.closeModal()}  as={Link} to='/publikimet' floated='right' type='button' content='Cancel' />
                     </Form>
                 )}
