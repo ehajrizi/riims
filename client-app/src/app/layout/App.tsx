@@ -11,12 +11,14 @@ import AdminDashboard from '../../features/admin/AdminDashboard';
 import Main from '../../features/admin/components/Main';
 import Main2 from '../../features/admin/components/Main2';
 import EkspoTable from '../../features/admin/EkspoTable';
+import ProfileDashboard from '../../features/profile/ProfileDashboard';
 
 
 function App() {
 
   const location = useLocation();
   const { commonStore, userStore } = useStore();
+  const { user } = userStore;
 
   useEffect(() => {
     if (commonStore.token) {
@@ -34,22 +36,23 @@ function App() {
         {userStore.isLoggedIn ? (
           <Route exact path='/' component={Home} />
         ) : (<Route exact path='/' component={LogReg} />)}
-      <Route exact path='/adminDashboard' component={AdminDashboard} />
-      {/* <Route exact path='/cv' component={EksperiencaDashboard} /> */}
-      <Route exact path='/home' component={Home} />
-      <Route exact path='/hello' component={EkspoTable} />
-      <Route exact path='/mbikeqyresitemave' component={Home} />
-      <Route exact path='/eksperiencat' component={Home} />
-      <Route exact path='/publikimet' component={Home} />
-      <Route exact path='/specializimet' component={Home} />
-      <Route exact path='/edukimet' component={Home} />
-      <Route exact path='/certifikimet' component={Home} />
-      <Route exact path='/honorsandawards' component={Home} />
-      <Route exact path='/projektet' component={Home} />
-      <Route exact path='/anetaresia' component={Home} />
-      <Route exact path='/gjuhet' component={Home} />
-      <Route path='/adminDashboard/statistics' component={Main}/>
-      <Route path='/adminDashboard/users' component={Main2}/>
+        <Route exact path='/adminDashboard' component={AdminDashboard} />
+        {/* <Route exact path='/cv' component={EksperiencaDashboard} /> */}
+        <Route exact path='/home' component={Home} />
+        <Route exact path='/hello' component={EkspoTable} />
+        <Route exact path='/mbikeqyresitemave' component={Home} />
+        <Route exact path='/eksperiencat' component={Home} />
+        <Route exact path='/publikimet' component={Home} />
+        <Route exact path='/specializimet' component={Home} />
+        <Route exact path='/edukimet' component={Home} />
+        <Route exact path='/certifikimet' component={Home} />
+        <Route exact path='/honorsandawards' component={Home} />
+        <Route exact path='/projektet' component={Home} />
+        <Route exact path='/anetaresia' component={Home} />
+        <Route exact path='/gjuhet' component={Home} />
+        <Route exact path={`/profiles/${user?.id}`} component={ProfileDashboard} />
+        <Route path='/adminDashboard/statistics' component={Main} />
+        <Route path='/adminDashboard/users' component={Main2} />
       </Switch>
     </>
   );

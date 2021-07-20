@@ -16,6 +16,8 @@ import { store } from '../stores/store';
 import { User, UserFormValues } from '../models/user';
 import { Isbn } from '../models/isbn';
 import { PjesemarresiPublikimi } from '../models/pjesemarresiPublikimi';
+import { UserProfile } from '../models/profile';
+import { emitWarning } from 'process';
 
 
 const sleep = (delay: number) => {
@@ -176,6 +178,11 @@ const PjesemarresitPublikimet= {
     delete: (id: string) => axios.delete<void>(`/pjesemarresitPublikimet/${id}`)
 }
 
+const Profiles = {
+    get: (email: string) => requests.get<UserProfile>(`/profiles/${email}`),
+    updateProfile: (profile: Partial<UserProfile>) => axios.put<void>(`/profiles`, profile),
+}
+
 const agent = {
     Eksperiencat,
     Edukimet,
@@ -192,7 +199,8 @@ const agent = {
     Donatoret,
     Isbnt,
     Account,
-    PjesemarresitPublikimet
+    PjesemarresitPublikimet,
+    Profiles
 
 }
 

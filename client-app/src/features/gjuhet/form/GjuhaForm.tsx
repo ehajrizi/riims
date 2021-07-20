@@ -47,7 +47,6 @@ export default observer(function GjuhaForm(){
             createGjuha(newGjuha).then(() => history.push(`/gjuhet`));
             modalStore.closeModal();
         }
-        
     }
 
     if(loadingInitial) return <LoadingComponent content='Loading Gjuha...'/>

@@ -9,6 +9,7 @@ using Application.Isbnt;
 using Application.MbikeqyresitTemave;
 using Application.Pjesemarresit;
 using Application.PjesemarresitPublikimet;
+using Application.ProfileUser;
 using Application.Projektet;
 using Application.Publikimet;
 using Application.Specializimet;
@@ -51,6 +52,8 @@ namespace Application.Core
             CreateMap<PjesemarresiPublikimi, PjesemarresiPublikimiDto>();
             CreateMap<Isbn, Isbn>();
             CreateMap<Isbn, IsbnDto>();
+            CreateMap<UserProfile, UserProfile>();
+            CreateMap<AppUser, UserProfile>();
         }
     }
 }

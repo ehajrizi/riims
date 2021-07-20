@@ -2,6 +2,7 @@ namespace Application.Interfaces
 {
     public interface IUserAccessor
     {
-            string GetId();
+        string GetId();
+        string GetEmail();
     }
 }

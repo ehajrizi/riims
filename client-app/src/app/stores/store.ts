@@ -17,6 +17,7 @@ import UserStore from "./userStore";
 import CommonStore from "./commonStore";
 import IsbnStore from "./isbnStore";
 import PjesemarresiPublikimiStore from "./pjesemarresiPublikimiStore";
+import ProfileStore from "./profileStore";
 
 interface Store{
     eksperiencaStore: EksperiencaStore
@@ -37,6 +38,7 @@ interface Store{
     isbnStore: IsbnStore
     commonStore: CommonStore
     pjesemarresiPublikimiStore:PjesemarresiPublikimiStore
+    profileStore: ProfileStore
 }
 
 export const store: Store = {
@@ -57,7 +59,8 @@ export const store: Store = {
     userStore: new UserStore(),
     isbnStore: new IsbnStore(),
     commonStore: new CommonStore(),
-    pjesemarresiPublikimiStore:new PjesemarresiPublikimiStore()
+    pjesemarresiPublikimiStore:new PjesemarresiPublikimiStore(),
+    profileStore: new ProfileStore()
 }
 
 

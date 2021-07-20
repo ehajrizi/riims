@@ -20,6 +20,14 @@ export default class UserStore {
     get UserId() {
         return this.user?.id;
     }
+    get UserEmail() {
+        console.log(this.user?.email);
+        return this.user?.email;
+    }
+
+    get UserLoggedIn() {
+        return this.user;
+    }
 
     get isLoggedIn() {
         return !!this.user;
@@ -168,4 +176,51 @@ export default class UserStore {
             })
         }
     }
+    setEmri = (emri: string) => {
+        if (this.user) this.user.emri = emri;
+    }
+    setMbiemri = (mbiemri: string) => {
+        if (this.user) this.user.mbiemri = mbiemri;
+    }
+    setEmriMesem = (emriMesem: string) => {
+        if (this.user) this.user.emriMesem = emriMesem;
+    }
+    setDatelindja = (datelindja: Date) => {
+        if (this.user) this.user.datelindja = datelindja;
+    }
+    setGjinia = (gjinia: string) => {
+        if (this.user) this.user.gjinia = gjinia;
+    }
+    setTitulliShkencor = (titulliShkencor: string) => {
+        if (this.user) this.user.titulliShkencor = titulliShkencor;
+    }
+    setVendlindja = (vendlindja: string) => {
+        if (this.user) this.user.vendlindja = vendlindja;
+    }
+    setShtetiLindjes = (shtetiLindjes: string) => {
+        if (this.user) this.user.shtetiLindjes = shtetiLindjes;
+    }
+    setRruga = (rruga: string) => {
+        if (this.user) this.user.rrugaCurrent = rruga;
+    }
+    setQyteti = (qytetiCurrent: string) => {
+        if (this.user) this.user.qytetiCurrent = qytetiCurrent;
+    }
+    setZipKodi = (zipKodiCurrent: string) => {
+        if (this.user) this.user.zipKodiCurrent = zipKodiCurrent;
+    }
+    setShteti = (shtetiCurrent: string) => {
+        if (this.user) this.user.shtetiCurrent = shtetiCurrent;
+    }
+    setPershkrimi = (pershkrimi: string) => {
+        if (this.user) this.user.pershkrimi = pershkrimi;
+    }
+    setLinkedIn = (linkedIn: string) => {
+        if (this.user) this.user.linkedIn = linkedIn;
+    }
+    setPhoneNumber = (phoneNumber: string) => {
+        if (this.user) this.user.phoneNumber = phoneNumber;
+    }
+
+    
 }
