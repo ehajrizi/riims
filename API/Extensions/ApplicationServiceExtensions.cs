@@ -1,9 +1,3 @@
-using Application.Publikimet; 
-using Application.Profilet; 
-using Application.Eksperiencat;
-using Application.MbikeqyresitTemave;
-using Application.Specializimet;
-using Application.Edukimet;
 using Application.Core;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -42,7 +36,6 @@ namespace API.Extensions
             services.AddMediatR(typeof(Application.MbikeqyresitTemave.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.Specializimet.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.Edukimet.List.Handler).Assembly);
-            services.AddMediatR(typeof(Application.Profilet.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.Certifikimet.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.Projektet.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.Gjuhet.List.Handler).Assembly);

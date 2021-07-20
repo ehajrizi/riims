@@ -18,7 +18,7 @@ export function scrollToEksperiencat() {
 };
 
 export function scrollToEdukimi() {
-    scroller.scrollTo("edukimi", {
+    scroller.scrollTo("edukimet", {
         duration: 800,
         delay: 0,
         smooth: "easeInOutQuart",

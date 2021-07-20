@@ -57,7 +57,7 @@ function messageSuccess(){
                     >
                         {({ isValid, dirty }) => (
                             <Form className='ui form'>
-                                <Header>Te dhena personale</Header>
+                                <Header>Të dhënat personale</Header>
                                 <MyTextInput placeholder='Emri' name='emri' />
                                 <MyTextInput placeholder='Mbiemri' name='mbiemri' />
                                 <MyTextInput placeholder='Emri i mesem' name='emriMesem' />
@@ -71,7 +71,7 @@ function messageSuccess(){
                                 <MyTextInput placeholder='Qyteti' name='qytetiCurrent' />
                                 <MyTextInput placeholder='Zip Kodi' name='zipKodiCurrent' />
                                 <MyTextInput placeholder='Shteti' name='shtetiCurrent' />
-                                <Header>Te dhena tjera</Header>
+                                <Header>Të dhëna tjera</Header>
                                 <MyTextArea placeholder='Pershkrimi' name='pershkrimi' rows={3} />
                                 <MyTextInput placeholder='LinkedId' name='linkedIn' />
                                 <MyTextInput placeholder='Numri i telefonit' name='phoneNumber' />

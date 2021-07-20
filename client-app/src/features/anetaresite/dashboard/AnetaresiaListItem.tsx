@@ -6,7 +6,6 @@ import { Button, Card, Checkbox, Divider, Grid, Header, Icon, Item, Segment } fr
 import { Anetaresia } from '../../../app/models/anetaresia';
 import modalStore from '../../../app/stores/modalStore';
 import { useStore } from '../../../app/stores/store';
-import { useModal } from '../../useModal';
 import AnetaresiaFormEdit from '../form/AnetaresiaFormEdit';
 
 

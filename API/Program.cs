@@ -34,7 +34,6 @@ namespace API
                 await SeedMbikeqyresiTemave.SeedData(context);
                 await SeedSpecializimet.SeedDataS(context);
                 await SeedEdukimi.SeedDataEd(context);
-                await SeedProfili.SeedDataP(context);
                 await SeedCertifikimi.SeedData(context);
                 await SeedProjektet.SeedDataProjekti(context);
                 await SeedGjuha.SeedDataGj(context);

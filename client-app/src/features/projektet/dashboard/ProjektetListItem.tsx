@@ -5,7 +5,6 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Button, Card, Checkbox, Divider, Grid, Header, Icon, Item, Segment } from 'semantic-ui-react';
 import { Projekti } from '../../../app/models/projekti';
 import { useStore } from '../../../app/stores/store';
-import { useModal } from '../../useModal';
 import ProjektetFormEdit from '../form/ProjektetFormEdit';
 
 

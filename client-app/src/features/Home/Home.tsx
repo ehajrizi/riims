@@ -4,7 +4,6 @@ import { Link, NavLink } from "react-router-dom";
 import { Button, Card, Divider, Grid, Header, Segment } from "semantic-ui-react";
 import ModalContainer from "../../app/api/common/modals/ModalContainer";
 import Footer from "../../app/layout/Footer";
-import ImageExampleCircular from "../../app/layout/Image";
 import NavBar from "../../app/layout/NavBar";
 import scrollToPublikimet, { scrollToAnetaresia, scrollToCertifikimet, scrollToEdukimi, scrollToEksperiencat, scrollToHonorsAndAwards, scrollToMbikeqyresITemave, scrollToProjektet, scrollToSpecializimet, scrollToTop } from "../../app/styling-functions/Scrolling";
 import AnetaresiaDashboard from "../anetaresite/dashboard/AnetaresiaDashboard";
@@ -23,6 +22,8 @@ import IsbntDashboard from '../isbnt/dashboard/IsbntDashboard';
 import PjesemarresitDashboard from '../pjesemarresit/dashboard/PjesemarresitDashboard';
 import PjesemarresitPublikimetDashboard from '../pjesemarresitpublikimet/dashboard/PjesemarresitPublikimetDashboard';
 import DonatoretDashboard from '../donatoret/dashboard/DonatoretDashboard';
+import UserDashboard from '../profile/UserDashboard';
+import ProfileImage from '../../app/layout/Image';
 
 
 export default observer(function Home() {
@@ -38,24 +39,13 @@ export default observer(function Home() {
                     <Grid centered>
 
                         <Grid.Column width='12'>
-                            <Segment style={{ marginTop: 60 }}>
-                                <Grid>
+                            <Segment style={{ marginTop: 60, marginLeft: '2em' }}>
+                                <Grid style={{ marginLeft: '2em', paddingTop: '1em', paddingBottom: '1em' }}>
                                     <Grid.Column width='5'>
-                                        <ImageExampleCircular />
+                                        <ProfileImage />
                                     </Grid.Column>
                                     <Grid.Column width='11'>
-                                        <Grid columns={2}>
-                                            <Grid.Column width='8'>
-                                                <Header style={{ marginTop: 50 }}>Name Surname</Header>
-                                                <Header style={{ marginTop: 20 }}>Name Surname</Header>
-                                                <Header style={{ marginTop: 20 }}>Name Surname</Header>
-                                            </Grid.Column>
-                                            <Grid.Column width='8'>
-                                                <Header style={{ marginTop: 50 }}>Name Surname</Header>
-                                                <Header style={{ marginTop: 20 }}>Name Surname</Header>
-                                            </Grid.Column>
-                                        </Grid>
-                                        <Divider vertical />
+                                        <UserDashboard user={userStore.UserLoggedIn!}/>
                                     </Grid.Column>
                                 </Grid>
                             </Segment>
@@ -95,11 +85,6 @@ export default observer(function Home() {
                                 <MbikeqyresiTemaveDashboard />
                             </Segment>
                             <Segment className={'publikimet'} basic>
-                                {/* <Container>
-                        <Route exact path='/publikimet' component={PublikimetDashboard} />
-                        <Route path='/publikimet/:id' component={PublikimetDetails} />
-                        <Route key={location.key} path={['/createPublikimi', '/managePublikimi/:id']} component={PublikimetForm} />
-                        </Container> */}
                                 <PublikimetDashboard />
                             </Segment>
                             <Segment className={'projektet'} basic>

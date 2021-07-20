@@ -4,7 +4,6 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Button, Card, Checkbox, Divider, Grid, Header, Icon, Item, Segment } from 'semantic-ui-react';
 import { PjesemarresiPublikimi } from '../../../app/models/pjesemarresiPublikimi';
 import { useStore } from '../../../app/stores/store';
-import { useModal } from '../../useModal';
 
 
 interface Props {

@@ -4,7 +4,6 @@ import { Eksperienca } from '../models/eksperienca';
 import { MbikeqyresiTemave } from '../models/mbikeqyresitemave';
 import { Publikimi } from '../models/publikimi';
 import { Specializimi } from '../models/specializimi';
-import { Profili } from '../models/profili';
 import { Projekti } from '../models/projekti';
 import { HonorandAward } from '../models/honorandaward';
 import { Anetaresia } from '../models/anetaresia';
@@ -101,14 +100,6 @@ const MbikeqyresitTemave ={
     delete: (id:string)=> axios.delete<void>(`/mbikeqyresitemave/${id}`)
     
 }
-const Profilet ={
-    list: ()=> requests.get<Profili[]>('/profili'),
-    details: (id:string)=> requests.get<Profili>(`/profili/${id}`),
-    create:(profili:Profili)=>axios.post<void>('/profili',profili),
-    update:(profili:Profili)=>axios.put<void>(`/profili/${profili.id}`,profili),
-    delete: (id:string)=> axios.delete<void>(`/profili/${id}`)
-    
-}
 
 const Projektet = {
     list: () => requests.get<Projekti[]>('/projektet'),
@@ -190,7 +181,6 @@ const agent = {
     Publikimet,
     Specializimet,
     MbikeqyresitTemave,
-    Profilet,
     Projektet,
     Anetaresite,
     HonorsandAwards,

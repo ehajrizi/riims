@@ -3,7 +3,6 @@ import EdukimiStore from "./edukimiStore";
 import EksperiencaStore from "./eksperiencaStore";
 import MbikeqyresiTemaveStore from "./mbikeqyresitemaveStore";
 import SpecializimiStore from "./specializimiStore";
-import ProfiliStore from "./profiliStore";
 import ProjektiStore from "./projektiStore";
 import AnetaresiaStore from "./anetaresiaStore";
 import HonorandAwardStore from "./honorandawardStore";
@@ -26,7 +25,6 @@ interface Store{
     publikimiStore: PublikimiStore
     specializimiStore: SpecializimiStore
     mbikeqyresitemaveStore: MbikeqyresiTemaveStore
-    profiliStore: ProfiliStore
     projektiStore: ProjektiStore
     anetaresiaStore: AnetaresiaStore
     honorandawardStore:HonorandAwardStore
@@ -48,7 +46,6 @@ export const store: Store = {
     publikimiStore: new PublikimiStore(),
     specializimiStore: new SpecializimiStore(),
     mbikeqyresitemaveStore: new MbikeqyresiTemaveStore(),
-    profiliStore: new ProfiliStore(),
     projektiStore: new ProjektiStore(),
     anetaresiaStore: new AnetaresiaStore(),
     honorandawardStore: new HonorandAwardStore(),
