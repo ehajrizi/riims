@@ -50,8 +50,7 @@ export default observer(function PjesemarresitForm() {
         } 
     }
 
-   
-
+ 
     if (loadingInitial) return <LoadingComponent content='Loading pjesemarresin...' />
 
     return(
@@ -82,7 +81,7 @@ export default observer(function PjesemarresitForm() {
                         <Button onClick={() => modalStore.closeModal()} 
                          floated='right'
                              content='Close' type='button'/>
-                        <Button onClick={() => modalStore.openModal(<DonatoretForm/>)}   floated='right' type='button' content='Prev' />
+                        <Button onClick={() => modalStore.openModal(<DonatoretForm/>) }   floated='right' type='button' content='Prev' />
                     </Form>
                 )}
             </Formik>

@@ -118,9 +118,6 @@ export default observer(function Home() {
                             <Segment className={'anetaresia'}  basic> 
                                 <AnetaresiaDashboard />
                             </Segment>
-                            <Segment className={'honorsandawards'} basic>
-                                <HonorandAwardDashboard />
-                            </Segment>
 
                             <Segment className={'pjesemarresitPublikimet'} hidden basic>
                                 <PjesemarresitPublikimetDashboard />

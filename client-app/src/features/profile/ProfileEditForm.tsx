@@ -5,19 +5,19 @@ import MyTextArea from "../../app/api/common/form/MyTextArea";
 import MyTextInput from "../../app/api/common/form/MyTextInput";
 import { useStore } from "../../app/stores/store";
 import * as Yup from 'yup';
-import MessageSuccess from "./MessageSuccess";
+import swal from 'sweetalert';
 
 // interface Props {
 //     setEditMode: (editMode: boolean) => void;
 // }
 
-export default observer(function userEditForm() {
+export default observer(function ProfileEditForm() {
     const { profileStore: { updateProfile } } = useStore();
     const { userStore: { user } } = useStore();
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        window.alert('Hello');
-    }
+function messageSuccess(){
+    swal("Profile Updated Succesfully")
+}   
 
     return (
         <Segment style={{ marginLeft: '10em', marginRight: '10em', marginTop: '5em', marginBottom: '5em', paddingRight: '3em', paddingTop: '3em', paddingLeft: '3em' }}>
@@ -30,7 +30,7 @@ export default observer(function userEditForm() {
                         initialValues={{
                             emri: user?.emri!, mbiemri: user?.mbiemri!, emriMesem: user?.emriMesem!,
                             dateLindja: user?.datelindja!, gjinia: user?.gjinia!, titulliShkencor: user?.titulliShkencor!,
-                            vendlindja: user?.vendlindja!, shtetiILindjes: user?.shtetiLindjes!, rrugaCurrent: user?.rrugaCurrent!,
+                            vendlindja: user?.vendlindja!, shtetiLindjes: user?.shtetiLindjes!, rrugaCurrent: user?.rrugaCurrent!,
                             qytetiCurrent: user?.qytetiCurrent!, zipKodiCurrent: user?.zipKodiCurrent!, shtetiCurrent: user?.shtetiCurrent!,
                             pershkrimi: user?.pershkrimi!, linkedIn: user?.linkedIn!, phoneNumber: user?.phoneNumber!, sent: false, message: ''
                             // , id: user?.id!,
@@ -47,7 +47,7 @@ export default observer(function userEditForm() {
                             gjinia: Yup.string().required(),
                             titulliShkencor: Yup.string().required(),
                             vendlindja: Yup.string().required(),
-                            shtetiILindjes: Yup.string().required(),
+                            shtetiLindjes: Yup.string().required(),
                             rrugaCurrent: Yup.string().required(),
                             qytetiCurrent: Yup.string().required(),
                             zipKodiCurrent: Yup.string().required(),
@@ -65,7 +65,7 @@ export default observer(function userEditForm() {
                                 <MyTextInput placeholder='Gjinia' name='gjinia' />
                                 <MyTextInput placeholder='Titulli Shkencor' name='titulliShkencor' />
                                 <MyTextInput placeholder='Vendlindja' name='vendlindja' />
-                                <MyTextInput placeholder='Shteti i lindjes' name='shtetiILindjes' />
+                                <MyTextInput placeholder='Shteti i lindjes' name='shtetiLindjes' />
                                 <Header>Adresa</Header>
                                 <MyTextInput placeholder='Rruga' name='rrugaCurrent' />
                                 <MyTextInput placeholder='Qyteti' name='qytetiCurrent' />
@@ -81,7 +81,7 @@ export default observer(function userEditForm() {
                                     content='Update user'
                                     floated='right'
                                     disabled={!isValid || !dirty}
-                                    onClick={() => handleSubmit}
+                                    onClick={messageSuccess }
                                 />
                             </Form>
                         )}

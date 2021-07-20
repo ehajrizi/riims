@@ -59,7 +59,7 @@ export default observer (function HonorandAwardForm(){
     if(loadingInitial) return <LoadingComponent content ='Loading...'/>
     return (
         <Segment clearing>
-            <Header content='Mbikeqyresi i Temave' sub color='teal' />
+            <Header content='Honors & Awards' sub color='teal' />
             <Formik
                 validationSchema={validationSchema}
                 initialValues={honorandaward}

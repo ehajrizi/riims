@@ -13,7 +13,6 @@ import MyTextInput from '../../../app/api/common/form/MyTextInput';
 import MyTextArea from '../../../app/api/common/form/MyTextArea';
 
 
-
 export default observer(function EksperiencaForm(){
     const history = useHistory();
 
@@ -43,7 +42,7 @@ export default observer(function EksperiencaForm(){
         titulli: Yup.string().required('Titulli duhet te plotesohet!'),
         lokacioni: Yup.string().required('Lokacioni duhet te plotesohet!'),
         dataFillestare: Yup.string().required('Data e fillimit kerkohet').nullable(),
-        // dataPerfundimtare: Yup.string().required('Date is required').nullable(),
+         //dataPerfundimtare: Yup.string(),
         pershkrimi: Yup.string().required('Pershkrimi duhet te plotesohet!'),
         personiKontaktues: Yup.string().required('Personi kontaktues duhet te plotesohet!'),
         email: Yup.string().email().required('Email duhet te plotesohet!'),
@@ -66,8 +65,17 @@ export default observer(function EksperiencaForm(){
             modalStore.closeModal();
         }
     }
-
-
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+  
+    const handleStartDate = (date: React.SetStateAction<null>) => {
+        setStartDate(date);
+        setEndDate(null);
+    };
+  
+    const handleEndDate = (date: React.SetStateAction<null>) => {
+      setEndDate(date);
+    };
     if(loadingInitial) return <LoadingComponent content='Loading eksperienca...'/>
 
 
@@ -86,10 +94,19 @@ export default observer(function EksperiencaForm(){
                     <MyTextInput placeholder='Lokacioni' name='lokacioni'/>
                     <MyTextArea placeholder='Pershkrimi'name='pershkrimi' rows={4}/>
                     <MyDateInput placeholderText='Data e fillimit' name='dataFillestare'
-                            dateFormat='MMMM d, yyyy'/>
-                    <MyDateInput placeholderText='Data e perfundimit' name='dataPerfundimtare' 
                             dateFormat='MMMM d, yyyy'
-                            minDate = {eksperienca.dataFillestare}/>
+                            selected={startDate}
+                           // minDate={new Date()}
+                            //shouldCloseOnSelect={true}
+                            />
+                    <MyDateInput  placeholderText='Data e perfundimit' name='dataPerfundimtare' 
+                            
+                            // minDate = {(eksperienca.dataFillestare)} 
+                            // selected={eksperienca.dataPerfundimtare}
+                            selected={endDate}
+                            minDate = {startDate}
+                             dateFormat='MMMM d, yyyy'  //disabledKeyboardNavigation={true}
+                            />
                     <MyTextInput placeholder='Personi kontaktues'  name='personiKontaktues'/>
                     <MyTextInput placeholder='Email' name='email'/>
                     <MyTextInput placeholder='Numri i Telefonit' name='numriTelefonit'/>

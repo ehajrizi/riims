@@ -78,13 +78,11 @@ export default observer(function ProjektetForm() {
                         <MyDateInput
                             placeholderText='Prej Dates'
                             name='dataFillimit'
-                            showTimeSelect
                             dateFormat='MM, dd, yyyy'
                         />
                         <MyDateInput
                             placeholderText='Deri Me'
                             name='dataMbarimit'
-                            showTimeSelect
                             minDate= {projekti.dataFillimit}
                             dateFormat='MM, dd, yyyy'
                         />
