@@ -88,3 +88,7 @@ Header{
   padding-left: 20px;
 }
 
+.segment-style {
+  width: 70%;
+  margin: 0 auto !important;
+}

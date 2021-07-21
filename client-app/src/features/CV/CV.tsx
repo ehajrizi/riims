@@ -6,11 +6,16 @@ import { useStore } from '../../app/stores/store';
 import AnetaresiaCvList from '../anetaresite/cvList/AnetaresiaCvList';
 import EdukimiCvList from '../edukimet/cvList/EdukimiCvList';
 import EksperiencaCvList from '../eksperiencat/cvList/EksperiencaCvList';
+import GjuhaCvList from '../gjuhet/cvList/GjuhaCvList';
+import SpecializimiCvList from '../specializimet/cvList/SpecializimiCvList';
+import HonorsAndAwardsCvList from '../honorsandawards/cvList/HonorsAndAwardsCvList';
 import CertifikimiCvList from '../certifikimet/cvList/CertifikimiCvList';
 import PublikimiCvList from '../Publikimet/cvList/PublikimiCvList';
+import ProjektiCvList from '../projektet/cvList/ProjektiCvList';
 import { User } from '../../app/models/user';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import ProfiliCv from '../profile/cvProfile/profiliCv';
 
 interface Props {
     user: User;
@@ -18,12 +23,16 @@ interface Props {
 
 export default observer(function CV({user}: Props) {
 
-    const {userStore, eksperiencaStore, edukimiStore, anetaresiaStore, certifikimiStore, publikimiStore} = useStore();
+    const {userStore, eksperiencaStore, edukimiStore, specializimiStore, gjuhaStore, anetaresiaStore, honorandawardStore, certifikimiStore, publikimiStore, pjesemarresiStore, projektiStore} = useStore();
     const {eksperiencatByDate} = eksperiencaStore;
     const {edukimetByDate} = edukimiStore;
+    const {specializimetByDate} = specializimiStore;
+    const {gjuhetByGjuha} = gjuhaStore;
     const {anetaresiteByEmriInstOrg} = anetaresiaStore;
+    const {honorsandawardsByTitulli} = honorandawardStore;
     const {certifikimetByDate} = certifikimiStore;
     const {publikimetByDate} = publikimiStore;
+    const {projektetByDate} = projektiStore;
 
     
     function printCV () {
@@ -61,25 +70,7 @@ export default observer(function CV({user}: Props) {
             {userStore.isLoggedIn ? (
             <div id='pdf' >
                 <Segment  className='segment-style'>
-                <Grid columns={2} relaxed='very'>
-                        <Grid.Column >
-                            <Header as='h2' icon='user circle'>Jane Doe</Header>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <List>
-                            <List.Item icon='marker' content='Prishtina' />
-                            <List.Item icon='phone' content='044111222' />
-                            <List.Item
-                                icon='mail'
-                                content={<a href='mailto:janedoe@test.com'>janedoe@test.com</a>}
-                            />
-                            <List.Item
-                                icon='linkify'
-                                content={<a href='www.lindkedin.com'>linkedin.com</a>}
-                            />
-                            </List>
-                        </Grid.Column>
-                    </Grid>
+                    <ProfiliCv  user={userStore.UserLoggedIn!}/>
                 </Segment>
 
                 <Segment className='segment-style'>
@@ -95,6 +86,33 @@ export default observer(function CV({user}: Props) {
 
                 </Segment>
             
+            
+                <Segment  className='segment-style'>
+                    <Header as='h3' style={{ color: 'teal'}}>Specialization</Header>
+                    
+                    {specializimetByDate.map(specializimi => (
+                        <>
+                            {specializimi.useriId === userStore.UserId ? (
+                                <SpecializimiCvList key={specializimi.id} specializimi={specializimi} />
+                            ) : ('')}
+                        </>
+                    ))}
+
+                </Segment>
+                    
+                <Segment  className='segment-style'>
+                    <Header as='h3' style={{ color: 'teal'}}>Languages</Header>
+                    
+                    {gjuhetByGjuha.map(gjuha => (
+                        <>
+                            {gjuha.useriId === userStore.UserId ? (
+                                <GjuhaCvList key={gjuha.id} gjuha={gjuha} />
+                            ) : ('')}
+                        </>
+                    ))}
+
+                </Segment>
+
                 <Segment className='segment-style'>
                     <Header as='h3' style={{ color: 'teal'}}>Experiences</Header>
                     
@@ -108,6 +126,7 @@ export default observer(function CV({user}: Props) {
 
                 </Segment>
 
+
                 <Segment  className='segment-style'>
                     <Header as='h3' style={{ color: 'teal'}}>Membership</Header>
 
@@ -120,6 +139,21 @@ export default observer(function CV({user}: Props) {
                     ))}
 
                 </Segment>
+            
+
+                <Segment  className='segment-style'>
+                    <Header as='h3' style={{ color: 'teal'}}>Honors & Awards</Header>
+                    
+                    {honorsandawardsByTitulli.map(honorandaward => (
+                        <>
+                            {honorandaward.useriId === userStore.UserId ? (
+                                <HonorsAndAwardsCvList key={honorandaward.id} honorandaward={honorandaward} />
+                            ) : ('')}
+                        </>
+                    ))}
+
+                </Segment>
+
 
                 <Segment  className='segment-style'>
                     <Header as='h3' style={{ color: 'teal'}}>Certificates</Header>
@@ -141,6 +175,19 @@ export default observer(function CV({user}: Props) {
                         <>
                             {publikimi.useriId === userStore.UserId ? (
                                 <PublikimiCvList key={publikimi.id} publikimi={publikimi} />
+                            ) : ('')}
+                        </>
+                    ))}
+
+                </Segment>
+
+                <Segment  className='segment-style'>
+                    <Header as='h3' style={{ color: 'teal'}}>Projects</Header>
+
+                    {projektetByDate.map(projekti => (
+                        <>
+                            {projekti.useriId === userStore.UserId ? (
+                                <ProjektiCvList key={projekti.id} projekti={projekti} />
                             ) : ('')}
                         </>
                     ))}
