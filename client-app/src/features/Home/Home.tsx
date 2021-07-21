@@ -2,7 +2,6 @@ import { observer } from 'mobx-react-lite';
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Button, Card, Divider, Grid, Header, Segment } from "semantic-ui-react";
-import ModalContainer from "../../app/api/common/modals/ModalContainer";
 import Footer from "../../app/layout/Footer";
 import NavBar from "../../app/layout/NavBar";
 import scrollToPublikimet, { scrollToAnetaresia, scrollToCertifikimet, scrollToEdukimi, scrollToEksperiencat, scrollToHonorsAndAwards, scrollToMbikeqyresITemave, scrollToProjektet, scrollToSpecializimet, scrollToTop } from "../../app/styling-functions/Scrolling";

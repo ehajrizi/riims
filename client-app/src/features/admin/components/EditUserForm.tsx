@@ -46,18 +46,13 @@ export default observer(function EditUserForm({usr}: Props){
         email: usr.email
     }); 
 
-    // const phoneReg = /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
-
-    // const validationSchema = Yup.object({
-    //     emriInstitucionit: Yup.string().required('Emri i institucionit duhet te plotesohet!'),
-    //     titulli: Yup.string().required('Titulli duhet te plotesohet!'),
-    //     lokacioni: Yup.string().required('Lokacioni duhet te plotesohet!'),
-    //     dataFillestare: Yup.string().required('Data e fillimit kerkohet').nullable(),
-    //     pershkrimi: Yup.string().required('Pershkrimi duhet te plotesohet!'),
-    //     personiKontaktues: Yup.string().required('Personi kontaktues duhet te plotesohet!'),
-    //     email: Yup.string().email().required('Email duhet te plotesohet!'),
-    //     numriTelefonit: Yup.string().matches(phoneReg, 'Numri i telefonit nuk eshte valid').required(),
-    // })
+    const validationSchema = Yup.object({
+        emri: Yup.string().required('Emri duhet te plotesohet!'),
+        mbiemri: Yup.string().required('Mbiemri duhet te plotesohet!'),
+        roli: Yup.string().required('Roli duhet te plotesohet!'),
+        datelindja: Yup.string().required('Datelindja kerkohet').nullable(),
+        email: Yup.string().email().required('Email duhet te plotesohet!'),
+    })
 
     useEffect(() => {
         if(email) loadUser(email).then(user => setUser(user!))
@@ -73,7 +68,7 @@ export default observer(function EditUserForm({usr}: Props){
     return(
         <Segment clearing>
             <Formik
-                // validationSchema= {validationSchema}
+                validationSchema= {validationSchema}
                 enableReinitialize
                 initialValues= {user}
                 onSubmit = {values => handleSubmitUser(values)}>

@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import React, { ChangeEvent, FunctionComponent, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { Button, Modal, Segment } from 'semantic-ui-react';
+import { Button, Header, Modal, Segment } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
 import { v4 as uuid } from 'uuid';
@@ -62,6 +62,7 @@ export default observer(function PjesemarresitPublikimetForm() {
 
     return (
         <Segment clearing>
+            <Header content='Pjesemarresit' sub color='blue' />
             <Formik
                 validationSchema={validationSchema}
                 initialValues={pjesemarresiPublikimi}

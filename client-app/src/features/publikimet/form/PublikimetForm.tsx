@@ -1,21 +1,18 @@
 import { observer } from 'mobx-react';
-import React, { ChangeEvent, FunctionComponent, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { Button, Header, Modal, Segment } from 'semantic-ui-react';
+import { Button, Header, Segment } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
 import { v4 as uuid } from 'uuid';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import MyTextInput from '../../../app/api/common/form/MyTextInput';
-import MyTextArea from '../../../app/api/common/form/MyTextArea';
 import MySelectInput from '../../../app/api/common/form/MySelectInput';
 import MyDateInput from '../../../app/api/common/form/MyDateInput';
 import { Publikimi } from '../../../app/models/publikimi';
 import { Departamenti, Institucioni, Kategorite, LlojiPublikimit, Statusi } from '../../../app/api/common/options/publikimiOptions';
 import IsbntForm from '../../isbnt/form/IsbntForm';
-import IsbntDashboard from '../../isbnt/dashboard/IsbntDashboard';
 
 export default observer(function PublikimetForm() {
     const history = useHistory();
@@ -58,7 +55,6 @@ export default observer(function PublikimetForm() {
         linkuPublikimit: Yup.string().required('Linku Publikimit duhet te plotesohet!'),
         volumiFaqeve: Yup.string().required('Volumi Faqeve duhet te plotesohet!'),
         referenca: Yup.string().required('Referenca duhet te plotesohet!'),
-        //autorKryesor: Yup.string().required('duhet te plotesohet!'),
     })
 
     useEffect(() => {
@@ -72,8 +68,6 @@ export default observer(function PublikimetForm() {
                 id: uuid()
             };
             createPublikimi(newPublikimi).then(() => history.push(`/publikimet/`));
-            // .then(() => window.location.reload(true));
-            // {window.location.reload(true)}
             modalStore.openModal(<IsbntForm/>);
         }
     }
@@ -82,6 +76,7 @@ export default observer(function PublikimetForm() {
 
     return (
         <Segment clearing>
+            <Header content='Publikimi' sub color='blue' />
             <Formik
                 validationSchema={validationSchema}
                 initialValues={publikimi}
@@ -112,7 +107,6 @@ export default observer(function PublikimetForm() {
                         <MyTextInput placeholder='Linku i Publikimit' name='linkuPublikimit' />
                         <MyTextInput placeholder='Volumi i Faqeve' name='volumiFaqeve' />
                         <MyTextInput placeholder='Referenca' name='referenca' />
-                        <MyTextInput placeholder='Autori Kryesor' name='autorKryesor' />
                         <Button
                             disabled={isSubmitting || !dirty || !isValid}
                             loading={loading}

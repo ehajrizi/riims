@@ -56,7 +56,7 @@ export default observer(function SpecializimiEditForm({ specializimi }: Props) {
 
     return(
         <Segment clearing>
-            <Header content='Specializimet' sub color='teal' />
+            <Header content='Specializimi' sub color='teal' />
             <Formik
                 validationSchema={validationSchema}
                 enableReinitialize

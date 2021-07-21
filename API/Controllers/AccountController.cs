@@ -130,7 +130,7 @@ namespace API.Controllers
             }
         }
 
-        // [Authorize]
+        [Authorize]
         [HttpGet("users")]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
@@ -169,7 +169,7 @@ namespace API.Controllers
             }
         }
 
-        // [Authorize]
+        [Authorize]
         [HttpDelete("{email}")]
         public async Task<IActionResult> DeleteUser(string email)
         {

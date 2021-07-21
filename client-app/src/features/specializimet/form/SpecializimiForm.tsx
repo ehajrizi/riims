@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { Button, Form, Segment } from 'semantic-ui-react';
+import { Button, Form, Header, Segment } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
 import {v4 as uuid} from 'uuid';
@@ -58,6 +58,7 @@ export default observer(function SpecializimiForm() {
 
     return (
         <Segment clearing>
+            <Header content='Specializimi' sub color='blue' />
         <Formik
             validationSchema={validationSchema}
             enableReinitialize

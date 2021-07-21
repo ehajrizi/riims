@@ -67,7 +67,7 @@ export default observer( function UsersTable()
               {userat.map(user =>(
                       <TableRow key={(user.email)}>
                         <Table.Cell>
-                          <Button onClick={()=> modalStore.openModal(<EkspoTable userid={user.id}/>)} content={user.id}></Button>
+                          <Button onClick={()=> modalStore.openModal(<EkspoTable userid={user.id} emri={user.emri!} mbiemri={user.mbiemri!}/>)} content={user.id}></Button>
                         </Table.Cell>
                         <Table.Cell>{user.image}</Table.Cell>
                         <Table.Cell>{user.titulliShkencor}</Table.Cell>

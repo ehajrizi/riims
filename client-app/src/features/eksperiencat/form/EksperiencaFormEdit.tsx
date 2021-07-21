@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Checkbox, Form, Segment } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Header, Segment } from 'semantic-ui-react';
 import { Eksperienca } from '../../../app/models/eksperienca';
 import { useStore } from '../../../app/stores/store';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
@@ -65,6 +65,7 @@ export default observer(function EksperiencaFormEdit({eksp}: Props){
 
     return(
         <Segment clearing>
+            <Header content='Eksperienca' sub color='blue' />
             <Formik
                 validationSchema= {validationSchema}
                 enableReinitialize
@@ -73,7 +74,6 @@ export default observer(function EksperiencaFormEdit({eksp}: Props){
                 {({handleSubmit, isValid, dirty, isSubmitting}) => (
                 <Form className='ui form' onSubmit={handleSubmit} autoComplete='off'>
                     <MyTextInput placeholder='Titulli' name='titulli'/>
-                    <Checkbox label='Pune primare'/>
                     <MyTextInput placeholder='Emri i institucionit' name='emriInstitucionit'/>
                     <MyTextInput placeholder='Lokacioni' name='lokacioni'/>
                     <MyTextArea placeholder='Pershkrimi'name='pershkrimi' rows={4}/>

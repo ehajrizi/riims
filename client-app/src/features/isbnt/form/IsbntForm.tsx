@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react';
 import { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { Button, Segment } from 'semantic-ui-react';
+import { Button, Header, Segment } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
 import { v4 as uuid } from 'uuid';
@@ -63,6 +63,7 @@ export default observer(function IsbntForm() {
 
     return (
         <Segment clearing>
+            <Header content='ISBN' sub color='blue' />
             <Formik
                 validationSchema={validationSchema}
                 initialValues={isbn}

@@ -22,14 +22,6 @@ namespace API
             _context = context;
         }
 
-        // public async Task<AppUser> AddUser(AppUser user)
-        // {
-        //     // var result = await appDbContext.Employees.AddAsync(employee);
-        //     var result = await _context.Users.AddAsync(user);
-        //     await _context.SaveChangesAsync();
-        //     return result.Entity;
-        // }
-
         public async Task<IEnumerable<AppUser>> GetUsers()
         {
             return await _userManager.Users.ToListAsync();
@@ -72,18 +64,6 @@ namespace API
 
             return null;
         }
-
-        public async Task<IEnumerable<AppUser>> Search(string emri)
-    {
-        IQueryable<AppUser> query = _userManager.Users;
-            
-        if (!string.IsNullOrEmpty(emri))
-        {
-            query = query.Where(e => e.Emri.Contains(emri));
-        }
-
-        return await query.ToListAsync();
-    }
 
         public async void DeleteUser(string Email)
         {

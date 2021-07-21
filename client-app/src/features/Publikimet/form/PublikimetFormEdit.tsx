@@ -1,8 +1,7 @@
 import { observer } from 'mobx-react';
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { Button, Header, Modal, Segment } from 'semantic-ui-react';
+import { Button, Header, Segment } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponents';
 import { useStore } from '../../../app/stores/store';
 import { Formik, Form } from 'formik';
@@ -59,7 +58,6 @@ export default observer(function PublikimetEditForm({ publikimi }: Props) {
         linkuPublikimit: Yup.string().required('Linku Publikimit duhet te plotesohet!'),
         volumiFaqeve: Yup.string().required('Volumi Faqeve duhet te plotesohet!'),
         referenca: Yup.string().required('Referenca duhet te plotesohet!'),
-        //autorKryesor: Yup.string().required('duhet te plotesohet!'),
     })
 
     useEffect(() => {
@@ -75,6 +73,7 @@ export default observer(function PublikimetEditForm({ publikimi }: Props) {
 
     return(
         <Segment clearing>
+            <Header content='Publikimi' sub color='blue' />
             <Formik
                 validationSchema={validationSchema}
                 enableReinitialize
@@ -106,7 +105,6 @@ export default observer(function PublikimetEditForm({ publikimi }: Props) {
                         <MyTextInput placeholder='Linku i Publikimit' name='linkuPublikimit' />
                         <MyTextInput placeholder='Volumi i Faqeve' name='volumiFaqeve' />
                         <MyTextInput placeholder='Referenca' name='referenca' />
-                        <MyTextInput placeholder='Autori Kryesor' name='autorKryesor' />
                         <Button
                             disabled={isSubmitting || !isValid}
                             loading={loading}

@@ -51,7 +51,7 @@ export default observer(function AnetaresiaEditForm({ anetaresia }: Props) {
 
     return(
         <Segment clearing>
-            <Header content='Anetaresimet' sub color='teal' />
+            <Header content='Anetaresimi' sub color='teal'/>
             <Formik
                 validationSchema={validationSchema}
                 enableReinitialize

@@ -55,7 +55,7 @@ export default observer(function CertifikimiEditForm({ cert }: Props) {
     return(
         <>
         <Segment clearing>
-            <Header content='Certifikimet' sub color='teal' />
+            <Header content='Certifikimi' sub color='teal' />
             <Formik
                 validationSchema={validationSchema}
                 enableReinitialize
