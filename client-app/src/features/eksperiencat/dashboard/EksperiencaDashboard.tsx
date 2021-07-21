@@ -16,8 +16,6 @@ export default observer (function EksperiencaDashboard(){
     if(eksperiencaRegistry.size <= 1) loadEksperiencat();
   }, [eksperiencaRegistry.size, loadEksperiencat])
 
-  if(eksperiencaStore.loadingInitial) return <LoadingComponent content='Loading app'/>
-
     return(
         <Grid centered style={{marginTop: 50}}>
             <Grid.Column width='16' className={'grid-container'}>

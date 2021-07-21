@@ -15,8 +15,6 @@ export default observer(function PjesemarresitDashboard(){
      if(pjesemarresiRegistry.size <= 1) loadPjesemarresit();
    }, [pjesemarresiRegistry.size, loadPjesemarresit])
  
-   if(pjesemarresiStore.loadingInitial) return <LoadingComponent content='Loading app'/>
-
     return (
         <Grid centered style={{ marginTop: 50 }}>
             <Grid.Column width='16' className={'grid-container'}>

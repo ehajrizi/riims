@@ -14,8 +14,7 @@ export default observer (function HonorandAwardDashboard() {
     useEffect(() =>{
     if(honorandawardRegistry.size <=1 ) loadHonorsandAwards();
   }, [honorandawardRegistry.size, honorandawardStore])
-    
-if(honorandawardStore.loadingInitial) return <LoadingComponent content='Loading Honors & Awards'/>
+
     return (
         <Grid centered style={{ marginTop: 50 }}>
             <Grid.Column width='16' className={'grid-container'}>

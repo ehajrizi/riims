@@ -87,7 +87,6 @@ export default class UserStore {
                     this.setUser(user);
                   })
                   this.setLoadingInitial(false);
-                  
         }catch(error){
             console.log(error);
                 this.setLoadingInitial(false);

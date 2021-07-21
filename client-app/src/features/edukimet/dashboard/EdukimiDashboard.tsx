@@ -15,8 +15,6 @@ export default observer (function EdukimiDashboard(){
     if(edukimiRegistry.size <= 1) loadEdukimet();
   }, [edukimiRegistry.size, loadEdukimet])
 
-  if(edukimiStore.loadingInitial) return <LoadingComponent content='Loading app'/>
-
     return(
       <Grid centered style={{ marginTop: 50 }}>
       <Grid.Column width='16' className={'grid-container'}>

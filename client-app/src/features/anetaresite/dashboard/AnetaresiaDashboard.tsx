@@ -13,7 +13,6 @@ export default observer( function AnetaresiaDashboard()
        if (anetaresiaRegistry.size <= 1) loadAnetaresite();
     }, [anetaresiaRegistry.size, loadAnetaresite])
 
-    if (anetaresiaStore.loadingInitial) return <LoadingComponent content='Loading app'/>
     return(
         <Grid centered style={{ marginTop: 50 }}>
             <Grid.Column width='16' className={'grid-container'}>

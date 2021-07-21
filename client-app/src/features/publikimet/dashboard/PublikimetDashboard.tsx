@@ -17,8 +17,6 @@ export default observer(function PublikimetDashboard(){
      if(publikimiRegistry.size <= 1) loadPublikimet();
    }, [publikimiRegistry.size, loadPublikimet])
  
-   if(publikimiStore.loadingInitial) return <LoadingComponent content='Loading app'/>
-
     return (
         <Grid centered style={{ marginTop: 50 }}>
             <Grid.Column width='16' className={'grid-container'}>

@@ -1,59 +1,49 @@
 
 import { format } from 'date-fns';
 import { observer } from 'mobx-react-lite';
-import React, { SyntheticEvent, useState } from 'react'
+import React, { SyntheticEvent, useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom';
-import { Button, Grid, Header, Icon, Input, Table, TableCell, TableRow } from 'semantic-ui-react'
+import { Button, Header, Icon, Statistic, Table, TableCell, TableRow } from 'semantic-ui-react'
+import LoadingComponent from '../../app/layout/LoadingComponents';
 import { useStore } from '../../app/stores/store';
-import EksperiencaForm from '../eksperiencat/form/EksperiencaForm';
 import EditUserForm from './components/EditUserForm';
+import EkspoTable from './EkspoTable';
 
 
 export default observer( function UsersTable()
 {
-    const history = useHistory();
     const {userStore, modalStore} = useStore();
-    const { userat, deleteUser, loading} = userStore;
-    const [search, setSearch] = useState('');
-
+    const { userat, deleteUser, loading, loadUsers,userRegistry} = userStore;
     const [target, setTarget] = useState('');
 
-    // return userat.filter(user => (
-    //    user.emri?.toLowerCase().includes(search.toLowerCase())
-    // ))
-
+   useEffect(() =>{
+     if(userRegistry.size <= 1) loadUsers();
+   }, [userRegistry.size, loadUsers])
+ 
     function handleUserDelete(e: SyntheticEvent<HTMLButtonElement>, email:string){
       setTarget(e.currentTarget.name);  
       deleteUser(email);
-  }
+   }
+
+  if(userStore.loadingInitial) return <LoadingComponent content='Loading app'/>
+
     return(
         <>
-        <Grid>
-          <Grid.Row style={{marginTop: '10px'}}>
-                <Grid.Column width='15'>
-                    <Header content='Users'/>
-                </Grid.Column>
-                <Grid.Column>
-                    {/* {search} */}
-                    {/* <Input type="text" placeholder="Search" onChange={e => setSearch(e.target.value) }/>
-                    {filteredUsers.map((user, idx)=>(
-                        <>
-                          
-                        </>
-                    ) ) } */}
-                </Grid.Column>
-                <Grid.Column>
-                    <Button onClick={() => modalStore.openModal(<EksperiencaForm/>)} className="btn" >
-                        <Icon className='btnIcon' name='plus' size='large' />
-                    </Button>
-                </Grid.Column>
-          </Grid.Row>
-          </Grid>
+        <div>
+          <Header as='h2' icon textAlign='center' style={{marginTop: '70px'}}>
+          <Statistic text-align='center'>
+              <Statistic.Label>No. of members</Statistic.Label>
+              <Statistic.Value>{userRegistry.size}</Statistic.Value>
+            </Statistic> 
+            <Icon name='users' circular />
+            <Header.Content>Members</Header.Content>
+          </Header>
+        </div>
 
-          {/* <Grid.Row style={{marginLeft: '20px', marginRight: '20px'}}> */}
-          <Table singleLine columns={16}>
+          <Table columns={16} style={{margin: '2px'}}>
             <Table.Header>
               <Table.Row>
+                <Table.HeaderCell>Id</Table.HeaderCell>
                 <Table.HeaderCell>Image</Table.HeaderCell>
                 <Table.HeaderCell>Title</Table.HeaderCell>
                 <Table.HeaderCell>Name</Table.HeaderCell>
@@ -74,9 +64,11 @@ export default observer( function UsersTable()
             </Table.Header>
 
             <Table.Body>
-            
               {userat.map(user =>(
                       <TableRow key={(user.email)}>
+                        <Table.Cell>
+                          <Button onClick={()=> modalStore.openModal(<EkspoTable userid={user.id}/>)} content={user.id}></Button>
+                        </Table.Cell>
                         <Table.Cell>{user.image}</Table.Cell>
                         <Table.Cell>{user.titulliShkencor}</Table.Cell>
                         <Table.Cell><Link to="/hello">{user.emri}</Link></Table.Cell>
@@ -92,7 +84,7 @@ export default observer( function UsersTable()
                         <Table.Cell>{user.linkedIn}</Table.Cell>
                         <Table.Cell>CV</Table.Cell>
                         <Table.Cell>
-                        <Button onClick={()=> modalStore.openModal(<EditUserForm usr={user}/>)} className="btn" size='small'><Icon className='btnIcon' name='edit' /></Button>
+                          <Button onClick={()=> modalStore.openModal(<EditUserForm usr={user}/>)} className="btn" size='small'><Icon className='btnIcon' name='edit' /></Button>
                         </Table.Cell>
                         <TableCell>
                           <Button name={user.email}
@@ -106,6 +98,8 @@ export default observer( function UsersTable()
                       </TableRow>
                     ))} 
             </Table.Body>
-           </Table>     
+           </Table>  
+
+             
       </>
     )})

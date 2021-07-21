@@ -15,8 +15,6 @@ export default observer(function ProjektetDashboard() {
         if (projektiRegistry.size <= 1) loadProjektet();
     }, [projektiRegistry.size, loadProjektet])
 
-    if (projektiStore.loadingInitial) return <LoadingComponent content='Loading app' />
-
     return (
         <Grid centered style={{ marginTop: 50 }}>
             <Grid.Column width='16' className={'grid-container'}>

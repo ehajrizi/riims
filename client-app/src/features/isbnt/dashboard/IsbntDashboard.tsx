@@ -15,8 +15,6 @@ export default observer(function IsbntDashboard() {
         if (isbnRegistry.size <= 1) loadIsbnt();
     }, [isbnRegistry.size, loadIsbnt])
 
-    // if (isbnStore.loadingInitial) return <LoadingComponent content='Loading app' />
-
     return (
         <Grid centered style={{ marginTop: 50 }}>
             <Grid.Column width='16' className={'grid-container'}>

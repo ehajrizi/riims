@@ -13,7 +13,6 @@ export default observer( function SpecializimiDashboard()
        if (specializimiRegistry.size <= 1) loadSpecializimet();
     }, [specializimiRegistry.size, loadSpecializimet])
 
-    if (specializimiStore.loadingInitial) return <LoadingComponent content='Loading app'/>
     return(
         <Grid centered style={{ marginTop: 50 }}>
             <Grid.Column width='16' className={'grid-container'}>

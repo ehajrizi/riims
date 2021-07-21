@@ -152,7 +152,6 @@ const Isbnt= {
     delete: (id: string) => axios.delete<void>(`/isbnt/${id}`)
 }
 const Account = {
-    // current: () => requests.get<User>('/account'),
     current: () => axios.get<User>('/account').then(responseBody),
     login: (user: UserFormValues) => axios.post<User>('/account/login', user).then(responseBody),
     register: (user: UserFormValues) => axios.post<User>('/account/register', user).then(responseBody),

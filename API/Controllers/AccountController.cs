@@ -130,7 +130,7 @@ namespace API.Controllers
             }
         }
 
-        [Authorize]
+        // [Authorize]
         [HttpGet("users")]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
@@ -144,26 +144,6 @@ namespace API.Controllers
 					"Error retrieving data from the database");
             }
         }
-
-        // [HttpPost]
-        // public async Task<ActionResult<AppUser>> AddUser(AppUser user)
-        // {
-        //     try
-        //     {
-        //         if (user == null)
-        //             return BadRequest();
-
-        //         var createdUser = await _userRepository.AddUser(user);
-
-        //         return CreatedAtAction(nameof(GetUser),
-        //             new { email = createdUser.Email }, createdUser);
-        //     }
-        //     catch (Exception)
-        //     {
-        //         return StatusCode(StatusCodes.Status500InternalServerError,
-        //             "Error creating new user record");
-        //     }
-        // }
 
         [Authorize]
         [HttpPut("{email}")]
@@ -189,31 +169,8 @@ namespace API.Controllers
             }
         }
 
-        [Authorize]
-        [HttpGet("{search}")]
-        public async Task<ActionResult<IEnumerable<AppUser>>> Search(string emri)
-        {
-            try
-            {
-                var result = await _userRepository.Search(emri);
-
-                if (result.Any())
-                {
-                    return Ok(result);
-                }
-
-                return NotFound();
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from the database");
-            }
-        }
-
-        [Authorize]
+        // [Authorize]
         [HttpDelete("{email}")]
-
         public async Task<IActionResult> DeleteUser(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
@@ -223,15 +180,12 @@ namespace API.Controllers
             }
             else{
                  var result = await _userManager.DeleteAsync(user);
-
                  if(result.Succeeded){
                      return RedirectToAction("GetUsers");
                  }
             }
-
             return ViewComponent("GetUsers");
         }
-
         private IActionResult ViewComponent(string v)
         {
             throw new NotImplementedException();

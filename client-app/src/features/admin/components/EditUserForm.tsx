@@ -65,11 +65,10 @@ export default observer(function EditUserForm({usr}: Props){
     
     function handleSubmitUser(user: User){
         updateUser(user).then(() => history.push(`/adminDashboard/users`))
-        modalStore.closeModal();
+        modalStore.closeModal(); 
     }
 
     if(loadingInitial) return <LoadingComponent content='Loading user...'/>
-
 
     return(
         <Segment clearing>

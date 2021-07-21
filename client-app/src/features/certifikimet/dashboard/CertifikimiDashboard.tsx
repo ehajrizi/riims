@@ -14,7 +14,6 @@ export default observer( function CertifikimiDashboard()
        if (certifikimiRegistry.size <= 1) loadCertifikimet();
     }, [certifikimiRegistry.size, loadCertifikimet])
 
-    if (certifikimiStore.loadingInitial) return <LoadingComponent content='Loading app'/>
     return(
         <Grid centered style={{ marginTop: 50 }}>
             <Grid.Column width='16' className={'grid-container'}>
