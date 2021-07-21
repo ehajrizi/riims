@@ -65,7 +65,7 @@ export default observer(function CV({user}: Props) {
             <Segment className={'navbar'} style={{ marginBottom: '5em' }}>
                 <NavBar />
             </Segment>
-            <Button content='Save as PDF' onClick={printCV} size='massive' floated='right' primary ></Button>
+            <Button content='Save as PDF' onClick={printCV} size='huge' floated='right' primary ></Button>
 
             {userStore.isLoggedIn ? (
             <div id='pdf' >

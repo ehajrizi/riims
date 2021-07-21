@@ -90,7 +90,7 @@ export default observer(function Home() {
                                 <ProjektetDashboard />
                             </Segment>
                             
-                        <Segment className={'honorsawards'} basic>
+                        <Segment className={'honorsandawards'} basic>
                             <HonorandAwardDashboard />
                         </Segment> 
                         <Segment className={'isbn'} hidden basic>

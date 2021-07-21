@@ -61,7 +61,7 @@ export default observer(function PublikimetListItem({ donatori }: Props) {
                               {donatori.kontributiIDhene} <br />
 
                            
-                        </Card.Description> ]
+                        </Card.Description> 
                         <Card.Meta>
                             {readMore && extraContent}
                         </Card.Meta>

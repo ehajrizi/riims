@@ -44,7 +44,6 @@ export default observer( function UsersTable()
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Id</Table.HeaderCell>
-                <Table.HeaderCell>Image</Table.HeaderCell>
                 <Table.HeaderCell>Title</Table.HeaderCell>
                 <Table.HeaderCell>Name</Table.HeaderCell>
                 <Table.HeaderCell>Middle Name</Table.HeaderCell>
@@ -69,9 +68,8 @@ export default observer( function UsersTable()
                         <Table.Cell>
                           <Button onClick={()=> modalStore.openModal(<EkspoTable userid={user.id} emri={user.emri!} mbiemri={user.mbiemri!}/>)} content={user.id}></Button>
                         </Table.Cell>
-                        <Table.Cell>{user.image}</Table.Cell>
                         <Table.Cell>{user.titulliShkencor}</Table.Cell>
-                        <Table.Cell><Link to="/hello">{user.emri}</Link></Table.Cell>
+                        <Table.Cell>{user.emri}</Table.Cell>
                         <Table.Cell>{user.emriMesem}</Table.Cell>
                         <Table.Cell>{user.mbiemri}</Table.Cell>
                         <Table.Cell>{user.gjinia}</Table.Cell>

@@ -28,7 +28,6 @@ export default observer(function EksperiencaListItem({eksperienca} : Props)
         <Card.Meta>
             <span>{eksperienca.emriInstitucionit}</span><br/>
             <span>{eksperienca.lokacioni}</span><br/>
-            <span><Checkbox label='Pune primare' /></span><br/>
             <span>{eksperienca.personiKontaktues}</span>
             :
             <span>{eksperienca.numriTelefonit}</span>

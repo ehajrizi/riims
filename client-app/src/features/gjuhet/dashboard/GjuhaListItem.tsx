@@ -44,10 +44,11 @@ export default observer(function GjuhaListItem({ gjuha }: Props) {
                                         <Button name={gjuha.id}
                                             loading={loading && target === gjuha.id}
                                             onClick={(e) => handleGjuhaDelete(e, gjuha.id)}
-                                            className="btn"
-                                            style={{ marginLeft: '0.5em' }}
-                                            size='small'>
-                                            <Icon className='btnIcon' name='trash' />
+                                            className="btn btnIcon"
+                                            style={{ marginLeft: '0.4em' }}
+                                            size='small'
+                                            icon='trash'>
+                                            {/* <Icon className='btnIcon' name='trash' /> */}
                                         </Button>
                                     </Grid.Column>
                                 </Grid>
