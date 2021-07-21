@@ -38,7 +38,6 @@ export default observer(function CertifikimiEditForm({ cert }: Props) {
         titulli: Yup.string().required('Titulli duhet te plotesohet!'),
         lokacioni: Yup.string().required('Lokacioni duhet te plotesohet!'),
         dataFillestare: Yup.string().required('Data fillestare duhet te plotesohet!').nullable(),
-        // dataPerfundimtare: Yup.string().required('Data perfundimtare duhet te plotesohet!').nullable(),
         pershkrimi: Yup.string().required(),
     })
 

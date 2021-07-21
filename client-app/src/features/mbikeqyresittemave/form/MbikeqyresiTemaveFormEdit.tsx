@@ -37,13 +37,13 @@ export default observer(function MbikeqyresiTemaveFormEdit({mbik}:Props){
         useriId: mbik.useriId
     });
     const validationSchema=Yup.object ({
-        titulliTemes:Yup.string().required('Ju lutem plotesoni Titullin e Temes'),
-        studenti:Yup.string().required('Ju lutem plotesoni emrin e Studentit'),
-        muaji:Yup.string().required('Ju lutem selektoni muajin'),
-        viti:Yup.string().required('Ju lutem selektoni vitin'),
-        institucioni:Yup.string().required('Ju lutem selektoni Institucionin'),
-        fakulteti:Yup.string().required('Ju lutem selektoni Fakultetin'),
-        niveliAkademik:Yup.string().required('Ju lutem selektoni Nivelin Akademik'),
+        titulliTemes:Yup.string().required('Titulli i Temes duhet te plotesohet!'),
+        studenti:Yup.string().required('Emri i Studentit duhet te plotesohet!'),
+        muaji:Yup.string().required('Selektoni muajin'),
+        viti:Yup.string().required('Selektoni vitin'),
+        institucioni:Yup.string().required('Selektoni Institucionin'),
+        fakulteti:Yup.string().required('Selektoni Fakultetin'),
+        niveliAkademik:Yup.string().required('Selektoni Nivelin Akademik'),
     })
     useEffect(() => {
         if(id) loadMbikeqyresiTemave(id).then(mbikeqyresitemave => setMbikeqyresiTemave(mbikeqyresitemave!))

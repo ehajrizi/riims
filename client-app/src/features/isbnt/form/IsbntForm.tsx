@@ -31,8 +31,8 @@ export default observer(function IsbntForm() {
 
 
     const validationSchema = Yup.object({
-        llojiNumrit: Yup.string().required('Fusha nuk guxon te jete e zbrazet'),
-        numri: Yup.string().required('The activity description is required'),
+        llojiNumrit: Yup.string().required('Fusha duhet te plotesohet!'),
+        numri: Yup.string().required('Numri i ISBN-se duhet te plotesohet!'),
     })
 
     useEffect(() => {

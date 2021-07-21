@@ -44,21 +44,21 @@ export default observer(function PublikimetForm() {
     });
 
     const validationSchema = Yup.object({
-        titulli: Yup.string().required('The activity title is required'),
-        emertimiEvent: Yup.string().required('The activity description is required'),
-        data: Yup.string().required('Date is required').nullable(),
-        viti: Yup.string().required('Date is required').nullable(),
-        vendi: Yup.string().required(),
-        statusi: Yup.string().required(),
-        llojiPublikimit: Yup.string().required(),
-        institucioni: Yup.string().required(),
-        departamenti: Yup.string().required(),
-        lenda: Yup.string().required(),
-        kategoria: Yup.string().required(),
-        linkuPublikimit: Yup.string().required(),
-        volumiFaqeve: Yup.string().required(),
-        referenca: Yup.string().required(),
-        autorKryesor: Yup.string().required(),
+        titulli: Yup.string().required('Titulli duhet te plotesohet!'),
+        emertimiEvent: Yup.string().required('Eventi duhet te plotesohet!'),
+        data: Yup.string().required('Data duhet te plotesohet!').nullable(),
+        viti: Yup.string().required('Viti duhet te plotesohet!').nullable(),
+        vendi: Yup.string().required('Vendi duhet te plotesohet!'),
+        statusi: Yup.string().required('Statusi duhet te plotesohet!'),
+        llojiPublikimit: Yup.string().required('Lloji publikimit duhet te plotesohet!'),
+        institucioni: Yup.string().required('Institucioni duhet te plotesohet!'),
+        departamenti: Yup.string().required('Departamenti duhet te plotesohet!'),
+        lenda: Yup.string().required('Lenda duhet te plotesohet!'),
+        kategoria: Yup.string().required('Kategoria duhet te plotesohet!'),
+        linkuPublikimit: Yup.string().required('Linku Publikimit duhet te plotesohet!'),
+        volumiFaqeve: Yup.string().required('Volumi Faqeve duhet te plotesohet!'),
+        referenca: Yup.string().required('Referenca duhet te plotesohet!'),
+        //autorKryesor: Yup.string().required('duhet te plotesohet!'),
     })
 
     useEffect(() => {

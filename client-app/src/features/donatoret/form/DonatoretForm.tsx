@@ -30,9 +30,9 @@ export default observer(function DonatoretForm() {
 
     const validationSchema = Yup.object({
       
-        emriIDonatorit: Yup.string().required('Emri donatorit description is required'),
-        pershkrimiDonatorit: Yup.string().required('Pershkrimi is required'),
-        kontributiIDhene: Yup.number().required(),
+        emriIDonatorit: Yup.string().required('Emri donatorit duhet te plotesohet!'),
+        pershkrimiDonatorit: Yup.string().required('Pershkrimi duhet te plotesohet!'),
+        kontributiIDhene: Yup.number().required('Kontributi duhet te plotesohet!'),
        
     })
 

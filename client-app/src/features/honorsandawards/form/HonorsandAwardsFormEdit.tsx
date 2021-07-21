@@ -37,11 +37,11 @@ export default observer(function HonorandAwardFormEdit({honorandaward}:Props){
     });
 
     const validationSchema=Yup.object ({
-        titulli:Yup.string().required('Ju lutem plotesoni Titullin '),
+        titulli:Yup.string().required('Titulli duhet te plotesohet!'),
         muaji:Yup.string().required('Ju lutem selektoni muajin'),
         viti:Yup.string().required('Ju lutem selektoni vitin'),
-        institucioni:Yup.string().required('Ju lutem shkruani emrin e Institucionint/Organizates'),
-        pozita:Yup.string().required('Ju lutem shkruani Poziten dhe Pershkrimin'),
+        institucioni:Yup.string().required('Institucioni/Organizata duhet te plotesohet!'),
+        pozita:Yup.string().required('Pozita dhe Pershkrimi duhet te plotesohet!'),
         })
 
     useEffect(() => {

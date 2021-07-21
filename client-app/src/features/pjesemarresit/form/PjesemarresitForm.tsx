@@ -30,8 +30,8 @@ export default observer(function PjesemarresitForm() {
     });
 
     const validationSchema = Yup.object({
-        emriIPjesemarresit: Yup.string().required('Fusha nuk guxon te jete e zbrazet'),
-        roli: Yup.string().required('The activity description is required'),
+        emriIPjesemarresit: Yup.string().required('Emri i Pjesemarresit duhet te plotesohet!'),
+        roli: Yup.string().required('Selektoni Rolin!'),
        
     })
 

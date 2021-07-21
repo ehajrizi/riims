@@ -35,11 +35,10 @@ export default observer(function EdukimiForm(){
     const validationSchema = Yup.object({
         emri_i_Institucionit: Yup.string().required('Emri i Institucionit duhet te plotesohet!'),
         titulli: Yup.string().required('Titulli duhet te plotesohet!'),
-        fusha_e_Studimit: Yup.string().required(),
-        lokacioni: Yup.string().required(),
+        fusha_e_Studimit: Yup.string().required('Fusha e studimit duhet te plotesohet!'),
+        lokacioni: Yup.string().required('Lokacioni duhet te plotesohet'),
         dataFillestare: Yup.string().required('Data Fillestare duhet te plotesohet!').nullable(),
-        dataPerfundimtare: Yup.string().required('Data Perfundimtare duhet te plotesohet!').nullable(),
-        pershkrimi: Yup.string().required()
+        pershkrimi: Yup.string().required('Pershkrimi duhet te plotesohet!')
     })
 
     useEffect(() => {

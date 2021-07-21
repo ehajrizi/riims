@@ -41,14 +41,13 @@ export default observer(function ProjektetFormEdit({ projekti }: Props) {
     });
 
     const validationSchema = Yup.object({
-        emriProjektit: Yup.string().required('Fusha nuk guxon te jete e zbrazet'),
-        pershkrimi: Yup.string().required('Fusha nuk guxon te jete e zbrazet'),
-        lokacioni: Yup.string().required(),
-        dataFillimit: Yup.string().required('Fusha nuk guxon te jete e zbrazet').nullable(),
-        dataMbarimit: Yup.string().required('Fusha nuk guxon te jete e zbrazet').nullable(),
-        buxheti: Yup.string().required(),
-        emriKlientit: Yup.string().required(),
-        institucioni: Yup.string().required(),
+        emriProjektit: Yup.string().required('Emri Projekti duhet te plotesohet!'),
+        pershkrimi: Yup.string().required('Pershkrimi duhet te plotesohet!'),
+        lokacioni: Yup.string().required('Lokacioni duhet te plotesohet!'),
+        dataFillimit: Yup.string().required('Data e Fillimit duhet te plotesohet!').nullable(),
+        buxheti: Yup.string().required('Buxheti duhet te plotesohet!'),
+        emriKlientit: Yup.string().required('Emri Klientit duhet te plotesohet!'),
+        institucioni: Yup.string().required('Institucioni duhet te plotesohet!'),
     })
 
     useEffect(() => {
