@@ -52,7 +52,11 @@ namespace Application.Core
             CreateMap<Isbn, Isbn>();
             CreateMap<Isbn, IsbnDto>();
             CreateMap<UserProfile, UserProfile>();
+               
             CreateMap<AppUser, UserProfile>();
+
+            // CreateMap<AppUser,UserProfile.UserProfile>()
+            //   .ForMember (d => d.Image, o =>o.MapFrom(s => s.Photos.FirstOrDefault(x => x.Id).Url));
         }
     }
 }

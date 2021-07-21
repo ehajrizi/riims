@@ -24,5 +24,7 @@ namespace DatabaseLogic
          public DbSet<Pjesemarresi> Pjesemarresit { get; set; }
          public DbSet<PjesemarresiPublikimi> PjesemarresitPublikimet { get; set; }
         public DbSet<Isbn> Isbnt { get; set; }
+        
+        public DbSet<Photo> Photos {get;set;}
     }
 }

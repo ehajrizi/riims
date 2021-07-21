@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using DatabaseLogic;
 using Application.Interfaces;
 using Infrastructure.Security;
+using Infrastructure.Photos;
 
 namespace API.Extensions
 {
@@ -41,11 +42,15 @@ namespace API.Extensions
             services.AddMediatR(typeof(Application.Gjuhet.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.Anetaresite.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.HonorsandAwards.List.Handler).Assembly);
-           services.AddMediatR(typeof(Application.Donatoret.List.Handler).Assembly);
+            services.AddMediatR(typeof(Application.Donatoret.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.Pjesemarresit.List.Handler).Assembly);
             services.AddMediatR(typeof(Application.PjesemarresitPublikimet.List.Handler).Assembly);
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddMediatR(typeof(Application.Isbnt.List.Handler).Assembly);
+            services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
+            services.AddScoped<IPhotoAccessor,PhotoAccessor> ();
+
+
             
 
             return services;

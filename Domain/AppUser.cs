@@ -21,6 +21,8 @@ namespace Domain
         public string ShtetiCurrent { get; set; }
         public string Pershkrimi { get; set; }
         public string LinkedIn { get; set; }
+        public string PhotoUrl { get; set; }
+        public Photo Photos {get;set;}
         public ICollection<Publikimi> Publikimet { get; set; }
         public ICollection<Eksperienca> Eksperiencat { get; set; }
         public ICollection<Anetaresia> Anetaresite { get; set; }

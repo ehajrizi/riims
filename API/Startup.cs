@@ -20,6 +20,8 @@ using API.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using API.Middleware;
+using Application.Interfaces;
+using Infrastructure.Photos;
 
 namespace API
 {
@@ -44,6 +46,7 @@ namespace API
             services.AddApplicationServices(_config);
             services.AddIdentityServices(_config);
             services.AddScoped<IUserRepository, UserRepository>();
+           
             
         }
 
