@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react-lite';
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Container, Menu, Segment, Image, Dropdown } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
+import { Container, Menu, Image, Dropdown } from 'semantic-ui-react';
 import { useStore } from '../stores/store';
 
 export default observer(function NavBar() {
@@ -25,7 +24,7 @@ export default observer(function NavBar() {
                         <Menu.Item as={NavLink} exact to='/adminDashboard' name="Dashboard" />
                     ): null}
                     <Menu.Item>
-                    <Image src={user?.image || '/assets/user/png'} avatar spaced='right' />
+                    <Image src="https://cdn.iconscout.com/icon/free/png-256/account-avatar-profile-human-man-user-30448.png" avatar spaced='right' />
                     <Dropdown pointing='top left' text={user?.emri+' '+user?.mbiemri}>
                         <Dropdown.Menu>
                             <Dropdown.Item as={NavLink} to={`/profiles/${user?.id}`} text='My Profile' icon='user' name="ProfileDashboard" />

@@ -2,7 +2,7 @@ import React from 'react'
 import { Image } from 'semantic-ui-react'
 
 const ProfileImage = () => (
-  <Image src="https://i.pinimg.com/originals/20/f2/59/20f2590149ae7971225b70fb287de3f4.jpg" size='medium' circular />
+  <Image src="https://cdn.iconscout.com/icon/free/png-256/account-avatar-profile-human-man-user-30448.png" size='medium' circular />
 )
 
 export default ProfileImage
