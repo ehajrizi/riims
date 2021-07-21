@@ -9,6 +9,7 @@ import { useStore } from '../stores/store';
 import AdminDashboard from '../../features/admin/AdminDashboard';
 import EkspoTable from '../../features/admin/EkspoTable';
 import ProfileDashboard from '../../features/profile/ProfileDashboard';
+import CV from '../../features/CV/CV';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         ) : (<Route exact path='/' component={LogReg} />)}
         <Route exact path='/adminDashboard' component={AdminDashboard} />
         <Route exact path='/home' component={Home} />
+        <Route exact path='/cv' component={CV} />
         <Route exact path='/hello' component={EkspoTable} />
         <Route exact path='/mbikeqyresitemave' component={Home} />
         <Route exact path='/eksperiencat' component={Home} />

@@ -74,7 +74,7 @@ export default observer(function PublikimetListItem({ publikimi }: Props) {
                         </Card.Meta>
                         <Grid>
                             <Grid.Column width="15"><Divider /></Grid.Column>
-                            <Button  className="btn" ><Icon name='eye' style={{ marginLeft: "-20px" }} /></Button>
+                            <Button  className="btn"></Button>
                         </Grid>
                     </Card.Content>
                 </Card>

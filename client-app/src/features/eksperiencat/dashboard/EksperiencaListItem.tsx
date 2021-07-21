@@ -75,7 +75,7 @@ export default observer(function EksperiencaListItem({eksperienca} : Props)
                         </Card.Description>
                         <Grid>
                             <Grid.Column width="15"><Divider/></Grid.Column>
-                            <Grid.Column width="1"><Icon name='eye' style={{ marginLeft: "-20px" }} /></Grid.Column>
+                            <Grid.Column width="1"></Grid.Column>
                         </Grid>
                     </Card.Content>
                 </Card>
