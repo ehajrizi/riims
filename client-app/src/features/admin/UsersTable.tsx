@@ -43,7 +43,6 @@ export default observer( function UsersTable()
           <Table columns={16} style={{margin: '2px'}}>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Id</Table.HeaderCell>
                 <Table.HeaderCell>Title</Table.HeaderCell>
                 <Table.HeaderCell>Name</Table.HeaderCell>
                 <Table.HeaderCell>Middle Name</Table.HeaderCell>
@@ -65,9 +64,6 @@ export default observer( function UsersTable()
             <Table.Body>
               {userat.map(user =>(
                       <TableRow key={(user.email)}>
-                        <Table.Cell>
-                          <Button onClick={()=> modalStore.openModal(<EkspoTable userid={user.id} emri={user.emri!} mbiemri={user.mbiemri!}/>)} content={user.id}></Button>
-                        </Table.Cell>
                         <Table.Cell>{user.titulliShkencor}</Table.Cell>
                         <Table.Cell>{user.emri}</Table.Cell>
                         <Table.Cell>{user.emriMesem}</Table.Cell>
@@ -80,7 +76,9 @@ export default observer( function UsersTable()
                         <Table.Cell>{user.pershkrimi}</Table.Cell>
                         <Table.Cell>{user.roli}</Table.Cell>
                         <Table.Cell>{user.linkedIn}</Table.Cell>
-                        <Table.Cell>CV</Table.Cell>
+                        <Table.Cell>
+                          <Button onClick={()=> modalStore.openModal(<EkspoTable userid={user.id} emri={user.emri!} mbiemri={user.mbiemri!}/>)} content={'CV'}></Button>
+                        </Table.Cell>
                         <Table.Cell>
                           <Button onClick={()=> modalStore.openModal(<EditUserForm usr={user}/>)} className="btn" size='small'><Icon className='btnIcon' name='edit' /></Button>
                         </Table.Cell>

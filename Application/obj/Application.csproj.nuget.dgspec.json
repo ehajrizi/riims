@@ -1,42 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Application\\Application.csproj": {}
+    "/Users/elitahajrizi/Desktop/riims/Application/Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Application\\Application.csproj": {
+    "/Users/elitahajrizi/Desktop/riims/Application/Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Application\\Application.csproj",
+        "projectUniqueName": "/Users/elitahajrizi/Desktop/riims/Application/Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\NESA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Application\\obj\\",
+        "projectPath": "/Users/elitahajrizi/Desktop/riims/Application/Application.csproj",
+        "packagesPath": "/Users/elitahajrizi/.nuget/packages/",
+        "outputPath": "/Users/elitahajrizi/Desktop/riims/Application/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\NESA\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/elitahajrizi/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {
-                "projectPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\DatabaseLogic.csproj"
+              "/Users/elitahajrizi/Desktop/riims/DatabaseLogic/DatabaseLogic.csproj": {
+                "projectPath": "/Users/elitahajrizi/Desktop/riims/DatabaseLogic/DatabaseLogic.csproj"
               },
-              "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj"
+              "/Users/elitahajrizi/Desktop/riims/Domain/Domain.csproj": {
+                "projectPath": "/Users/elitahajrizi/Desktop/riims/Domain/Domain.csproj"
               }
             }
           }
@@ -83,40 +77,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.302/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\DatabaseLogic.csproj": {
+    "/Users/elitahajrizi/Desktop/riims/DatabaseLogic/DatabaseLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
+        "projectUniqueName": "/Users/elitahajrizi/Desktop/riims/DatabaseLogic/DatabaseLogic.csproj",
         "projectName": "DatabaseLogic",
-        "projectPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\DatabaseLogic.csproj",
-        "packagesPath": "C:\\Users\\NESA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\DatabaseLogic\\obj\\",
+        "projectPath": "/Users/elitahajrizi/Desktop/riims/DatabaseLogic/DatabaseLogic.csproj",
+        "packagesPath": "/Users/elitahajrizi/.nuget/packages/",
+        "outputPath": "/Users/elitahajrizi/Desktop/riims/DatabaseLogic/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\NESA\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/elitahajrizi/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj"
+              "/Users/elitahajrizi/Desktop/riims/Domain/Domain.csproj": {
+                "projectPath": "/Users/elitahajrizi/Desktop/riims/Domain/Domain.csproj"
               }
             }
           }
@@ -151,32 +139,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.302/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj": {
+    "/Users/elitahajrizi/Desktop/riims/Domain/Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj",
+        "projectUniqueName": "/Users/elitahajrizi/Desktop/riims/Domain/Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\NESA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\NESA\\Desktop\\CSE\\Semestri 4\\Lab Course 1(Programim)\\riims\\Domain\\obj\\",
+        "projectPath": "/Users/elitahajrizi/Desktop/riims/Domain/Domain.csproj",
+        "packagesPath": "/Users/elitahajrizi/.nuget/packages/",
+        "outputPath": "/Users/elitahajrizi/Desktop/riims/Domain/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\NESA\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/elitahajrizi/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -219,7 +201,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.302/RuntimeIdentifierGraph.json"
         }
       }
     }

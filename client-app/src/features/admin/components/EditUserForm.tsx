@@ -59,7 +59,7 @@ export default observer(function EditUserForm({usr}: Props){
     },[email, loadUser]);
     
     function handleSubmitUser(user: User){
-        updateUser(user).then(() => history.push(`/adminDashboard/users`))
+        updateUser(user).then(() => history.push(`/adminDashboard`))
         modalStore.closeModal(); 
     }
 
